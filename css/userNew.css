@@ -31,7 +31,7 @@
 }
 .userPost{
     width:100%;
-    font-size: 16px;
+    font-size: 14px;
     /*line-height: 32px;*/
     color:#acacb8;
     padding-left: 20px;
@@ -45,6 +45,7 @@
     border-radius: 15px;
     color: #acacb8;
     text-align: center;
+    font-size: 14px;
 }
 .financing{
     width: 100%;
@@ -164,20 +165,22 @@
 /*设置页面样式开始*/
 .userSet{
     height:56px;
-    line-height: 50px;
+    line-height: 56px;
     border-bottom: 1px solid #e6e6e6;
     font-size: 16px;
     color:#4c4c4c;
-    margin-left: 5%;
+    padding-left: 15px;
     padding-right: 15px;
-    /*display:table-cell;*/
-    /*text-align:c/enter;*/
+    background: #ffffff;
     vertical-align:middle;
 
 }
-.userSet span{
+.userSetSpan{
     display: inline-block;
+    height: 56px;
+    line-height: 56px;
     margin-left:15px;
+    color: #4c4c4c;
 }
 
 .userSet img{
@@ -188,25 +191,65 @@
     float: right;
 }
 .userSetIcon{
+    height: 56px;
     float: right;
+    line-height: 56px;
 }
 .userSetContent{
     float: right;
     margin-right: 10px;
     display: inline-block;
+    color: #9695a7;
+    height: 56px;
+    line-height: 56px;
 }
 .userSetOut{
-    width:76%;
+    width:68%;
     height:43px;
     border:1px solid #e6e6e6;
     border-radius: 20px;
     text-align: center;
     line-height:42px;
     font-size: 16px;
-    position:fixed;
-    bottom:70px;
-    left: 12%;
-    margin: 0 auto;
+    margin: 30px auto;
     color:#888888;
+    background: #ffffff;
+}
+.cancelAlert{
+    display: none;
+    padding-top: 20px;
+    width: 68%;
+    height: 136px;
+    position: absolute;
+    top: 120px;
+    left: 16%;
+    z-index: 100;
+    border-radius: 5px;border: 1px solid #e0e0e0;
+    background: #eaeaec;
+}
+.cancelButton{
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    height: 43px;
+    line-height: 43px;
+    font-size: 18px;
+    color: #209aff;
+    text-align: center;
+    border-right: 1px solid #c3c2c7;
+}
+.coverAlert {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: #888888;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    opacity: 0.7;
+    text-align: center;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 /*设置页面样式结束*/

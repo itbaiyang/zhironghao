@@ -136,11 +136,19 @@ articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope,
 		});
 	};
 	$scope.init();
+	$scope.alertCancel = function(){
+		$(".coverAlert").css("display","block");
+		$(".cancelAlert").css("display","block");
+	};
+	$scope.alertExit = function(){
+		$(".coverAlert").css("display","none");
+		$(".cancelAlert").css("display","none");
+	}
 
 	$scope.cancel =function(){
 		var m_params = {
-			//userId: $rootScope.login_user.userId,
-			//token: $rootScope.getAccountInfoKeyValue("token"),
+			userId: $rootScope.login_user.userId,
+			token: $rootScope.login_user.token,
 			status:-1
 		};
 		$http({

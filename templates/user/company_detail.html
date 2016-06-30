@@ -1,18 +1,25 @@
-<div style="background: #ffffff;height:100%;">
-    <div class="userSet">
-        <span>公司名称</span>
+<div style="background: #f4f8fb;padding-top:38px;height:calc(100% - 38px);overflow: hidden">
+    <div class="userSet" style="border-top: 1px solid #e6e6e6;">
+        <span class="userSetSpan">公司名称</span>
         <span class="userSetIcon">></span>
         <span class="userSetContent">{{company.companyName}}</span>
     </div>
     <div class="userSet">
-        <span>联系人</span>
+        <span class="userSetSpan">联系人</span>
         <span class="userSetIcon"> ></span>
         <span class="userSetContent">{{company.linkman}}</span>
     </div>
     <div class="userSet">
-        <span>手机号</span>
-        <span class="userSetIcon">&nbsp</span>
-        <span class="userSetContent">{{user.mobile}}</span>
+        <span class="userSetSpan">手机号</span>
+        <span class="userSetIcon"> ></span>
+        <span class="userSetContent">{{company.mobile}}</span>
     </div>
-    <div class="userSetOut" ng-click="cancel()">取消申请</div>
+    <div class="userSetOut" ng-click="alertCancel()">取消申请</div>
+    <div class="coverAlert"></div>
+    <div class="cancelAlert">
+        <p class="alertText" style="color: black">温馨提示</p>
+        <p class="alertText2">您确定要取消本次申请吗？</p>
+        <div class="cancelButton" ng-click="alertExit()">取消</div>
+        <div class="cancelButton" ng-click="cancel()" style="border: none">确定</div>
+    </div>
 </div>

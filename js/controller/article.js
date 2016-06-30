@@ -106,7 +106,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 	$scope.submit = function () {
 		var m_params = {
 			userId: $rootScope.login_user.userId,
-			token: $rootScope.getAccountInfoKeyValue("token"),
+			token: $rootScope.login_user.token,
 			companyName:$scope.company.companyName,
 			linkman:$scope.company.name,
 			mobile:$scope.company.mobile,

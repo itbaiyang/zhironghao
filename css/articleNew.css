@@ -69,7 +69,9 @@ hr {
 }
 /*全局样式结束*/
 .articleList{
-
+    width: 100%;
+    min-height: 100%;
+    background: #f4f8fb;
 }
 .article{
      box-sizing: border-box;
@@ -193,7 +195,7 @@ hr {
 }
 .productFeature{
     padding:16px 26px;
-    background: #F0F0F0;
+    background: #f4f8fb;
 }
 .productFeature p{
     font-size: 16px;
@@ -309,6 +311,11 @@ hr {
     cursor: pointer;
     border: none;
 }
+/*.singleButton1 :hover{
+    box-shadow: none;
+    transform:translate(-8px,8px)
+
+}*/
 
 .singleButtonGrew {
     width: 60%;
@@ -345,13 +352,12 @@ hr {
     opacity: 0.95;
 }
 .alertApply{
-    /*display: none;*/
+    display: none;
     width: 52%;
     height: 164px;
     position: absolute;
     top: 180px;
     left: 24%;
-    padding-left: 10px;
     background: #847dcb;
     z-index: 100;
     border-radius: 5px;
@@ -360,9 +366,10 @@ hr {
     background: url("../img/zrh.png")no-repeat -310px -42px;
     width: 60px;
     height: 60px;
-    margin: 21px auto 0;
+    margin: 21px 72px 0;
 }
 .alertText{
+    font-weight: 600;
     margin-top: 8px;
     font-size: 18px;
     line-height: 28px;
@@ -370,8 +377,19 @@ hr {
     text-align: center;
 }
 .alertText1 {
+    font-weight: 600;
     font-size: 16px;
     line-height: 26px;
     color: #4c4c4c;
     text-align: center;
 }
+.alertText2 {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 36px;
+    color: black;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #c3c2c7;
+}
+
