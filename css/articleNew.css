@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-    background: #F0F0F0;
+    background: #f4f8fb;
     height: 100%;
 }
 
@@ -39,6 +39,18 @@ input, button, select, textarea {
 hr {
     border: 0.5px solid #f0f0f0;
     margin-top: 16px;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #9292a5;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #9292a5;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #9292a5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #9292a5;
 }
 
 /*清除浮动*/
@@ -68,11 +80,11 @@ hr {
     background: #ffffff;
 }
 /*全局样式结束*/
-.articleList{
+/*.articleList{
     width: 100%;
     min-height: 100%;
     background: #f4f8fb;
-}
+}*/
 .article{
      box-sizing: border-box;
      -webkit-box-sizing: border-box;
@@ -108,10 +120,13 @@ hr {
 }
 
 .expect_border p {
-    font-size: 18px;
+    font-size: 20px;
     color: #f87482;
     margin-top: -12px;
     line-height: 28px;
+}
+.expect_border p>span{
+    color: #f87482;
 }
 
 .expect_border span {
@@ -218,12 +233,14 @@ hr {
     height: 28px;
     color: #4c4c4c;
 }
+.applyList{
+    color: #888888;
+}
 .applyList li{
     color: #888888;
     height: 30px;
     line-height: 30px;
     font-size: 14px;
-    list-style: disc;
     list-style: inside;
 }
 .singleButtonFixed {
@@ -251,7 +268,7 @@ hr {
     background: url('../img/zrh.png') no-repeat -33px -199px;
 }
 .applyHeaderP1 {
-    font-size: 16px;
+    font-size: 14px;
     color: #ffffff;
     padding-top: 26px;
     padding-left: 5%;
@@ -280,14 +297,8 @@ hr {
     color: #4c4c4c;
 }
 .fontColor{
-    color: #a4a4a4;
-}/*
-.applyContentSpan{
-    line-height: 25px;
-    display: inline-block;
-    font-size: 16px;
-    color: #a4a4a4;
-}*/
+    color: #9292a5;
+}
 .applyContent input,.applyContent div{
     width: 90%;
     height: 28px;
@@ -353,11 +364,11 @@ hr {
 }
 .alertApply{
     display: none;
-    width: 52%;
+    width: 66%;
     height: 164px;
     position: absolute;
     top: 180px;
-    left: 24%;
+    left: 17%;
     background: #847dcb;
     z-index: 100;
     border-radius: 5px;
@@ -366,7 +377,7 @@ hr {
     background: url("../img/zrh.png")no-repeat -310px -42px;
     width: 60px;
     height: 60px;
-    margin: 21px 72px 0;
+    margin: 21px 98px 0;
 }
 .alertText{
     font-weight: 600;

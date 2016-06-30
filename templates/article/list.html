@@ -3,15 +3,15 @@
         <div class="articleTittle">{{resultObj.name}}</div>
         <div class="expect clear">
             <div class="expect_border">
-                <p>{{resultObj.ratecap}}%-{{resultObj.ratefloor}}%</p>
+                <p> {{resultObj.ratecap | number:0}}<span>%-</span>{{resultObj.ratefloor | number:0}}<span>%</span></p>
                 <span>利息率</span>
             </div>
             <div class="expect_border borderLine">
-                <p>{{resultObj.loanvalue}}万</p>
+                <p>{{resultObj.loanvalue}} <span>万</span></p>
                 <span>贷款额度</span>
             </div>
             <div class="expect_border">
-                <p>{{resultObj.loanlife}}年</p>
+                <p>{{resultObj.loanlife}}<span>年</span></p>
                 <span>贷款期限</span>
             </div>
         </div>

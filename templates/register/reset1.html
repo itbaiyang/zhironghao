@@ -1,6 +1,6 @@
 <div class="regForm1">
 	<div style="background: #ffffff">
-        <input type="text" placeholder="请输入手机号" class="phoneCode" id="mobile" maxlength="11"
+        <input type="text" placeholder="请输入手机号" style="border-top:1px solid #e0e0e0;"  class="phoneCode" id="mobile" maxlength="11"
             maxlength="11" size="11" ng-model="resetUser.mobile"
             onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (! /^\d+$/ig.test(this.value)){this.value=this.value.replace(/[^\d]/ig,'')}}"
             ng-blur="validate_mobile()" />
