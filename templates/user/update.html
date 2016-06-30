@@ -1,0 +1,14 @@
+<div class="regForm1"  ng-switch="update_user.key">
+	<div ng-switch-when="name">
+		<input type="text" placeholder="输入姓名" class="phoneCode"
+			   maxlength="12"  ng-model="update_user.value">
+		<p style="height: 28px"></p>
+		<input type='button' class="regRelease" value="确定"ng-click="sure()"/>
+	</div>
+	<div ng-switch-when="position">
+		<input type="text" placeholder="输入职位" class="phoneCode"
+			   maxlength="12"  ng-model="update_user.value">
+		<p style="height: 28px"></p>
+		<input type='button' class="regRelease" value="确定"ng-click="sure()"/>
+	</div>
+</div>

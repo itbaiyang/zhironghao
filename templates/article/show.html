@@ -1,0 +1,33 @@
+<div class="showArticle">
+    <div class="articleDetail">
+        <div class="articleDetailTittle">{{article_detail.name}}</div>
+        <div class="articleContents clear">
+            <div class="articleContent">
+                <p>{{article_detail.ratecap}}<span>%</span>-{{article_detail.ratefloor}}<span>%</span></p>
+                <span>利息率</span>
+            </div>
+            <div class="articleContent borderLine">
+                <p>{{article_detail.loanvalue}}<span>万</span></p>
+                <span>贷款额度</span>
+            </div>
+            <div class="articleContent">
+                <p>{{article_detail.loanlife}}<span>年</span></p>
+                <span>贷款期限</span>
+            </div>
+        </div>
+    </div>
+    <div class="productDefinitions">{{article_detail.summary}}国内发票融资是指境内销货方（借款人）在不让渡应收账款债权情况下，以其在国内商品交易中所产生的发票为凭证，并以发票所对应的应收账款为第一还款来源，由银行为其提供的短期贷款。办理国内发票融资必须以真实、合法的交易和债权债务关系为基础。</div>
+    <div class="productFeature">
+        <p>产品特色</p>
+        <ul class="productFeatureList">
+            <li ng-repeat="feature in feature_list">{{feature}}</li>
+        </ul>
+    </div>
+    <div class="apply">
+        <p>申请条件</p>
+        <ul class="applyList">
+            <li ng-repeat="apply in apply_List">{{apply}}</li>
+        </ul>
+    </div>
+</div>
+<button class="singleButtonFixed" ng-click="apply(id)">申请融资</button>

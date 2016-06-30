@@ -1,0 +1,25 @@
+<div style="position: relative">
+    <div class="applyHeader">
+        <p class="applyHeaderP1">温馨提示：</p>
+        <p class="applyHeaderP2">个人中心填写的信息自动录入</p>
+    </div>
+    <div class="applyContent">
+        <span class="applyContentSpan" ng-class="{'fontColor':company.companyName != null && company.companyName != ''}">公司名称</span>
+        <input type="text" placeholder="请输入公司名称" ng-model="company.companyName"/>
+    </div>
+    <div class="applyContent">
+        <span class="applyContentSpan" ng-class="{'fontColor':company.name != ''}">联系人</span>
+        <input type="text" placeholder="请输入联系人姓名" ng-model="company.name"/>
+    </div>
+    <div class="applyContent ">
+        <span class="applyContentSpan"  ng-class="{'fontColor':company.mobile != ''}">联系电话</span>
+        <input type="text" placeholder="请输入联系电话" ng-model="company.mobile"/>
+    </div>
+    <div class="alertApply">
+        <div class="alertImg"></div>
+        <p class="alertText">申请提交</p>
+        <p class="alertText1">我们会尽快与您联系</p>
+    </div>
+</div>
+<button class="singleButton1" ng-click="submit()">提交</button>
+

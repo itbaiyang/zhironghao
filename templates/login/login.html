@@ -1,0 +1,25 @@
+<div class="regForm1">
+	<div style="background: #ffffff">
+		<input type="text" placeholder="请输入手机号" class="phoneCode" ng-blur="ngBlur()"
+			ng-model="loginUser.mobile" maxlength="11" ng-change="textChange(loginUser.mobile)"
+               onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (! /^\d+$/ig.test(this.value)){this.value=this.value.replace(/[^\d]/ig,'')}}"/>
+	    <input type="password" placeholder="请输入密码" class="phoneCode" maxlength="12"
+	    	ng-model="loginUser.password"/>
+    </div>
+    <div class="clear">
+        <div class="prompt fl">
+            <div style="color: green"> {{success_msg}}</div>
+            <div  ng-show="error_msg">
+                {{error_msg}}
+            </div>
+        </div>
+        <p class="forget fr" ng-click="reset()">忘记密码</p>
+    </div>
+    <input  type="submit" class="regRelease" value="登录" ng-click="login()"/>
+    <div style="text-align: center">
+        <div class="newUser">没有账号，点击</div>
+        <div class="newUser" style="color: #868ee3;margin-left: -5px" ng-click="register()">注册</div>
+    </div>
+
+
+</div>

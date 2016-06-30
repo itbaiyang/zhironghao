@@ -1,0 +1,19 @@
+<div class="articleList">
+    <div class="article" ng-repeat="resultObj in result_list" ng-click="article_show(resultObj.id)">
+        <div class="articleTittle">{{resultObj.name}}</div>
+        <div class="expect clear">
+            <div class="expect_border">
+                <p>{{resultObj.ratecap}}%-{{resultObj.ratefloor}}%</p>
+                <span>利息率</span>
+            </div>
+            <div class="expect_border borderLine">
+                <p>{{resultObj.loanvalue}}万</p>
+                <span>贷款额度</span>
+            </div>
+            <div class="expect_border">
+                <p>{{resultObj.loanlife}}年</p>
+                <span>贷款期限</span>
+            </div>
+        </div>
+    </div>
+</div>

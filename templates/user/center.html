@@ -1,0 +1,32 @@
+<div class="userHeader"></div>
+<div class="userDetail">
+    <div class="userLogo fl">
+        <div class="userLogoPic">
+            <img class="userLogoPic" src="{{headImg || 'img/icon/recommendl.png'}}" alt="">
+        </div>
+        <div class="userName">{{nickname || '默认'}}</div>
+        <div class="userPost">{{position}}</div>
+    </div>
+    <div class="personMessage fr" ng-click="userDetail()">个人信息</div>
+</div>
+<div class="financing" ng-hide="message">
+    <div class="financingTitle">融资情况</div>
+    <div class="financingContent">
+        <div class="financingContent1">
+            <div class="financialPic"></div>
+            <div class="financialText">
+                您暂时没有申请融资，快到金融产品中看看
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="financing1" ng-show="message" ng-repeat="resultObj in result_list" ng-click="company_detail(resultObj.id)">
+    <p class="companyName">{{resultObj.companyName}}</p>
+    <div class="progress" >
+        <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+    </div>
+    <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
+    <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>
+    <p class="progressTittle1" ng-show="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>
+</div>
