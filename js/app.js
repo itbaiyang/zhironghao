@@ -9,7 +9,7 @@ templates_root = "/zhironghao/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 
 var myApp = angular.module('myApp', [
-    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl'
+    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngInfiniteScroll',
 ], function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';

@@ -6,12 +6,12 @@ var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
 
-	 $scope.list = function () {
+	 $scope.list = function (pageNo, pageSize) {
          var m_params = {
              userId: $rootScope.login_user.userId,
-             token: $rootScope.getAccountInfoKeyValue("token")
-             /*pageNo:pageNo,
-             pageSize:pageSize*/
+             token: $rootScope.getAccountInfoKeyValue("token"),
+             pageNo:pageNo,
+             pageSize:pageSize
          };
         $http({
             url: api_uri+"financialProduct/list",
@@ -33,12 +33,31 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
         })
     };
 
-    $scope.list();
+    $scope.list(1,10);
     $scope.result_list = {
 		result:{},
         returnCode:0
 
     };
+	/*var totalHeight = 0;     //定义一个总的高度变量
+	function load()
+	{
+		totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
+
+		if ($(document).height() <= totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
+		{
+			//加载数据
+			var i = i+1;
+			$scope.list(i,10);
+		}
+	}
+
+	$(window).scroll( function() {
+		console.log("滚动条到顶部的垂直高度: "+$(document).scrollTop());
+		console.log("页面的文档高度 ："+$(document).height());
+		console.log('浏览器的高度：'+$(window).height());
+		load();
+	});*/
 	$scope.article_show = function (id) {
 		if (!isNullOrEmpty(id)) {
 			$location.path("/article/show/" + id);

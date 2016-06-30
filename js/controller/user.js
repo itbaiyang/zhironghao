@@ -28,23 +28,23 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
         }).error(function (d) {
             console.log(d);
         });
-		$scope.list();
+		$scope.list(1,10);
     };
 	$scope.message = false;
-	$scope.list = function () {
+	$scope.list = function (pageNo,pageSize) {
 		if(!$scope.type){
 			$scope.type = "1";
 		}
 		var m_params = {
-			userId: $rootScope.login_user.userId
-			//token: $rootScope.getAccountInfoKeyValue("token")
-			/*pageNo:pageNo,
-			 pageSize:pageSize*/
+			userId: $rootScope.login_user.userId,
+			token: $rootScope.login_user.token,
+			pageNo:pageNo,
+			 pageSize:pageSize
 		};
 		$http({
 			url: api_uri+"loanApplication/list",
 			method: "GET",
-			params: $rootScope.login_user
+			params: m_params
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
@@ -53,6 +53,10 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
 				}else{
 					$scope.message = true;
 					$scope.result_list = d.result.datas;
+					$scope.nextPage = d.result.nextPage;
+					$scope.pageNo = d.result.pageNo;
+					$scope.totalCount = d.result.totalCount;
+
 					angular.forEach($scope.result_list, function(data){
 						if($scope.type == 0){
 							/*data.jindu = "0";
@@ -103,7 +107,28 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
 		result:{},
 		returnCode:0
 	}
+	$scope.totalHeight = 0;
+	$scope.load = function()
+	{
+		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
+		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
+		{
+			$scope.list($scope.nextPage, 10);
+			//$scope.$apply();
+			console.log($scope.nextPage);
+			//$scope.big = 1 + $scope.big;
+		}
+	};
+	angular.element(window).scroll( function() {
+		if($scope.pageNo*10 <$scope.totalCount){
+			$scope.load();
+		} else{
+			console.log("daotoule");
+		}
+		//$scope.$apply();
+	});
 	$scope.init();
+
 	$scope.userDetail = function(){
 		$location.path("/user/setting/");
 	}

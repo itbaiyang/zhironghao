@@ -112,7 +112,7 @@ hr {
 
 .expect_border {
     width: 33%;
-    height: 20px;
+    height: 26px;
     font-size: 14px;
     color: #ffffff;
     text-align: center;
@@ -120,13 +120,14 @@ hr {
 }
 
 .expect_border p {
-    font-size: 20px;
+    font-size: 26px;
     color: #f87482;
     margin-top: -12px;
     line-height: 28px;
 }
 .expect_border p>span{
     color: #f87482;
+    font-size: 14px;
 }
 
 .expect_border span {
@@ -165,7 +166,7 @@ hr {
 
 .articleContent {
     width: 33%;
-    height: 20px;
+    height: 26px;
     font-size: 14px;
     color: #ffffff;
     text-align: center;
@@ -173,7 +174,7 @@ hr {
 }
 
 .articleContent p {
-    font-size: 18px;
+    font-size: 26px;
     color: #ffffff;
     margin-top: -12px;
     /*line-height: 20px;*/
@@ -380,23 +381,23 @@ hr {
     margin: 21px 98px 0;
 }
 .alertText{
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 8px;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
     color: #ffffff;
     text-align: center;
 }
 .alertText1 {
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 26px;
-    color: #4c4c4c;
+    color: #ffffff;
     text-align: center;
 }
 .alertText2 {
-    font-weight: 600;
-    font-size: 16px;
+    font-weight: 400;
+    font-size: 14px;
     line-height: 36px;
     color: black;
     text-align: center;
