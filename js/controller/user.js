@@ -4,8 +4,8 @@
 
 var userCtrl = angular.module('userCtrl', []);
 /*个人中心*/
-userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $location) {
-
+userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeout, $location) {
+	var result_list =[];
     $scope.init = function () {
         //获取个人信息 以及各种列表数量
          $http({
@@ -30,6 +30,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
         });
 		$scope.list(1,10);
     };
+
 	$scope.message = false;
 	$scope.list = function (pageNo,pageSize) {
 		if(!$scope.type){
@@ -52,11 +53,11 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
 					$scope.message = false;
 				}else{
 					$scope.message = true;
-					$scope.result_list = d.result.datas;
+					result_list =result_list.concat(d.result.datas);
+					$scope.result_list = result_list;
 					$scope.nextPage = d.result.nextPage;
 					$scope.pageNo = d.result.pageNo;
 					$scope.totalCount = d.result.totalCount;
-
 					angular.forEach($scope.result_list, function(data){
 						if($scope.type == 0){
 							/*data.jindu = "0";
@@ -116,17 +117,18 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope, $loca
 			$scope.list($scope.nextPage, 10);
 			//$scope.$apply();
 			console.log($scope.nextPage);
+
 			//$scope.big = 1 + $scope.big;
 		}
 	};
 	angular.element(window).scroll( function() {
 		if($scope.pageNo*10 <$scope.totalCount){
-			$scope.load();
-		} else{
-			console.log("daotoule");
+				$scope.load();
+			}else{
+			//console.log("daotoule");
 		}
-		//$scope.$apply();
 	});
+	//$scope.$apply();
 	$scope.init();
 
 	$scope.userDetail = function(){

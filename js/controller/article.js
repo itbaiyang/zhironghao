@@ -5,7 +5,7 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
-
+	var result_list =[];
 	 $scope.list = function (pageNo, pageSize) {
          var m_params = {
              userId: $rootScope.login_user.userId,
@@ -20,7 +20,8 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
         }).success(function (d) {
         	console.log(d);
             if (d.returnCode == 0) {
-                $scope.result_list = d.result.datas;
+				result_list =result_list.concat(d.result.datas);
+				$scope.result_list = result_list;
 				console.log($scope.result_list);
             }
             else {
@@ -37,27 +38,27 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
     $scope.result_list = {
 		result:{},
         returnCode:0
-
     };
-	/*var totalHeight = 0;     //定义一个总的高度变量
-	function load()
+	$scope.totalHeight = 0;
+	$scope.load = function()
 	{
-		totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
-
-		if ($(document).height() <= totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
+		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
+		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
 		{
-			//加载数据
-			var i = i+1;
-			$scope.list(i,10);
-		}
-	}
+			$scope.list($scope.nextPage, 10);
+			//$scope.$apply();
+			console.log($scope.nextPage);
 
-	$(window).scroll( function() {
-		console.log("滚动条到顶部的垂直高度: "+$(document).scrollTop());
-		console.log("页面的文档高度 ："+$(document).height());
-		console.log('浏览器的高度：'+$(window).height());
-		load();
-	});*/
+			//$scope.big = 1 + $scope.big;
+		}
+	};
+	angular.element(window).scroll( function() {
+		if($scope.pageNo*10 <$scope.totalCount){
+			$scope.load();
+		}else{
+			//console.log("daotoule");
+		}
+	});
 	$scope.article_show = function (id) {
 		if (!isNullOrEmpty(id)) {
 			$location.path("/article/show/" + id);
