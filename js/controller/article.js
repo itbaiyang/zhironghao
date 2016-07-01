@@ -58,7 +58,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		}
 	});
 	$scope.article_show = function (id) {
-		if (!isNullOrEmpty(id)) {
+		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/article/show/" + id);
 		}
 	};
@@ -91,7 +91,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 	};
 	$scope.init();
 	$scope.apply = function (id) {
-		if (!isNullOrEmpty(id)) {
+		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/article/apply/"+ id);
 		}
 	};

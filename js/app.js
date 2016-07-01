@@ -1,7 +1,5 @@
 
-//api_uri = "http://api.supeiyunjing.com/";
 api_uri = "http://123.206.84.74/api/";
-//api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "/zhironghao/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 
@@ -84,6 +82,13 @@ myApp.run(['$location', '$rootScope', '$http',
                 return null;
             }
         };*/
+        $rootScope.isNullOrEmpty = function(strVal) {
+            if ($.trim(strVal) == '' || strVal == null || strVal == undefined) {
+                return true;
+            } else {
+                return false;
+            }
+        }
         //加密 3des
         $rootScope.encryptByDES = function (message) {
             var keyHex = CryptoJS.enc.Utf8.parse(deskey);

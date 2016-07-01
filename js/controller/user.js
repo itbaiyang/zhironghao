@@ -135,7 +135,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	}
 	$scope.company_detail = function (id) {
-		if (!isNullOrEmpty(id)) {
+		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id);
 		}
 	};
@@ -306,8 +306,8 @@ userCtrl.controller('SettingCtrl', //用户设置
 
 
         $scope.update = function(key,value){
-        	if(!isNullOrEmpty(key) ){    
-        		if(isNullOrEmpty(value)) value = "";
+        	if(!$rootScope.isNullOrEmpty(key) ){
+        		if($rootScope.isNullOrEmpty(value)) value = "";
         	   $rootScope.putSessionObject("user_update",key+"="+value);
         	   $location.path("/user/update");
         	}

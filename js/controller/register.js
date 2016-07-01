@@ -39,7 +39,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	}
 
 	$scope.send_code = function(){
-		if(isNullOrEmpty($scope.registerUser.mobile)){
+		if($rootScope.isNullOrEmpty($scope.registerUser.mobile)){
 			$scope.changeErrorMsg("手机号码不能为空");
 			$("#mobile").focus();
 		}else{
@@ -85,7 +85,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	}
 
 	$scope.changeCode = function(){
-		if($scope.enableMobile && !isNullOrEmpty($scope.registerUser.code)){
+		if($scope.enableMobile && !$rootScope.isNullOrEmpty($scope.registerUser.code)){
 			$scope.isVerify= true;
 		}else{
 			$scope.isVerify= false;
@@ -249,7 +249,7 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 	};
 
 	$scope.send_code = function(){
-		if(isNullOrEmpty($scope.resetUser.mobile)){
+		if($rootScope.isNullOrEmpty($scope.resetUser.mobile)){
 			$scope.changeErrorMsg("手机号码不能为空");
 			$("#mobile").focus();
 		}else{
@@ -294,7 +294,7 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 	};
 
 	$scope.changeCode = function(){
-		if($scope.enableMobile && !isNullOrEmpty($scope.resetUser.code)){
+		if($scope.enableMobile && !$rootScope.isNullOrEmpty($scope.resetUser.code)){
 			$scope.isVerify= true;
 		}else{
 			$scope.isVerify= false;

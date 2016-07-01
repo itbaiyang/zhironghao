@@ -36,7 +36,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
         "code":""
     };
     $scope.ngBlur = function(){
-        if(isNullOrEmpty($scope.loginUser.mobile)){
+        if($rootScope.isNullOrEmpty($scope.loginUser.mobile)){
             $scope.changeErrorMsg("手机号码不能为空");
             //$scope.error_msg = "手机号码不能为空"
             $("#mobile").focus();
