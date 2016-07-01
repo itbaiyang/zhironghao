@@ -389,11 +389,15 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 			        }).error(function (d) {
 			            console.log("login error");
 			        })
-	            }
-	            else {
+	            }else if(d.returnCode == 1001){
+					$scope.enableMobile =false;
+					$scope.changeErrorMsg("用户已经注册");
+				}else if(d.returnCode == 2102){
 	            	$scope.enableMobile =false;
-	            	$scope.changeErrorMsg("手机号未注册");
-	            }
+	            	$scope.changeErrorMsg("手机号错误");
+	            }else{
+					$scope.changeErrorMsg(d.returnCode);
+				}
 
 	        }).error(function (d) {
 	            console.log("login error");
@@ -587,22 +591,26 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 			            	"timestamp":moment().format('X')
 			            }
 			        }).success(function (d) {
+						console.log(d);
 			            if (d.returnCode == 0) {
 			            	$("#code").focus();
 		                    $scope.changeErrorMsg("短信验证码已经发送到你的手机");
 			            }
-			            else {
+			            else{
 			                $scope.changeErrorMsg(d.result);
 			            }
-
 			        }).error(function (d) {
 			            console.log("login error");
 			        })
-	            }
-	            else {
+	            }else if(d.returnCode == 2102){
+					console.log(d);
 	            	$scope.enableMobile =false;
-	            	$scope.changeErrorMsg("手机号错误");
-	            }
+	            	$scope.changeErrorMsg("手机号码错误");
+	            }else if(d.returnCode == 0){
+					console.log(d);
+					$scope.enableMobile =false;
+					$scope.changeErrorMsg("手机号码错误或未注册");
+				}
 
 	        }).error(function (d) {
 	            console.log("login error");
