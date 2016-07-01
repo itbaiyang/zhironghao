@@ -1,6 +1,3 @@
-/**
- * Created by jiangzhuang on 5/5/16.
- */
 
 var registerCtrl = angular.module('registerCtrl', []);
 
@@ -78,7 +75,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	            }
 	            else {
 	            	$scope.enableMobile =false;
-	            	$scope.changeErrorMsg("手机号错误");
+	            	$scope.changeErrorMsg("手机号未注册");
 	            }
 
 	        }).error(function (d) {
@@ -174,7 +171,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 	        }).success(function (d) {
 	            if (d.returnCode == 0) {
 	            	alert("注册成功");
-	            	$rootScope.putObject("login_mobile",$scope.registerUser.mobile);
+	            	$rootScope.putSessionObject("login_mobile",$scope.registerUser.mobile);
 	                $http({
 			            url: api_uri+"auth/web",
 			            method: "POST",
@@ -189,7 +186,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			            		"userId":d.result.split("_")[0],
 			            		"token":d.result.split("_")[1]
 			            	}
-							$rootScope.putObject("login_user", $rootScope.login_user);
+							$rootScope.putSessionObject("login_user", $rootScope.login_user);
 			            	$location.path("/article/list");
 			            }
 			            else {
@@ -364,7 +361,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
         }).success(function (d) {
             if (d.returnCode == 0) {
             	alert("重置密码成功");
-            	$rootScope.putObject("login_mobile",$scope.resetUser.mobile);
+            	$rootScope.putSessionObject("login_mobile",$scope.resetUser.mobile);
                 $http({
 		            url: api_uri+"auth/web",
 		            method: "POST",
@@ -378,7 +375,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 		            		"userId":d.result.split("_")[0],
 		            		"token":d.result.split("_")[1]
 		            	}
-						$rootScope.putObject("login_user", $rootScope.login_user);
+						$rootScope.putSessionObject("login_user", $rootScope.login_user);
 		            	//$location.path("/article/list");
 						$location.path("/user/setting");
 		            }

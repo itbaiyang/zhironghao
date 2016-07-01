@@ -1,6 +1,3 @@
-/**
- * Created by jiangzhuang on 5/5/16.
- */
 
 //api_uri = "http://api.supeiyunjing.com/";
 api_uri = "http://123.206.84.74/api/";
@@ -9,7 +6,7 @@ templates_root = "/zhironghao/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 
 var myApp = angular.module('myApp', [
-    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl',
+    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
 ], function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
@@ -77,7 +74,7 @@ myApp.run(['$location', '$rootScope', '$http',
             angular.fromJson(sessionStorage.removeItem(key));
         };
 
-        $rootScope.getAccountInfoKeyValue = function (key) {
+        /*$rootScope.getAccountInfoKeyValue = function (key) {
             if ($rootScope.account_info != {}) {
                 $rootScope.account_info = $rootScope.getSessionObject('account_info');
             }
@@ -86,7 +83,7 @@ myApp.run(['$location', '$rootScope', '$http',
             } else {
                 return null;
             }
-        };
+        };*/
         //加密 3des
         $rootScope.encryptByDES = function (message) {
             var keyHex = CryptoJS.enc.Utf8.parse(deskey);
@@ -119,7 +116,7 @@ myApp.run(['$location', '$rootScope', '$http',
 			   return str.join("&").toString();
 		 };
 
-        $rootScope.close_alert = function () {
+        /*$rootScope.close_alert = function () {
             $rootScope.alert_show = null;
         };
         $rootScope.alert = function (data) {
@@ -133,14 +130,22 @@ myApp.run(['$location', '$rootScope', '$http',
             } else {
                 $rootScope.alert_str = "未知错误";
             }
+        };*/
+        $rootScope.touchStart = function(){
+            console.log("big");
+            $(".singleButtonFixed").addClass("singleButton2");
+            $(".singleButton1").addClass("singleButton2");
         };
-
+        $rootScope.touchEnd = function(){
+            $(".singleButtonFixed").removeClass("singleButton2");
+            $(".singleButton1").removeClass("singleButton2");
+        }
         $rootScope.check_user = function () {
-            $rootScope.login_user = $rootScope.getObject("login_user");
+            $rootScope.login_user = $rootScope.getSessionObject("login_user");
             //console.log($rootScope.login_user);
             if (!$rootScope.login_user) {
-                $rootScope.removeObject("login_user");
-                //$location.path("/login");
+                //$rootScope.removeSessionObject("login_user");
+                $location.path("/login");
                 return false;
             }
             $http({
@@ -153,13 +158,13 @@ myApp.run(['$location', '$rootScope', '$http',
                     return true;
                 } else {
                 	$rootScope.login_user = {};
-                    $rootScope.removeObject("login_user");
+                    //$rootScope.removeSessionObject("login_user");
                     //$location.path("/login");
                     return false;
                 }
 
             }).error(function (d) {
-                $rootScope.removeObject("login_user");
+                //$rootScope.removeSessionObject("login_user");
                 //$location.path("/login");
                 return false;
             });

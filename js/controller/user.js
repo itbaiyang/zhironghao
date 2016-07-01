@@ -1,6 +1,3 @@
-/**
- * Created by jz on 2016/5/19.
- */
 
 var userCtrl = angular.module('userCtrl', []);
 /*个人中心*/
@@ -51,8 +48,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			if (d.returnCode == 0) {
 				if(d.result.totalCount == 0){
 					$scope.message = false;
-				}else{
-					$scope.message = true;
+				}else {
+
 					result_list =result_list.concat(d.result.datas);
 					$scope.result_list = result_list;
 					$scope.nextPage = d.result.nextPage;
@@ -69,21 +66,25 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "8";
 								data.textPosition = "2";
 								data.progressText = "审核中";
+								$scope.message = true;
 							}else if(data.status == 2){
 								data.jindu = "50";
 								data.triangle = "44";
 								data.textPosition = "36";
 								data.progressText = "约见中";
+								$scope.message = true;
 							}else if(data.status == 3){
 								data.jindu = "75";
 								data.triangle = "66";
 								data.textPosition = "58";
 								data.progressText = "跟进中";
+								$scope.message = true;
 							}else if(data.status == 4){
 								data.jindu = "100";
 								data.triangle = "86";
 								data.textPosition = "76";
 								data.progressText = "成功融资";
+								$scope.message = true;
 							}else if(data.status == -1){
 								data.jindu = "0";
 								data.triangle = "20";
@@ -92,7 +93,6 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 							}
 						}
 					});
-
 				}
 			}
 			else {
@@ -323,7 +323,7 @@ userCtrl.controller('SettingCtrl', //用户设置
 	        }).error(function (d) {
 	            console.log(d);
 	        });
-	         $rootScope.removeObject("login_user", $rootScope.login_user);
+	         $rootScope.removeSessionObject("login_user", $rootScope.login_user);
 	         $rootScope.login_user = {};
 	         $location.path("/login");
         };
@@ -335,7 +335,7 @@ userCtrl.controller('UserUpdateCtrl',
         $scope.init = function(){
         	var user_update = $rootScope.getSessionObject("user_update");
 	        if(user_update && user_update.indexOf("=")){
-	        	$rootScope.removeObject("user_update");
+	        	$rootScope.removeSessionObject("user_update");
 	        	$scope.update_user = {};
 	        	$scope.update_user.key = user_update.split("=")[0];
 	        	$scope.update_user.value = user_update.split("=")[1];

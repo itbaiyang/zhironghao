@@ -1,6 +1,3 @@
-/**
- * Created by jiangzhuang on 5/5/16.
- */
 
 var loginCtrl = angular.module('loginCtrl', []);
 
@@ -13,7 +10,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
 
     $scope.error_code_msg = {
     	    1003:"该用户不存在",
-    	    2001:"用户名密码错误",
+    	    2001:"用户名或密码错误",
     	    1002:"该用户异常",
     	    1:"服务器异常,请稍后再试"
     };
@@ -51,7 +48,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             }).success(function (d) {
                 if (d.returnCode == 1001) {
                     $scope.enableMobile = true;
-                    $scope.success_msg = "手机号输入正确";
+                    //$scope.success_msg = "手机号输入正确";
                 }
                 else {
                     $scope.enableMobile =false;
@@ -77,7 +74,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             		"userId":d.result.split("_")[0],
             		"token":d.result.split("_")[1]
             	}
-                $rootScope.putObject("login_user", $rootScope.login_user);
+                $rootScope.putSessionObject("login_user", $rootScope.login_user);
             	$location.path("/article/list");
                 //$location.path("/user/setting");
             }else {

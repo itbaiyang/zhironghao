@@ -1,6 +1,3 @@
-/**
- * Created by jiangzhuang on 5/5/16.
- */
 
 var articleCtrl = angular.module('articleCtrl', []);
 
@@ -9,7 +6,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 	 $scope.list = function (pageNo, pageSize) {
          var m_params = {
              userId: $rootScope.login_user.userId,
-             token: $rootScope.getAccountInfoKeyValue("token"),
+             token: $rootScope.login_user.token,
              pageNo:pageNo,
              pageSize:pageSize
          };
@@ -21,6 +18,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
         	console.log(d);
             if (d.returnCode == 0) {
 				result_list =result_list.concat(d.result.datas);
+				$scope.result_list = result_list;
 				$scope.result_list = result_list;
 				console.log($scope.result_list);
             }
@@ -81,8 +79,8 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 				$scope.feature_list = d.result.feature;
 				$scope.apply_List = d.result.conditions;
 				$scope.id = d.result.id;
-				$scope.article_detail.ratecap = parseInt($scope.article_detail.ratecap);
-				$scope.article_detail.ratefloor = parseInt($scope.article_detail.ratefloor);
+				//$scope.article_detail.ratecap = parseInt($scope.article_detail.ratecap);
+				//$scope.article_detail.ratefloor = parseInt($scope.article_detail.ratefloor);
 			}else {
 				console.log(d);
 			}

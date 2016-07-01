@@ -3,7 +3,7 @@
         <div class="articleDetailTittle">{{article_detail.name}}</div>
         <div class="articleContents clear">
             <div class="articleContent">
-                <p>{{article_detail.ratecap}}<span>%</span>-{{article_detail.ratefloor}}<span>%</span></p>
+                <p>{{article_detail.ratecap | number:0}}<span>%</span>-{{article_detail.ratefloor | number:0}}<span>%</span></p>
                 <span>利息率</span>
             </div>
             <div class="articleContent borderLine">
@@ -30,4 +30,4 @@
         </ul>
     </div>
 </div>
-<button class="singleButtonFixed" ng-click="apply(id)">申请融资</button>
+<button class="singleButtonFixed" ng-touchend="touchEnd()" ng-touchstart="touchStart()"  ng-click="apply(id)">申请融资</button>

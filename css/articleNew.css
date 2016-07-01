@@ -120,7 +120,7 @@ hr {
 }
 
 .expect_border p {
-    font-size: 26px;
+    font-size: 20px;
     color: #f87482;
     margin-top: -12px;
     line-height: 28px;
@@ -174,7 +174,7 @@ hr {
 }
 
 .articleContent p {
-    font-size: 26px;
+    font-size: 20px;
     color: #ffffff;
     margin-top: -12px;
     /*line-height: 20px;*/
@@ -323,11 +323,11 @@ hr {
     cursor: pointer;
     border: none;
 }
-/*.singleButton1 :hover{
+.singleButton2{
     box-shadow: none;
-    transform:translate(-8px,8px)
+    transform:translate(0,4px)
 
-}*/
+}
 
 .singleButtonGrew {
     width: 60%;
@@ -345,24 +345,6 @@ hr {
     border: none;
 }
 
-.singleButtonFixed {
-    width: 60%;
-    height: 45px;
-    font-size: 18px;
-    background: linear-gradient(135deg, #8898EB, #6045BB);
-    position: fixed;
-    bottom: 15px;
-    margin-left: 20%;
-    border-radius: 26px;
-    text-align: center;
-    color: #fff;
-    line-height: 38px;
-    letter-spacing: 2px;
-    box-shadow: 0 8px 8px #ccc;
-    cursor: pointer;
-    border: none;
-    opacity: 0.95;
-}
 .alertApply{
     display: none;
     width: 66%;
