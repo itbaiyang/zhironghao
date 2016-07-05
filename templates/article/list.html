@@ -1,6 +1,7 @@
 <div class="articleList">
     <div class="article" ng-repeat="resultObj in result_list" ng-click="article_show(resultObj.id)">
         <div class="articleTittle">{{resultObj.name}}</div>
+        <div class="articleTittle1"><img ng-src="{{resultObj.icon}}" alt=""> {{resultObj.bankname}}</div>
         <div class="expect clear">
             <div class="expect_border">
                 <p> {{resultObj.ratecap | number:0}}<span>%-</span>{{resultObj.ratefloor | number:0}}<span>%</span></p>

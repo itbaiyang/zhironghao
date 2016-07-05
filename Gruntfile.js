@@ -9,9 +9,9 @@ module.exports = function(grunt) {
                     separator: ';'
                 },
                 src: [
-                    'js/ngTouch/ngTouchend.js',
-                    'js/ngTouch/ngTouchstart.js',
-                    'js/ngTouch/ngTouchmove.js',
+                    //'js/ngTouch/ngTouchend.js',
+                    //'js/ngTouch/ngTouchstart.js',
+                    //'js/ngTouch/ngTouchmove.js',
                     'js/controller/article.js',
                     'js/controller/login.js',
                     'js/controller/register.js',

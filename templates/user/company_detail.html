@@ -1,4 +1,22 @@
-<div style="background: #f4f8fb;padding-top:38px;height:calc(100% - 38px);overflow: hidden">
+<div class="article">
+    <div class="articleTittle">{{company.name}}</div>
+    <div class="articleTittle1"><img ng-src="{{company.icon}}" alt=""> {{company.bankname}}</div>
+    <div class="expect clear">
+        <div class="expect_border">
+            <p>{{company.ratecap | number:0}}<span>%</span>-{{company.ratefloor | number:0}}<span>%</span></p>
+            <span>利息率</span>
+        </div>
+        <div class="expect_border borderLine">
+            <p>{{company.loanvalue}}<span>万</span></p>
+            <span>贷款额度</span>
+        </div>
+        <div class="expect_border">
+            <p>{{company.loanlife}}<span>年</span></p>
+            <span>贷款期限</span>
+        </div>
+    </div>
+</div>
+<div>
     <div class="userSet" style="border-top: 1px solid #e6e6e6;">
         <span class="userSetSpan">公司名称</span>
         <span class="userSetIcon"></span>
