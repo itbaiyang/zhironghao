@@ -125,6 +125,9 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			productId:$routeParams.id
 		};
 		console.log(m_params.productId +"baiyang");
+		if(m_params.companyName ==""){
+			console.log("企业名称不能为空");
+		}else{
 		$.ajax({
 			type: 'POST',
 			url: api_uri + "loanApplication/create",
@@ -137,7 +140,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 					$(".alertApply").css("display","block");
 					$timeout(function() {
 						$(".alertApply").css("display","none");
-						$location.path("/user/center/");
+						$location.path("/article/show/"+ id);
 					}, 3000);
 					$scope.$apply();
 				}
@@ -147,7 +150,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			},
 			dataType: 'json',
 		});
-
+		}
 	};
 
 });

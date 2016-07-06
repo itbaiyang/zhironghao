@@ -65,13 +65,13 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
-								data.progressText = "审核中";
+								data.progressText = "约见中";
 								$scope.message = true;
 							}else if(data.status == 2){
 								data.jindu = "50";
 								data.triangle = "44";
 								data.textPosition = "36";
-								data.progressText = "约见中";
+								data.progressText = "审核中";
 								$scope.message = true;
 							}else if(data.status == 3){
 								data.jindu = "75";
