@@ -49,7 +49,7 @@ myApp.run(['$location', '$rootScope', '$http',
             	}    
             }
             
-            
+
         });
 
         /*********************************** 全局方法区 e***************************************/
@@ -148,7 +148,7 @@ myApp.run(['$location', '$rootScope', '$http',
             $(".singleButton1").removeClass("singleButton2");
         }
         $rootScope.check_user = function () {
-            $rootScope.login_user = $rootScope.getSessionObject("login_user");
+            $rootScope.login_user = $rootScope.getObject("login_user");
             //console.log($rootScope.login_user);
             if (!$rootScope.login_user) {
                 //$rootScope.removeSessionObject("login_user");

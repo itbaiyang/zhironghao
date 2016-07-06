@@ -308,7 +308,7 @@ userCtrl.controller('SettingCtrl', //用户设置
         $scope.update = function(key,value){
         	if(!$rootScope.isNullOrEmpty(key) ){
         		if($rootScope.isNullOrEmpty(value)) value = "";
-        	   $rootScope.putSessionObject("user_update",key+"="+value);
+        	   $rootScope.putObject("user_update",key+"="+value);
         	   $location.path("/user/update");
         	}
         };
@@ -333,7 +333,7 @@ userCtrl.controller('UserUpdateCtrl',
     ['$scope','$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
         
         $scope.init = function(){
-        	var user_update = $rootScope.getSessionObject("user_update");
+        	var user_update = $rootScope.getObject("user_update");
 	        if(user_update && user_update.indexOf("=")){
 	        	$rootScope.removeSessionObject("user_update");
 	        	$scope.update_user = {};

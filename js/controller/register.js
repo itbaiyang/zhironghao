@@ -175,7 +175,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 	        }).success(function (d) {
 	            if (d.returnCode == 0) {
 	            	alert("注册成功");
-	            	$rootScope.putSessionObject("login_mobile",$scope.registerUser.mobile);
+	            	$rootScope.putObject("login_mobile",$scope.registerUser.mobile);
 	                $http({
 			            url: api_uri+"auth/web",
 			            method: "POST",
@@ -190,7 +190,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			            		"userId":d.result.split("_")[0],
 			            		"token":d.result.split("_")[1]
 			            	}
-							$rootScope.putSessionObject("login_user", $rootScope.login_user);
+							$rootScope.putObject("login_user", $rootScope.login_user);
 			            	$location.path("/article/list");
 			            }
 			            else {
@@ -369,7 +369,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
         }).success(function (d) {
             if (d.returnCode == 0) {
             	alert("重置密码成功");
-            	$rootScope.putSessionObject("login_mobile",$scope.resetUser.mobile);
+            	$rootScope.putObject("login_mobile",$scope.resetUser.mobile);
                 $http({
 		            url: api_uri+"auth/web",
 		            method: "POST",
@@ -383,7 +383,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 		            		"userId":d.result.split("_")[0],
 		            		"token":d.result.split("_")[1]
 		            	}
-						$rootScope.putSessionObject("login_user", $rootScope.login_user);
+						$rootScope.putObject("login_user", $rootScope.login_user);
 		            	//$location.path("/article/list");
 						$location.path("/user/setting");
 		            }
