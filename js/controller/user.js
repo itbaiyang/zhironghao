@@ -323,7 +323,7 @@ userCtrl.controller('SettingCtrl', //用户设置
 	        }).error(function (d) {
 	            console.log(d);
 	        });
-	         $rootScope.removeSessionObject("login_user", $rootScope.login_user);
+	         $rootScope.removeObject("login_user", $rootScope.login_user);
 	         $rootScope.login_user = {};
 	         $location.path("/login");
         };
@@ -335,7 +335,7 @@ userCtrl.controller('UserUpdateCtrl',
         $scope.init = function(){
         	var user_update = $rootScope.getObject("user_update");
 	        if(user_update && user_update.indexOf("=")){
-	        	$rootScope.removeSessionObject("user_update");
+	        	$rootScope.removeObject("user_update");
 	        	$scope.update_user = {};
 	        	$scope.update_user.key = user_update.split("=")[0];
 	        	$scope.update_user.value = user_update.split("=")[1];
