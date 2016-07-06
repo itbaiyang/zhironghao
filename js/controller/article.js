@@ -79,8 +79,6 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 				$scope.feature_list = d.result.feature;
 				$scope.apply_List = d.result.conditions;
 				$scope.id = d.result.id;
-				//$scope.article_detail.ratecap = parseInt($scope.article_detail.ratecap);
-				//$scope.article_detail.ratefloor = parseInt($scope.article_detail.ratefloor);
 			}else {
 				console.log(d);
 			}
@@ -95,10 +93,6 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 			$location.path("/article/apply/"+ id);
 		}
 	};
- /*  $scope.apply =function(){
-       $location.path("/article/apply/");
-   }
-*/
 });
 
 articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $location, $timeout,$routeParams) {
