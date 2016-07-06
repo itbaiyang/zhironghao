@@ -34,6 +34,7 @@ canvas {
 
 input, button, select, textarea {
     outline: none;
+    -webkit-appearance: none;
 }
 
 hr {
