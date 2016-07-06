@@ -172,6 +172,7 @@ hr {
     width: 100%;
     /*height: 136px;*/
     background:linear-gradient(30deg,#6B72DB,#766DC4);
+    background:-webkit-linear-gradient(30deg,#6B72DB,#766DC4);
 }
 .articleDetailTittle {
     font-size: 18px;
