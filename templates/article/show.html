@@ -17,17 +17,17 @@
             </div>
         </div>
     </div>
-    <div class="productDefinitions">{{article_detail.summary}}</div>
+    <!--<div class="productDefinitions">{{article_detail.summary}}</div>-->
     <div class="productFeature">
         <p>产品特色</p>
         <ul class="productFeatureList">
-            <li ng-repeat="feature in feature_list">{{feature}}</li>
+            <li ng-repeat="feature in feature_list track by $index">{{feature}}</li>
         </ul>
     </div>
     <div class="apply">
         <p>申请条件</p>
         <ul class="applyList">
-            <li ng-repeat="apply in apply_List">{{apply}}</li>
+            <li ng-repeat="apply in apply_List track by $index">{{apply}}</li>
         </ul>
     </div>
 </div>
