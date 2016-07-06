@@ -74,7 +74,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             		"userId":d.result.split("_")[0],
             		"token":d.result.split("_")[1]
             	}
-                $rootScope.putSessionObject("login_user", $rootScope.login_user);
+                $rootScope.putObject("login_user", $rootScope.login_user);
             	$location.path("/article/list");
                 //$location.path("/user/setting");
             }else {
