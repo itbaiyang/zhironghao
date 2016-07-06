@@ -286,7 +286,9 @@ hr {
     /*display: block;*/
     color: #888888;
     /*height: 30px;*/
-    line-height: 30px;
+    line-height: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     font-size: 14px;
     /*list-style: inside;*/
 }
