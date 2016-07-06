@@ -4,7 +4,7 @@
     padding: 0;
     /*box-sizing: border-box;*/
     border: none;
-    list-style: none;
+    /*list-style: none;*/
     font-family: OneNikeCurrency, 'TradeGothicW01-BoldCn20 675334', Helvetica, Arial, 'Heiti SC', 'ST Heiti', 华文黑体, 'Microsoft YaHei', 雅黑体, SimHei, 黑体, sans-serif;
 }
 
@@ -19,7 +19,7 @@ body {
 }
 
 ul, li {
-    list-style-type: none;
+    /*list-style-type: none;*/
 }
 
 a, input {
@@ -109,7 +109,7 @@ hr {
     font-size: 16px;
     height: 56px;
     line-height: 56px;
-    padding-left: 9%;
+    padding-left: 15px;
     /*padding: 20px 0 12px 9%;*/
 }
 .articleTittle1>img{
@@ -180,7 +180,7 @@ hr {
     font-size: 16px;
     height: 56px;
     line-height: 56px;
-    padding-left: 9%;
+    padding-left: 15px;
     color: #ffffff;
 }
 .articleDetailTittle1>img {
@@ -254,12 +254,15 @@ hr {
     height: 28px;
     color: #4c4c4c;
 }
+
 .productFeatureList li{
-    color: #888888;
-    height: 30px;
-    line-height: 30px;
-    font-size: 14px;
+    color:#888;
+    height:30px;
+    line-height:30px;
+    font-size:14px;
+    list-style: none;
 }
+
 .apply{
     padding:16px 26px;
 }
@@ -271,14 +274,16 @@ hr {
 }
 .applyList{
     color: #888888;
+    padding-left: 20px;
 }
+
 .applyList li{
-    display: block;
+    /*display: block;*/
     color: #888888;
     /*height: 30px;*/
     line-height: 30px;
     font-size: 14px;
-    list-style: inside;
+    /*list-style: inside;*/
 }
 .singleButtonFixed {
     width: 60%;
