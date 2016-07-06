@@ -102,8 +102,8 @@ hr {
     height: 56px;
     line-height: 56px;
     padding-left: 15px;
-    border-top: 1px solid #e0e0e0;
-    border-bottom: 1px solid #e0e0e0;
+    border-top: 1px solid #EFF1F2;
+    border-bottom: 1px solid #EFF1F2;
 }
 .articleTittle1 {
     font-size: 16px;
@@ -154,8 +154,8 @@ hr {
     display: inline-block;
 }
 .borderLine{
-    border-left:1px solid #e0e0e0;
-    border-right:1px solid #e0e0e0;
+    border-left:1px solid #6769C5;
+    border-right:1px solid #6769C5;
 }
 /*show页面*/
 .showArticle{
@@ -273,8 +273,9 @@ hr {
     color: #888888;
 }
 .applyList li{
+    display: block;
     color: #888888;
-    height: 30px;
+    /*height: 30px;*/
     line-height: 30px;
     font-size: 14px;
     list-style: inside;
