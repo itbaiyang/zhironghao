@@ -8,11 +8,11 @@
         <input type="text" placeholder="请输入公司名称" ng-model="company.companyName"/>
     </div>
     <div class="applyContent">
-        <span class="applyContentSpan" ng-class="{'fontColor':company.name != ''}">联系人</span>
+        <span class="applyContentSpan" ng-class="{'fontColor':company.name != null &&company.name != ''}">联系人</span>
         <input type="text" placeholder="请输入联系人姓名" ng-model="company.name"/>
     </div>
     <div class="applyContent ">
-        <span class="applyContentSpan"  ng-class="{'fontColor':company.mobile != ''}">联系电话</span>
+        <span class="applyContentSpan"  ng-class="{'fontColor':company.mobile != null &&company.mobile != ''}">联系电话</span>
         <input type="text" placeholder="请输入联系电话" ng-model="company.mobile"/>
     </div>
     <div class="alertApply">
@@ -20,6 +20,9 @@
         <p class="alertText">申请提交</p>
         <p class="alertText1">我们会在1个工作日内与您联系</p>
     </div>
+</div>
+<div class="prompt">
+    <div> {{company.errorMsg}}</div>
 </div>
 <button class="singleButton1" ng-touchend="touchEnd()" ng-touchstart="touchStart()" ng-click="submit()">提交</button>
 

@@ -124,9 +124,12 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			mobile:$scope.company.mobile,
 			productId:$routeParams.id
 		};
-		console.log(m_params.productId +"baiyang");
-		if(m_params.companyName ==""){
-			console.log("企业名称不能为空");
+		console.log(m_params.companyName +"baiyang");
+		if(typeof(m_params.companyName) == "undefined" || m_params.companyName ==''){
+			$scope.company.errorMsg = "公司名称不能为空";
+			$timeout(function() {
+				$scope.company.errorMsg = "";
+			}, 2000);
 		}else{
 		$.ajax({
 			type: 'POST',
@@ -140,12 +143,17 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 					$(".alertApply").css("display","block");
 					$timeout(function() {
 						$(".alertApply").css("display","none");
-						$location.path("/article/show/"+ id);
-					}, 3000);
+						$location.path("/article/show/"+ $routeParams.id);
+					}, 2000);
 					$scope.$apply();
 				}
-				else {
+				else if(data.returnCode == 1001){
 					// console.log(data);
+					$scope.company.errorMsg = "贵公司已经申请过此产品";
+					$timeout(function() {
+						$scope.company.errorMsg = "";
+					}, 2000);
+					$scope.$apply();
 				}
 			},
 			dataType: 'json',
