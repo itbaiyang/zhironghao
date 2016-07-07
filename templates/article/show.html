@@ -3,21 +3,23 @@
         <div class="articleDetailTittle">{{article_detail.name}}</div>
         <div class="articleDetailTittle1"><img src="{{article_detail.icon}}" alt=""> {{article_detail.bankname}}</div>
         <div class="articleContents clear">
-            <div class="articleContent">
-                <p>{{article_detail.ratecap | number:0}}<span>%</span>一{{article_detail.ratefloor | number:0}}<span>%</span></p>
+            <div class="articleContent" ng-hide="article_detail.ratefloor == null&&article_detail.ratecap == null">
+                <p ng-show="article_detail.ratefloor != null&&article_detail.ratecap != null">{{article_detail.ratecap}}<span>%</span>一{{article_detail.ratefloor}}<span>%</span></p>
+                <p ng-show="article_detail.ratefloor == null">{{article_detail.ratecap}}<span>%</span></p>
+                <p ng-show="article_detail.ratecap == null">{{article_detail.ratefloor}}<span>%</span></p>
                 <span>利息率</span>
             </div>
-            <div class="articleContent borderLine1">
+            <div class="articleContent borderLine1" ng-hide="article_detail.loanvalue == null">
                 <p>{{article_detail.loanvalue}}<span>万</span></p>
                 <span>贷款额度</span>
             </div>
-            <div class="articleContent">
+            <div class="articleContent borderLine1" ng-hide="article_detail.loanlife == null">
                 <p>{{article_detail.loanlife}}<span>年</span></p>
                 <span>贷款期限</span>
             </div>
         </div>
     </div>
-    <!--<div class="productDefinitions">{{article_detail.summary}}</div>-->
+    <div class="productDefinitions">{{article_detail.summary}}</div>
     <div class="productFeature">
         <p>产品特色</p>
         <ul class="productFeatureList">
@@ -31,4 +33,4 @@
         </ul>
     </div>
 </div>
-<button class="singleButtonFixed" ng-touchend="touchEnd()" ng-touchstart="touchStart()"  ng-click="apply(id)">申请融资</button>
+<button class="singleButtonFixed" ng-touchend="touchEnd()" ng-touchstart="touchStart()" ng-click="apply(id)">申请融资</button>

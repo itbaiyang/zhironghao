@@ -2,15 +2,17 @@
     <div class="articleTittle">{{company.name}}</div>
     <div class="articleTittle1"><img ng-src="{{company.icon}}" alt=""> {{company.bankname}}</div>
     <div class="expect clear">
-        <div class="expect_border">
-            <p>{{company.ratecap | number:0}}<span>%</span>一{{company.ratefloor | number:0}}<span>%</span></p>
+        <div class="expect_border" ng-hide="company.ratefloor == null&&company.ratecap == null">
+            <p ng-show="company.ratefloor != null&&company.ratecap != null">{{company.ratecap}}<span>%</span>一{{company.ratefloor}}<span>%</span></p>
+            <p ng-show="company.ratefloor == null">{{company.ratecap}}<span>%</span></p>
+            <p ng-show="company.ratecap == null">{{company.ratefloor}}<span>%</span></p>
             <span>利息率</span>
         </div>
-        <div class="expect_border borderLine">
+        <div class="expect_border borderLine" ng-hide="company.loanvalue == null">
             <p>{{company.loanvalue}}<span>万</span></p>
             <span>贷款额度</span>
         </div>
-        <div class="expect_border">
+        <div class="expect_border borderLine" ng-hide="company.loanlife == null">
             <p>{{company.loanlife}}<span>年</span></p>
             <span>贷款期限</span>
         </div>
