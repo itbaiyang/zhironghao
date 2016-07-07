@@ -4,6 +4,7 @@ api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
+share_url = "http://app.zhironghao.com";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
@@ -20,19 +21,66 @@ myApp.run(['$location', '$rootScope', '$http',
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
+        // 浏览器鉴别
+        var ua = navigator.userAgent.toLowerCase();
+        $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
+
+        // var isAndroid = ua.indexOf('android') != -1;
+        $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+
+        // 微信初始化
+        if($rootScope.wx_client){
+            $http({
+                url: api_uri + "wx/share",
+                method: "GET",
+                 params: {
+                     "url":share_url
+                 }
+            }).success(function(d){
+                if (d.returnCode == 0) {
+                    wx.config({
+                        debug: false,
+                        appId: d.result.appid,
+                        timestamp: d.result.timestamp,
+                        nonceStr: d.result.nonceStr,
+                        signature: d.result.signature,
+                        jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
+
+                    });
+
+                    wx.ready(function(){
+
+                    });
+                }
+
+            }).error(function(data){
+                // TODO 请求用户信息异常
+            });
+        }
+
+
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
-//          var present_route = $location.$$path; //获取当前路由
-//          var routes = ["/login","/article/list"];
-//          if (!$rootScope.login_user) {
-//          	var register_reg = /\/register.*/;
-//          	if(register_reg.test(present_route) || routes.indexOf(present_route)>-1){
-//          		
-//          	}else{
-////          		$rootScope.removeObject("login_user");
-//                  $location.path("/login");
-//          	}    
-//          }
+            var present_route = $location.$$path; //获取当前路由
+            if(present_route == "/article/list"){//列表
+
+            }else if(present_route.indexOf("/article/show/")>-1){//详情
+
+            }else{//其他 无需分享页面
+                function onBridgeReady(){
+                    WeixinJSBridge.call('hideOptionMenu');
+                }
+                if (typeof WeixinJSBridge == "undefined"){
+                    if( document.addEventListener ){
+                        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    }else if (document.attachEvent){
+                        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    }
+                }else{
+                    onBridgeReady();
+                }
+            }
         });
         // 页面跳转前
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
