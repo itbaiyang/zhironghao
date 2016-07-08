@@ -4,7 +4,7 @@ api_uri = "http://123.206.84.74/api/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-share_url = "http://app.zhironghao.com";
+share_url = "http://test.zhironghao.com";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
