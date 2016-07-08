@@ -33,7 +33,7 @@ myApp.run(['$location', '$rootScope', '$http',
                 url: api_uri + "wx/share",
                 method: "GET",
                  params: {
-                     "url":$location.absUrl
+                     "url":$location.absUrl()
                  }
             }).success(function(d){
                 console.log("share params "+d);
