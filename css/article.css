@@ -164,7 +164,8 @@ hr {
 /*show页面*/
 .showArticle{
     background: #ffffff;
-    padding-bottom: 74px;
+    height: 100%;
+    background: #ffffff;
 }
 .articleDetail{
     width: 100%;
@@ -248,6 +249,7 @@ hr {
     line-height: 26px;
     color: #888888;
     font-size: 14px;
+    background: #ffffff;
 }
 .productFeature{
     padding:16px 26px;
@@ -262,14 +264,16 @@ hr {
 
 .productFeatureList li{
     color:#888;
-    height:30px;
-    line-height:30px;
-    font-size:14px;
+    line-height:20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 14px;
     list-style: none;
 }
 
 .apply{
-    padding:16px 26px;
+    padding:16px 26px 74px;
+    background: #ffffff;
 }
 .apply p{
     font-size: 16px;
@@ -283,14 +287,11 @@ hr {
 }
 
 .applyList li{
-    /*display: block;*/
     color: #888888;
-    /*height: 30px;*/
     line-height: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     font-size: 14px;
-    /*list-style: inside;*/
 }
 .singleButtonFixed {
     width: 60%;
