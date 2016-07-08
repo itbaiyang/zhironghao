@@ -36,10 +36,9 @@ myApp.run(['$location', '$rootScope', '$http',
                      "url":$location.absUrl()
                  }
             }).success(function(d){
-                console.log("share params "+d);
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: true,
+                        debug: false,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
