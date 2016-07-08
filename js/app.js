@@ -2,7 +2,7 @@
 api_uri = "http://123.206.84.74/api/";
 //api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
-templates_root = "/zhironghao/templates/";
+templates_root = "/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 shareImg = "http://test.zhironghao.com/img/share.png";
 
