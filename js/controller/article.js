@@ -49,23 +49,49 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 
 			//$scope.big = 1 + $scope.big;
 		}
+		// 微信初始化
+		if($rootScope.wx_client){
+			$http({
+				url: api_uri + "wx/share",
+				method: "GET",
+				params: {
+					"url":$location.absUrl()
+		}
+			}).success(function(d){
+				console.log("share params "+d);
+				if (d.returnCode == 0) {
+					wx.config({
+						debug: true,
+						appId: d.result.appid,
+						timestamp: d.result.timestamp,
+						nonceStr: d.result.noncestr,
+						signature: d.result.signature,
+						jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
 
-		$scope.shareData = {
-			title: '直融号',
-			desc: '打造企业最低融资成本',
-			link: $rootScope.url_prefix + "#/article/list",
-			imgUrl: $rootScope.url_prefix + '/img/share.png'
-		};
-		wx.ready(function () {
-			console.log("wx share ------");
-			wx.onMenuShareAppMessage($scope.shareData);
-			wx.onMenuShareTimeline($scope.shareData);
-			wx.onMenuShareQQ($scope.shareData);
-			wx.onMenuShareWeibo($scope.shareData);
-		});
-		wx.error(function(res){
-			console.log(res);
-		});
+					});
+					$scope.shareData = {
+						title: '直融号',
+						desc: '打造企业最低融资成本',
+						link: $rootScope.url_prefix + "#/article/list",
+						imgUrl: $rootScope.url_prefix + '/img/share.png'
+					};
+					wx.ready(function () {
+						console.log("wx share ------");
+						wx.onMenuShareAppMessage($scope.shareData);
+						wx.onMenuShareTimeline($scope.shareData);
+						wx.onMenuShareQQ($scope.shareData);
+						wx.onMenuShareWeibo($scope.shareData);
+					});
+					wx.error(function(res){
+						console.log(res);
+					});
+				}
+
+			}).error(function(data){
+				// TODO 请求用户信息异常
+			});
+		}
+
 	};
 	angular.element(window).scroll( function() {
 		if($scope.pageNo*10 <$scope.totalCount){

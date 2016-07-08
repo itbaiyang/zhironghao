@@ -28,39 +28,6 @@ myApp.run(['$location', '$rootScope', '$http',
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
 
-        // 微信初始化
-        if($rootScope.wx_client){
-            $http({
-                url: api_uri + "wx/share",
-                method: "GET",
-                 params: {
-                     "url":share_url
-                 }
-            }).success(function(d){
-                console.log("share params "+d);
-                if (d.returnCode == 0) {
-                    wx.config({
-                        debug: true,
-                        appId: d.result.appid,
-                        timestamp: d.result.timestamp,
-                        nonceStr: d.result.noncestr,
-                        signature: d.result.signature,
-                        jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
-
-                    });
-
-                    wx.ready(function(){
-
-                    });
-                    wx.error(function(res){
-                        console.log(res);
-                    });
-                }
-
-            }).error(function(data){
-                // TODO 请求用户信息异常
-            });
-        }
 
 
         // 页面跳转后
