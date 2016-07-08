@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="productDefinitions">{{article_detail.summary}}</div>
+    <div class="productDefinitions" ng-hide="article_detail.summary == null">{{article_detail.summary}}</div>
     <div class="productFeature">
         <p>产品特色</p>
         <ul class="productFeatureList">
