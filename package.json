@@ -1,7 +1,7 @@
 {
   "name": "zhironghao",
-  "version": "0.0.2",
-  "description": "\"上线前\"",
+  "version": "0.0.3",
+  "description": "\"上线后\"",
   "main": "",
   "dependencies": {
     "bower":"^1.7.9",
