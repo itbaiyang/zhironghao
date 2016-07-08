@@ -43,7 +43,7 @@ myApp.run(['$location', '$rootScope', '$http',
                         debug: true,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
-                        nonceStr: d.result.nonceStr,
+                        nonceStr: d.result.noncestr,
                         signature: d.result.signature,
                         jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
 
