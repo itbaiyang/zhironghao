@@ -13,13 +13,13 @@
                 <p>{{article_detail.loanvalue}}<span>万</span></p>
                 <span>贷款额度</span>
             </div>
-            <div class="articleContent borderLine1" ng-hide="article_detail.loanlife == null">
+            <div class="articleContent borderLine1" ng-hide="article_detail.loanlife == null||article_detail.loanlife == ''">
                 <p>{{article_detail.loanlife}}<span>年</span></p>
                 <span>贷款期限</span>
             </div>
         </div>
     </div>
-    <div class="productDefinitions" ng-hide="article_detail.summary == null">{{article_detail.summary}}</div>
+    <div class="productDefinitions" ng-hide="article_detail.summary == null||article_detail.summary == ''">{{article_detail.summary}}</div>
     <div class="productFeature">
         <p>产品特色</p>
         <ul class="productFeatureList">
