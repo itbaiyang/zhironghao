@@ -52,6 +52,9 @@ myApp.run(['$location', '$rootScope', '$http',
                     wx.ready(function(){
 
                     });
+                    wx.error(function(res){
+                        console.log(res);
+                    });
                 }
 
             }).error(function(data){
