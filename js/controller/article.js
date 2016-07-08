@@ -57,10 +57,14 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			imgUrl: $rootScope.url_prefix + '/img/share.png'
 		};
 		wx.ready(function () {
+			console.log("wx share ------");
 			wx.onMenuShareAppMessage($scope.shareData);
 			wx.onMenuShareTimeline($scope.shareData);
 			wx.onMenuShareQQ($scope.shareData);
 			wx.onMenuShareWeibo($scope.shareData);
+		});
+		wx.error(function(res){
+			console.log(res);
 		});
 	};
 	angular.element(window).scroll( function() {
