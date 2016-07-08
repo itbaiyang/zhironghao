@@ -2,6 +2,23 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
+	 $scope.init = function(){
+		 $scope.shareData = {
+			 title: '直融号',
+			 desc: '打造企业最低融资成本',
+			 link: $rootScope.url_prefix + "#/article/list",
+			 imgUrl: $rootScope.url_prefix + '/img/share.png'
+		 };
+		 wx.ready(function () {
+			 console.log("wx share ------");
+			 wx.onMenuShareAppMessage($scope.shareData);
+			 wx.onMenuShareTimeline($scope.shareData);
+			 wx.onMenuShareQQ($scope.shareData);
+			 wx.onMenuShareWeibo($scope.shareData);
+		 });
+	 };
+
+	$scope.init();
 	var result_list =[];
 	 $scope.list = function (pageNo, pageSize) {
          var m_params = {
@@ -49,19 +66,6 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 
 			//$scope.big = 1 + $scope.big;
 		}
-		$scope.shareData = {
-			title: '直融号',
-			desc: '打造企业最低融资成本',
-			link: $rootScope.url_prefix + "#/article/list",
-			imgUrl: $rootScope.url_prefix + '/img/share.png'
-		};
-		wx.ready(function () {
-			console.log("wx share ------");
-			wx.onMenuShareAppMessage($scope.shareData);
-			wx.onMenuShareTimeline($scope.shareData);
-			wx.onMenuShareQQ($scope.shareData);
-			wx.onMenuShareWeibo($scope.shareData);
-		});
 
 	};
 	angular.element(window).scroll( function() {
