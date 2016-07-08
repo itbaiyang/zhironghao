@@ -49,6 +49,23 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 
 			//$scope.big = 1 + $scope.big;
 		}
+
+		$scope.shareData = {
+			title: '直融号',
+			desc: '打造企业最低融资成本',
+			link: $rootScope.url_prefix + "#/article/list",
+			imgUrl: $rootScope.url_prefix + '/img/share.png'
+		};
+		wx.ready(function () {
+			console.log("wx share ------");
+			wx.onMenuShareAppMessage($scope.shareData);
+			wx.onMenuShareTimeline($scope.shareData);
+			wx.onMenuShareQQ($scope.shareData);
+			wx.onMenuShareWeibo($scope.shareData);
+		});
+		wx.error(function(res){
+			console.log(res);
+		});
 	};
 	angular.element(window).scroll( function() {
 		if($scope.pageNo*10 <$scope.totalCount){
@@ -79,6 +96,30 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 				$scope.feature_list = d.result.feature;
 				$scope.apply_List = d.result.conditions;
 				$scope.id = d.result.id;
+
+				var desc = "";
+				if($scope.article_detail.ratecap && $scope.article_detail.ratefloor){
+					desc += "利息率:"+$scope.article_detail.ratecap+"%~"+$scope.article_detail.ratefloor+"%\r\n";
+				}
+				if($scope.article_detail.loanvalue ){
+					desc += "贷款额度:"+$scope.article_detail.loanvalue +"万\r\n";
+				}
+				if($scope.article_detail.loanlife ){
+					desc += "贷款期限:"+$scope.article_detail.loanlife +"年";
+				}
+				$scope.shareData = {
+					title: $scope.article_detail.name,
+					desc: desc,
+					link: $rootScope.url_prefix + "#/article/show/"+$routeParams.id,
+					imgUrl: $rootScope.url_prefix + '/img/share.png'
+				};
+				wx.ready(function () {
+					wx.onMenuShareAppMessage($scope.shareData);
+					wx.onMenuShareTimeline($scope.shareData);
+					wx.onMenuShareQQ($scope.shareData);
+					wx.onMenuShareWeibo($scope.shareData);
+				});
+
 			}else {
 				console.log(d);
 			}
@@ -86,6 +127,8 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 			console.log("login error");
 			//$location.path("/error");
 		});
+
+
 	};
 	$scope.init();
 	$scope.apply = function (id) {
