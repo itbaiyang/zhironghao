@@ -13,7 +13,7 @@
                 <p>{{resultObj.loanvalue}}<span>万</span></p>
                 <span>贷款额度</span>
             </div>
-            <div class="expect_border borderLine" ng-hide="resultObj.loanlife == null">
+            <div class="expect_border borderLine" ng-hide="resultObj.loanlife == null||resultObj.loanlife == ''">
                 <p>{{resultObj.loanlife}}<span>年</span></p>
                 <span>贷款期限</span>
             </div>
