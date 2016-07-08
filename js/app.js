@@ -37,6 +37,7 @@ myApp.run(['$location', '$rootScope', '$http',
                      "url":share_url
                  }
             }).success(function(d){
+                console.log(d);
                 if (d.returnCode == 0) {
                     wx.config({
                         debug: true,
