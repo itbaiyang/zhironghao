@@ -69,7 +69,7 @@ myApp.run(['$location', '$rootScope', '$http',
 
             }else{//其他 无需分享页面
                 function onBridgeReady(){
-                    WeixinJSBridge.call('hideOptionMenu');
+                    wx.hideOptionMenu();
                 }
                 if (typeof WeixinJSBridge == "undefined"){
                     if( document.addEventListener ){
