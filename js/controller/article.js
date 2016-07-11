@@ -80,6 +80,14 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			$location.path("/article/show/" + id);
 		}
 	};
+	$scope.touchStartList = function(){
+		console.log("big");
+		$(".article").addClass("articleBg");
+
+	};
+	$scope.touchEndList = function(){
+		$(".article").removeClass("articleBg");
+	}
 });
 
 articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {

@@ -1,8 +1,8 @@
 
-api_uri = "http://123.206.84.74/api/";
-//api_uri = "http://api.supeiyunjing.com/";
+//api_uri = "http://123.206.84.74/api/";
+api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
-templates_root = "/templates/";
+templates_root = "/app/zhironghao/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 shareImg = "http://test.zhironghao.com/img/share.png";
 
@@ -27,18 +27,20 @@ myApp.run(['$location', '$rootScope', '$http',
 
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+
         // 微信初始化
         if($rootScope.wx_client){
             $http({
                 url: api_uri + "wx/share",
                 method: "GET",
                  params: {
-                     "url":$location.absUrl()
+                     "url":share_url
                  }
             }).success(function(d){
+                console.log("share params "+d);
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: false,
+                        debug: true,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
@@ -197,6 +199,7 @@ myApp.run(['$location', '$rootScope', '$http',
             $(".singleButtonFixed").removeClass("singleButton2");
             $(".singleButton1").removeClass("singleButton2");
         }
+
         $rootScope.check_user = function () {
             $rootScope.login_user = $rootScope.getObject("login_user");
             //console.log($rootScope.login_user);
