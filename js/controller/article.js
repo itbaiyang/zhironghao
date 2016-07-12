@@ -39,7 +39,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 				 if (d.returnCode == 0) {
 					 result_list = result_list.concat(d.result.datas);
 					 $scope.result_list = result_list;
-					 $scope.result_list = result_list;
+					 $scope.nextPage = d.result.nextPage;
+					 $scope.pageNo = d.result.pageNo;
+					 $scope.totalCount = d.result.totalCount;
+					 $scope.totalPage = d.result.totalPage;
 					 console.log($scope.result_list);
 				 }
 				 else {
@@ -52,7 +55,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			 })
 		 }
 	 };
-    $scope.list(1,10);
+    $scope.list(1,6);
     $scope.result_list = {
 		result:{},
         returnCode:0
@@ -63,19 +66,19 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
 		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
 		{
-			$scope.list($scope.nextPage, 10);
+			$scope.list($scope.nextPage, 6);
 			//$scope.$apply();
-			console.log($scope.nextPage);
+			//console.log($scope.nextPage);
 
 			//$scope.big = 1 + $scope.big;
 		}
 
 	};
 	angular.element(window).scroll( function() {
-		if($scope.pageNo*10 <$scope.totalCount){
+		if($scope.pageNo < $scope.totalPage){
 			$scope.load();
+			//console.log($scope.nextPage);
 		}else{
-			//console.log("daotoule");
 		}
 	});
 	$scope.article_show = function (id) {
@@ -83,13 +86,13 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			$location.path("/article/show/" + id);
 		}
 	};
-	$scope.touchStartList = function(){
-		console.log("big");
-		$(".article").addClass("articleBg");
-
+	$scope.touchStartList = function(id){
+		id.good = true;
+		console.log(id.good);
+		console.log(id);
 	};
-	$scope.touchEndList = function(){
-		$(".article").removeClass("articleBg");
+	$scope.touchEndList = function(id){
+		id.good = false;
 	}
 });
 

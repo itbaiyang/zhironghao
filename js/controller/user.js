@@ -113,12 +113,11 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		returnCode:0
 	}
 	$scope.totalHeight = 0;
-	$scope.load = function()
-	{
+	$scope.load = function(){
 		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
 		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
 		{
-			$scope.list($scope.nextPage, 10);
+			$scope.list($scope.nextPage, 6);
 			//$scope.$apply();
 			console.log($scope.nextPage);
 
@@ -126,7 +125,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		}
 	};
 	angular.element(window).scroll( function() {
-		if($scope.pageNo*10 <$scope.totalCount){
+		if($scope.pageNo*6 <$scope.totalCount){
 				$scope.load();
 			}else{
 			//console.log("daotoule");
