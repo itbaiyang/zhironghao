@@ -27,20 +27,18 @@ myApp.run(['$location', '$rootScope', '$http',
 
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
-
         // 微信初始化
         if($rootScope.wx_client){
             $http({
                 url: api_uri + "wx/share",
                 method: "GET",
                  params: {
-                     "url":share_url
+                     "url":$location.absUrl()
                  }
             }).success(function(d){
-                console.log("share params "+d);
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: true,
+                        debug: false,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
@@ -199,7 +197,6 @@ myApp.run(['$location', '$rootScope', '$http',
             $(".singleButtonFixed").removeClass("singleButton2");
             $(".singleButton1").removeClass("singleButton2");
         }
-
         $rootScope.check_user = function () {
             $rootScope.login_user = $rootScope.getObject("login_user");
             //console.log($rootScope.login_user);
