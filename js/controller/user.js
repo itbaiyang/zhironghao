@@ -4,29 +4,33 @@ var userCtrl = angular.module('userCtrl', []);
 userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeout, $location) {
 	var result_list =[];
     $scope.init = function () {
-        //获取个人信息 以及各种列表数量
-         $http({
-            url: api_uri + "user/center",
-            method: "GET",
-            params: $rootScope.login_user
-        }).success(function (d) {
-            console.log(d);
-            if (d.returnCode == 0) {
-                $scope.nickname = d.result.nickname;
-                $scope.batting = d.result.batting;
-                $scope.value = d.result.value;
-				$scope.position = d.result.position;
-                //$scope.ms = d.result.ms;
-                //$scope.cs = d.result.cs;
-                $scope.headImg = d.result.headImg;
-            }else {
-                console.log(d);
-            }
-        }).error(function (d) {
-            console.log(d);
-        });
-		$scope.list(1,10);
-    };
+		//获取个人信息 以及各种列表数量
+		if ($rootScope.login_user.userId == null || $rootScope.login_user.userId == "") {
+			$location.path("/login");
+		} else {
+			$http({
+				url: api_uri + "user/center",
+				method: "GET",
+				params: $rootScope.login_user
+			}).success(function (d) {
+				console.log(d);
+				if (d.returnCode == 0) {
+					$scope.nickname = d.result.nickname;
+					$scope.batting = d.result.batting;
+					$scope.value = d.result.value;
+					$scope.position = d.result.position;
+					//$scope.ms = d.result.ms;
+					//$scope.cs = d.result.cs;
+					$scope.headImg = d.result.headImg;
+				} else {
+					console.log(d);
+				}
+			}).error(function (d) {
+				console.log(d);
+			});
+			$scope.list(1, 10);
+		}
+	};
 
 	$scope.message = false;
 	$scope.list = function (pageNo,pageSize) {

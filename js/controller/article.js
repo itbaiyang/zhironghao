@@ -21,34 +21,37 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 	$scope.init();
 	var result_list =[];
 	 $scope.list = function (pageNo, pageSize) {
-         var m_params = {
-             userId: $rootScope.login_user.userId,
-             token: $rootScope.login_user.token,
-             pageNo:pageNo,
-             pageSize:pageSize
-         };
-        $http({
-            url: api_uri+"financialProduct/list",
-            method: "GET",
-            params: m_params
-        }).success(function (d) {
-        	console.log(d);
-            if (d.returnCode == 0) {
-				result_list =result_list.concat(d.result.datas);
-				$scope.result_list = result_list;
-				$scope.result_list = result_list;
-				console.log($scope.result_list);
-            }
-            else {
-                console.log(d.result);
-            }
+		 if ($rootScope.login_user.userId == null || $rootScope.login_user.userId == "") {
+			 $location.path("/login");
+		 } else {
+			 var m_params = {
+				 userId: $rootScope.login_user.userId,
+				 token: $rootScope.login_user.token,
+				 pageNo: pageNo,
+				 pageSize: pageSize
+			 };
+			 $http({
+				 url: api_uri + "financialProduct/list",
+				 method: "GET",
+				 params: m_params
+			 }).success(function (d) {
+				 console.log(d);
+				 if (d.returnCode == 0) {
+					 result_list = result_list.concat(d.result.datas);
+					 $scope.result_list = result_list;
+					 $scope.result_list = result_list;
+					 console.log($scope.result_list);
+				 }
+				 else {
+					 console.log(d.result);
+				 }
 
-        }).error(function (d) {
-            console.log("login error");
-            $location.path("/error");
-        })
-    };
-
+			 }).error(function (d) {
+				 console.log("login error");
+				 $location.path("/error");
+			 })
+		 }
+	 };
     $scope.list(1,10);
     $scope.result_list = {
 		result:{},
