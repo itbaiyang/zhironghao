@@ -94,7 +94,7 @@ myApp.run(['$location', '$rootScope', '$http',
             	if(register_reg.test(present_route) || routes.indexOf(present_route)>-1){
             		
             	}else{
-//          		$rootScope.removeObject("login_user");
+          		    $rootScope.removeObject("login_user");
                     $location.path("/login");
             	}    
             }
