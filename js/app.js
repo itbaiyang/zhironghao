@@ -4,7 +4,7 @@ api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "/templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-shareImg = "http://test.zhironghao.com/img/share.png";
+shareImg = "http://app.supeiyunjing.com/img/share.png";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
@@ -20,6 +20,7 @@ myApp.run(['$location', '$rootScope', '$http',
     function ($location, $rootScope, $http) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
+        $rootScope.url_prefix = "http://app.supeiyunjing.com/";
 
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
