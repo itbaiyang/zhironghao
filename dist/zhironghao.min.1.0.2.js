@@ -5,10 +5,10 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
         $scope.shareData = {
             title: "直融号",
             desc: "打造企业最低融资成本",
-            link: $rootScope.url_prefix + "#/article/list",
-            imgUrl: shareImg
+            link: "http://app.supeiyunjing.com/#/article/list",
+            imgUrl: "http://app.supeiyunjing.com/img/share.png"
         }, wx.ready(function () {
-            console.log("wx share ------"), wx.onMenuShareAppMessage($scope.shareData), wx.onMenuShareTimeline($scope.shareData), wx.onMenuShareQQ($scope.shareData), wx.onMenuShareWeibo($scope.shareData)
+            wx.onMenuShareAppMessage($scope.shareData), wx.onMenuShareTimeline($scope.shareData), wx.onMenuShareQQ($scope.shareData), wx.onMenuShareWeibo($scope.shareData)
         })
     }, $scope.init();
     var result_list = [];
@@ -45,8 +45,8 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
                 $scope.article_detail.ratecap && $scope.article_detail.ratefloor && (desc += "利息率:" + $scope.article_detail.ratecap + "%~" + $scope.article_detail.ratefloor + "%\r\n"), $scope.article_detail.loanvalue && (desc += "贷款额度:" + $scope.article_detail.loanvalue + "万\r\n"), $scope.article_detail.loanlife && (desc += "贷款期限:" + $scope.article_detail.loanlife + "年"), $scope.shareData = {
                     title: $scope.article_detail.name,
                     desc: desc,
-                    link: $rootScope.url_prefix + "#/article/show/" + $routeParams.id,
-                    imgUrl: shareImg
+                    link: "http://app.supeiyunjing.com/#/article/show/" + $routeParams.id,
+                    imgUrl: "http://app.supeiyunjing.com/img/share.png"
                 }, wx.ready(function () {
                     wx.onMenuShareAppMessage($scope.shareData), wx.onMenuShareTimeline($scope.shareData), wx.onMenuShareQQ($scope.shareData), wx.onMenuShareWeibo($scope.shareData)
                 })
@@ -445,12 +445,12 @@ userCtrl.controller("UserCenterCtrl", function ($http, $scope, $rootScope, $time
             0 == data.returnCode || console.log(data)
         }, "json"), $location.path("/user/setting")
     }
-}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "/templates/", deskey = "abc123.*abc123.*abc123.*abc123.*", shareImg = "http://app.supeiyunjing.com/img/share.png";
+}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "/templates/", deskey = "abc123.*abc123.*abc123.*abc123.*";
 var myApp = angular.module("myApp", ["ng", "ngRoute", "ngAnimate", "loginCtrl", "registerCtrl", "articleCtrl", "userCtrl", "ngTouchstart", "ngTouchmove", "ngTouchend"], function ($httpProvider) {
     $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8", $httpProvider.defaults.headers.put["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8"
 });
 myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, $http) {
-    $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com", $rootScope.url_prefix = "http://app.supeiyunjing.com/";
+    $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
     var ua = navigator.userAgent.toLowerCase();
     $rootScope.wx_client = ua.indexOf("micromessenger") != -1, $rootScope.isIos = ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1, $rootScope.wx_client && $http({
         url: api_uri + "wx/share",

@@ -6,11 +6,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		 $scope.shareData = {
 			 title: '直融号',
 			 desc: '打造企业最低融资成本',
-			 link: $rootScope.url_prefix + "#/article/list",
-			 imgUrl: shareImg
+			 link: "http://app.supeiyunjing.com/#/article/list",
+			 imgUrl: "http://app.supeiyunjing.com/img/share.png"
 		 };
 		 wx.ready(function () {
-			 console.log("wx share ------");
 			 wx.onMenuShareAppMessage($scope.shareData);
 			 wx.onMenuShareTimeline($scope.shareData);
 			 wx.onMenuShareQQ($scope.shareData);
@@ -127,8 +126,8 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 				$scope.shareData = {
 					title: $scope.article_detail.name,
 					desc: desc,
-					link: $rootScope.url_prefix + "#/article/show/"+$routeParams.id,
-					imgUrl: shareImg
+					link: "http://app.supeiyunjing.com/#/article/show/" + $routeParams.id,
+					imgUrl: "http://app.supeiyunjing.com/img/share.png"
 				};
 				wx.ready(function () {
 					wx.onMenuShareAppMessage($scope.shareData);
