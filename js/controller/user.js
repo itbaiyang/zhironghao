@@ -137,11 +137,9 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 	$scope.userDetail = function(){
 		$location.path("/user/setting/");
 	}
-	$scope.company_detail = function (obj,id) {
-		obj.good = true;
+	$scope.company_detail = function (id) {
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id);
-			obj.good = false;
 		}
 	};
 	/*$scope.touchStartList = function(id){
