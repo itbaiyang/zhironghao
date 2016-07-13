@@ -20,7 +20,7 @@
 </div>
 <div ng-infinite-scroll options="options" ng-show="message" items="items">
 <div class="financing1" ng-repeat="resultObj in result_list" ng-hide="resultObj.status == -1" ng-click="company_detail(resultObj.id)"
-     ng-touchend="touchEndList(resultObj)" ng-touchmove="ngTouchMoveList(resultObj)" ng-touchstart="touchStartList(resultObj)">
+     ng-touchend="touchEndList(resultObj)">
     <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
     <div class="progress" >
         <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>

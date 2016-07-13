@@ -87,15 +87,12 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		}
 	};
 	$scope.touchStartList = function(id){
-		id.good = true;
+		id.good = false;
 		console.log(id.good);
 		console.log(id);
 	};
-	$scope.ngTouchMoveList = function(id){
-		id.good = false;
-	}
 	$scope.touchEndList = function(id){
-		id.good = false;
+		id.good = true;
 	}
 });
 
