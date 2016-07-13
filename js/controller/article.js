@@ -82,8 +82,8 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		}
 	});*/
 	$scope.article_show = function (id) {
-		if (!$rootScope.isNullOrEmpty(id.id)) {
-			$location.path("/article/show/" + id.id);
+		if (!$rootScope.isNullOrEmpty(id)) {
+			$location.path("/article/show/" + id);
 		}
 	};
 	$scope.touchStartList = function(id){
@@ -96,7 +96,6 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 	}
 	$scope.touchEndList = function(id){
 		id.good = false;
-		$scope.article_show(id)
 	}
 });
 

@@ -138,8 +138,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	}
 	$scope.company_detail = function (id) {
-		if (!$rootScope.isNullOrEmpty(id.id)) {
-			$location.path("/user/companyDetail/" + id.id);
+		if (!$rootScope.isNullOrEmpty(id)) {
+			$location.path("/user/companyDetail/" + id);
 		}
 	};
 	$scope.touchStartList = function(id){
@@ -152,7 +152,6 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 	}
 	$scope.touchEndList = function(id){
 		id.good = false;
-		$scope.company_detail(id);
 	}
 });
 
