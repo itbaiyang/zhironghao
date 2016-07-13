@@ -1,6 +1,5 @@
 <div class="articleList">
-    <div class="article" ng-repeat="resultObj in result_list" ng-class="{true:'article1'}[resultObj.good]" ng-click="article_show(resultObj.id)"
-         ng-touchend="touchEndList(resultObj)">
+    <div class="article" ng-repeat="resultObj in result_list" ng-class="{true:'article1'}[resultObj.good]" ng-click="article_show(resultObj)">
         <div class="articleTittle">{{resultObj.name}}</div>
         <div class="articleTittle1"><img ng-src="{{resultObj.icon}}" alt=""> {{resultObj.bankname}}</div>
         <div class="expect clear">

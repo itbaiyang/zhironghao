@@ -138,19 +138,20 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	}
 	$scope.company_detail = function (id) {
+		id.good = true;
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id);
 			id.good = false;
 		}
 	};
-	$scope.touchStartList = function(id){
+	/*$scope.touchStartList = function(id){
 		id.good = false;
 		console.log(id.good);
 		console.log(id);
 	};
 	$scope.touchEndList = function(id){
 		id.good = true;
-	}
+	}*/
 });
 
 articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {

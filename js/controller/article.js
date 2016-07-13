@@ -82,18 +82,20 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		}
 	});*/
 	$scope.article_show = function (id) {
-		if (!$rootScope.isNullOrEmpty(id)) {
-			$location.path("/article/show/" + id);
+		id.good = true;
+		if (!$rootScope.isNullOrEmpty(id.id)) {
+			$location.path("/article/show/" + id.id);
+			id.good = false;
 		}
 	};
-	$scope.touchStartList = function(id){
+	/*$scope.touchStartList = function(id){
 		id.good = false;
 		console.log(id.good);
 		console.log(id);
 	};
 	$scope.touchEndList = function(id){
 		id.good = true;
-	}
+	}*/
 });
 
 articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
