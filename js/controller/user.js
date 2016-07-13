@@ -28,7 +28,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			}).error(function (d) {
 				console.log(d);
 			});
-			$scope.list(1, 10);
+			$scope.list(1, $scope.totalCount);
 		}
 	};
 
@@ -111,8 +111,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 	$scope.result_list = {
 		result:{},
 		returnCode:0
-	}
-	$scope.totalHeight = 0;
+	};
+	/*$scope.totalHeight = 0;
 	$scope.load = function(){
 		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
 		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
@@ -130,7 +130,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			}else{
 			//console.log("daotoule");
 		}
-	});
+	});*/
 	//$scope.$apply();
 	$scope.init();
 
@@ -138,10 +138,22 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	}
 	$scope.company_detail = function (id) {
-		if (!$rootScope.isNullOrEmpty(id)) {
-			$location.path("/user/companyDetail/" + id);
+		if (!$rootScope.isNullOrEmpty(id.id)) {
+			$location.path("/user/companyDetail/" + id.id);
 		}
 	};
+	$scope.touchStartList = function(id){
+		id.good = true;
+		console.log(id.good);
+		console.log(id);
+	};
+	$scope.ngTouchMoveList = function(id){
+		id.good = false;
+	}
+	$scope.touchEndList = function(id){
+		id.good = false;
+		$scope.company_detail(id);
+	}
 });
 
 articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {

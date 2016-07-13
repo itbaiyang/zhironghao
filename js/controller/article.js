@@ -55,12 +55,12 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			 })
 		 }
 	 };
-    $scope.list(1,6);
+    $scope.list(1,$scope.totalCount);
     $scope.result_list = {
 		result:{},
         returnCode:0
     };
-	$scope.totalHeight = 0;
+	/*$scope.totalHeight = 0;
 	$scope.load = function()
 	{
 		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
@@ -80,10 +80,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			//console.log($scope.nextPage);
 		}else{
 		}
-	});
+	});*/
 	$scope.article_show = function (id) {
-		if (!$rootScope.isNullOrEmpty(id)) {
-			$location.path("/article/show/" + id);
+		if (!$rootScope.isNullOrEmpty(id.id)) {
+			$location.path("/article/show/" + id.id);
 		}
 	};
 	$scope.touchStartList = function(id){
@@ -91,8 +91,12 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 		console.log(id.good);
 		console.log(id);
 	};
+	$scope.ngTouchMoveList = function(id){
+		id.good = false;
+	}
 	$scope.touchEndList = function(id){
 		id.good = false;
+		$scope.article_show(id)
 	}
 });
 
