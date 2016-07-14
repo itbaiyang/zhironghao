@@ -2,7 +2,7 @@
 //api_uri = "http://123.206.84.74/api/";
 api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
-templates_root = "/templates/";
+templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 
 var myApp = angular.module('myApp', [
@@ -63,6 +63,9 @@ myApp.run(['$location', '$rootScope', '$http',
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
+
+            $rootScope.removeSessionObject("showID");
+
             if(present_route == "/article/list"){//列表
 
             }else if(present_route.indexOf("/article/show/")>-1){//详情
@@ -85,20 +88,19 @@ myApp.run(['$location', '$rootScope', '$http',
         });
         // 页面跳转前
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
-           
+            //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
-            var routes = ["/login","/article/list"];
             if (!$rootScope.login_user) {
-            	var register_reg = /\/register.*/;
-            	if(register_reg.test(present_route) || routes.indexOf(present_route)>-1){
-            		
-            	}else{
-          		    $rootScope.removeObject("login_user");
-                    $location.path("/login");
-            	}    
-            }
-            
+                if (present_route == "/article/list" || present_route == "/login") {//列表
 
+                } else if (present_route.indexOf("/article/show/") > -1) {//详情
+
+                } else {
+                    $rootScope.removeObject("login_user");
+                    $rootScope.putSessionObject("present_route", present_route);
+                    $location.path("/login");
+                }
+            }
         });
 
         /*********************************** 全局方法区 e***************************************/
@@ -200,7 +202,7 @@ myApp.run(['$location', '$rootScope', '$http',
             $rootScope.login_user = $rootScope.getObject("login_user");
             //console.log($rootScope.login_user);
             if (!$rootScope.login_user) {
-                //$rootScope.removeSessionObject("login_user");
+                $rootScope.removeObject("login_user");
                 $location.path("/login");
                 return false;
             }
@@ -214,14 +216,18 @@ myApp.run(['$location', '$rootScope', '$http',
                     return true;
                 } else {
                 	$rootScope.login_user = {};
-                    //$rootScope.removeSessionObject("login_user");
-                    //$location.path("/login");
+                    $rootScope.removeObject("login_user");
+                    $rootScope.present_route = $location.$$path;
+                    $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                    $location.path("/login");
                     return false;
                 }
 
             }).error(function (d) {
-                //$rootScope.removeSessionObject("login_user");
-                //$location.path("/login");
+                $rootScope.removeObject("login_user");
+                $rootScope.present_route = $location.$$path;
+                $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                $location.path("/login");
                 return false;
             });
         };
@@ -234,8 +240,4 @@ myApp.run(['$location', '$rootScope', '$http',
         if (!window.sessionStorage) {
             alert('This browser does NOT support sessionStorage');
         }
-
-        $rootScope.check_user();
-
-
     }]);

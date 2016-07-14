@@ -24,9 +24,13 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.headImg = d.result.headImg;
 				} else {
 					console.log(d);
+					$rootScope.removeObject("login_user");
+					$location.path("/login");
 				}
 			}).error(function (d) {
 				console.log(d);
+				$rootScope.removeObject("login_user");
+				$location.path("/login");
 			});
 			$scope.list(1, $scope.totalCount);
 		}
@@ -196,7 +200,7 @@ articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope,
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
-				$location.path("/user/center/");
+				$location.path("/user/center");
 			}else {
 				console.log(d);
 			}

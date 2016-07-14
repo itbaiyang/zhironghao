@@ -18,83 +18,56 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 	 };
 
 	$scope.init();
-	var result_list =[];
-	 $scope.list = function (pageNo, pageSize) {
-		 if ($rootScope.login_user.userId == null || $rootScope.login_user.userId == "") {
-			 $location.path("/login");
-		 } else {
-			 var m_params = {
-				 userId: $rootScope.login_user.userId,
-				 token: $rootScope.login_user.token,
-				 pageNo: pageNo,
-				 pageSize: pageSize
-			 };
-			 $http({
-				 url: api_uri + "financialProduct/list",
-				 method: "GET",
-				 params: m_params
-			 }).success(function (d) {
-				 console.log(d);
-				 if (d.returnCode == 0) {
-					 result_list = result_list.concat(d.result.datas);
-					 $scope.result_list = result_list;
-					 $scope.nextPage = d.result.nextPage;
-					 $scope.pageNo = d.result.pageNo;
-					 $scope.totalCount = d.result.totalCount;
-					 $scope.totalPage = d.result.totalPage;
-					 console.log($scope.result_list);
-				 }
-				 else {
-					 console.log(d.result);
-				 }
 
-			 }).error(function (d) {
-				 console.log("login error");
-				 $location.path("/error");
-			 })
-		 }
+	var result_list =[];
+
+	 $scope.list = function (pageNo, pageSize) {
+		 var m_params = {
+			 pageNo: pageNo,
+			 pageSize: pageSize
+		 };
+		 $http({
+			 url: api_uri + "financialProduct/list",
+			 method: "GET",
+			 params: m_params
+		 }).success(function (d) {
+			 //console.log(d);
+			 if (d.returnCode == 0) {
+				 result_list = result_list.concat(d.result.datas);
+				 $scope.result_list = result_list;
+				 $scope.nextPage = d.result.nextPage;
+				 $scope.pageNo = d.result.pageNo;
+				 $scope.totalCount = d.result.totalCount;
+				 $scope.totalPage = d.result.totalPage;
+			 }
+			 else {
+				 console.log(d.result);
+			 }
+
+		 }).error(function (d) {
+			 console.log("login error");
+			 $location.path("/error");
+		 })
 	 };
+
     $scope.list(1,$scope.totalCount);
+
     $scope.result_list = {
 		result:{},
         returnCode:0
     };
-	/*$scope.totalHeight = 0;
-	$scope.load = function()
-	{
-		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
-		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
-		{
-			$scope.list($scope.nextPage, 6);
-			//$scope.$apply();
-			//console.log($scope.nextPage);
 
-			//$scope.big = 1 + $scope.big;
-		}
-
-	};
-	angular.element(window).scroll( function() {
-		if($scope.pageNo < $scope.totalPage){
-			$scope.load();
-			//console.log($scope.nextPage);
-		}else{
-		}
-	});*/
 	$scope.article_show = function (id) {
 		id.good = true;
 		if (!$rootScope.isNullOrEmpty(id.id)) {
+
+			//$rootScope.putSessionObject("showID",id.id);
 			$location.path("/article/show/" + id.id);
 			id.good = false;
+			//console.log(id.id);
 		}
 	};
-	/*$scope.touchStartList = function(id){
-		id.good = false;
-		console.log(id.good);
-		console.log(id);
-	};
-	$scope.touchEndList = function(id){
-		id.good = true;
-	}*/
+
 });
 
 articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
@@ -104,7 +77,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 		$http({
 			url: api_uri + "financialProduct/detail/" + $routeParams.id,
 			method: "GET",
-			params: $rootScope.login_user
+			//params: $rootScope.login_user
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
@@ -148,6 +121,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 	};
 	$scope.init();
 	$scope.apply = function (id) {
+		$rootScope.present_route = $location.$$path;
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/article/apply/"+ id);
 		}
@@ -164,7 +138,6 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
-				//$scope.user = d.result;
 				$scope.company = d.result;
 			} else {
 				console.log(d);
@@ -202,7 +175,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 					$(".alertApply").css("display","block");
 					$timeout(function() {
 						$(".alertApply").css("display","none");
-						$location.path("/article/show/"+ $routeParams.id);
+						$location.path("/user/center");
 					}, 2000);
 					$scope.$apply();
 				}
@@ -213,6 +186,8 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 						$scope.company.errorMsg = "";
 					}, 2000);
 					$scope.$apply();
+				} else {
+					$location.path("/login");
 				}
 			},
 			dataType: 'json',

@@ -75,7 +75,13 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             		"token":d.result.split("_")[1]
             	}
                 $rootScope.putObject("login_user", $rootScope.login_user);
-            	$location.path("/article/list");
+                var present_route = $rootScope.getSessionObject("present_route");
+                if (present_route == null || present_route == "" || !present_route) {
+                    $location.path("/user/center");
+                } else {
+                    $location.path(present_route);
+                    $rootScope.removeSessionObject("present_route");
+                }
                 //$location.path("/user/setting");
             }else {
 
