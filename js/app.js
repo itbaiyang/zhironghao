@@ -91,7 +91,7 @@ myApp.run(['$location', '$rootScope', '$http',
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
             //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
-            $rootScope.check_user();
+
             if (!$rootScope.login_user) {
                 if (present_route == "/article/list" || present_route == "/login" || present_route == "/register/step1" ||
                     present_route == "/register/step2" || present_route == "/register/reset1" || present_route == "/register/reset2") {//列表
@@ -99,6 +99,7 @@ myApp.run(['$location', '$rootScope', '$http',
                 } else if (present_route.indexOf("/article/show/") > -1) {//详情
 
                 } else {
+                    $rootScope.check_user();
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
                     $location.path("/login");

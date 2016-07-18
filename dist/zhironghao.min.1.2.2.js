@@ -474,7 +474,7 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
         $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
     }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
         var present_route = $location.$$path;
-        $rootScope.login_user || "/article/list" == present_route || "/login" == present_route || "/register/step1" == present_route || "/register/step2" == present_route || "/register/reset1" == present_route || "/register/reset2" == present_route || present_route.indexOf("/article/show/") > -1 || ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), $location.path("/login"))
+        $rootScope.login_user || "/article/list" == present_route || "/login" == present_route || "/register/step1" == present_route || "/register/step2" == present_route || "/register/reset1" == present_route || "/register/reset2" == present_route || present_route.indexOf("/article/show/") > -1 || ($rootScope.check_user(), $rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
         localStorage.setItem(key, angular.toJson(value))
     }, $rootScope.getObject = function (key) {
@@ -515,7 +515,7 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
             method: "POST",
             params: $rootScope.login_user
         }).success(function (d) {
-            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1)
+            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
         }).error(function (d) {
             return $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1
         }) : ($rootScope.removeObject("login_user"), $location.path("/login"), !1)
