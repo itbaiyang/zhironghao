@@ -123,7 +123,7 @@ loginCtrl.controller("LoginCtrl", function ($http, $scope, $rootScope, $location
                     token: d.result.split("_")[1]
                 }, $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
-                null != present_route && "" != present_route && present_route ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
+                null != present_route && "" != present_route && present_route ? present_route.indexOf("/article/apply/") > -1 ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : ($location.path("/user/center"), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
             } else {
                 var msg = $scope.error_code_msg[d.returnCode];
                 msg || (msg = "登录失败"), $scope.error_msg = msg
@@ -474,7 +474,7 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
         $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
     }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
         var present_route = $location.$$path;
-        $rootScope.check_user(), $rootScope.login_user ? (console.log(present_route), "/login" == present_route && $location.path("/user/center")) : no_check_route.indexOf(present_route) > -1 ? console.log(present_route) : present_route.indexOf("/article/show/") > -1 || ($rootScope.removeObject("login_user"), "/login" != present_route && $rootScope.putSessionObject("present_route", present_route), console.log(present_route), $location.path("/login"))
+        $rootScope.check_user(), $rootScope.login_user ? (console.log(present_route), "/login" == present_route && $location.path("/user/center")) : no_check_route.indexOf(present_route) > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1 ? console.log(present_route) : ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), console.log(present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
         localStorage.setItem(key, angular.toJson(value))
     }, $rootScope.getObject = function (key) {
@@ -515,7 +515,7 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
             method: "POST",
             params: $rootScope.login_user
         }).success(function (d) {
-            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, "/login" != $rootScope.present_route && $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
+            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, no_check_route.indexOf($rootScope.present_route) <= -1 ? $rootScope.putSessionObject("present_route", $rootScope.present_route) : ($rootScope.present_route = "/login") && $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
         }).error(function (d) {
             return !1
         })

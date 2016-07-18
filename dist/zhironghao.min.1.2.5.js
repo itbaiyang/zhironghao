@@ -123,7 +123,7 @@ loginCtrl.controller("LoginCtrl", function ($http, $scope, $rootScope, $location
                     token: d.result.split("_")[1]
                 }, $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
-                null != present_route && "" != present_route && present_route ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
+                null != present_route && "" != present_route && present_route ? present_route.indexOf("/article/apply/") > -1 ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : ($location.path("/user/center"), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
             } else {
                 var msg = $scope.error_code_msg[d.returnCode];
                 msg || (msg = "登录失败"), $scope.error_msg = msg
@@ -447,7 +447,7 @@ var myApp = angular.module("myApp", ["ng", "ngRoute", "ngAnimate", "loginCtrl", 
 });
 myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, $http) {
     $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
-    var ua = navigator.userAgent.toLowerCase();
+    var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"], ua = navigator.userAgent.toLowerCase();
     $rootScope.wx_client = ua.indexOf("micromessenger") != -1, $rootScope.isIos = ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1, $rootScope.wx_client && $http({
         url: api_uri + "wx/share",
         method: "GET",
@@ -472,9 +472,9 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
 
         var present_route = $location.$$path;
         $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
-    }), $rootScope.check_user(), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
+    }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
         var present_route = $location.$$path;
-        $rootScope.login_user || "/article/list" == present_route || "/login" == present_route || "/register/step1" == present_route || "/register/step2" == present_route || "/register/reset1" == present_route || "/register/reset2" == present_route || present_route.indexOf("/article/show/") > -1 || ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), $location.path("/login"))
+        $rootScope.check_user(), $rootScope.login_user ? (console.log(present_route), "/login" == present_route && $location.path("/user/center")) : no_check_route.indexOf(present_route) > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1 ? console.log(present_route) : ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), console.log(present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
         localStorage.setItem(key, angular.toJson(value))
     }, $rootScope.getObject = function (key) {
@@ -510,15 +510,15 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
     }, $rootScope.touchEnd = function () {
         $(".singleButtonFixed").removeClass("singleButton2"), $(".singleButton1").removeClass("singleButton2")
     }, $rootScope.check_user = function () {
-        return $rootScope.login_user = $rootScope.getObject("login_user"), $rootScope.login_user ? void $http({
+        $rootScope.login_user = $rootScope.getObject("login_user"), $http({
             url: api_uri + "auth/validateAuth",
             method: "POST",
             params: $rootScope.login_user
         }).success(function (d) {
-            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1)
+            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, no_check_route.indexOf($rootScope.present_route) <= -1 ? $rootScope.putSessionObject("present_route", $rootScope.present_route) : ($rootScope.present_route = "/login") && $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
         }).error(function (d) {
-            return $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1
-        }) : ($rootScope.removeObject("login_user"), $location.path("/login"), !1)
+            return !1
+        })
     }, window.localStorage || alert("This browser does NOT support localStorage"), window.sessionStorage || alert("This browser does NOT support sessionStorage")
 }]), myApp.config(function ($routeProvider) {
     $routeProvider.when("/login", {
