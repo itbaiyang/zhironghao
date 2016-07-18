@@ -86,6 +86,7 @@ myApp.run(['$location', '$rootScope', '$http',
                 }
             }
         });
+        $rootScope.check_user();
         // 页面跳转前
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
             //$rootScope.showID = $rootScope.getSessionObject("showID");

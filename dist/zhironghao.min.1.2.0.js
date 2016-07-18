@@ -472,7 +472,7 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
 
         var present_route = $location.$$path;
         $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
-    }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
+    }), $rootScope.check_user(), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
         var present_route = $location.$$path;
         $rootScope.login_user || "/article/list" == present_route || "/login" == present_route || "/register/step1" == present_route || "/register/step2" == present_route || "/register/reset1" == present_route || "/register/reset2" == present_route || present_route.indexOf("/article/show/") > -1 || ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
