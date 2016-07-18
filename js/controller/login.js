@@ -60,7 +60,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             })
         }
     };
-    $scope.login = function () {
+    $scope.login_zrh = function () {
         var m_params = $scope.loginUser;
         if (!check_params(m_params)) return;
         $http({
@@ -73,7 +73,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 $rootScope.login_user = {
             		"userId":d.result.split("_")[0],
             		"token":d.result.split("_")[1]
-            	}
+                };
                 $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
                 if (present_route == null || present_route == "" || !present_route) {
