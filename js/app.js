@@ -20,6 +20,8 @@ myApp.run(['$location', '$rootScope', '$http',
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
+        var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"];
+
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
@@ -88,21 +90,23 @@ myApp.run(['$location', '$rootScope', '$http',
         });
 
         // 页面跳转前
+
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
             //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
-
+            $rootScope.check_user();
             if (!$rootScope.login_user) {
-                if (present_route == "/article/list" || present_route == "/login" || present_route == "/register/step1" ||
-                    present_route == "/register/step2" || present_route == "/register/reset1" || present_route == "/register/reset2") {//列表
-
+                if (no_check_route.contains(present_route)) {
                 } else if (present_route.indexOf("/article/show/") > -1) {//详情
 
                 } else {
-                    $rootScope.check_user();
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
                     $location.path("/login");
+                }
+            } else {
+                if (present_route == "/login") {
+                    $location.path("/user/center");
                 }
             }
         });
@@ -205,11 +209,11 @@ myApp.run(['$location', '$rootScope', '$http',
         $rootScope.check_user = function () {
             $rootScope.login_user = $rootScope.getObject("login_user");
             //console.log($rootScope.login_user);
-            if (!$rootScope.login_user) {
-                $rootScope.removeObject("login_user");
-                $location.path("/login");
-                return false;
-            }
+            //if (!$rootScope.login_user) {
+            //    $rootScope.removeObject("login_user");
+            //    //$location.path("/login");
+            //    return false;
+            //}
             $http({
                 url: api_uri + "auth/validateAuth",
                 method: "POST",
@@ -227,10 +231,10 @@ myApp.run(['$location', '$rootScope', '$http',
                 }
 
             }).error(function (d) {
-                $rootScope.removeObject("login_user");
-                $rootScope.present_route = $location.$$path;
-                $rootScope.putSessionObject("present_route", $rootScope.present_route);
-                $location.path("/login");
+                //$rootScope.removeObject("login_user");
+                //$rootScope.present_route = $location.$$path;
+                //$rootScope.putSessionObject("present_route", $rootScope.present_route);
+                //$location.path("/login");
                 return false;
             });
         };
