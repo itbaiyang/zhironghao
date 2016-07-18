@@ -5,7 +5,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	$scope.registerUser = {
 		"mobile":"",
 		"code":""
-	}	
+	};
 	$scope.isVerify = false;//是否允许下一步
 	//$scope.isVerify = true;//是否允许下一步
     //$scope.enableMobile = true;//手机号码是否可用
@@ -20,7 +20,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 		$timeout(function() {  
 	              $scope.changeErrorMsg(""); 
 	        }, 5000);
-	}
+	};
 
 	//发送短信 倒计时
 	$scope.sms_second = 60;
@@ -384,8 +384,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 		            		"token":d.result.split("_")[1]
 		            	}
 						$rootScope.putObject("login_user", $rootScope.login_user);
-		            	//$location.path("/article/list");
-						$location.path("/user/setting");
+						$location.path("/article/list");
 		            }
 		            else {
 		                console.log(d);
