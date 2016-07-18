@@ -100,6 +100,10 @@ myApp.run(['$location', '$rootScope', '$http',
                     console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1) {//详情
                     console.log(present_route);
+                } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1) {//详情
+                    console.log(present_route);
+                } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1) {//详情
+                    console.log(present_route);
                 } else {
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
@@ -229,7 +233,7 @@ myApp.run(['$location', '$rootScope', '$http',
                 	$rootScope.login_user = {};
                     $rootScope.removeObject("login_user");
                     $rootScope.present_route = $location.$$path;
-                    if (no_check_route.indexOf($rootScope.present_route) <= -1) {
+                    if (no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1) {
                         $rootScope.putSessionObject("present_route", $rootScope.present_route);
                     } else if ($rootScope.present_route = "/login") {
                         $rootScope.putSessionObject("present_route", $rootScope.present_route);
