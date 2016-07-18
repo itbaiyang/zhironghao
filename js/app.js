@@ -96,15 +96,20 @@ myApp.run(['$location', '$rootScope', '$http',
             var present_route = $location.$$path; //获取当前路由
             $rootScope.check_user();
             if (!$rootScope.login_user) {
-                if (no_check_route.contains(present_route)) {
+                if (no_check_route.indexOf(present_route) > -1) {
+                    console.log(present_route);
                 } else if (present_route.indexOf("/article/show/") > -1) {//详情
 
                 } else {
                     $rootScope.removeObject("login_user");
-                    $rootScope.putSessionObject("present_route", present_route);
+                    if (present_route != "/login") {
+                        $rootScope.putSessionObject("present_route", present_route);
+                    }
+                    console.log(present_route);
                     $location.path("/login");
                 }
             } else {
+                console.log(present_route);
                 if (present_route == "/login") {
                     $location.path("/user/center");
                 }
@@ -226,7 +231,10 @@ myApp.run(['$location', '$rootScope', '$http',
                 	$rootScope.login_user = {};
                     $rootScope.removeObject("login_user");
                     $rootScope.present_route = $location.$$path;
-                    $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                    if ($rootScope.present_route != "/login") {
+                        $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                    }
+
                     return false;
                 }
 
