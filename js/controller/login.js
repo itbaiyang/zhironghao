@@ -98,8 +98,8 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             $location.path("/login");
         })
     };
-    
-    $scope.register = function(){
+
+    $scope.register_zrh = function () {
     	$location.path("/register/step1");
     };
     

@@ -1,4 +1,4 @@
-/*! zhironghao 13-07-2016 */
+/*! zhironghao 18-07-2016 */
 var articleCtrl = angular.module("articleCtrl", []);
 articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $location) {
     $scope.init = function () {
@@ -13,19 +13,12 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
     }, $scope.init();
     var result_list = [];
     $scope.list = function (pageNo, pageSize) {
-        if (null == $rootScope.login_user.userId || "" == $rootScope.login_user.userId)$location.path("/login"); else {
-            var m_params = {
-                userId: $rootScope.login_user.userId,
-                token: $rootScope.login_user.token,
-                pageNo: pageNo,
-                pageSize: pageSize
-            };
-            $http({url: api_uri + "financialProduct/list", method: "GET", params: m_params}).success(function (d) {
-                console.log(d), 0 == d.returnCode ? (result_list = result_list.concat(d.result.datas), $scope.result_list = result_list, $scope.nextPage = d.result.nextPage, $scope.pageNo = d.result.pageNo, $scope.totalCount = d.result.totalCount, $scope.totalPage = d.result.totalPage, console.log($scope.result_list)) : console.log(d.result)
-            }).error(function (d) {
-                console.log("login error"), $location.path("/error")
-            })
-        }
+        var m_params = {pageNo: pageNo, pageSize: pageSize};
+        $http({url: api_uri + "financialProduct/list", method: "GET", params: m_params}).success(function (d) {
+            0 == d.returnCode ? (result_list = result_list.concat(d.result.datas), $scope.result_list = result_list, $scope.nextPage = d.result.nextPage, $scope.pageNo = d.result.pageNo, $scope.totalCount = d.result.totalCount, $scope.totalPage = d.result.totalPage) : console.log(d.result)
+        }).error(function (d) {
+            console.log("login error"), $location.path("/error")
+        })
     }, $scope.list(1, $scope.totalCount), $scope.result_list = {
         result: {},
         returnCode: 0
@@ -36,8 +29,7 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
     $scope.init = function () {
         $scope.bt_show = 0, $http({
             url: api_uri + "financialProduct/detail/" + $routeParams.id,
-            method: "GET",
-            params: $rootScope.login_user
+            method: "GET"
         }).success(function (d) {
             if (console.log(d), 0 == d.returnCode) {
                 $scope.article_detail = d.result, $scope.feature_list = d.result.feature, $scope.apply_List = d.result.conditions, $scope.id = d.result.id;
@@ -55,7 +47,7 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
             console.log("login error")
         })
     }, $scope.init(), $scope.apply = function (id) {
-        $rootScope.isNullOrEmpty(id) || $location.path("/article/apply/" + id)
+        $rootScope.present_route = $location.$$path, $rootScope.isNullOrEmpty(id) || $location.path("/article/apply/" + id)
     }
 }), articleCtrl.controller("applyCtrl", function ($http, $scope, $rootScope, $location, $timeout, $routeParams) {
     $scope.init = function () {
@@ -82,10 +74,10 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
             traditional: !0,
             success: function (data, textStatus, jqXHR) {
                 console.log(data), 0 == data.returnCode ? ($(".alertApply").css("display", "block"), $timeout(function () {
-                    $(".alertApply").css("display", "none"), $location.path("/article/show/" + $routeParams.id)
-                }, 2e3), $scope.$apply()) : 1001 == data.returnCode && ($scope.company.errorMsg = "贵公司已经申请过此产品", $timeout(function () {
+                    $(".alertApply").css("display", "none"), $location.path("/user/center")
+                }, 2e3), $scope.$apply()) : 1001 == data.returnCode ? ($scope.company.errorMsg = "贵公司已经申请过此产品", $timeout(function () {
                     $scope.company.errorMsg = ""
-                }, 2e3), $scope.$apply())
+                }, 2e3), $scope.$apply()) : $location.path("/login")
             },
             dataType: "json"
         })
@@ -125,17 +117,21 @@ loginCtrl.controller("LoginCtrl", function ($http, $scope, $rootScope, $location
             method: "POST",
             params: m_params
         }).success(function (d) {
-            if (0 == d.returnCode)console.log(d), $rootScope.login_user = {
-                userId: d.result.split("_")[0],
-                token: d.result.split("_")[1]
-            }, $rootScope.putObject("login_user", $rootScope.login_user), $location.path("/article/list"); else {
+            if (0 == d.returnCode) {
+                console.log(d), $rootScope.login_user = {
+                    userId: d.result.split("_")[0],
+                    token: d.result.split("_")[1]
+                }, $rootScope.putObject("login_user", $rootScope.login_user);
+                var present_route = $rootScope.getSessionObject("present_route");
+                null != present_route && "" != present_route && present_route ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
+            } else {
                 var msg = $scope.error_code_msg[d.returnCode];
                 msg || (msg = "登录失败"), $scope.error_msg = msg
             }
         }).error(function (d) {
             $scope.changeErrorMsg("网络故障请稍后再试......"), $location.path("/login")
         })
-    }, $scope.register = function () {
+    }, $scope.register_zrh = function () {
         $location.path("/register/step1")
     }, $scope.reset = function () {
         $location.path("/register/reset1")
@@ -319,9 +315,9 @@ userCtrl.controller("UserCenterCtrl", function ($http, $scope, $rootScope, $time
             method: "GET",
             params: $rootScope.login_user
         }).success(function (d) {
-            console.log(d), 0 == d.returnCode ? ($scope.nickname = d.result.nickname, $scope.batting = d.result.batting, $scope.value = d.result.value, $scope.position = d.result.position, $scope.headImg = d.result.headImg) : console.log(d)
+            console.log(d), 0 == d.returnCode ? ($scope.nickname = d.result.nickname, $scope.batting = d.result.batting, $scope.value = d.result.value, $scope.position = d.result.position, $scope.headImg = d.result.headImg) : (console.log(d), $rootScope.removeObject("login_user"), $location.path("/login"))
         }).error(function (d) {
-            console.log(d)
+            console.log(d), $rootScope.removeObject("login_user"), $location.path("/login")
         }), $scope.list(1, $scope.totalCount))
     }, $scope.message = !1, $scope.list = function (pageNo, pageSize) {
         $scope.type || ($scope.type = "1");
@@ -365,7 +361,7 @@ userCtrl.controller("UserCenterCtrl", function ($http, $scope, $rootScope, $time
             method: "GET",
             params: m_params
         }).success(function (d) {
-            console.log(d), 0 == d.returnCode ? $location.path("/user/center/") : console.log(d)
+            console.log(d), 0 == d.returnCode ? $location.path("/user/center") : console.log(d)
         }).error(function (d) {
             console.log("login error"), $location.path("/error")
         })
@@ -445,7 +441,7 @@ userCtrl.controller("UserCenterCtrl", function ($http, $scope, $rootScope, $time
             0 == data.returnCode || console.log(data)
         }, "json"), $location.path("/user/setting")
     }
-}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "/templates/", deskey = "abc123.*abc123.*abc123.*abc123.*";
+}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "templates/", deskey = "abc123.*abc123.*abc123.*abc123.*";
 var myApp = angular.module("myApp", ["ng", "ngRoute", "ngAnimate", "loginCtrl", "registerCtrl", "articleCtrl", "userCtrl", "ngTouchstart", "ngTouchmove", "ngTouchend"], function ($httpProvider) {
     $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8", $httpProvider.defaults.headers.put["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8"
 });
@@ -475,13 +471,10 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
         }
 
         var present_route = $location.$$path;
-        "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
+        $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
     }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
-        var present_route = $location.$$path, routes = ["/login", "/article/list"];
-        if (!$rootScope.login_user) {
-            var register_reg = /\/register.*/;
-            register_reg.test(present_route) || routes.indexOf(present_route) > -1 || ($rootScope.removeObject("login_user"), $location.path("/login"))
-        }
+        var present_route = $location.$$path;
+        $rootScope.login_user || "/article/list" == present_route || "/login" == present_route || "/register/step1" == present_route || "/register/step2" == present_route || "/register/reset1" == present_route || "/register/reset2" == present_route || present_route.indexOf("/article/show/") > -1 || ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
         localStorage.setItem(key, angular.toJson(value))
     }, $rootScope.getObject = function (key) {
@@ -522,11 +515,11 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
             method: "POST",
             params: $rootScope.login_user
         }).success(function (d) {
-            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, !1)
+            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1)
         }).error(function (d) {
-            return !1
-        }) : ($location.path("/login"), !1)
-    }, window.localStorage || alert("This browser does NOT support localStorage"), window.sessionStorage || alert("This browser does NOT support sessionStorage"), $rootScope.check_user()
+            return $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, $rootScope.putSessionObject("present_route", $rootScope.present_route), $location.path("/login"), !1
+        }) : ($rootScope.removeObject("login_user"), $location.path("/login"), !1)
+    }, window.localStorage || alert("This browser does NOT support localStorage"), window.sessionStorage || alert("This browser does NOT support sessionStorage")
 }]), myApp.config(function ($routeProvider) {
     $routeProvider.when("/login", {
         templateUrl: templates_root + "login/login.html",

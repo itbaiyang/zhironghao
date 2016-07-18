@@ -91,7 +91,8 @@ myApp.run(['$location', '$rootScope', '$http',
             //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
             if (!$rootScope.login_user) {
-                if (present_route == "/article/list" || present_route == "/login") {//列表
+                if (present_route == "/article/list" || present_route == "/login" || present_route == "/register/step1" ||
+                    present_route == "/register/step2" || present_route == "/register/reset1" || present_route == "/register/reset2") {//列表
 
                 } else if (present_route.indexOf("/article/show/") > -1) {//详情
 
