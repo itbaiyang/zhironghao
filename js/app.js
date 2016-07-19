@@ -66,7 +66,10 @@ myApp.run(['$location', '$rootScope', '$http','$routeParams',
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
-            alert($routeParams.openid);
+            var openid = $routeParams.openid;
+            if(openid){
+                $rootScope.putObject("openid",openid);
+            }
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表
