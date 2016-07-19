@@ -66,6 +66,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
             var openid = $routeParams.openid;
+            console.log(openid);
             if (openid) {
                 $rootScope.putObject("openid", openid);
                 $rootScope.getObject("login_user");
@@ -92,7 +93,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
             }else{//其他 无需分享页面
                 function onBridgeReady(){
-                    wx.hideOptionMenu();
+                    //wx.hideOptionMenu();
                 }
                 if (typeof WeixinJSBridge == "undefined"){
                     if( document.addEventListener ){
