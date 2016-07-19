@@ -133,20 +133,20 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 console.log(present_route);
                 if (present_route == "/login") {
                     //$location.path("/user/center");
-                    function onBridgeReady() {
-                        wx.closeWindow();
-                    }
-
-                    if (typeof WeixinJSBridge == "undefined") {
-                        if (document.addEventListener) {
-                            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-                        } else if (document.attachEvent) {
-                            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
-                            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-                        }
-                    } else {
-                        onBridgeReady();
-                    }
+                    //function onBridgeReady() {
+                    //    wx.closeWindow();
+                    //}
+                    //
+                    //if (typeof WeixinJSBridge == "undefined") {
+                    //    if (document.addEventListener) {
+                    //        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                    //    } else if (document.attachEvent) {
+                    //        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    //        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                    //    }
+                    //} else {
+                    //    onBridgeReady();
+                    //}
                 }
             }
         });
