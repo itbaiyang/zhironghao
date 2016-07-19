@@ -76,15 +76,18 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 };
                 $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
-                if (present_route == null || present_route == "" || !present_route) {
-                    $location.path("/user/center");
-                } else if (present_route.indexOf("/article/apply/") > -1) {
-                    $location.path(present_route);
-                    $rootScope.removeSessionObject("present_route");
-                } else {
-                    $location.path("/user/center");
-                    $rootScope.removeSessionObject("present_route");
-                }
+
+                window.location.href=api_uri + "/wx/toOAuth?url="+encodeURIComponent("http://test.zhironghao.com/#/user/center");
+
+                //if (present_route == null || present_route == "" || !present_route) {
+                //    $location.path("/user/center");
+                //} else if (present_route.indexOf("/article/apply/") > -1) {
+                //    $location.path(present_route);
+                //    $rootScope.removeSessionObject("present_route");
+                //} else {
+                //    $location.path("/user/center");
+                //    $rootScope.removeSessionObject("present_route");
+                //}
 
                 //$location.path("/user/setting");
             }else {
