@@ -69,10 +69,9 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             alert(openid);
             if (openid) {
                 $rootScope.putObject("openid", openid);
-                $rootScope.getObject("login_user");
                 var m_params = {
-                    "userId": login_user.userId,
-                    "token": login_user.userId,
+                    "userId": $rootScope.login_user.userId,
+                    "token": $rootScope.login_user.token,
                     "openid": openid
                 };
                 $http({
