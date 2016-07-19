@@ -1,9 +1,10 @@
 
-//api_uri = "http://123.206.84.74/api/";
-api_uri = "http://api.supeiyunjing.com/";
+api_uri = "http://123.206.84.74/api/";
+//api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
+root_uri = "http://test.zhironghao.com/#";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
@@ -15,8 +16,8 @@ var myApp = angular.module('myApp', [
 });
 
 
-myApp.run(['$location', '$rootScope', '$http',
-    function ($location, $rootScope, $http) {
+myApp.run(['$location', '$rootScope', '$http','$routeParams',
+    function ($location, $rootScope, $http,$routeParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
@@ -65,7 +66,10 @@ myApp.run(['$location', '$rootScope', '$http',
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
-
+            var openid = $routeParams.openid;
+            if(openid){
+                $rootScope.putObject("openid",openid);
+            }
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表

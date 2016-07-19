@@ -76,16 +76,25 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 };
                 $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
+
+
+                var redirect_uri = "";
+
                 if (present_route == null || present_route == "" || !present_route) {
-                    $location.path("/user/center");
+                    redirect_uri =   "/user/center";
                 } else if (present_route.indexOf("/article/apply/") > -1) {
-                    $location.path(present_route);
+                    redirect_uri =  present_route;
                     $rootScope.removeSessionObject("present_route");
                 } else {
-                    $location.path("/user/center");
+                    redirect_uri =  "/user/center";
                     $rootScope.removeSessionObject("present_route");
                 }
-
+                if($rootScope.wx_client) {
+                    window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri+redirect_uri);
+                }else {
+                    $location.path(redirect_uri);
+                }
+                //$location.path("/user/setting");
             }else {
 
             	var msg = $scope.error_code_msg[d.returnCode];
