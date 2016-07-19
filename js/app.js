@@ -16,7 +16,7 @@ var myApp = angular.module('myApp', [
 });
 
 
-myApp.run(['$location', '$rootScope', '$http',
+myApp.run(['$location', '$rootScope', '$http','$routeParams',
     function ($location, $rootScope, $http) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
@@ -66,7 +66,7 @@ myApp.run(['$location', '$rootScope', '$http',
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
-            alert($rootScope.params.openid);
+            alert($routeParams.openid);
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表
