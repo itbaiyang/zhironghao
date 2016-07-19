@@ -4,6 +4,7 @@ api_uri = "http://123.206.84.74/api/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
+root_uri = "http://test.zhironghao.com/#/";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
@@ -65,7 +66,7 @@ myApp.run(['$location', '$rootScope', '$http',
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
-
+            alert($rootScope.params.openid);
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表
