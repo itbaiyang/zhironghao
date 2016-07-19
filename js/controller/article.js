@@ -162,6 +162,16 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			$timeout(function() {
 				$scope.company.errorMsg = "";
 			}, 2000);
+		} else if (typeof(m_params.linkman) == "undefined" || m_params.linkman == '') {
+			$scope.company.errorMsg = "联系人不能为空";
+			$timeout(function () {
+				$scope.company.errorMsg = "";
+			}, 2000);
+		} else if (typeof(m_params.mobile) == "undefined" || m_params.mobile == '') {
+			$scope.company.errorMsg = "联系电话不能为空";
+			$timeout(function () {
+				$scope.company.errorMsg = "";
+			}, 2000);
 		}else{
 		$.ajax({
 			type: 'POST',
@@ -186,6 +196,8 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 						$scope.company.errorMsg = "";
 					}, 2000);
 					$scope.$apply();
+				} else if (data.returnCode == 1004) {
+
 				} else {
 					$location.path("/login");
 				}

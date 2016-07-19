@@ -105,6 +105,7 @@ myApp.run(['$location', '$rootScope', '$http',
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1) {//详情
                     console.log(present_route);
                 } else {
+                    console.log($rootScope.login_user);
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
                     console.log(present_route);
@@ -113,7 +114,21 @@ myApp.run(['$location', '$rootScope', '$http',
             } else {
                 console.log(present_route);
                 if (present_route == "/login") {
-                    $location.path("/user/center");
+                    //$location.path("/user/center");
+                    function onBridgeReady() {
+                        wx.closeWindow();
+                    }
+
+                    if (typeof WeixinJSBridge == "undefined") {
+                        if (document.addEventListener) {
+                            document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                        } else if (document.attachEvent) {
+                            document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                            document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                        }
+                    } else {
+                        onBridgeReady();
+                    }
                 }
             }
         });
@@ -179,7 +194,7 @@ myApp.run(['$location', '$rootScope', '$http',
             });
 
             return decrypted.toString(CryptoJS.enc.Utf8);
-        }
+        };
         
         $rootScope.transFn = function(obj) {
 		       var str = [];
@@ -205,7 +220,7 @@ myApp.run(['$location', '$rootScope', '$http',
             }
         };*/
         $rootScope.touchStart = function(){
-            console.log("big");
+            //console.log("big");
             $(".singleButtonFixed").addClass("singleButton2");
             $(".singleButton1").addClass("singleButton2");
         };
@@ -215,7 +230,7 @@ myApp.run(['$location', '$rootScope', '$http',
         }
         $rootScope.check_user = function () {
             $rootScope.login_user = $rootScope.getObject("login_user");
-            //console.log($rootScope.login_user);
+            console.log($rootScope.login_user);
             //if (!$rootScope.login_user) {
             //    $rootScope.removeObject("login_user");
             //    //$location.path("/login");
@@ -230,8 +245,8 @@ myApp.run(['$location', '$rootScope', '$http',
                     console.log("login success");
                     return true;
                 } else {
-                	$rootScope.login_user = {};
-                    $rootScope.removeObject("login_user");
+                    //$rootScope.login_user = {};
+                    //$rootScope.removeObject("login_user");
                     $rootScope.present_route = $location.$$path;
                     if (no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1) {
                         $rootScope.putSessionObject("present_route", $rootScope.present_route);

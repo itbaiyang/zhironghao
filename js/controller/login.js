@@ -86,7 +86,6 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                     $rootScope.removeSessionObject("present_route");
                 }
 
-                //$location.path("/user/setting");
             }else {
 
             	var msg = $scope.error_code_msg[d.returnCode];
