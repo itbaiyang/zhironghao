@@ -1,4 +1,3 @@
-
 api_uri = "http://123.206.84.74/api/";
 //api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
@@ -16,8 +15,8 @@ var myApp = angular.module('myApp', [
 });
 
 
-myApp.run(['$location', '$rootScope', '$http','$routeParams',
-    function ($location, $rootScope, $http,$routeParams) {
+myApp.run(['$location', '$rootScope', '$http', '$routeParams',
+    function ($location, $rootScope, $http, $routeParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
@@ -67,8 +66,23 @@ myApp.run(['$location', '$rootScope', '$http','$routeParams',
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
             var openid = $routeParams.openid;
-            if(openid){
-                $rootScope.putObject("openid",openid);
+            if (openid) {
+                $rootScope.putObject("openid", openid);
+                $rootScope.getObject("login_user");
+                var m_params = {
+                    "userId": login_user.userId,
+                    "token": login_user.userId,
+                    "openid": openid
+                };
+                $http({
+                    url: api_uri + "user/wxBind",
+                    method: "GET",
+                    params: m_params
+                }).success(function (d) {
+                    console.log(d);
+                });
+
+
             }
             $rootScope.removeSessionObject("showID");
 

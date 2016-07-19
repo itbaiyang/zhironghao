@@ -81,17 +81,17 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 var redirect_uri = "";
 
                 if (present_route == null || present_route == "" || !present_route) {
-                    redirect_uri =   "/user/center";
+                    redirect_uri = "/user/center";
                 } else if (present_route.indexOf("/article/apply/") > -1) {
-                    redirect_uri =  present_route;
+                    redirect_uri = present_route;
                     $rootScope.removeSessionObject("present_route");
                 } else {
-                    redirect_uri =  "/user/center";
+                    redirect_uri = "/user/center";
                     $rootScope.removeSessionObject("present_route");
                 }
-                if($rootScope.wx_client) {
-                    window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri+redirect_uri);
-                }else {
+                if ($rootScope.wx_client) {
+                    window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri + redirect_uri);
+                } else {
                     $location.path(redirect_uri);
                 }
                 //$location.path("/user/setting");
