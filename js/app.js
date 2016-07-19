@@ -17,7 +17,7 @@ var myApp = angular.module('myApp', [
 
 
 myApp.run(['$location', '$rootScope', '$http','$routeParams',
-    function ($location, $rootScope, $http) {
+    function ($location, $rootScope, $http,$routeParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
