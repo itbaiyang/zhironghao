@@ -2,7 +2,8 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
-	 $scope.init = function(){
+
+	$scope.init = function () {//微信分享
 		 $scope.shareData = {
 			 title: '直融号',
 			 desc: '打造企业最低融资成本',
@@ -21,7 +22,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 
 	var result_list =[];
 
-	 $scope.list = function (pageNo, pageSize) {
+	$scope.list = function (pageNo, pageSize) {//产品列表
 		 var m_params = {
 			 pageNo: pageNo,
 			 pageSize: pageSize

@@ -66,12 +66,12 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
             var openid = $routeParams.openid;
-            alert(openid);
+            console.log(openid);
             if (openid) {
                 $rootScope.putObject("openid", openid);
                 var m_params = {
                     "userId": $rootScope.login_user.userId,
-                    "token": $rootScope.login_user.token,
+                    "token": $rootScope.login_user.userId,
                     "openid": openid
                 };
                 $http({
