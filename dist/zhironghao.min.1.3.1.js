@@ -11,18 +11,14 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
             wx.onMenuShareAppMessage($scope.shareData), wx.onMenuShareTimeline($scope.shareData), wx.onMenuShareQQ($scope.shareData), wx.onMenuShareWeibo($scope.shareData)
         })
     }, $scope.init();
-    var result_list = [];
     $scope.list = function (pageNo, pageSize) {
         var m_params = {pageNo: pageNo, pageSize: pageSize};
         $http({url: api_uri + "financialProduct/list", method: "GET", params: m_params}).success(function (d) {
-            0 == d.returnCode ? (result_list = result_list.concat(d.result.datas), $scope.result_list = result_list, $scope.nextPage = d.result.nextPage, $scope.pageNo = d.result.pageNo, $scope.totalCount = d.result.totalCount, $scope.totalPage = d.result.totalPage) : console.log(d.result)
+            console.log(d), 0 == d.returnCode ? ($scope.result_list = d.result.datas, $scope.totalCount = d.result.totalCount) : console.log(d.result)
         }).error(function (d) {
             console.log("login error"), $location.path("/error")
         })
-    }, $scope.list(1, $scope.totalCount), $scope.result_list = {
-        result: {},
-        returnCode: 0
-    }, $scope.article_show = function (id) {
+    }, $scope.list(1, 100), $scope.result_list = {result: {}, returnCode: 0}, $scope.article_show = function (id) {
         id.good = !0, $rootScope.isNullOrEmpty(id.id) || ($location.path("/article/show/" + id.id), id.good = !1)
     }
 }), articleCtrl.controller("ArticleShowCtrl", function ($http, $scope, $rootScope, $location, $routeParams) {

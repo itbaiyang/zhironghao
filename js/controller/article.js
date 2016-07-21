@@ -32,14 +32,18 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			 method: "GET",
 			 params: m_params
 		 }).success(function (d) {
-			 //console.log(d);
+			 console.log(d);
 			 if (d.returnCode == 0) {
-				 result_list = result_list.concat(d.result.datas);
-				 $scope.result_list = result_list;
-				 $scope.nextPage = d.result.nextPage;
-				 $scope.pageNo = d.result.pageNo;
+				 //result_list = result_list.concat(d.result.datas);
+				 //$scope.result_list = result_list;
+				 $scope.result_list = d.result.datas;
+				 //$scope.nextPage = d.result.nextPage;
+				 //$scope.pageNo = d.result.pageNo;
 				 $scope.totalCount = d.result.totalCount;
-				 $scope.totalPage = d.result.totalPage;
+				 //$scope.totalPage = d.result.totalPage;
+				 //if($scope.totalCount >10){
+				 // $scope.list(1,$scope.totalCount);
+				 //}
 			 }
 			 else {
 				 console.log(d.result);
@@ -50,10 +54,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			 $location.path("/error");
 		 })
 	 };
+	$scope.list(1, 100);
 
-    $scope.list(1,$scope.totalCount);
 
-    $scope.result_list = {
+	$scope.result_list = {
 		result:{},
         returnCode:0
     };
