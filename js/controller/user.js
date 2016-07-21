@@ -321,7 +321,7 @@ userCtrl.controller('SettingCtrl', //用户设置
 
 
         $scope.update = function(key,value){
-        	if(!$rootScope.isNullOrEmpty(key) ){
+			if (!$rootScope.isNullOrEmpty(key)) {
         		if($rootScope.isNullOrEmpty(value)) value = "";
         	   $rootScope.putObject("user_update",key+"="+value);
         	   $location.path("/user/update");

@@ -1,5 +1,5 @@
-api_uri = "http://123.206.84.74/api/";
-//api_uri = "http://api.supeiyunjing.com/";
+//api_uri = "http://123.206.84.74/api/";
+api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
@@ -66,7 +66,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
             var present_route = $location.$$path; //获取当前路由
             var openid = $routeParams.openid;
-            console.log(openid);
+            //console.log(openid);
             if (openid) {
                 $rootScope.putObject("openid", openid);
                 var m_params = {
@@ -84,6 +84,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
 
             }
+            ;
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表

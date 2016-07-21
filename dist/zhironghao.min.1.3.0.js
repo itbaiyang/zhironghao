@@ -1,4 +1,4 @@
-/*! zhironghao 18-07-2016 */
+/*! zhironghao 21-07-2016 */
 var articleCtrl = angular.module("articleCtrl", []);
 articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $location) {
     $scope.init = function () {
@@ -67,6 +67,10 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
         };
         console.log(m_params.companyName + "baiyang"), "undefined" == typeof m_params.companyName || "" == m_params.companyName ? ($scope.company.errorMsg = "公司名称不能为空", $timeout(function () {
             $scope.company.errorMsg = ""
+        }, 2e3)) : "undefined" == typeof m_params.linkman || "" == m_params.linkman ? ($scope.company.errorMsg = "联系人不能为空", $timeout(function () {
+            $scope.company.errorMsg = ""
+        }, 2e3)) : "undefined" == typeof m_params.mobile || "" == m_params.mobile ? ($scope.company.errorMsg = "联系电话不能为空", $timeout(function () {
+            $scope.company.errorMsg = ""
         }, 2e3)) : $.ajax({
             type: "POST",
             url: api_uri + "loanApplication/create",
@@ -77,7 +81,7 @@ articleCtrl.controller("ArticleListCtrl", function ($http, $scope, $rootScope, $
                     $(".alertApply").css("display", "none"), $location.path("/user/center")
                 }, 2e3), $scope.$apply()) : 1001 == data.returnCode ? ($scope.company.errorMsg = "贵公司已经申请过此产品", $timeout(function () {
                     $scope.company.errorMsg = ""
-                }, 2e3), $scope.$apply()) : $location.path("/login")
+                }, 2e3), $scope.$apply()) : 1004 == data.returnCode || $location.path("/login")
             },
             dataType: "json"
         })
@@ -122,8 +126,8 @@ loginCtrl.controller("LoginCtrl", function ($http, $scope, $rootScope, $location
                     userId: d.result.split("_")[0],
                     token: d.result.split("_")[1]
                 }, $rootScope.putObject("login_user", $rootScope.login_user);
-                var present_route = $rootScope.getSessionObject("present_route");
-                null != present_route && "" != present_route && present_route ? present_route.indexOf("/article/apply/") > -1 ? ($location.path(present_route), $rootScope.removeSessionObject("present_route")) : ($location.path("/user/center"), $rootScope.removeSessionObject("present_route")) : $location.path("/user/center")
+                var present_route = $rootScope.getSessionObject("present_route"), redirect_uri = "";
+                null != present_route && "" != present_route && present_route ? present_route.indexOf("/article/apply/") > -1 ? (redirect_uri = present_route, $rootScope.removeSessionObject("present_route")) : (redirect_uri = "/user/center", $rootScope.removeSessionObject("present_route")) : redirect_uri = "/user/center", $rootScope.wx_client ? window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri + redirect_uri) : $location.path(redirect_uri)
             } else {
                 var msg = $scope.error_code_msg[d.returnCode];
                 msg || (msg = "登录失败"), $scope.error_msg = msg
@@ -297,7 +301,7 @@ registerCtrl.controller("RegStep1Ctrl", function ($http, $scope, $rootScope, $lo
                 0 == d.returnCode ? ($rootScope.login_user = {
                     userId: d.result.split("_")[0],
                     token: d.result.split("_")[1]
-                }, $rootScope.putObject("login_user", $rootScope.login_user), $location.path("/user/setting")) : console.log(d)
+                }, $rootScope.putObject("login_user", $rootScope.login_user), $location.path("/article/list")) : console.log(d)
             }).error(function (d) {
                 console.log("login error")
             })) : console.log(d)
@@ -441,11 +445,11 @@ userCtrl.controller("UserCenterCtrl", function ($http, $scope, $rootScope, $time
             0 == data.returnCode || console.log(data)
         }, "json"), $location.path("/user/setting")
     }
-}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "templates/", deskey = "abc123.*abc123.*abc123.*abc123.*";
+}]), api_uri = "http://api.supeiyunjing.com/", templates_root = "templates/", deskey = "abc123.*abc123.*abc123.*abc123.*", root_uri = "http://test.zhironghao.com/#";
 var myApp = angular.module("myApp", ["ng", "ngRoute", "ngAnimate", "loginCtrl", "registerCtrl", "articleCtrl", "userCtrl", "ngTouchstart", "ngTouchmove", "ngTouchend"], function ($httpProvider) {
     $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8", $httpProvider.defaults.headers.put["Content-Type"] = "application/x-www-form-urlencoded;charset=utf-8"
 });
-myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, $http) {
+myApp.run(["$location", "$rootScope", "$http", "$routeParams", function ($location, $rootScope, $http, $routeParams) {
     $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
     var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"], ua = navigator.userAgent.toLowerCase();
     $rootScope.wx_client = ua.indexOf("micromessenger") != -1, $rootScope.isIos = ua.indexOf("iphone") != -1 || ua.indexOf("ipad") != -1, $rootScope.wx_client && $http({
@@ -467,14 +471,20 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
     }).error(function (data) {
     }), $rootScope.$on("$routeChangeSuccess", function (event, current, previous) {
         function onBridgeReady() {
-            wx.hideOptionMenu()
         }
 
-        var present_route = $location.$$path;
+        var present_route = $location.$$path, openid = $routeParams.openid;
+        if (openid) {
+            $rootScope.putObject("openid", openid);
+            var m_params = {userId: $rootScope.login_user.userId, token: $rootScope.login_user.userId, openid: openid};
+            $http({url: api_uri + "user/wxBind", method: "GET", params: m_params}).success(function (d) {
+                console.log(d)
+            })
+        }
         $rootScope.removeSessionObject("showID"), "/article/list" == present_route || present_route.indexOf("/article/show/") > -1 || ("undefined" == typeof WeixinJSBridge ? document.addEventListener ? document.addEventListener("WeixinJSBridgeReady", onBridgeReady, !1) : document.attachEvent && (document.attachEvent("WeixinJSBridgeReady", onBridgeReady), document.attachEvent("onWeixinJSBridgeReady", onBridgeReady)) : onBridgeReady())
     }), $rootScope.$on("$routeChangeStart", function (event, current, previous) {
         var present_route = $location.$$path;
-        $rootScope.check_user(), $rootScope.login_user ? (console.log(present_route), "/login" == present_route && $location.path("/user/center")) : no_check_route.indexOf(present_route) > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1 ? console.log(present_route) : ($rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), console.log(present_route), $location.path("/login"))
+        $rootScope.check_user(), $rootScope.login_user ? console.log(present_route) : no_check_route.indexOf(present_route) > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1 ? console.log(present_route) : no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1 ? console.log(present_route) : (console.log($rootScope.login_user), $rootScope.removeObject("login_user"), $rootScope.putSessionObject("present_route", present_route), console.log(present_route), $location.path("/login"))
     }), $rootScope.putObject = function (key, value) {
         localStorage.setItem(key, angular.toJson(value))
     }, $rootScope.getObject = function (key) {
@@ -506,16 +516,16 @@ myApp.run(["$location", "$rootScope", "$http", function ($location, $rootScope, 
         for (var p in obj)str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
         return str.join("&").toString()
     }, $rootScope.touchStart = function () {
-        console.log("big"), $(".singleButtonFixed").addClass("singleButton2"), $(".singleButton1").addClass("singleButton2")
+        $(".singleButtonFixed").addClass("singleButton2"), $(".singleButton1").addClass("singleButton2")
     }, $rootScope.touchEnd = function () {
         $(".singleButtonFixed").removeClass("singleButton2"), $(".singleButton1").removeClass("singleButton2")
     }, $rootScope.check_user = function () {
-        $rootScope.login_user = $rootScope.getObject("login_user"), $http({
+        $rootScope.login_user = $rootScope.getObject("login_user"), console.log($rootScope.login_user), $http({
             url: api_uri + "auth/validateAuth",
             method: "POST",
             params: $rootScope.login_user
         }).success(function (d) {
-            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.login_user = {}, $rootScope.removeObject("login_user"), $rootScope.present_route = $location.$$path, no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1 ? $rootScope.putSessionObject("present_route", $rootScope.present_route) : ($rootScope.present_route = "/login") && $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
+            return 0 == d.returnCode ? (console.log("login success"), !0) : ($rootScope.present_route = $location.$$path, no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1 ? $rootScope.putSessionObject("present_route", $rootScope.present_route) : ($rootScope.present_route = "/login") && $rootScope.putSessionObject("present_route", $rootScope.present_route), !1)
         }).error(function (d) {
             return !1
         })
