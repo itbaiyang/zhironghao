@@ -83,8 +83,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 });
 
 
-            }
-            ;
+            };
             $rootScope.removeSessionObject("showID");
 
             if(present_route == "/article/list"){//列表
@@ -93,7 +92,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
             }else{//其他 无需分享页面
                 function onBridgeReady(){
-                    //wx.hideOptionMenu();
+                    wx.hideOptionMenu();
                 }
                 if (typeof WeixinJSBridge == "undefined"){
                     if( document.addEventListener ){
