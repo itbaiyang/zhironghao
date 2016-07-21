@@ -3,7 +3,7 @@ api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-root_uri = "http://test.zhironghao.com/#";
+root_uri = "http://app.supeiyunjing.com/#";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
