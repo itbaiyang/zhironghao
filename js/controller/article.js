@@ -159,6 +159,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			companyName:$scope.company.companyName,
 			linkman:$scope.company.name,
 			mobile:$scope.company.mobile,
+			fee: $scope.company.fee,
 			productId:$routeParams.id
 		};
 		console.log(m_params.companyName +"baiyang");

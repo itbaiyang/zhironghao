@@ -1,21 +1,25 @@
-<div class="article">
-    <div class="articleTittle">{{company.name}}</div>
-    <div class="articleTittle1"><img ng-src="{{company.icon}}" alt=""> {{company.bankname}}</div>
-    <div class="expect clear">
-        <div class="expect_border" ng-hide="company.ratefloor == null&&company.ratecap == null">
-            <p ng-show="company.ratefloor != null&&company.ratecap != null">{{company.ratecap}}<span>%</span>一{{company.ratefloor}}<span>%</span></p>
-            <p ng-show="company.ratefloor == null">{{company.ratecap}}<span>%</span></p>
-            <p ng-show="company.ratecap == null">{{company.ratefloor}}<span>%</span></p>
-            <span>利息率</span>
-        </div>
-        <div class="expect_border borderLine" ng-hide="company.loanvalue == null">
-            <p>{{company.loanvalue}}<span>万</span></p>
-            <span>贷款额度</span>
-        </div>
-        <div class="expect_border borderLine" ng-hide="company.loanlife == company.loanlife == ''">
-            <p>{{company.loanlife}}<span>年</span></p>
-            <span>贷款期限</span>
-        </div>
+<div class="productList" style="border: 1px solid #f3f3f3;">
+    <div class="productLeft fl">
+        <img ng-src="{{company.icon}}" alt="">
+    </div>
+    <div class="productCenter fl">
+        <p class="productP1">
+            <span>{{company.bankname}}</span>-
+            <span>{{company.name}}</span>
+        </p>
+        <p class="productP2">
+            <span>{{company.loanvalue}}万</span>
+            <span>期限{{company.loanlife}}年</span>
+        </p>
+        <p class="productP3">
+            <span class="productSpan1">{{company.tags[0]}}</span>
+            <span class="productSpan2">{{company.tags[1]}}</span>
+            <span class="productSpan3">{{company.tags[2]}}</span>
+        </p>
+    </div>
+    <div class="productRight fl">
+        <p>利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
+        <p><span style="color: #acacba">{{article_detail.rateRemark}}</span></p>
     </div>
 </div>
 <div>

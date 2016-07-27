@@ -28,13 +28,16 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             $scope.error_msg = "";
 	        }, 5000);
 	};
+
     $scope.textChange =function(e){
             $scope.error_msg = ""
-    }
+    };
+
     $scope.loginUser = {
         "mobile":"",
         "code":""
     };
+
     $scope.ngBlur = function(){
         if($rootScope.isNullOrEmpty($scope.loginUser.mobile)){
             $scope.changeErrorMsg("手机号码不能为空");
@@ -60,6 +63,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             })
         }
     };
+
     $scope.login_zrh = function () {
         var m_params = $scope.loginUser;
         if (!check_params(m_params)) return;

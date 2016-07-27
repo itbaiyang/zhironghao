@@ -19,8 +19,6 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.batting = d.result.batting;
 					$scope.value = d.result.value;
 					$scope.position = d.result.position;
-					//$scope.ms = d.result.ms;
-					//$scope.cs = d.result.cs;
 					$scope.headImg = d.result.headImg;
 				} else {
 					console.log(d);
@@ -33,9 +31,9 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				$location.path("/login");
 			});
 			$scope.list(1, $scope.totalCount);
+			$scope.myList(1, $scope.myTotalCount);
 		}
 	};
-
 	$scope.message = false;
 	$scope.list = function (pageNo,pageSize) {
 		if(!$scope.type){
@@ -44,56 +42,56 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		var m_params = {
 			userId: $rootScope.login_user.userId,
 			token: $rootScope.login_user.token,
-			pageNo:pageNo,
-			 pageSize:pageSize
+			pageNo: pageNo,
+			pageSize: pageSize
 		};
 		$http({
-			url: api_uri+"loanApplication/list",
+			url: api_uri + "loanApplication/list",
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
-				if(d.result.totalCount == 0){
+				if (d.result.totalCount == 0) {
 					$scope.message = false;
-				}else {
+				} else {
 
-					result_list =result_list.concat(d.result.datas);
+					result_list = result_list.concat(d.result.datas);
 					$scope.result_list = result_list;
 					$scope.nextPage = d.result.nextPage;
 					$scope.pageNo = d.result.pageNo;
 					$scope.totalCount = d.result.totalCount;
-					angular.forEach($scope.result_list, function(data){
-						if($scope.type == 0){
+					angular.forEach($scope.result_list, function (data) {
+						if ($scope.type == 0) {
 							/*data.jindu = "0";
-							data.jindushow = "未发布";
-							data.jinduShowM = "0";*/
-						}else if($scope.type == 1){
-							if(data.status == 1){
+							 data.jindushow = "未发布";
+							 data.jinduShowM = "0";*/
+						} else if ($scope.type == 1) {
+							if (data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
 								data.progressText = "审核中";
 								$scope.message = true;
-							}else if(data.status == 2){
+							} else if (data.status == 2) {
 								data.jindu = "50";
 								data.triangle = "44";
 								data.textPosition = "36";
 								data.progressText = "约见中";
 								$scope.message = true;
-							}else if(data.status == 3){
+							} else if (data.status == 3) {
 								data.jindu = "75";
 								data.triangle = "66";
 								data.textPosition = "58";
 								data.progressText = "跟进中";
 								$scope.message = true;
-							}else if(data.status == 4){
+							} else if (data.status == 4) {
 								data.jindu = "100";
 								data.triangle = "86";
 								data.textPosition = "76";
 								data.progressText = "成功融资";
 								$scope.message = true;
-							}else if(data.status == -1){
+							} else if (data.status == -1) {
 								data.jindu = "0";
 								data.triangle = "20";
 								data.textPosition = "5";
@@ -113,47 +111,101 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		})
 	};
 	$scope.result_list = {
-		result:{},
-		returnCode:0
+		result: {},
+		returnCode: 0
 	};
-	/*$scope.totalHeight = 0;
-	$scope.load = function(){
-		$scope.totalHeight = parseFloat($(window).height()) + parseFloat($(window).scrollTop());     //浏览器的高度加上滚动条的高度
-		if ($(document).height() <= $scope.totalHeight)     //当文档的高度小于或者等于总的高度的时候，开始动态加载数据
-		{
-			$scope.list($scope.nextPage, 6);
-			//$scope.$apply();
-			console.log($scope.nextPage);
 
-			//$scope.big = 1 + $scope.big;
+	$scope.myList = function (pageNo, pageSize) {
+		if (!$scope.type) {
+			$scope.type = "1";
 		}
+		var m_params = {
+			userId: $rootScope.login_user.userId,
+			token: $rootScope.login_user.token,
+			pageNo: pageNo,
+			pageSize: pageSize
+		};
+		$http({
+			url: api_uri + "loanApplication/myList",
+			method: "GET",
+			params: m_params
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+				if (d.result.totalCount == 0) {
+					$scope.message = false;
+				} else {
+
+					//result_list =result_list.concat(d.result.datas);
+					$scope.my_list = d.result.datas;
+					//$scope.nextPage = d.result.nextPage;
+					//$scope.pageNo = d.result.pageNo;
+					$scope.myTotalCount = d.result.totalCount;
+					angular.forEach($scope.my_list, function (data) {
+						if ($scope.type == 0) {
+							/*data.jindu = "0";
+							 data.jindushow = "未发布";
+							 data.jinduShowM = "0";*/
+						} else if ($scope.type == 1) {
+							if (data.status == 1) {
+								data.jindu = "10";
+								data.triangle = "8";
+								data.textPosition = "2";
+								data.progressText = "审核中";
+								$scope.message = true;
+							} else if (data.status == 2) {
+								data.jindu = "50";
+								data.triangle = "44";
+								data.textPosition = "36";
+								data.progressText = "约见中";
+								$scope.message = true;
+							} else if (data.status == 3) {
+								data.jindu = "75";
+								data.triangle = "66";
+								data.textPosition = "58";
+								data.progressText = "跟进中";
+								$scope.message = true;
+							} else if (data.status == 4) {
+								data.jindu = "100";
+								data.triangle = "86";
+								data.textPosition = "76";
+								data.progressText = "成功融资";
+								$scope.message = true;
+							} else if (data.status == -1) {
+								data.jindu = "0";
+								data.triangle = "20";
+								data.textPosition = "5";
+								data.progressText = "申请已经取消";
+							}
+						}
+					});
+				}
+			}
+			else {
+				//console.log(d);
+			}
+
+		}).error(function (d) {
+			console.log("login error");
+			//$location.path("/error");
+		})
 	};
-	angular.element(window).scroll( function() {
-		if($scope.pageNo*6 <$scope.totalCount){
-				$scope.load();
-			}else{
-			//console.log("daotoule");
-		}
-	});*/
-	//$scope.$apply();
+	$scope.result_list = {
+		result: {},
+		returnCode: 0
+	};
+
+
 	$scope.init();
 
 	$scope.userDetail = function(){
 		$location.path("/user/setting/");
-	}
+	};
 	$scope.company_detail = function (id) {
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id);
 		}
 	};
-	/*$scope.touchStartList = function(id){
-		id.good = false;
-		console.log(id.good);
-		console.log(id);
-	};
-	$scope.touchEndList = function(id){
-		id.good = true;
-	}*/
 });
 
 articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {

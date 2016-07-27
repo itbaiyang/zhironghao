@@ -15,6 +15,10 @@
         <span class="applyContentSpan"  ng-class="{'fontColor':company.mobile != null &&company.mobile != ''}">联系电话</span>
         <input type="text" placeholder="请输入联系电话" ng-model="company.mobile"/>
     </div>
+    <div class="applyContent ">
+        <span class="applyContentSpan" ng-class="{'fontColor':company.fee != null &&company.fee != ''}">服务费</span>
+        <input type="text" placeholder="期望帮你代收的费用（例：1%）" ng-model="company.fee"/>
+    </div>
     <div class="alertApply">
         <div class="alertImg"></div>
         <p class="alertText">申请提交</p>

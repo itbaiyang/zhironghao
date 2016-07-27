@@ -1,25 +1,31 @@
 <div class="showArticle">
-    <div class="articleDetail">
-        <div class="articleDetailTittle">{{article_detail.name}}</div>
-        <div class="articleDetailTittle1"><img src="{{article_detail.icon}}" alt=""> {{article_detail.bankname}}</div>
-        <div class="articleContents clear">
-            <div class="articleContent" ng-hide="article_detail.ratefloor == null&&article_detail.ratecap == null">
-                <p ng-show="article_detail.ratefloor != null&&article_detail.ratecap != null">{{article_detail.ratecap}}<span>%</span>一{{article_detail.ratefloor}}<span>%</span></p>
-                <p ng-show="article_detail.ratefloor == null">{{article_detail.ratecap}}<span>%</span></p>
-                <p ng-show="article_detail.ratecap == null">{{article_detail.ratefloor}}<span>%</span></p>
-                <span>利息率</span>
-            </div>
-            <div class="articleContent borderLine1" ng-hide="article_detail.loanvalue == null">
-                <p>{{article_detail.loanvalue}}<span>万</span></p>
-                <span>贷款额度</span>
-            </div>
-            <div class="articleContent borderLine1" ng-hide="article_detail.loanlife == null||article_detail.loanlife == ''">
-                <p>{{article_detail.loanlife}}<span>年</span></p>
-                <span>贷款期限</span>
-            </div>
+    <div class="productList" style="border: 1px solid #f3f3f3;">
+        <div class="productLeft fl">
+            <img ng-src="{{article_detail.icon}}" alt="">
+        </div>
+        <div class="productCenter fl">
+            <p class="productP1">
+                <span>{{article_detail.bankname}}</span>-
+                <span>{{article_detail.name}}</span>
+            </p>
+            <p class="productP2">
+                <span>{{article_detail.loanvalue}}万</span>
+                <span>期限{{article_detail.loanlife}}年</span>
+            </p>
+            <p class="productP3">
+                <span class="productSpan1">{{article_detail.tags[0]}}</span>
+                <span class="productSpan2">{{article_detail.tags[1]}}</span>
+                <span class="productSpan3">{{article_detail.tags[2]}}</span>
+            </p>
+        </div>
+        <div class="productRight fl">
+            <p>利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
+            <p><span style="color: #acacba">{{article_detail.rateRemark}}</span></p>
         </div>
     </div>
-    <div class="productDefinitions" ng-hide="article_detail.summary == null||article_detail.summary == ''">{{article_detail.summary}}</div>
+    <div class="productDefinitions" ng-hide="article_detail.summary == null || article_detail.summary == ''">
+        {{article_detail.summary}}
+    </div>
     <div class="productFeature">
         <p>产品特色</p>
         <ul class="productFeatureList">

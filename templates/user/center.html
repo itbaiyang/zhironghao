@@ -19,14 +19,28 @@
     </div>
 </div>
 <div ng-infinite-scroll options="options" ng-show="message" items="items">
-    <div class="financing1" ng-repeat="resultObj in result_list" ng-hide="resultObj.status == -1"
+    <p class="userCenterP">我的任务</p>
+    <div class="financing1" style="color:#ffffff" ng-repeat="resultObj in my_list" ng-hide="resultObj.status == -1"
          ng-click="company_detail(resultObj.id)">
-    <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
-    <div class="progress" >
-        <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+        <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
+        <div class="progress">
+            <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+        </div>
+        <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
+        <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">
+            {{resultObj.progressText}}</p>
     </div>
-    <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
-    <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>
+    <p class="userCenterP">我的申请</p>
+    <div class="financing1" style=" background: #736fcd;" ng-repeat="resultObj in result_list"
+         ng-hide="resultObj.status == -1"
+         ng-click="company_detail(resultObj.id)">
+        <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
+        <div class="progress">
+            <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+        </div>
+        <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
+        <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">
+            {{resultObj.progressText}}</p>
     <!--<p class="progressTittle1" ng-show="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>-->
-</div>
+    </div>
 </div>

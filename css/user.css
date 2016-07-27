@@ -38,6 +38,14 @@
     color:#acacb8;
     padding-left: 20px;
 }
+
+.userCenterP {
+    height: 45px;
+    line-height: 45px;
+    font-size: 14px;
+    color: #acacb8;
+    background: #f3f7fa;
+}
 .personMessage{
     width: 108px;
     height: 30px;
@@ -60,11 +68,11 @@
 
 }
 .financing1{
-    width: 100%;
+    width: calc(100% - 30px);
+    margin-left: 15px;
     /*border-top: 1px solid #e0e0e0;*/
     /*border-bottom: 1px solid #e0e0e0;*/
     box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.1);
-    background: #ffffff;
     margin-bottom: 10px;
 
 }
