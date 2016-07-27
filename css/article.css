@@ -101,6 +101,8 @@ hr {
 }
 
 .productLeft img {
+    width: 90%;
+    height: 90%;
     vertical-align: middle;
 }
 
