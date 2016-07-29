@@ -26,7 +26,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-
+        $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
@@ -173,7 +173,9 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.removeSessionObject = function (key) {
             angular.fromJson(sessionStorage.removeItem(key));
         };
-
+        $rootScope.change = function ($event) {
+            $event.stopPropagation();
+        };
         /*$rootScope.getAccountInfoKeyValue = function (key) {
             if ($rootScope.account_info != {}) {
                 $rootScope.account_info = $rootScope.getSessionObject('account_info');
@@ -264,8 +266,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                     console.log("login success");
                     return true;
                 } else {
-                    //$rootScope.login_user = {};
-                    //$rootScope.removeObject("login_user");
+                    $rootScope.login_user = {};
+                    $rootScope.removeObject("login_user");
                     $rootScope.present_route = $location.$$path;
                     if (no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1) {
                         $rootScope.putSessionObject("present_route", $rootScope.present_route);

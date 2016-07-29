@@ -45,6 +45,8 @@
     font-size: 14px;
     color: #acacb8;
     background: #f3f7fa;
+    margin-bottom: 10px;
+    padding-left: 15px;
 }
 .personMessage{
     width: 108px;
@@ -69,6 +71,7 @@
 }
 .financing1{
     width: calc(100% - 30px);
+    height: 113px;
     margin-left: 15px;
     border-radius: 5px;
     box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.1);
@@ -77,8 +80,8 @@
 }
 .companyName{
     width: calc(100% - 30px);
-    height: 58px;
-    line-height: 58px;
+    height: 54px;
+    line-height: 54px;
     font-size: 18px;
     color: #4c4c4c;
     margin:0 15px 0 15px;
@@ -132,14 +135,53 @@
     line-height: 22px;
 }
 .progress{
-    width:90%;
+    width: 100%;
     height:10px;
     border-radius: 10px;
     background:#f0f0f0;
-    margin: 18px auto 0;
 
 }
-.progress span{
+
+.financial3 {
+    width: calc(100% - 30px);
+    height: 58px;
+    padding: 5px 15px;
+}
+
+.financialLeft {
+    width: 60%;
+    height: 58px;
+    padding: 5px 15px;
+}
+
+.singleButtonMin {
+    height: 33px;
+    font-size: 12px;
+    background: linear-gradient(45deg, #8898EB, #6045BB);
+    background: -webkit-linear-gradient(45deg, #8898EB, #6045BB);
+    margin-right: 15px;
+    margin-top: 12px;
+    padding: 0 10px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    line-height: 33px;
+    /*letter-spacing: 2px;*/
+    /*box-shadow: 0 4px 4px #ccc;*/
+    cursor: pointer;
+    border: none;
+}
+
+.progress1 {
+    width: 100%;
+    height: 10px;
+    border-radius: 10px;
+    background: #f0f0f0;
+    /*margin: 18px 0 0 15px;*/
+
+}
+
+.progress span, .progress1 span {
     display: block;
     width: 0;
     height: 100%;
@@ -165,11 +207,10 @@
     z-index: 2;
 }
 .progressTittle{
-    position: relative;
-    top: -5px;
+    width: 100%;
     display: inline-block;
-    height: 45px;
-    line-height: 45px;
+    height: 34px;
+    line-height: 34px;
     font-size:14px;
     color:#f97383;
 }
@@ -181,6 +222,25 @@
     line-height: 45px;
     font-size:14px;
     color:#acacb8;
+}
+
+.alert {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.alertContent {
+    height: 330px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 90%;
+    margin: -165px 0 0 -45%;
+    border-radius: 5px;
+    background: #ffffff;
 }
 /*设置页面样式开始*/
 .userSet{

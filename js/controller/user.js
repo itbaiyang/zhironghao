@@ -25,6 +25,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$rootScope.removeObject("login_user");
 					$location.path("/login");
 				}
+				$scope.init_role();
 			}).error(function (d) {
 				console.log(d);
 				$rootScope.removeObject("login_user");
@@ -35,6 +36,25 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		}
 	};
 	$scope.message = false;
+
+	$scope.init_role = function () {
+		$scope.bt_show = 0;
+		$http({
+			url: api_uri + "user/role",
+			method: "GET",
+			params: $rootScope.login_user
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+				$scope.role = d.result;
+				console.log($scope.role, "baiyang");
+			} else {
+				console.log(d);
+			}
+		}).error(function (d) {
+		});
+	};
+
 	$scope.list = function (pageNo,pageSize) {
 		if(!$scope.type){
 			$scope.type = "1";
@@ -53,13 +73,9 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
-					$scope.message = false;
+					$scope.message_list = false;
 				} else {
-
-					result_list = result_list.concat(d.result.datas);
-					$scope.result_list = result_list;
-					$scope.nextPage = d.result.nextPage;
-					$scope.pageNo = d.result.pageNo;
+					$scope.result_list = d.result.datas;
 					$scope.totalCount = d.result.totalCount;
 					angular.forEach($scope.result_list, function (data) {
 						if ($scope.type == 0) {
@@ -133,7 +149,10 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
-					$scope.message = false;
+					$scope.message_myList = false;
+					if ($scope.message_myList == false && $scope.message_list == false) {
+						$scope.message = false;
+					}
 				} else {
 
 					//result_list =result_list.concat(d.result.datas);
@@ -152,18 +171,21 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "8";
 								data.textPosition = "2";
 								data.progressText = "审核中";
+								data.progressTextNext = "开始约见";
 								$scope.message = true;
 							} else if (data.status == 2) {
 								data.jindu = "50";
 								data.triangle = "44";
 								data.textPosition = "36";
 								data.progressText = "约见中";
+								data.progressTextNext = "继续跟进";
 								$scope.message = true;
 							} else if (data.status == 3) {
 								data.jindu = "75";
 								data.triangle = "66";
 								data.textPosition = "58";
 								data.progressText = "跟进中";
+								data.progressTextNext = "完成贷款";
 								$scope.message = true;
 							} else if (data.status == 4) {
 								data.jindu = "100";
@@ -195,17 +217,94 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		returnCode: 0
 	};
 
+	$scope.alert = false;
+	$scope.alert_come = function (status, id, days) {
+		$scope.dateTime = days;
+		$scope.alert = true;
+		$scope.applyId = id;
+		$scope.status = status;
+		$(".alert").css("top", $(document).scrollTop());
+		$scope.alertText = "预计时间";
+		$scope.alertText1 = "备注内容";
+		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
+	};
+	$scope.alert_come1 = function (status, id, days) {
+		$scope.dateTime = days;
+		$scope.alert = true;
+		$scope.applyId = id;
+		$scope.status = status;
+		$(".alert").css("top", $(document).scrollTop());
 
+		$scope.alertText = "延长时间";
+		$scope.alertText1 = "说明原因";
+		$scope.alertText2 = "企业方征信问题没有及时提交，请尽快提交到位";
+	};
+	$scope.expectDateBank = "";
 	$scope.init();
 
 	$scope.userDetail = function(){
 		$location.path("/user/setting/");
 	};
+
 	$scope.company_detail = function (id) {
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id);
 		}
 	};
+
+	$scope.closeAlert = function (name, $event) {
+		$scope.alert = false;
+		if ($scope.stopPropagation) {
+			$event.stopPropagation();
+		}
+	};
+	$scope.sure = function () {
+		var params = {
+			"userId": $rootScope.login_user.userId,
+			"token": $rootScope.login_user.token,
+			"days": $scope.dateTime,
+			"reason": $scope.reason,
+			"applyId": $scope.applyId,
+			"status": $scope.status,
+		};
+		console.log(params);
+		$.ajax({
+			type: 'POST',
+			url: api_uri + "applyBankDeal/refer",
+			data: params,
+			traditional: true,
+			success: function (data, textStatus, jqXHR) {
+				console.log(data);
+				if (data.returnCode == 0) {
+					$scope.alert = false;
+					$scope.show();
+					$scope.$apply();
+
+				}
+				else {
+					console.log(data);
+				}
+			},
+			dataType: 'json',
+		});
+	};
+
+	$scope.show = function () {
+		$scope.bt_show = 0;
+		$http({
+			url: api_uri + "applyBankDeal/show",
+			method: "GET",
+			params: $rootScope.login_user
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+			} else {
+				console.log(d);
+			}
+		}).error(function (d) {
+		});
+	};
+
 });
 
 articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
@@ -230,6 +329,7 @@ articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope,
 		});
 	};
 	$scope.init();
+
 	$scope.alertCancel = function(){
 		$(".coverAlert").css("display","block");
 		$(".cancelAlert").css("display","block");

@@ -14,7 +14,7 @@ html, body {
 }
 
 body {
-    background: #f4f8fb;
+    background: #eaeff3;
     height: 100%;
 }
 
@@ -101,8 +101,8 @@ hr {
 }
 
 .productLeft img {
-    width: 90%;
-    height: 90%;
+    width: 70%;
+    height: 70%;
     vertical-align: middle;
 }
 
@@ -346,6 +346,12 @@ hr {
 .applyContentSpan{
     line-height: 25px;
     display: inline-block;
+    font-size: 16px;
+    color: #4c4c4c;
+}
+
+.applyContentP {
+    line-height: 25px;
     font-size: 16px;
     color: #4c4c4c;
 }

@@ -144,6 +144,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 			console.log(d);
 			if (d.returnCode == 0) {
 				$scope.company = d.result;
+				$scope.init_role();
 			} else {
 				console.log(d);
 			}
@@ -152,6 +153,23 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
 		});
 	};
 		$scope.init();
+	$scope.init_role = function () {
+		$scope.bt_show = 0;
+		$http({
+			url: api_uri + "user/role",
+			method: "GET",
+			params: $rootScope.login_user
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+				$scope.role = d.result;
+				console.log($scope.role, "baiyang");
+			} else {
+				console.log(d);
+			}
+		}).error(function (d) {
+		});
+	};
 	$scope.submit = function () {
 		var m_params = {
 			userId: $rootScope.login_user.userId,

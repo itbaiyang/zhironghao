@@ -1,4 +1,4 @@
-<div class="userHeader"></div>
+<div class="userHeader" xmlns="http://www.w3.org/1999/html"></div>
 <div class="userDetail">
     <div class="userLogo fl">
         <img class="userLogoPic" ng-src="{{headImg || 'img/icon/photo.png'}}" alt="">
@@ -18,29 +18,57 @@
         </div>
     </div>
 </div>
-<div ng-infinite-scroll options="options" ng-show="message" items="items">
+<div ng-infinite-scroll options="options" ng-show="message && role == 'clerk'" items="items">
     <p class="userCenterP">我的任务</p>
-    <div class="financing1" style="color:#ffffff" ng-repeat="resultObj in my_list" ng-hide="resultObj.status == -1"
-         ng-click="company_detail(resultObj.id)">
+    <div class="financing1" style="background:#ffffff" ng-repeat="resultObj in my_list"
+         ng-hide="resultObj.status == -1" ng-click="company_detail(resultObj.id)">
         <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
-        <div class="progress">
-            <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+        <div class="financialLeft fl">
+            <p class="progressTittle" ng-hide="resultObj.status == -1">
+                {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span></p>
+            <div class="progress1">
+                <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+            </div>
         </div>
-        <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
-        <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">
-            {{resultObj.progressText}}</p>
+        <div class="fr" ng-click="change($event)">
+            <button class="singleButtonMin fr" ng-hide=" days <0"
+                    ng-click="alert_come(resultObj.status,resultObj.id,resultObj.days)">{{resultObj.progressTextNext}}
+            </button>
+            <button class="singleButtonMin fr" ng-show=" days < 0"
+                    ng-click="alert_come1(resultObj.status,resultObj.id,resultObj.days)">逾期原因
+            </button>
+        </div>
+
     </div>
+</div>
+<div ng-infinite-scroll options="options" ng-show="message" items="items">
     <p class="userCenterP">我的申请</p>
-    <div class="financing1" style=" background: #736fcd;" ng-repeat="resultObj in result_list"
+    <div class="financing1" style=" background: #736fcd; color: #ffffff" ng-repeat="resultObj in result_list"
          ng-hide="resultObj.status == -1"
          ng-click="company_detail(resultObj.id)">
-        <div class="companyName">{{resultObj.companyName}} <span class="companySetting"></span></div>
-        <div class="progress">
-            <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+        <div class="companyName" style="color: #ffffff">{{resultObj.companyName}} <span class="companySetting"></span>
         </div>
-        <div class="myTriangle" ng-show="resultObj.status !=-1" style="left:{{resultObj.triangle}}% "></div>
-        <p class="progressTittle" ng-hide="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">
-            {{resultObj.progressText}}</p>
-    <!--<p class="progressTittle1" ng-show="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>-->
+        <div class="financial3">
+            <p class="progressTittle" style="color: #ffffff" ng-hide="resultObj.status == -1">
+                {{resultObj.progressText}} <span class="fr">预计{{resultObj.days}}天</span></p>
+            <div class="progress">
+                <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+            </div>
+        </div>
+        <!--<p class="progressTittle1" ng-show="resultObj.status == -1" style="left: {{resultObj.textPosition}}%;">{{resultObj.progressText}}</p>-->
+    </div>
+</div>
+<div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
+    <div class="alertContent" ng-click="change($event)">
+        <div class="userSet">
+            <span>{{alertText}}</span>
+            <input type="number" style="text-align: right;margin-right: 10px" ng-model="dateTime">天
+        </div>
+        <div class="applyContent" style="height: 196px; margin-bottom: 15px">
+            <p class="applyContentP" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">{{alertText1}}</p>
+            <textarea style="width: 100%; line-height: 20px; resize:none" type="text" rows="8"
+                      placeholder="{{alertText2}}" ng-model="reason"></textarea>
+        </div>
+        <button class="singleButton1" ng-click="sure()">确定</button>
     </div>
 </div>
