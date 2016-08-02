@@ -339,4 +339,33 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
+.applyDetail {
+    box-sizing: border-box;
+    /*height: 70px;*/
+    width: 100%;
+    border-bottom: 1px solid #e6e6e6;
+    padding: 9px 15px;
+    background: #ffffff;
+}
+
+.detailTitle {
+    height: 26px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #a3a3b3;
+}
+
+.applyDetailImg {
+    width: 40px;
+    height: 40px;
+    margin: 10px 5px;
+}
+
+.detailContent {
+    height: 26px;
+    font-size: 14px;
+    line-height: 26px;
+    color: #6d6d6d;
+}
 /*设置页面样式结束*/

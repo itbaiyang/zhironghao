@@ -1,4 +1,5 @@
 <div class="articleList">
+    <img src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
     <div class="productList" ng-repeat="resultObj in result_list" ng-click="article_show(resultObj,resultObj.id)">
         <div class="productLeft fl">
             <img ng-src="{{resultObj.icon}}" alt="">
@@ -20,28 +21,8 @@
             </p>
         </div>
         <div class="productRight fl">
-            <p>利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
+            <p>利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate |number:0}}</span>%</p>
             <p><span style="color: #acacba">{{resultObj.rateRemark}}</span></p>
         </div>
     </div>
-    <!--<div class="article" ng-repeat="resultObj in result_list" ng-class="{true:'article1'}[resultObj.good]" ng-click="article_show(resultObj,resultObj.id)">-->
-    <!--<div class="articleTittle">{{resultObj.name}}</div>-->
-    <!--<div class="articleTittle1"><img ng-src="{{resultObj.icon}}" alt=""> {{resultObj.bankname}}</div>-->
-    <!--<div class="expect clear">-->
-    <!--<div class="expect_border" ng-hide="resultObj.ratefloor == null&&resultObj.ratecap == null">-->
-    <!--<p ng-show="resultObj.ratefloor != null&&resultObj.ratecap != null">{{resultObj.ratecap}}<span>%</span>一{{resultObj.ratefloor}}<span>%</span></p>-->
-    <!--<p ng-show="resultObj.ratefloor == null">{{resultObj.ratecap}}<span>%</span></p>-->
-    <!--<p ng-show="resultObj.ratecap == null">{{resultObj.ratefloor}}<span>%</span></p>-->
-    <!--<span>利息率</span>-->
-    <!--</div>-->
-    <!--<div class="expect_border borderLine" ng-hide="resultObj.loanvalue == null">-->
-    <!--<p>{{resultObj.loanvalue}}<span>万</span></p>-->
-    <!--<span>贷款额度</span>-->
-    <!--</div>-->
-    <!--<div class="expect_border borderLine" ng-hide="resultObj.loanlife == null||resultObj.loanlife == ''">-->
-    <!--<p>{{resultObj.loanlife}}<span>年</span></p>-->
-    <!--<span>贷款期限</span>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
 </div>

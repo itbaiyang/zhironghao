@@ -1,7 +1,7 @@
-api_uri = "http://123.206.84.74/api/";
+//api_uri = "http://123.206.84.74/api/";
 //api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
-//api_uri = "http://172.16.97.95:8080/api/";
+api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 root_uri = "http://app.supeiyunjing.com/#";
@@ -21,7 +21,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
-        var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"];
+        var no_check_route = ["/article/list", "/login", "/register/step1", "/article/showActivity", "/register/step2", "/register/reset1", "/register/reset2"];
 
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();

@@ -246,9 +246,15 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	};
 
-	$scope.company_detail = function (id) {
+	$scope.my_apply = function (id, defineId) {
 		if (!$rootScope.isNullOrEmpty(id)) {
-			$location.path("/user/companyDetail/" + id);
+			$location.path("/user/companyDetail/" + id + "/" + defineId);
+		}
+	};
+
+	$scope.my_work = function (id, defineId) {
+		if (!$rootScope.isNullOrEmpty(id)) {
+			$location.path("/user/companyDetail/" + id + "/" + defineId);
 		}
 	};
 
@@ -262,7 +268,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		var params = {
 			"userId": $rootScope.login_user.userId,
 			"token": $rootScope.login_user.token,
-			"days": $scope.dateTime,
+			"expectDateBank": $scope.dateTime,
 			"reason": $scope.reason,
 			"applyId": $scope.applyId,
 			"status": $scope.status,
@@ -277,8 +283,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				console.log(data);
 				if (data.returnCode == 0) {
 					$scope.alert = false;
-					$scope.show();
-					$scope.$apply();
+					//$scope.show();
+					//$scope.$apply();
 
 				}
 				else {
@@ -289,28 +295,29 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		});
 	};
 
-	$scope.show = function () {
-		$scope.bt_show = 0;
-		$http({
-			url: api_uri + "applyBankDeal/show",
-			method: "GET",
-			params: $rootScope.login_user
-		}).success(function (d) {
-			console.log(d);
-			if (d.returnCode == 0) {
-			} else {
-				console.log(d);
-			}
-		}).error(function (d) {
-		});
-	};
+	//$scope.show = function () {
+	//	$scope.bt_show = 0;
+	//	$http({
+	//		url: api_uri + "applyBankDeal/show",
+	//		method: "GET",
+	//		params: $rootScope.login_user
+	//	}).success(function (d) {
+	//		console.log(d);
+	//		if (d.returnCode == 0) {
+	//		} else {
+	//			console.log(d);
+	//		}
+	//	}).error(function (d) {
+	//	});
+	//};
 
 });
 
-articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-
+userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
+	$scope.choiceStyle = $routeParams.defineId;
 	$scope.init = function () {
 		$scope.bt_show = 0;
+		if ($routeParams.defineId == 1) {
 		$http({
 			url: api_uri + "loanApplication/detail/" + $routeParams.id,
 			method: "GET",
@@ -326,6 +333,47 @@ articleCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope,
 		}).error(function (d) {
 			console.log("login error");
 			$location.path("/error");
+		});
+		} else {
+			$http({
+				url: api_uri + "loanApplication/myDetail/" + $routeParams.id,
+				method: "GET",
+				params: $rootScope.login_user
+			}).success(function (d) {
+				//console.log(d);
+				if (d.returnCode == 0) {
+					$scope.company = d.result;
+					console.log(d.result);
+				} else {
+					console.log(d);
+				}
+			}).error(function (d) {
+				console.log("login error");
+				$location.path("/error");
+			});
+		}
+		;
+		$http({
+			url: api_uri + "inforTemplate/showBase/" + $routeParams.id,
+			method: "GET",
+			params: $rootScope.login_user
+		}).success(function (d) {
+			//console.log(d);
+			if (d.returnCode == 0) {
+				$scope.company_basic = d.result;
+				angular.forEach($scope.company_basic.templateList, function (data) {
+					if (data.templateType == 3 && data.title == "财务信息") {
+						$scope.img_list = data.imgList;
+					}
+				});
+				console.log($scope.img_list);
+				console.log(d.result);
+			} else {
+				console.log(d);
+			}
+		}).error(function (d) {
+			//console.log("login error");
+			//$location.path("/error");
 		});
 	};
 	$scope.init();

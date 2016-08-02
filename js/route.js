@@ -33,6 +33,10 @@ myApp.config(function ($routeProvider) {
             templateUrl: templates_root + 'article/list.html',
             controller: 'ArticleListCtrl'
         })
+        .when('/article/showActivity', {//详情
+            templateUrl: templates_root + 'article/showActivity.html',
+            controller: 'ArticleShowActivityCtrl'
+        })
         .when('/article/show/:id', {//详情
             templateUrl: templates_root + 'article/show.html',
             controller: 'ArticleShowCtrl'
@@ -45,7 +49,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: templates_root + 'user/center.html',
             controller: 'UserCenterCtrl'
         })
-        .when('/user/companyDetail/:id', {//企业详情
+        .when('/user/companyDetail/:id/:defineId', {//企业详情
             templateUrl: templates_root + 'user/company_detail.html',
             controller: 'CompanyDetailCtrl'
         })

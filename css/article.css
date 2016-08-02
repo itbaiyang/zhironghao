@@ -130,9 +130,10 @@ hr {
 .productP3 span {
     display: inline-block;
     height: 13px;
-    line-height: 13px;
+    line-height: 14px;
     font-size: 10px;
     padding: 0 4px;
+    border-radius: 2px;
 }
 
 .productSpan1 {
@@ -445,4 +446,64 @@ hr {
     text-align: center;
     padding-bottom: 20px;
     border-bottom: 1px solid #c3c2c7;
+}
+
+.bannerGroup {
+    width: 100%;
+}
+
+.bannerDetail {
+    width: 100%;
+    /*height: 100%;*/
+    background: url("../img/bannerBg.png") no-repeat 0 0 #5664e5;
+    background-size: 100%;
+    /*position: relative;*/
+    padding-top: 47%;
+    padding-bottom: 20px;
+}
+
+.activityDetail {
+    width: calc(100% - 74px);
+    background: #424fcb;
+    padding: 10px 16px;
+    line-height: 27px;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0 auto;
+    /*position: absolute;*/
+    /*top: 26%;*/
+    /*left: 21px;*/
+}
+
+.activityImg {
+    display: block;
+    width: calc(100% - 42px);
+    margin: 0 21px;
+    padding: 0;
+}
+
+.activityBtn {
+    display: block;
+    width: 238px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 22px;
+    font-size: 18px;
+    color: #ffffff;
+    background: #6481f9;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.activityLink {
+    display: block;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+}
+
+.activityLink:hover, .activityLink:focus {
+    color: #ffffff;
+    text-decoration: none;
 }

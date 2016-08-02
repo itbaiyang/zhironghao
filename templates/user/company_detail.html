@@ -18,11 +18,49 @@
         </p>
     </div>
     <div class="productRight fl">
-        <p>利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
-        <p><span style="color: #acacba">{{article_detail.rateRemark}}</span></p>
+        <p>利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
+        <p><span style="color: #acacba">{{company.rateRemark}}</span></p>
     </div>
 </div>
-<div>
+<div ng-show="choiceStyle == 0">
+    <div class="applyDetail" ng-show="company_basic.baseInfo.company_name">
+        <p class="detailTitle">企业名称</p>
+        <p class="detailContent">{{company_basic.baseInfo.company_name}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.business_type">
+        <p class="detailTitle">企业类型</p>
+        <p class="detailContent">{{company_basic.baseInfo.business_type}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.legal_representative">
+        <p class="detailTitle">法人代表</p>
+        <p class="detailContent">{{company_basic.baseInfo.legal_representative}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.register_date">
+        <p class="detailTitle">成立时间</p>
+        <p class="detailContent">{{company_basic.baseInfo.register_date}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.business_address">
+        <p class="detailTitle">注册地址</p>
+        <p class="detailContent">{{company_basic.baseInfo.business_address}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.registered_capital">
+        <p class="detailTitle">注册资本</p>
+        <p class="detailContent">{{company_basic.baseInfo.registered_capital}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.item_category">
+        <p class="detailTitle">所属行业</p>
+        <p class="detailContent">{{company_basic.baseInfo.item_category}}</p>
+    </div>
+    <div class="applyDetail" ng-show="company_basic.baseInfo.registerMobile">
+        <p class="detailTitle">联系电话</p>
+        <p class="detailContent">{{company_basic.baseInfo.registerMobile}}</p>
+    </div>
+    <div class="applyDetail" ng-show="img_list">
+        <p class="detailTitle">财务信息</p>
+        <img class="applyDetailImg" ng-src="{{list}}" ng-repeat="list in img_list">
+    </div>
+</div>
+<div ng-hide="choiceStyle == 0">
     <div class="userSet" style="border-top: 1px solid #e6e6e6;">
         <span class="userSetSpan">公司名称</span>
         <span class="userSetIcon"></span>
