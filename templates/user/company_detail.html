@@ -59,6 +59,15 @@
         <p class="detailTitle">财务信息</p>
         <img class="applyDetailImg" ng-src="{{list}}" ng-repeat="list in img_list">
     </div>
+    <div class="ringUp fl">
+        <div class="detailTextProgress fl">贷款进度</div>
+        <div class="progressDetail fl">
+            <div class="progress1">
+                <div class="progressChild" style="width:{{company.jindu}}%;"></div>
+            </div>
+        </div>
+        <div class="detailBtn">{{company.progressText}}</div>
+    </div>
 </div>
 <div ng-hide="choiceStyle == 0">
     <div class="userSet" style="border-top: 1px solid #e6e6e6;">
@@ -76,6 +85,9 @@
         <span class="userSetIcon"></span>
         <span class="userSetContent1">{{company.mobile}}</span>
     </div>
+    <p class="ringUp">
+        <a ng-href="tel:{{company_basic.baseInfo.registerMobile}}#mp.weixin.qq.com">打电话</a>
+    </p>
     <div class="userSetOut" ng-show="company.status == 1" ng-click="alertCancel()">取消申请</div>
     <div class="coverAlert"></div>
     <div class="cancelAlert">

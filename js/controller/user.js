@@ -344,6 +344,36 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
 					console.log(d.result);
+					if ($scope.company.status == 1) {
+						$scope.company.jindu = "10";
+						$scope.company.triangle = "8";
+						$scope.company.textPosition = "2";
+						$scope.company.progressText = "审核中";
+						$scope.message = true;
+					} else if ($scope.company.status == 2) {
+						$scope.company.jindu = "50";
+						$scope.company.triangle = "44";
+						$scope.company.textPosition = "36";
+						$scope.company.progressText = "约见中";
+						$scope.message = true;
+					} else if ($scope.company.status == 3) {
+						$scope.company.jindu = "75";
+						$scope.company.triangle = "66";
+						$scope.company.textPosition = "58";
+						$scope.company.progressText = "跟进中";
+						$scope.message = true;
+					} else if ($scope.company.status == 4) {
+						$scope.company.jindu = "100";
+						$scope.company.triangle = "86";
+						$scope.company.textPosition = "76";
+						$scope.company.progressText = "成功融资";
+						$scope.message = true;
+					} else if ($scope.company.status == -1) {
+						$scope.company.jindu = "0";
+						$scope.company.triangle = "20";
+						$scope.company.textPosition = "5";
+						$scope.company.progressText = "申请已经取消";
+					}
 				} else {
 					console.log(d);
 				}

@@ -94,7 +94,7 @@
     height: 22px;
     float: right;
     margin-top: 18px;
-    background: url("../img/icon/setup.png")no-repeat;
+    background: url("../img/settingBtn.png") no-repeat;
     background-size: 100%;
 }
 .financingTitle{
@@ -367,5 +367,45 @@
     font-size: 14px;
     line-height: 26px;
     color: #6d6d6d;
+}
+
+.ringUp {
+    height: 60px;
+    width: 100%;
+    background: #ffffff;
+}
+
+.phoneImg {
+    width: 60px;
+    height: 60px;
+}
+
+.detailBtn {
+    width: 103px;
+    height: 60px;
+    display: inline-block;
+    background: #868ee3;
+    color: #ffffff;
+    line-height: 60px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.detailTextProgress {
+    width: 56px;
+    height: 60px;
+    display: inline-block;
+    color: #888888;
+    line-height: 60px;
+    font-size: 14px;
+    text-align: center;
+    padding-left: 15px;
+}
+
+.progressDetail {
+    width: calc(100% - 174px);
+    height: 60px;
+    padding: 25px 15px;
+    box-sizing: border-box;
 }
 /*设置页面样式结束*/
