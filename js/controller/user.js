@@ -20,6 +20,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.value = d.result.value;
 					$scope.position = d.result.position;
 					$scope.headImg = d.result.headImg;
+					$scope.msgCount = d.result.msgCount;
 				} else {
 					console.log(d);
 					$rootScope.removeObject("login_user");
@@ -31,6 +32,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				$rootScope.removeObject("login_user");
 				$location.path("/login");
 			});
+			$scope.init_role();
 			$scope.list(1, $scope.totalCount);
 			$scope.myList(1, $scope.myTotalCount);
 		}
@@ -154,11 +156,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						$scope.message = false;
 					}
 				} else {
-
-					//result_list =result_list.concat(d.result.datas);
 					$scope.my_list = d.result.datas;
-					//$scope.nextPage = d.result.nextPage;
-					//$scope.pageNo = d.result.pageNo;
 					$scope.myTotalCount = d.result.totalCount;
 					angular.forEach($scope.my_list, function (data) {
 						if ($scope.type == 0) {
@@ -246,6 +244,10 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$location.path("/user/setting/");
 	};
 
+	$scope.userMessage = function () {
+		$location.path("/user/message");
+	};
+
 	$scope.my_apply = function (id, defineId) {
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/user/companyDetail/" + id + "/" + defineId);
@@ -295,22 +297,74 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		});
 	};
 
-	//$scope.show = function () {
-	//	$scope.bt_show = 0;
-	//	$http({
-	//		url: api_uri + "applyBankDeal/show",
-	//		method: "GET",
-	//		params: $rootScope.login_user
-	//	}).success(function (d) {
-	//		console.log(d);
-	//		if (d.returnCode == 0) {
-	//		} else {
-	//			console.log(d);
-	//		}
-	//	}).error(function (d) {
-	//	});
-	//};
+});
 
+userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout, $location) {
+	$scope.list = function (pageNo, pageSize) {
+		if (!$scope.type) {
+			$scope.type = "1";
+		}
+		var m_params = {
+			userId: $rootScope.login_user.userId,
+			token: $rootScope.login_user.token,
+			pageNo: pageNo,
+			pageSize: pageSize
+		};
+		$http({
+			url: api_uri + "zrh/message/listc",
+			method: "GET",
+			params: m_params
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+				if (d.result.totalCount == 0) {
+					$scope.message_list = false;
+				} else {
+					$scope.message_list = d.result.datas;
+					$scope.totalCount = d.result.totalCount;
+					//angular.forEach($scope.result_list, function (data) {
+					//
+					//});
+				}
+			}
+			else {
+				//console.log(d);
+			}
+
+		}).error(function (d) {
+			console.log("login error");
+			//$location.path("/error");
+		})
+	};
+	$scope.list(1, 20);
+	$scope.read_message = function (id, url) {
+		var m_params = {
+			userId: $rootScope.login_user.userId,
+			token: $rootScope.login_user.token,
+			id: id
+		};
+		$http({
+			url: api_uri + "zrh/message/detailc",
+			method: "GET",
+			params: m_params
+		}).success(function (d) {
+			console.log(d);
+			if (d.returnCode == 0) {
+				$scope.my_apply(url, 0);
+			}
+			else {
+			}
+
+		}).error(function (d) {
+			console.log("login error");
+			//$location.path("/error");
+		})
+	};
+	$scope.my_apply = function (urlDetail, defineId) {
+		if (!$rootScope.isNullOrEmpty(urlDetail)) {
+			$location.path(urlDetail + "/" + defineId);
+		}
+	};
 });
 
 userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
@@ -349,24 +403,28 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 						$scope.company.triangle = "8";
 						$scope.company.textPosition = "2";
 						$scope.company.progressText = "审核中";
+						$scope.progressTextNext = "开始约见";
 						$scope.message = true;
 					} else if ($scope.company.status == 2) {
 						$scope.company.jindu = "50";
 						$scope.company.triangle = "44";
 						$scope.company.textPosition = "36";
 						$scope.company.progressText = "约见中";
+						$scope.progressTextNext = "继续跟进";
 						$scope.message = true;
 					} else if ($scope.company.status == 3) {
 						$scope.company.jindu = "75";
 						$scope.company.triangle = "66";
 						$scope.company.textPosition = "58";
 						$scope.company.progressText = "跟进中";
+						$scope.progressTextNext = "完成贷款";
 						$scope.message = true;
 					} else if ($scope.company.status == 4) {
 						$scope.company.jindu = "100";
 						$scope.company.triangle = "86";
 						$scope.company.textPosition = "76";
 						$scope.company.progressText = "成功融资";
+						$scope.progressTextNext = "贷款结束";
 						$scope.message = true;
 					} else if ($scope.company.status == -1) {
 						$scope.company.jindu = "0";
@@ -440,7 +498,66 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		});
 	};
 
+	$scope.alert = false;
+	$scope.alert_come = function (status, id, days) {
+		$scope.dateTime = days;
+		$scope.alert = true;
+		$scope.applyId = id;
+		$scope.status = status;
+		$(".alert").css("top", $(document).scrollTop());
+		$scope.alertText = "预计时间";
+		$scope.alertText1 = "备注内容";
+		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
+	};
+	$scope.alert_come1 = function (status, id, days) {
+		$scope.dateTime = days;
+		$scope.alert = true;
+		$scope.applyId = id;
+		$scope.status = status;
+		$(".alert").css("top", $(document).scrollTop());
 
+		$scope.alertText = "延长时间";
+		$scope.alertText1 = "说明原因";
+		$scope.alertText2 = "企业方征信问题没有及时提交，请尽快提交到位";
+	};
+	$scope.expectDateBank = "";
+
+	$scope.closeAlert = function (name, $event) {
+		$scope.alert = false;
+		if ($scope.stopPropagation) {
+			$event.stopPropagation();
+		}
+	};
+	$scope.sure = function () {
+		var params = {
+			"userId": $rootScope.login_user.userId,
+			"token": $rootScope.login_user.token,
+			"expectDateBank": $scope.dateTime,
+			"reason": $scope.reason,
+			"applyId": $scope.applyId,
+			"status": $scope.status,
+		};
+		console.log(params);
+		$.ajax({
+			type: 'POST',
+			url: api_uri + "applyBankDeal/refer",
+			data: params,
+			traditional: true,
+			success: function (data, textStatus, jqXHR) {
+				console.log(data);
+				if (data.returnCode == 0) {
+					$scope.alert = false;
+					//$scope.show();
+					//$scope.$apply();
+
+				}
+				else {
+					console.log(data);
+				}
+			},
+			dataType: 'json',
+		});
+	};
 });
 
 

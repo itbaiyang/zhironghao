@@ -49,6 +49,10 @@ myApp.config(function ($routeProvider) {
             templateUrl: templates_root + 'user/center.html',
             controller: 'UserCenterCtrl'
         })
+        .when('/user/message', {//消息
+            templateUrl: templates_root + 'user/message.html',
+            controller: 'MessageCtrl'
+        })
         .when('/user/companyDetail/:id/:defineId', {//企业详情
             templateUrl: templates_root + 'user/company_detail.html',
             controller: 'CompanyDetailCtrl'

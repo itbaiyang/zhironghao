@@ -1,0 +1,8 @@
+<div class="messageList" ng-repeat="message in message_list" ng-click="read_message(message.id,message.url)">
+    <div class="messageTitle">
+        <img src="img/icon/messaged.png" ng-show="message.readTime" alt="">
+        <img src="img/icon/Unread.png" ng-hide="message.readTime" alt="">
+        <div class="messageTitleDiv" ng-class="{messageTitleDiv1:message.readTime}">消息提醒</div>
+    </div>
+    <div class="messageContent">{{message.content}}</div>
+</div>

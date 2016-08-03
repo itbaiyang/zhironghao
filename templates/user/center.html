@@ -6,6 +6,10 @@
         <div class="userPost">{{position}}</div>
     </div>
     <div class="personMessage fr" ng-click="userDetail()">编辑个人信息</div>
+    <div class="centerMessage fr" ng-show="role =='clerk'&&msgCount" ng-click="userMessage()"><img
+            src="img/icon/BELL.png">{{msgCount}}
+    </div>
+    <div class="centerMessageNo fr" ng-show="role =='clerk'&&msgCount ==0" ng-click="userMessage()"></div>
 </div>
 <div class="financing" ng-hide="message">
     <div class="financingTitle">融资情况</div>

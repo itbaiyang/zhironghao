@@ -66,7 +66,22 @@
                 <div class="progressChild" style="width:{{company.jindu}}%;"></div>
             </div>
         </div>
-        <div class="detailBtn">{{company.progressText}}</div>
+        <div class="detailBtn" ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}</div>
+    </div>
+    <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
+        <div class="alertContent" ng-click="change($event)">
+            <div class="userSet">
+                <span>{{alertText}}</span>
+                <input type="number" style="text-align: right;margin-right: 10px" ng-model="dateTime">天
+            </div>
+            <div class="applyContent" style="height: 196px; margin-bottom: 15px">
+                <p class="applyContentP" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">
+                    {{alertText1}}</p>
+            <textarea style="width: 100%; line-height: 20px; resize:none" type="text" rows="8"
+                      placeholder="{{alertText2}}" ng-model="reason"></textarea>
+            </div>
+            <button class="singleButton1" ng-click="sure()">确定</button>
+        </div>
     </div>
 </div>
 <div ng-hide="choiceStyle == 0">

@@ -59,6 +59,34 @@
     text-align: center;
     font-size: 14px;
 }
+
+.centerMessage {
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 8px;
+    background: #f97383;
+}
+
+.centerMessage img {
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.centerMessageNo {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    margin: 10px;
+    border: 1px solid #e2e2e2;
+    border-radius: 15px;
+    background: url("../img/icon/BELLnone.png") no-repeat 7px 7px;
+}
 .financing{
     width: 100%;
     height: calc(100% - 241px);
@@ -409,3 +437,37 @@
     box-sizing: border-box;
 }
 /*设置页面样式结束*/
+
+/*message*/
+.messageList {
+    height: 88px;
+    border-bottom: 1px solid #eaeaea;
+    padding-left: 15px;
+    background: #ffffff;
+}
+
+.messageTitle {
+    padding-top: 15px;
+}
+
+.messageTitle img {
+    width: 23px;
+    height: 23px;
+    vertical-align: middle;
+}
+
+.messageTitleDiv {
+    display: inline-block;
+    font-size: 16px;
+    padding-left: 3px;
+    color: #F97383;
+}
+
+.messageTitleDiv1 {
+    color: #535353;
+}
+
+.messageContent {
+    font-size: 14px;
+    color: #9292A5;
+}
