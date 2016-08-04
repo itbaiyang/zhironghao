@@ -125,6 +125,16 @@
     background: url("../img/settingBtn.png") no-repeat;
     background-size: 100%;
 }
+
+.companySetting1 {
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin-top: 18px;
+    background: url("../img/icon/setup.png") no-repeat;
+    background-size: 100%;
+}
 .financingTitle{
     height: 54px;
     line-height: 54px;

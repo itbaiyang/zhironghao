@@ -12,9 +12,9 @@
             <span>期限{{company.loanlife}}年</span>
         </p>
         <p class="productP3">
-            <span class="productSpan1">{{company.tags[0]}}</span>
-            <span class="productSpan2">{{company.tags[1]}}</span>
-            <span class="productSpan3">{{company.tags[2]}}</span>
+            <span ng-show="company.tags[0]" class="productSpan1">{{company.tags[0]}}</span>
+            <span ng-show="company.tags[1]" class="productSpan2">{{company.tags[1]}}</span>
+            <span ng-show="company.tags[2]" class="productSpan3">{{company.tags[2]}}</span>
         </p>
     </div>
     <div class="productRight fl">
