@@ -135,6 +135,13 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 	};
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
+	$scope.apply = function () {
+		var id = "4749b50d84924ca8909890ae511346de";
+		$rootScope.present_route = $location.$$path;
+		if (!$rootScope.isNullOrEmpty(id)) {
+			$location.path("/article/apply/" + id);
+		}
+	};
 });
 
 articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $location, $timeout,$routeParams) {
