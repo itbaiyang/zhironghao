@@ -10,7 +10,7 @@
                 <span>{{resultObj.name}}</span>
             </p>
             <p class="productP2">
-                <span>{{resultObj.loanvalue}}</span>
+                <span>额度{{resultObj.loanvalue}}</span>
                 <span ng-show="resultObj.loanvalue && resultObj.loanlife">/</span>
                 <span>期限{{resultObj.loanlife}}</span>
             </p>
@@ -21,7 +21,7 @@
             </p>
         </div>
         <div class="productRight fl">
-            <p>利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate |number:0}}</span>%</p>
+            <p>利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
             <p><span style="color: #acacba">{{resultObj.rateRemark}}</span></p>
         </div>
     </div>

@@ -8,7 +8,8 @@
             <span>{{company.name}}</span>
         </p>
         <p class="productP2">
-            <span>{{company.loanvalue}}</span>
+            <span>额度{{company.loanvalue}}</span>
+            <span ng-show="company.loanvalue && company.loanlife">/</span>
             <span>期限{{company.loanlife}}</span>
         </p>
         <p class="productP3">
@@ -19,7 +20,7 @@
     </div>
     <div class="productRight fl">
         <p>利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
-        <p><span style="color: #acacba">{{company.rateRemark}}</span></p>
+        <p><span style="color: #acacba;font-size: 10px">{{company.rateRemark}}</span></p>
     </div>
 </div>
 <div ng-show="choiceStyle == 0">

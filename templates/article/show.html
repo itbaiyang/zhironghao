@@ -9,7 +9,8 @@
                 <span>{{article_detail.name}}</span>
             </p>
             <p class="productP2">
-                <span>{{article_detail.loanvalue}}</span>
+                <span>额度{{article_detail.loanvalue}}</span>
+                <span ng-show="article_detail.loanvalue && article_detail.loanlife">/</span>
                 <span>期限{{article_detail.loanlife}}</span>
             </p>
             <p class="productP3">
