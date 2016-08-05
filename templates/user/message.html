@@ -4,5 +4,5 @@
         <img src="img/icon/Unread.png" ng-hide="message.readTime" alt="">
         <div class="messageTitleDiv" ng-class="{messageTitleDiv1:message.readTime}">消息提醒</div>
     </div>
-    <div class="messageContent">{{message.content}}</div>
+    <div class="messageContent">{{message.content}}<a style="color:#F96879">{{message.urlName}}</a></div>
 </div>
