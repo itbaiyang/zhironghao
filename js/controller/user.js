@@ -32,9 +32,10 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				$rootScope.removeObject("login_user");
 				$location.path("/login");
 			});
-			$scope.init_role();
+			//$scope.init_role();
 			$scope.list(1, $scope.totalCount);
 			$scope.myList(1, $scope.myTotalCount);
+			console.log("debug");
 		}
 	};
 	$scope.message = false;
@@ -77,6 +78,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				if (d.result.totalCount == 0) {
 					$scope.message_list = false;
 				} else {
+					$scope.message_list = true;
 					$scope.result_list = d.result.datas;
 					$scope.totalCount = d.result.totalCount;
 					angular.forEach($scope.result_list, function (data) {
@@ -154,8 +156,11 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.message_myList = false;
 					if ($scope.message_myList == false && $scope.message_list == false) {
 						$scope.message = false;
+					} else {
+						$scope.message = true;
 					}
 				} else {
+					$scope.message_myList = true;
 					$scope.my_list = d.result.datas;
 					$scope.myTotalCount = d.result.totalCount;
 					angular.forEach($scope.my_list, function (data) {
@@ -169,6 +174,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "8";
 								data.textPosition = "2";
 								data.progressText = "审核中";
+								data.progressNext = "审核中";
 								data.progressTextNext = "开始约见";
 								$scope.message = true;
 							} else if (data.status == 2) {
@@ -176,6 +182,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "44";
 								data.textPosition = "36";
 								data.progressText = "约见中";
+								data.progressNext = "审核中";
 								data.progressTextNext = "继续跟进";
 								$scope.message = true;
 							} else if (data.status == 3) {
@@ -183,6 +190,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "66";
 								data.textPosition = "58";
 								data.progressText = "跟进中";
+								data.progressNext = "审核中";
 								data.progressTextNext = "完成贷款";
 								$scope.message = true;
 							} else if (data.status == 4) {
@@ -190,6 +198,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "86";
 								data.textPosition = "76";
 								data.progressText = "成功融资";
+								data.progressNext = "已经完成";
 								$scope.message = true;
 							} else if (data.status == -1) {
 								data.jindu = "0";
@@ -221,7 +230,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		$(".alert").css("top", $(document).scrollTop());
+		$(".alert").css("margin-top", $(document).scrollTop());
 		$scope.alertText = "预计时间";
 		$scope.alertText1 = "备注内容";
 		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
@@ -231,13 +240,14 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		$(".alert").css("top", $(document).scrollTop());
+		$(".alert").css("margin-top", $(document).scrollTop());
 
 		$scope.alertText = "延长时间";
 		$scope.alertText1 = "说明原因";
 		$scope.alertText2 = "企业方征信问题没有及时提交，请尽快提交到位";
 	};
 	$scope.expectDateBank = "";
+
 	$scope.init();
 
 	$scope.userDetail = function(){
@@ -285,8 +295,12 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				console.log(data);
 				if (data.returnCode == 0) {
 					$scope.alert = false;
-					//$scope.show();
-					//$scope.$apply();
+					$(".alertCenterSubmit").css("display", "block", "top", $(document).scrollTop());
+					$timeout(function () {
+						$(".alertCenterSubmit").css("display", "none");
+						//$location.path("/user/center");
+					}, 2000);
+					$scope.$apply();
 
 				}
 				else {

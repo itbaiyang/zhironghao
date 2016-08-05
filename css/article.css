@@ -420,11 +420,31 @@ hr {
     z-index: 100;
     border-radius: 5px;
 }
+
+.alertCenterSubmit {
+    display: none;
+    width: 50%;
+    height: 130px;
+    position: absolute;
+    top: 180px;
+    left: 25%;
+    background: linear-gradient(45deg, #6B72DB, #766DC4);
+    background: -webkit-linear-gradient(45deg, #6B72DB, #766DC4);
+    z-index: 100;
+    border-radius: 5px;
+}
 .alertImg{
     background: url("../img/zrh.png")no-repeat -310px -42px;
     width: 60px;
     height: 60px;
     margin: 21px 98px 0;
+}
+
+.alertImg1 {
+    background: url("../img/submitSuccess.png") no-repeat;
+    width: 60px;
+    height: 60px;
+    margin: 21px 65px 0;
 }
 .alertText{
     font-weight: 400;
