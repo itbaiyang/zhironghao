@@ -493,7 +493,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		var m_params = {
 			userId: $rootScope.login_user.userId,
 			token: $rootScope.login_user.token,
-			status:-1
+			status: 0
 		};
 		$http({
 			url: api_uri + "loanApplication/cancel/"+$routeParams.id,
