@@ -108,12 +108,14 @@ hr {
 }
 
 .productCenter {
-    padding: 14px 0 0 12px;
+    padding: 0 0 0 12px;
     width: 45%;
     /*height: 95px;*/
 }
 
 .productP1 {
+    margin-left: 86px;
+    padding-top: 13px;
     height: 24px;
     line-height: 24px;
     font-size: 14px;
@@ -157,7 +159,7 @@ hr {
 .productRight {
     width: calc(55% - 102px);
     /*height: 95px;*/
-    padding: 40px 15px 0 0;
+    padding: 0 15px 0 0;
 }
 
 .productRight p {

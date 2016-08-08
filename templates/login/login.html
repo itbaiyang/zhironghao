@@ -1,7 +1,8 @@
 <div class="regForm1">
 	<div style="background: #ffffff">
-		<input type="text" placeholder="请输入手机号" class="phoneCode" style="border-top:1px solid #e0e0e0;" ng-blur="ngBlur()"
-			ng-model="loginUser.mobile" maxlength="11" ng-change="textChange(loginUser.mobile)"
+        <input type="tel" placeholder="请输入手机号" class="phoneCode" style="border-top:1px solid #e0e0e0;"
+               ng-blur="ngBlur()"
+               ng-model="loginUser.mobile" maxlength="11" ng-change="textChange(loginUser.mobile)"
                onkeyup="if(event.keyCode !=37 && event.keyCode != 39){if (! /^\d+$/ig.test(this.value)){this.value=this.value.replace(/[^\d]/ig,'')}}"/>
 	    <input type="password" placeholder="请输入密码" class="phoneCode" maxlength="12"
 	    	ng-model="loginUser.password"/>

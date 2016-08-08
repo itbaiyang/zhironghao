@@ -2,11 +2,11 @@
     <div class="productLeft fl">
         <img ng-src="{{company.icon}}" alt="">
     </div>
+    <p class="productP1">
+        <span>{{company.bankname}}</span>-
+        <span>{{company.name}}</span>
+    </p>
     <div class="productCenter fl">
-        <p class="productP1">
-            <span>{{company.bankname}}</span>-
-            <span>{{company.name}}</span>
-        </p>
         <p class="productP2">
             <span>额度{{company.loanvalue}}</span>
             <span ng-show="company.loanvalue && company.loanlife">/</span>

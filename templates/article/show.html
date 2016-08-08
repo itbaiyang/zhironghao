@@ -3,11 +3,11 @@
         <div class="productLeft fl">
             <img ng-src="{{article_detail.icon}}" alt="">
         </div>
+        <p class="productP1">
+            <span>{{article_detail.bankname}}</span>-
+            <span>{{article_detail.name}}</span>
+        </p>
         <div class="productCenter fl">
-            <p class="productP1">
-                <span>{{article_detail.bankname}}</span>-
-                <span>{{article_detail.name}}</span>
-            </p>
             <p class="productP2">
                 <span>额度{{article_detail.loanvalue}}</span>
                 <span ng-show="article_detail.loanvalue && article_detail.loanlife">/</span>
