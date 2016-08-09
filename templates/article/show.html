@@ -7,21 +7,22 @@
             <span>{{article_detail.bankname}}</span>-
             <span>{{article_detail.name}}</span>
         </p>
-        <div class="productCenter fl">
-            <p class="productP2">
+        <div class="productCenter clear">
+            <p class="productP2 fl">
                 <span>额度{{article_detail.loanvalue}}</span>
                 <span ng-show="article_detail.loanvalue && article_detail.loanlife">/</span>
                 <span>期限{{article_detail.loanlife}}</span>
             </p>
-            <p class="productP3">
+            <p class="productP4 fr">利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
+        </div>
+        <div class="productCenter">
+            <p class="productP3 fl">
                 <span ng-show="article_detail.tags[0]" class="productSpan1">{{article_detail.tags[0]}}</span>
                 <span ng-show="article_detail.tags[1]" class="productSpan2">{{article_detail.tags[1]}}</span>
-                <span ng-show="article_detail.tags[2]" class="productSpan3">{{article_detail.tags[2]}}</span>
+                <!--<span ng-show="article_detail.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
             </p>
-        </div>
-        <div class="productRight fl">
-            <p>利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
-            <p><span style="color: #acacba">{{article_detail.rateRemark}}</span></p>
+            <p class="productP3 fr" style="margin-right: 15px;margin-top: -1px"><span style="color: #acacba">{{article_detail.rateRemark}}</span>
+            </p>
         </div>
     </div>
     <div class="productDefinitions" ng-hide="article_detail.summary == null || article_detail.summary == ''">

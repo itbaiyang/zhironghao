@@ -8,21 +8,22 @@
             <span>{{resultObj.bankname}}</span>-
             <span>{{resultObj.name}}</span>
         </p>
-        <div class="productCenter fl">
-            <p class="productP2">
+        <div class="productCenter clear">
+            <p class="productP2 fl">
                 <span>额度{{resultObj.loanvalue}}</span>
                 <span ng-show="resultObj.loanvalue && resultObj.loanlife">/</span>
                 <span>期限{{resultObj.loanlife}}</span>
             </p>
-            <p class="productP3">
+            <p class="productP4 fr">利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
+        </div>
+        <div class="productCenter">
+            <p class="productP3 fl">
                 <span ng-show="resultObj.tags[0]" class="productSpan1">{{resultObj.tags[0]}}</span>
                 <span ng-show="resultObj.tags[1]" class="productSpan2">{{resultObj.tags[1]}}</span>
-                <span ng-show="resultObj.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>
+                <!--<span ng-show="resultObj.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
             </p>
-        </div>
-        <div class="productRight fl">
-            <p>利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
-            <p><span style="color: #acacba">{{resultObj.rateRemark}}</span></p>
+            <p class="productP3 fr" style="margin-right: 15px;margin-top: -1px"><span style="color: #acacba">{{resultObj.rateRemark}}</span>
+            </p>
         </div>
     </div>
 </div>
