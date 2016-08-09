@@ -74,9 +74,11 @@
     background: #f97383;
 }
 
-.centerMessage img {
+.centerMessage img{
     vertical-align: middle;
     margin-right: 5px;
+    width: 15px;
+    height: 16px;
 }
 
 .centerMessageNo {
@@ -87,6 +89,7 @@
     border: 1px solid #e2e2e2;
     border-radius: 15px;
     background: url("../img/icon/BELLnone.png") no-repeat 6px 6px;
+    background-size: 15px 16px;
 }
 .financing{
     width: 100%;
