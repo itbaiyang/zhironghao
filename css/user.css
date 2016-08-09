@@ -329,18 +329,24 @@
     /*margin-left:15px;*/
     color: #4c4c4c;
 }
-
-.userSet img{
-    border-radius: 100%;
-    margin-top: 2px;
-    width:40px;
-    height:40px;
-    float: right;
-}
 .userSetIcon{
     height: 45px;
     float: right;
     line-height: 45px;
+}
+.userSetImg{
+    margin-top: 2px;
+    float: right;
+    display: inline-block;
+    color: #9695a7;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+}
+.userSetImg img{
+    width:40px;
+    height:auto;
 }
 .userSetContent{
     float: right;

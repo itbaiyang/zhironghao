@@ -2,7 +2,10 @@
     <div class="userSet clear" style="border-top: 1px solid #e0e0e0" id="upload_container">
         <span>头像</span>
         <span class="userSetIcon">></span>
-        <img class="userSetContent" id="pickfiles" src="{{user.headImg || 'img/icon/recommendl.png'}}">
+        <span class="userSetContent"></span>
+        <span class="userSetImg">
+            <img id="pickfiles" src="{{user.headImg || 'img/icon/recommendl.png'}}">
+        </span>
     </div>
     <div class="userSet" ng-click="update('name',user.name)">
         <span>姓名</span>
