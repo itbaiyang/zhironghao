@@ -19,9 +19,10 @@
 .userLogoPic{
     display: block;
     border-radius: 100%;
-    width:75px;
-    height:75px;
+    width:70px;
+    height:70px;
     margin: 0 auto;
+    border: 4px solid #ffffff;
 }
 .userName{
 
@@ -50,9 +51,9 @@
 }
 .personMessage{
     width: 108px;
-    height: 30px;
-    line-height: 30px;
-    margin: 10px;
+    height: 28px;
+    line-height: 28px;
+    margin: 10px 10px 10px 0;
     border: 1px solid #e0e0e0;
     border-radius: 15px;
     color: #acacb8;
@@ -61,8 +62,8 @@
 }
 
 .centerMessage {
-    height: 30px;
-    line-height: 30px;
+    height: 28px;
+    line-height: 28px;
     margin: 10px;
     border: 1px solid #e0e0e0;
     border-radius: 15px;
@@ -79,13 +80,13 @@
 }
 
 .centerMessageNo {
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
     margin: 10px;
     border: 1px solid #e2e2e2;
     border-radius: 15px;
-    background: url("../img/icon/BELLnone.png") no-repeat 7px 7px;
+    background: url("../img/icon/BELLnone.png") no-repeat 6px 6px;
 }
 .financing{
     width: 100%;
@@ -108,12 +109,11 @@
 }
 .companyName{
     width: calc(100% - 30px);
-    height: 46px;
-    line-height: 46px;
-    font-size: 18px;
+    height: 45px;
+    line-height: 45px;
+    font-size: 16px;
     color: #4c4c4c;
-    margin:0 15px 0 15px;
-    text-indent: 10px;
+    padding:0 15px 0 15px;
     border-bottom: 1px solid #e0e0e0;
 }
 .companySetting{
@@ -121,7 +121,7 @@
     width: 22px;
     height: 22px;
     float: right;
-    margin-top: 18px;
+    margin-top: 11px;
     background: url("../img/settingBtn.png") no-repeat;
     background-size: 100%;
 }
@@ -131,7 +131,7 @@
     width: 22px;
     height: 22px;
     float: right;
-    margin-top: 18px;
+    margin-top: 11px;
     background: url("../img/icon/setup.png") no-repeat;
     background-size: 100%;
 }
@@ -141,7 +141,7 @@
     width: 22px;
     height: 22px;
     float: right;
-    margin-top: 18px;
+    margin-top: 11px;
     background: url("../img/icon/Group.png") no-repeat;
     background-size: 100%;
 }
@@ -193,27 +193,28 @@
 .financial3 {
     width: calc(100% - 30px);
     height: 58px;
-    padding: 5px 15px;
+    padding: 4px 15px;
 }
 
 .financialLeft {
-    width: 60%;
+    /*width: 58%;*/
+    width: calc(100% - 132px);
     height: 58px;
-    padding: 5px 15px;
+    padding: 4px 15px;
 }
 
 .singleButtonMin {
-    height: 33px;
-    font-size: 12px;
-    background: linear-gradient(45deg, #8898EB, #6045BB);
-    background: -webkit-linear-gradient(45deg, #8898EB, #6045BB);
+    height: 30px;
+    font-size: 14px;
+    background: linear-gradient(45deg, #6B72DB, #766DC4);
+    background: -webkit-linear-gradient(45deg, #6B72DB, #766DC4);
     margin-right: 15px;
     margin-top: 12px;
-    padding: 0 10px;
+    padding: 0 15px;
     border-radius: 16px;
     text-align: center;
     color: #fff;
-    line-height: 33px;
+    line-height: 30px;
     /*letter-spacing: 2px;*/
     /*box-shadow: 0 4px 4px #ccc;*/
     cursor: pointer;
@@ -222,16 +223,16 @@
 
 .singleButtonMinGrew {
     width: 68px;
-    height: 33px;
-    font-size: 12px;
+    height: 30px;
+    font-size: 14px;
     background: #e0e0e0;
     margin-right: 15px;
     margin-top: 12px;
-    padding: 0 10px;
+    padding: 0 15px;
     border-radius: 16px;
     text-align: center;
     color: #acacb8;
-    line-height: 33px;
+    line-height: 30px;
     cursor: pointer;
     border: none;
 }
