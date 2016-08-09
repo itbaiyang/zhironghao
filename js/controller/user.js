@@ -386,22 +386,22 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 	$scope.init = function () {
 		$scope.bt_show = 0;
 		if ($routeParams.defineId == 1) {
-		$http({
-			url: api_uri + "loanApplication/detail/" + $routeParams.id,
-			method: "GET",
-			params: $rootScope.login_user
-		}).success(function (d) {
-			console.log(d);
-			if (d.returnCode == 0) {
-				$scope.company = d.result;
-				console.log(d.result);
-			}else {
+			$http({
+				url: api_uri + "loanApplication/detail/" + $routeParams.id,
+				method: "GET",
+				params: $rootScope.login_user
+			}).success(function (d) {
 				console.log(d);
-			}
-		}).error(function (d) {
-			console.log("login error");
-			$location.path("/error");
-		});
+				if (d.returnCode == 0) {
+					$scope.company = d.result;
+					console.log(d.result);
+				}else {
+					console.log(d);
+				}
+			}).error(function (d) {
+				console.log("login error");
+				$location.path("/error");
+			});
 		} else {
 			$http({
 				url: api_uri + "loanApplication/myDetail/" + $routeParams.id,
@@ -512,7 +512,6 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			$location.path("/error");
 		});
 	};
-
 	$scope.alert = false;
 	$scope.alert_come = function (status, id, days) {
 		$scope.dateTime = days;
@@ -574,7 +573,6 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		});
 	};
 });
-
 
 userCtrl.controller('SettingCtrl', //用户设置
     ['$scope','$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
