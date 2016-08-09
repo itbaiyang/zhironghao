@@ -80,7 +80,7 @@
         <div class="companyName">{{resultObj.companyName}} <span class="companySetting1"></span>
         </div>
         <div class="financial3">
-            <p class="progressTittle" ng-hide="resultObj.status == 0">
+            <p class="progressTittle" style="font-size: 14px" ng-hide="resultObj.status == 0">
                 {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span></p>
             <div class="progress">
                 <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
@@ -92,15 +92,15 @@
 <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
     <div class="alertContent" ng-click="change($event)">
         <div class="userSet">
-            <span>{{alertText}}</span>
-            <div class="fr">
-                <input type="number" style="text-align: right;margin-right: 10px" placeholder="请输入天数"
+            <span style="font-size: 14px">{{alertText}}</span>
+            <div class="fr" style="font-size: 14px">
+                <input type="number" style="text-align: right;margin-right: 10px;font-size: 14px" placeholder="请输入天数"
                        ng-model="dateTime">天
             </div>
         </div>
         <div class="applyContent" style="height: 196px; margin-bottom: 15px">
-            <p class="applyContentP" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">{{alertText1}}</p>
-            <textarea style="width: 100%; line-height: 20px; resize:none" type="text" rows="8"
+            <p class="applyContentP" style="font-size: 14px" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">{{alertText1}}</p>
+            <textarea style="width: 100%; line-height: 20px;font-size: 14px; resize:none" type="text" rows="8"
                       placeholder="{{alertText2}}" ng-model="reason"></textarea>
         </div>
         <button class="singleButton1" ng-click="sure()">确定</button>

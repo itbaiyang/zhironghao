@@ -136,7 +136,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
 	$scope.apply = function () {
-		var id = "886846ce69924466b59c101cd001af6c";
+		var id = "71a28b4d3c60481ebfb6270eb27fde2c";
 		$rootScope.present_route = $location.$$path;
 		if (!$rootScope.isNullOrEmpty(id)) {
 			$location.path("/article/apply/" + id);
