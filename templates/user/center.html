@@ -56,12 +56,13 @@
         <div class="financing1" style=" background: #736fcd; color: #ffffff" ng-repeat="resultObj in result_list"
              ng-hide="resultObj.status == -1"
              ng-click="my_work(resultObj.id,1)">
-            <div class="companyName" style="color: #ffffff">{{resultObj.companyName}} <span
+            <div class="companyName" style="color: #ffffff">{{resultObj.companyName }} <span
                     class="companySetting"></span>
             </div>
             <div class="financial3">
                 <p class="progressTittle" style="color: #ffffff" ng-hide="resultObj.status == -1">
-                    {{resultObj.progressText}} <span class="fr">预计{{resultObj.days}}天</span></p>
+                    {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
+                </p>
                 <div class="progress">
                     <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
                 </div>
@@ -80,7 +81,7 @@
         </div>
         <div class="financial3">
             <p class="progressTittle" ng-hide="resultObj.status == 0">
-                {{resultObj.progressText}} <span class="fr">预计{{resultObj.days}}天</span></p>
+                {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span></p>
             <div class="progress">
                 <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
             </div>
@@ -106,6 +107,7 @@
         <button class="singleButton1" ng-click="sure()">确定</button>
     </div>
 </div>
+
 <div class="alertCenterSubmit">
     <div class="alertImg1"></div>
     <p class="alertText">提交完成</p>

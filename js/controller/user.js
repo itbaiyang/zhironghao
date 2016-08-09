@@ -463,8 +463,9 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			//console.log(d);
 			if (d.returnCode == 0) {
 				$scope.company_basic = d.result;
+				$scope.template_list = d.result.templateList;
 				angular.forEach($scope.company_basic.templateList, function (data) {
-					if (data.templateType == 3 && data.title == "财务信息") {
+					if (data.templateType == 3 && data.title == "财务报表") {
 						$scope.img_list = data.imgList;
 					}
 				});
