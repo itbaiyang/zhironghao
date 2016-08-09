@@ -122,8 +122,9 @@
     height: 22px;
     float: right;
     margin-top: 11px;
-    background: url("../img/settingBtn.png") no-repeat;
-    background-size: 100%;
+    background: url("../img/settingBtn.png") no-repeat 4px 4px #938ae9;
+    background-size: 14px;
+    border-radius: 11px;
 }
 
 .companySetting1 {
@@ -132,8 +133,9 @@
     height: 22px;
     float: right;
     margin-top: 11px;
-    background: url("../img/icon/setup.png") no-repeat;
-    background-size: 100%;
+    background: url("../img/settingBtn.png") no-repeat 4px 4px #868ee3;
+    background-size: 14px;
+    border-radius: 11px;
 }
 
 .companySetting2 {
