@@ -230,7 +230,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		$(".alert").css("margin-top", $(document).scrollTop());
+		//$(".alert").css("margin-top", $(document).scrollTop());
 		$scope.alertText = "预计时间";
 		$scope.alertText1 = "备注内容";
 		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
@@ -240,7 +240,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		$(".alert").css("margin-top", $(document).scrollTop());
+		//$(".alert").css("margin-top", $(document).scrollTop());
 
 		$scope.alertText = "延长时间";
 		$scope.alertText1 = "说明原因";
