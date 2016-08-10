@@ -135,11 +135,26 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 	};
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
+	$scope.id = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
+	$scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
+	$scope.shareData = {
+		title: '直融号',
+		desc: '八月雪中送炭，千亿资金等你来拿',
+		link: "http://app.supeiyunjing.com/#/article/show/" + $scope.id,
+		imgUrl: "http://app.supeiyunjing.com/img/share.png"
+	};
+	wx.ready(function () {
+		wx.onMenuShareAppMessage($scope.shareData);
+		wx.onMenuShareTimeline($scope.shareData);
+		wx.onMenuShareQQ($scope.shareData);
+		wx.onMenuShareWeibo($scope.shareData);
+	});
 	$scope.apply = function () {
-		var id = "71a28b4d3c60481ebfb6270eb27fde2c";
+		//var id = "e15813cb5bfd4290a5c2582cbdd164a4"; //测试活动
+		//var id = "71a28b4d3c60481ebfb6270eb27fde2c";
 		$rootScope.present_route = $location.$$path;
-		if (!$rootScope.isNullOrEmpty(id)) {
-			$location.path("/article/apply/" + id);
+		if (!$rootScope.isNullOrEmpty($scope.id)) {
+			$location.path("/article/apply/" + $scope.id);
 		}
 	};
 });

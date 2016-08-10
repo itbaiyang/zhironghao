@@ -1,4 +1,5 @@
-<div class="productList" style="border: 1px solid #f3f3f3;">
+<div ng-hide="company.productId =='e15813cb5bfd4290a5c2582cbdd164a4'" class="productList" style="border: 1px solid #f3f3f3;">
+<!--<div ng-hide="company.productId =='71a28b4d3c60481ebfb6270eb27fde2c'" class="productList" style="border: 1px solid #f3f3f3;">-->
     <div class="productLeft fl">
         <img ng-src="{{company.icon}}" alt="">
     </div>
@@ -59,9 +60,11 @@
     </div>
     <div class="applyDetail" ng-repeat="template in template_list">
         <p class="detailTitle">{{template.title}}</p>
-        <a style="display: inline-block" ng-href="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">
-            <img class="applyDetailImg" ng-click="scan_img(list)" ng-src="{{list}}">
-        </a>
+        <div id="previewImage">
+        <!--<a style="display: inline-block" ng-href="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">-->
+            <img class="applyDetailImg" ng-src="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">
+        <!--</a>-->
+        </div>
         <div class="detailContent">{{template.content}}</div>
     </div>
     <div class="ringUp fl">

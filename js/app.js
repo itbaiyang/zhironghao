@@ -1,5 +1,5 @@
-//api_uri = "http://123.206.84.74/api/";
-api_uri = "http://api.supeiyunjing.com/";
+api_uri = "http://123.206.84.74/api/";
+//api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 //api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
@@ -21,12 +21,12 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
-        var no_check_route = ["/article/list", "/login", "/register/step1", "/article/showActivity", "/register/step2", "/register/reset1", "/register/reset2"];
+        var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"];
 
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-        $rootScope.wx_client = false;
+        //$rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
@@ -91,6 +91,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
 
             }else if(present_route.indexOf("/article/show/")>-1){//详情
 
+            }else if(present_route == "/article/showActivity"){//活动详情
+
             }else{//其他 无需分享页面
                 function onBridgeReady(){
                     wx.hideOptionMenu();
@@ -117,7 +119,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             if (!$rootScope.login_user) {
                 if (no_check_route.indexOf(present_route) > -1) {
                     console.log(present_route);
-                } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show/") > -1) {//详情
+                } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show") > -1) {//详情
                     console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1) {//详情
                     console.log(present_route);

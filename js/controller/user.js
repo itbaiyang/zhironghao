@@ -488,7 +488,22 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 	$scope.alertExit = function(){
 		$(".coverAlert").css("display","none");
 		$(".cancelAlert").css("display","none");
-	}
+	};
+	$(document).on('click', '#previewImage img',function(event) {
+		var imgArray = [];
+		var curImageSrc = $(this).attr('src');
+		var oParent = $(this).parent();
+		if (curImageSrc && !oParent.attr('href')) {
+			$('#previewImage img').each(function(index, el) {
+				var itemSrc = $(this).attr('src');
+				imgArray.push(itemSrc);
+			});
+			wx.previewImage({
+				current: curImageSrc,
+				urls: imgArray
+			});
+		}
+	});
 
 	$scope.cancel =function(){
 		var m_params = {
