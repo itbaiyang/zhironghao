@@ -26,7 +26,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-        //$rootScope.wx_client = false;
+        $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
@@ -115,6 +115,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
             //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
+            //console.log(present_route);
             $rootScope.check_user();
             if (!$rootScope.login_user) {
                 if (no_check_route.indexOf(present_route) > -1) {
@@ -250,43 +251,48 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.touchEnd = function(){
             $(".singleButtonFixed").removeClass("singleButton2");
             $(".singleButton1").removeClass("singleButton2");
-        }
+        };
         $rootScope.check_user = function () {
             $rootScope.login_user = $rootScope.getObject("login_user");
-            console.log($rootScope.login_user);
-            //if (!$rootScope.login_user) {
-            //    $rootScope.removeObject("login_user");
-            //    //$location.path("/login");
-            //    return false;
-            //}
-            $http({
-                url: api_uri + "auth/validateAuth",
-                method: "POST",
-                params: $rootScope.login_user
-            }).success(function (d) {
-                if (d.returnCode == 0) {
-                    console.log("login success");
-                    return true;
-                } else {
-                    $rootScope.login_user = {};
-                    $rootScope.removeObject("login_user");
-                    $rootScope.present_route = $location.$$path;
-                    if (no_check_route.indexOf($rootScope.present_route) <= -1 && $rootScope.present_route.indexOf("register/step2") <= -1 && $rootScope.present_route.indexOf("register/reset2") <= -1) {
-                        $rootScope.putSessionObject("present_route", $rootScope.present_route);
-                    } else if ($rootScope.present_route = "/login") {
-                        $rootScope.putSessionObject("present_route", $rootScope.present_route);
+            if (!$rootScope.login_user) {
+                $rootScope.removeObject("login_user");
+                $rootScope.present_route = $location.$$path;
+                return false;
+            }else{
+                $http({
+                    url: api_uri + "auth/validateAuth",
+                    method: "POST",
+                    params: $rootScope.login_user
+                }).success(function (d) {
+                    if (d.returnCode == 0) {
+                        console.log("login success");
+                        return true;
+                    } else {
+                        //$rootScope.login_user = {};
+                        $rootScope.removeObject("login_user");
+                        $rootScope.present_route = $location.$$path;
+                        console.log($rootScope.present_route,'nihao');
+                        if (no_check_route.indexOf($rootScope.present_route) <= -1
+                            && $rootScope.present_route.indexOf("article/show")<= -1
+                            && $rootScope.present_route.indexOf("register/step2") <= -1
+                            && $rootScope.present_route.indexOf("register/reset2") <= -1) {
+                            $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                        } else if ($rootScope.present_route = "/login") {
+                            $rootScope.putSessionObject("present_route", $rootScope.present_route);
+                        }
+
+                        return false;
                     }
 
+                }).error(function (d) {
+                    //$rootScope.removeObject("login_user");
+                    //$rootScope.present_route = $location.$$path;
+                    //$rootScope.putSessionObject("present_route", $rootScope.present_route);
+                    //$location.path("/login");
                     return false;
-                }
+                });
+            }
 
-            }).error(function (d) {
-                //$rootScope.removeObject("login_user");
-                //$rootScope.present_route = $location.$$path;
-                //$rootScope.putSessionObject("present_route", $rootScope.present_route);
-                //$location.path("/login");
-                return false;
-            });
         };
 
 
