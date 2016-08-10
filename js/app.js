@@ -1,5 +1,5 @@
-api_uri = "http://123.206.84.74/api/";
-//api_uri = "http://api.supeiyunjing.com/";
+// api_uri = "http://123.206.84.74/api/";
+api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 //api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
@@ -26,7 +26,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-        $rootScope.wx_client = false;
+        // $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化

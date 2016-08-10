@@ -135,8 +135,8 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 	};
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-	$scope.id = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
-	//$scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
+	// $scope.id = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
+	$scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
 	$scope.shareData = {
 		title: '直融号',
 		desc: '八月雪中送炭，千亿资金等你来拿',
