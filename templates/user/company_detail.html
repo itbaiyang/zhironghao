@@ -1,5 +1,5 @@
-<div ng-hide="company.productId =='e15813cb5bfd4290a5c2582cbdd164a4'" class="productList" style="border: 1px solid #f3f3f3;">
-<!--<div ng-hide="company.productId =='71a28b4d3c60481ebfb6270eb27fde2c'" class="productList" style="border: 1px solid #f3f3f3;">-->
+<div ng-hide="company.name =='八月活动'" class="productList" style="border: 1px solid #f3f3f3;">
+<!--<div ng-hide="company.productId =='八月活动'" class="productList" style="border: 1px solid #f3f3f3;">-->
     <div class="productLeft fl">
         <img ng-src="{{company.icon}}" alt="">
     </div>
@@ -25,6 +25,7 @@
         </p>
     </div>
 </div>
+<img ng-show="company.name =='八月活动'"  src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
 <div ng-show="choiceStyle == 0">
     <div class="applyDetail" ng-show="company_basic.baseInfo.company_name">
         <p class="detailTitle">企业名称</p>

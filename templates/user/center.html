@@ -98,7 +98,7 @@
                        ng-model="dateTime">天
             </div>
         </div>
-        <div class="applyContent" style="height: 196px; margin-bottom: 15px">
+        <div class="applyContent" style="width: calc(100% - 15px); height: 196px; margin-bottom: 15px">
             <p class="applyContentP" style="font-size: 14px" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">{{alertText1}}</p>
             <textarea style="width: 100%; line-height: 20px;font-size: 14px; resize:none" type="text" rows="8"
                       placeholder="{{alertText2}}" ng-model="reason"></textarea>
