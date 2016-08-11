@@ -63,7 +63,7 @@
         <p class="detailTitle">{{template.title}}</p>
         <div id="previewImage">
         <!--<a style="display: inline-block" ng-href="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">-->
-            <img class="applyDetailImg" ng-src="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">
+            <img class="applyDetailImg" ng-click="previewImages(list,template.imgList)" ng-src="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">
         <!--</a>-->
         </div>
         <div class="detailContent">{{template.content}}</div>

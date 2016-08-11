@@ -465,9 +465,11 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				$scope.company_basic = d.result;
 				$scope.template_list = d.result.templateList;
 				angular.forEach($scope.company_basic.templateList, function (data) {
-					if (data.templateType == 3 && data.title == "财务报表") {
-						$scope.img_list = data.imgList;
-					}
+					// if (data.templateType == 3 && data.title == "财务报表") {
+					// 	$scope.img_list = data.imgList;
+					// }
+					// data.sortsNum = -1;
+					// data.sortsNum ++;
 				});
 				console.log($scope.img_list);
 				console.log(d.result);
@@ -489,20 +491,27 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$(".coverAlert").css("display","none");
 		$(".cancelAlert").css("display","none");
 	};
-	$(document).on('click', '#previewImage img',function(event) {
-		var imgArray = [];
-		var curImageSrc = $(this).attr('src');
-		if (curImageSrc ) {
-			$('#previewImage img').each(function(index, el) {
-				var itemSrc = $(this).attr('src');
-				imgArray.push(itemSrc);
-			});
-			wx.previewImage({
-				current: curImageSrc,
-				urls: imgArray
-			});
-		}
-	});
+	$scope.previewImages = function(img,imgList){
+		console.log(img,imgList);
+		wx.previewImage({
+			current: img,
+			urls: imgList
+		});
+	};
+	// $(document).on('click', '#previewImage img',function(event) {
+	// 	var imgArray = [];
+	// 	var curImageSrc = $(this).attr('src');
+	// 	if (curImageSrc ) {
+	// 		$('#previewImage img').each(function(index, el) {
+	// 			var itemSrc = $(this).attr('src');
+	// 			imgArray.push(itemSrc);
+	// 		});
+	// 		wx.previewImage({
+	// 			current: curImageSrc,
+	// 			urls: imgArray
+	// 		});
+	// 	}
+	// });
 
 	$scope.cancel =function(){
 		var m_params = {
