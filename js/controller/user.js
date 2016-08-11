@@ -489,20 +489,21 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$(".coverAlert").css("display","none");
 		$(".cancelAlert").css("display","none");
 	};
-	$(document).on('click', '#previewImage img',function(event) {
-		var imgArray = [];
-		var curImageSrc = $(this).attr('src');
-		alert("img :" + curImageSrc);
-		if (curImageSrc ) {
-			$('#previewImage img').each(function(index, el) {
-				var itemSrc = $(this).attr('src');
-				imgArray.push(itemSrc);
-			});
+
+	$('#previewImage img').each(function(index, el) {
+
+		$(this).click(function(){
+			var imgArray = [];
+			var curImageSrc = $(this).attr('src');
+			alert("img :" + curImageSrc);
+			var itemSrc = $(this).attr('src');
+			imgArray.push(itemSrc);
 			wx.previewImage({
 				current: curImageSrc,
 				urls: imgArray
 			});
-		}
+		});
+
 	});
 
 	$scope.cancel =function(){
