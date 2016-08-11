@@ -492,7 +492,6 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 	$(document).on('click', '#previewImage img',function(event) {
 		var imgArray = [];
 		var curImageSrc = $(this).attr('src');
-		alert("src :" + curImageSrc);
 		if (curImageSrc ) {
 			$('#previewImage img').each(function(index, el) {
 				var itemSrc = $(this).attr('src');
