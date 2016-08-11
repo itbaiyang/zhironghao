@@ -489,13 +489,11 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$(".coverAlert").css("display","none");
 		$(".cancelAlert").css("display","none");
 	};
-
-	$('#previewImage img').each(function(index, el) {
-
-		$(this).click(function(){
-			var imgArray = [];
-			var curImageSrc = $(this).attr('src');
-			alert("img :" + curImageSrc);
+	$(document).on('click', '#previewImage img',function(event) {
+		var imgArray = [];
+		var curImageSrc = $(this).attr('src');
+		alert("src :" + curImageSrc);
+		if (curImageSrc ) {
 			$('#previewImage img').each(function(index, el) {
 				var itemSrc = $(this).attr('src');
 				imgArray.push(itemSrc);
@@ -504,8 +502,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				current: curImageSrc,
 				urls: imgArray
 			});
-		});
-
+		}
 	});
 
 	$scope.cancel =function(){
