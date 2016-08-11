@@ -496,8 +496,10 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			var imgArray = [];
 			var curImageSrc = $(this).attr('src');
 			alert("img :" + curImageSrc);
-			var itemSrc = $(this).attr('src');
-			imgArray.push(itemSrc);
+			$('#previewImage img').each(function(index, el) {
+				var itemSrc = $(this).attr('src');
+				imgArray.push(itemSrc);
+			});
 			wx.previewImage({
 				current: curImageSrc,
 				urls: imgArray
