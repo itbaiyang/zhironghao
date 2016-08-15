@@ -82,10 +82,13 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                     console.log(data);
                     if (data.returnCode == 0) {
                         alert(data);
-                        console.log("success")
+                        console.log("success");
+                        $rootScope.shateReturn = data.result;
+                        
                     }
                     else {
-                        console.log("分享失败")
+                        console.log("分享失败");
+                        
                     }
                 },
                 dataType: 'json',
