@@ -62,6 +62,19 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             });
         }
 
+        $rootScope.shareSuccess = function(sn,token){
+            var params = {
+                "sn":sn,
+                "token":token
+            };
+            $http({
+                url: api_uri + "wxShare/isShare",
+                method: "GET",
+                params: m_params
+            }).success(function (d) {
+                console.log(d);
+            });
+        };
 
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
