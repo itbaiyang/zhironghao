@@ -40,7 +40,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             }).success(function(d){
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: false,
+                        debug: true,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
