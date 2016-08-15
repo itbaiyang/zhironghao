@@ -81,7 +81,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
                     if (data.returnCode == 0) {
-                        alert(data);
+                        // alert(data);
                         $rootScope.shareReturn = data.result;
                         $rootScope.shareReturn.sn = data.result.sn;
                         $rootScope.shareReturn.token = data.result.token;
