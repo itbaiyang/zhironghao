@@ -91,7 +91,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                             desc: '打造企业最低融资成本',
                             link: url,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shateReturn.token, "Timeline")
+                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Timeline")
                         };
                         wx.onMenuShareTimeline($rootScope.shareData_timeline);
                     }
