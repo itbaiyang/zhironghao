@@ -17,7 +17,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             desc: '打造企业最低融资成本',
             link: "http://app.supeiyunjing.com/#/article/list",
             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-            success: $rootScope.shareSuccess($rootScope.shateReturn.sn, $rootScope.shateReturn.token, "Timeline")
+            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shateReturn.token, "Timeline")
         };
         wx.ready(function () {
             $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
@@ -30,7 +30,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             // $scope.shareData_weibo = $scope.shareData;
             // $scope.shareData_weibo.success = $rootScope.shareSuccess("111", "222", "Weibo");
             // wx.onMenuShareAppMessage($scope.shareData_appMessage);
-            wx.onMenuShareTimeline($scope.shareData_timeline);
+            // wx.onMenuShareTimeline($scope.shareData_timeline);
             // wx.onMenuShareQQ($scope.shareData_QQ);
             // wx.onMenuShareWeibo($scope.shareData_weibo);
         });
