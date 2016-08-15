@@ -83,6 +83,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                     if (data.returnCode == 0) {
                         alert(data);
                         $rootScope.shareReturn = data.result;
+                        $rootScope.shareReturn.sn = data.result.sn;
+                        $rootScope.shareReturn.token = data.result.token;
                         console.log($rootScope.shareReturn.sn);
                         $scope.shareData_timeline = {
                             title: '直融号',

@@ -12,13 +12,13 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             link: "http://app.supeiyunjing.com/#/article/list",
             imgUrl: "http://app.supeiyunjing.com/img/share.png"
         };
-        $scope.shareData_timeline = {
-            title: '直融号',
-            desc: '打造企业最低融资成本',
-            link: "http://app.supeiyunjing.com/#/article/list",
-            imgUrl: "http://app.supeiyunjing.com/img/share.png",
-            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shateReturn.token, "Timeline")
-        };
+        // $scope.shareData_timeline = {
+        //     title: '直融号',
+        //     desc: '打造企业最低融资成本',
+        //     link: "http://app.supeiyunjing.com/#/article/list",
+        //     imgUrl: "http://app.supeiyunjing.com/img/share.png",
+        //     success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shateReturn.token, "Timeline")
+        // };
         wx.ready(function () {
             $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
             // $scope.shareData_appMessage = $scope.shareData;
