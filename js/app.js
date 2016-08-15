@@ -84,7 +84,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 userId: $rootScope.userId,
                 from: 0,
                 // shareId:1,
-            }
+            };
+            console.log(m_params);
             $.ajax({
                 type: 'POST',
                 url: api_uri + "wxShare/share",
