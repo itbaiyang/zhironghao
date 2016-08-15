@@ -81,7 +81,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.getUrl = function (url) {
             var m_params = {
                 url: url,
-                userId: $rootScope.userId,
+                userId: $rootScope.login_user.userId,
                 from: 0,
                 // shareId:1,
             };
@@ -116,7 +116,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 $rootScope.putObject("openid", openid);
                 var m_params = {
                     "userId": $rootScope.login_user.userId,
-                    "token": $rootScope.login_user.userId,
+                    "token": $rootScope.login_user.token,
                     "openid": openid
                 };
                 $http({
