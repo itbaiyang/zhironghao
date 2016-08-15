@@ -63,19 +63,20 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         }
 
         $rootScope.shareSuccess = function (sn, token, to) {
-            // var params = {
-            //     "sn":sn,
-            //     "token":token,
-            //     "to":to
-            // };
-            // $http({
-            //     url: api_uri + "wxShare/isShare",
-            //     method: "GET",
-            //     params: params
-            // }).success(function (d) {
-            //     console.log(d);
-            // });
-            alert("sn:" + sn + ", token = " + token + " ,to:" + to);
+            var params = {
+                "sn": sn,
+                "token": token,
+                "to": to
+            };
+            $http({
+                url: api_uri + "wxShare/isShare",
+                method: "GET",
+                params: params
+            }).success(function (d) {
+                console.log(d);
+            });
+            // alert("sn:" + sn + ", token = " + token + " ,to:" + to);
+            console.log("sn:" + sn + ", token = " + token + " ,to:" + to);
         };
 
         $rootScope.getUrl = function (url) {
