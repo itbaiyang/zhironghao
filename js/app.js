@@ -1,5 +1,5 @@
- // api_uri = "http://123.206.84.74/api/";
-api_uri = "http://api.supeiyunjing.com/";
+  api_uri = "http://123.206.84.74/api/";
+//api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 //api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
@@ -40,7 +40,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             }).success(function(d){
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: false,
+                        debug: true,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
@@ -62,6 +62,19 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             });
         }
 
+        $rootScope.shareSuccess = function(sn,token){
+            var params = {
+                "sn":sn,
+                "token":token
+            };
+            $http({
+                url: api_uri + "wxShare/isShare",
+                method: "GET",
+                params: m_params
+            }).success(function (d) {
+                console.log(d);
+            });
+        };
 
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
