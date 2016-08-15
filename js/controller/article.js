@@ -15,13 +15,13 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
         wx.ready(function () {
             $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
             $scope.shareData_appMessage = $scope.shareData;
-            $scope.shareData_appMessage.push("success", $rootScope.shareSuccess("111", "222", "AppMessage"));
+            $scope.shareData_appMessage.success = $rootScope.shareSuccess("111", "222", "AppMessage");
             $scope.shareData_timeline = $scope.shareData;
-            $scope.shareData_timeline.push("success", $rootScope.shareSuccess("111", "222", "Timeline"));
+            $scope.shareData_timeline.success = $rootScope.shareSuccess("111", "222", "Timeline");
             $scope.shareData_QQ = $scope.shareData;
-            $scope.shareData_QQ.push("success", $rootScope.shareSuccess("111", "222", "shareData_QQ"));
+            $scope.shareData_QQ.success = $rootScope.shareSuccess("111", "222", "shareData_QQ");
             $scope.shareData_weibo = $scope.shareData;
-            $scope.shareData_weibo.push("success", $rootScope.shareSuccess("111", "222", "Weibo"));
+            $scope.shareData_weibo.success = $rootScope.shareSuccess("111", "222", "Weibo");
             wx.onMenuShareAppMessage($scope.shareData_appMessage);
             wx.onMenuShareTimeline($scope.shareData_timeline);
             wx.onMenuShareQQ($scope.shareData_QQ);
