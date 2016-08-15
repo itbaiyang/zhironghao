@@ -86,14 +86,14 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         $rootScope.shareReturn.sn = data.result.sn;
                         $rootScope.shareReturn.token = data.result.token;
                         console.log($rootScope.shareReturn.sn);
-                        $scope.shareData_timeline = {
+                        $rootScope.shareData_timeline = {
                             title: '直融号',
                             desc: '打造企业最低融资成本',
                             link: url,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shateReturn.token, "Timeline")
                         };
-                        wx.onMenuShareTimeline($scope.shareData_timeline);
+                        wx.onMenuShareTimeline($rootScope.shareData_timeline);
                     }
                     else {
                         console.log("分享失败");
