@@ -1,5 +1,5 @@
- // api_uri = "http://123.206.84.74/api/";
-api_uri = "http://api.supeiyunjing.com/";
+  api_uri = "http://123.206.84.74/api/";
+//api_uri = "http://api.supeiyunjing.com/";
 //api_uri = "http://172.17.2.13:8080/api/";
 //api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
