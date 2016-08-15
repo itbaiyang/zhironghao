@@ -93,7 +93,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
                     if (data.returnCode == 0) {
-                        console.log("分享成功")
+                        alert(data);
+                        console.log("success")
                     }
                     else {
                         console.log("分享失败")

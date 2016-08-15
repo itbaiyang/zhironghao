@@ -18,10 +18,14 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             $scope.shareData_appMessage.push("success", $rootScope.shareSuccess("111", "222", "AppMessage"));
             $scope.shareData_timeline = $scope.shareData;
             $scope.shareData_timeline.push("success", $rootScope.shareSuccess("111", "222", "Timeline"));
+            $scope.shareData_QQ = $scope.shareData;
+            $scope.shareData_QQ.push("success", $rootScope.shareSuccess("111", "222", "shareData_QQ"));
+            $scope.shareData_weibo = $scope.shareData;
+            $scope.shareData_weibo.push("success", $rootScope.shareSuccess("111", "222", "Weibo"));
             wx.onMenuShareAppMessage($scope.shareData_appMessage);
-            wx.onMenuShareTimeline($scope.shareData);
-            wx.onMenuShareQQ($scope.shareData);
-            wx.onMenuShareWeibo($scope.shareData);
+            wx.onMenuShareTimeline($scope.shareData_timeline);
+            wx.onMenuShareQQ($scope.shareData_QQ);
+            wx.onMenuShareWeibo($scope.shareData_weibo);
         });
     };
 
