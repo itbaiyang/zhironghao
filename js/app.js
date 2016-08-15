@@ -62,19 +62,48 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             });
         }
 
-        $rootScope.shareSuccess = function(sn,token){
-            var params = {
-                "sn":sn,
-                "token":token
-            };
-            $http({
-                url: api_uri + "wxShare/isShare",
-                method: "GET",
-                params: m_params
-            }).success(function (d) {
-                console.log(d);
+        $rootScope.shareSuccess = function (sn, token, to) {
+            // var params = {
+            //     "sn":sn,
+            //     "token":token,
+            //     "to":to
+            // };
+            // $http({
+            //     url: api_uri + "wxShare/isShare",
+            //     method: "GET",
+            //     params: params
+            // }).success(function (d) {
+            //     console.log(d);
+            // });
+            alert("sn:" + sn + ", token = " + token + " ,to:" + to);
+        };
+
+        $rootScope.getUrl = function (url) {
+            var m_params = {
+                url: url,
+                userId: $rootScope.userId,
+                from: 0,
+                // shareId:1,
+            }
+            $.ajax({
+                type: 'POST',
+                url: api_uri + "wxShare/share",
+                data: m_params,
+                traditional: true,
+                success: function (data, textStatus, jqXHR) {
+                    console.log(data);
+                    if (data.returnCode == 0) {
+                        console.log("分享成功")
+                    }
+                    else {
+                        console.log("分享失败")
+                    }
+                },
+                dataType: 'json',
             });
         };
+
+        // $rootScope.getUrl();
 
         // 页面跳转后
         $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {

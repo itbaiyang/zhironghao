@@ -4,6 +4,8 @@ var articleCtrl = angular.module('articleCtrl', []);
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
 
     $scope.init = function () {//微信分享
+
+
         $scope.shareData = {
             title: '直融号',
             desc: '打造企业最低融资成本',
@@ -11,7 +13,12 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             imgUrl: "http://app.supeiyunjing.com/img/share.png"
         };
         wx.ready(function () {
-            wx.onMenuShareAppMessage($scope.shareData);
+            $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
+            $scope.shareData_appMessage = $scope.shareData;
+            $scope.shareData_appMessage.push("success", $rootScope.shareSuccess("111", "222", "AppMessage"));
+            $scope.shareData_timeline = $scope.shareData;
+            $scope.shareData_timeline.push("success", $rootScope.shareSuccess("111", "222", "Timeline"));
+            wx.onMenuShareAppMessage($scope.shareData_appMessage);
             wx.onMenuShareTimeline($scope.shareData);
             wx.onMenuShareQQ($scope.shareData);
             wx.onMenuShareWeibo($scope.shareData);
