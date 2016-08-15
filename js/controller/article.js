@@ -8,8 +8,8 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
 			 title: '直融号',
 			 desc: '打造企业最低融资成本',
 			 link: "http://app.supeiyunjing.com/#/article/list",
-			 imgUrl: "http://app.supeiyunjing.com/img/share.png",
-			 success:$rootScope.shareSuccess("111","222")
+			 imgUrl: "http://app.supeiyunjing.com/img/share.png"
+			 //success:$rootScope.shareSuccess("111","222")
 		 };
 		 wx.ready(function () {
 			 wx.onMenuShareAppMessage($scope.shareData);
