@@ -79,9 +79,12 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         };
 
         $rootScope.getUrl = function (url) {
+            if ($rootScope.login_user) {
+                $rootScope.userId = $rootScope.login_user.userId;
+            }
             var m_params = {
                 url: url,
-                userId: $rootScope.login_user.userId,
+                userId: $rootScope.userId,
                 from: 0,
                 // shareId:1,
             };
