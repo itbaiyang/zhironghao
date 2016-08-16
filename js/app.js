@@ -88,7 +88,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         $rootScope.shareReturn.sn = data.result.sn;
                         console.log($rootScope.shareReturn);
                         console.log(data.result.token);
-                        $rootScope.shareReturn.token = encodeURIComponent(data.result.token);
+                        // $rootScope.shareReturn.token = encodeURIComponent(data.result.token);
+                        $rootScope.shareReturn.token = data.result.token;
                         console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
                             title: '直融号',
