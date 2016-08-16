@@ -67,6 +67,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 "shareName": $routeParams.share,
                 "shareId": $routeParams.shareId,
             };
+            console.log($rootScope.share);
             $rootScope.putSessionObject("share", $rootScope.share)
         }
         $rootScope.getUrl = function (url) {
