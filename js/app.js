@@ -224,18 +224,16 @@ var myApp = angular.module('myApp', [
             $rootScope.removeSessionObject("showID");
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1 || present_route == "/article/showActivity") {//列表
-                // $location.search()['share'];
-                // console.log($stateParams.share);
-                // console.log($stateParams.shareId);
-                //
-                // if ($stateParams.share && $stateParams.shareId) {
-                //     $rootScope.share = {
-                //         "shareName": $stateParams.share,
-                //         "shareId": $stateParams.shareId,
-                //     };
-                //     console.log($rootScope.share);
-                //     $rootScope.putSessionObject("share", $rootScope.share)
-                // }
+                var shareName = $location.search()['share'];
+                var shareId = $location.search()['shareId'];
+                if (shareName && shareId) {
+                    $rootScope.share = {
+                        "shareName": shareName,
+                        "shareId": shareId,
+                    };
+                    console.log($rootScope.share);
+                    $rootScope.putSessionObject("share", $rootScope.share)
+                }
 
                 wx.ready(function () {
 
