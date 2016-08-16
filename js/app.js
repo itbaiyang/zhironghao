@@ -61,7 +61,6 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 // TODO 请求用户信息异常
             });
         }
-
         $rootScope.getUrl = function (url) {
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
@@ -85,20 +84,36 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         $rootScope.shareReturn = data.result;
                         $rootScope.shareReturn.sn = data.result.sn;
                         $rootScope.shareReturn.token = data.result.token;
-                        console.log($rootScope.shareReturn.sn);
-                        // $rootScope.shareData_timeline = {
-                        //     title: '直融号',
-                        //     desc: '打造企业最低融资成本',
-                        //     link: url,
-                        //     imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                        //     success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Timeline")
-                        // };
+                        wx.onMenuShareAppMessage({
+                            title: '直融号',
+                            desc: '打造企业最低融资成本',
+                            link: url,
+                            imgUrl: "http://app.supeiyunjing.com/img/share.png",
+                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "AppMessage")
+                        });
+
                         wx.onMenuShareTimeline({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
                             link: url,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Timeline")
+                        });
+
+                        wx.onMenuShareQQ({
+                            title: '直融号',
+                            desc: '打造企业最低融资成本',
+                            link: url,
+                            imgUrl: "http://app.supeiyunjing.com/img/share.png",
+                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "QQ")
+                        });
+
+                        wx.onMenuShareWeibo({
+                            title: '直融号',
+                            desc: '打造企业最低融资成本',
+                            link: url,
+                            imgUrl: "http://app.supeiyunjing.com/img/share.png",
+                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Weibo")
                         });
                     }
                     else {
@@ -153,13 +168,24 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             };
             $rootScope.removeSessionObject("showID");
 
-            if(present_route == "/article/list"){//列表
+            if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1 || present_route == "/article/showActivity") {//列表
+                wx.ready(function () {
+                    $rootScope.getUrl($location.absUrl());
+                });
 
-            }else if(present_route.indexOf("/article/show/")>-1){//详情
-
-            }else if(present_route == "/article/showActivity"){//活动详情
-
-            }else{//其他 无需分享页面
+            }
+            // else if(present_route.indexOf("/article/show/")>-1){//详情
+            //     wx.ready(function () {
+            //         $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
+            //     });
+            //
+            // }else if(present_route == "/article/showActivity"){//活动详情
+            //     wx.ready(function () {
+            //         $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
+            //     });
+            //
+            // }
+            else {//其他 无需分享页面
                 function onBridgeReady(){
                     wx.hideOptionMenu();
                 }
