@@ -65,11 +65,14 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
+            if ($routeParams.shareId) {
+                $rootScope.shareId = $rootScope.login_user.userId;
+            }
             var m_params = {
                 url: url,
                 userId: $rootScope.userId,
                 from: 0,
-                // shareId:1,
+                shareId: $rootScope.shareId,
             };
             console.log(m_params);
             $.ajax({
