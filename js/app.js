@@ -66,7 +66,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 $rootScope.userId = $rootScope.login_user.userId;
             }
             if ($routeParams.shareId) {
-                $rootScope.shareId = $rootScope.login_user.userId;
+                $rootScope.shareId = $routeParams.shareId;
             }
             var m_params = {
                 url: url,
@@ -88,14 +88,27 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         $rootScope.shareReturn.sn = data.result.sn;
                         console.log($rootScope.shareReturn);
                         console.log(data.result.token);
-                        $rootScope.shareReturn.token = encodeURI(data.result.token);
+                        $rootScope.shareReturn.token = encodeURIComponent(data.result.token);
                         console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "AppMessage")
+                            success: function () {
+                                var params = {
+                                    "sn": $rootScope.shareReturn.sn,
+                                    "token": $rootScope.shareReturn.token,
+                                    "to": "AppMessage"
+                                };
+                                $http({
+                                    url: api_uri + "wxShare/isShare",
+                                    method: "GET",
+                                    params: params
+                                }).success(function (d) {
+                                    console.log(d);
+                                });
+                            }
                         });
 
                         wx.onMenuShareTimeline({
@@ -103,7 +116,20 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                             desc: '打造企业最低融资成本',
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Timeline")
+                            success: function () {
+                                var params = {
+                                    "sn": $rootScope.shareReturn.sn,
+                                    "token": $rootScope.shareReturn.token,
+                                    "to": "Timeline"
+                                };
+                                $http({
+                                    url: api_uri + "wxShare/isShare",
+                                    method: "GET",
+                                    params: params
+                                }).success(function (d) {
+                                    console.log(d);
+                                });
+                            }
                         });
 
                         wx.onMenuShareQQ({
@@ -111,7 +137,20 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                             desc: '打造企业最低融资成本',
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "QQ")
+                            success: function () {
+                                var params = {
+                                    "sn": $rootScope.shareReturn.sn,
+                                    "token": $rootScope.shareReturn.token,
+                                    "to": "QQ"
+                                };
+                                $http({
+                                    url: api_uri + "wxShare/isShare",
+                                    method: "GET",
+                                    params: params
+                                }).success(function (d) {
+                                    console.log(d);
+                                });
+                            }
                         });
 
                         wx.onMenuShareWeibo({
@@ -119,7 +158,20 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                             desc: '打造企业最低融资成本',
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                            success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Weibo")
+                            success: function () {
+                                var params = {
+                                    "sn": $rootScope.shareReturn.sn,
+                                    "token": $rootScope.shareReturn.token,
+                                    "to": "Weibo"
+                                };
+                                $http({
+                                    url: api_uri + "wxShare/isShare",
+                                    method: "GET",
+                                    params: params
+                                }).success(function (d) {
+                                    console.log(d);
+                                });
+                            }
                         });
                     }
                     else {
