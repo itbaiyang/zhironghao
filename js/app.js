@@ -16,8 +16,8 @@ var myApp = angular.module('myApp', [
 });
 
 
-  myApp.run(['$location', '$rootScope', '$http', '$routeParams', '$stateParams',
-      function ($location, $rootScope, $http, $routeParams, $stateParams) {
+  myApp.run(['$location', '$rootScope', '$http', '$routeParams',
+      function ($location, $rootScope, $http, $routeParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
@@ -225,19 +225,21 @@ var myApp = angular.module('myApp', [
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1 || present_route == "/article/showActivity") {//列表
                 // $location.search()['share'];
-                wx.ready(function () {
-                    $rootScope.getUrl($location.absUrl());
-                    console.log($stateParams.share);
-                    console.log($stateParams.shareId);
+                // console.log($stateParams.share);
+                // console.log($stateParams.shareId);
+                //
+                // if ($stateParams.share && $stateParams.shareId) {
+                //     $rootScope.share = {
+                //         "shareName": $stateParams.share,
+                //         "shareId": $stateParams.shareId,
+                //     };
+                //     console.log($rootScope.share);
+                //     $rootScope.putSessionObject("share", $rootScope.share)
+                // }
 
-                    if ($stateParams.share && $stateParams.shareId) {
-                        $rootScope.share = {
-                            "shareName": $stateParams.share,
-                            "shareId": $stateParams.shareId,
-                        };
-                        console.log($rootScope.share);
-                        $rootScope.putSessionObject("share", $rootScope.share)
-                    }
+                wx.ready(function () {
+
+                    $rootScope.getUrl($location.absUrl());
                 });
 
             } else {//其他 无需分享页面
