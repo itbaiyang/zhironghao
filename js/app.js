@@ -26,7 +26,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-         // $rootScope.wx_client = false;
+        $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
@@ -86,11 +86,14 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         // alert(data);
                         $rootScope.shareReturn = data.result;
                         $rootScope.shareReturn.sn = data.result.sn;
-                        $rootScope.shareReturn.token = data.result.token;
+                        console.log($rootScope.shareReturn);
+                        console.log(data.result.token);
+                        $rootScope.shareReturn.token = encodeURI(data.result.token);
+                        console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
-                            link: api_uri + "/wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
+                            link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "AppMessage")
                         });
@@ -98,7 +101,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         wx.onMenuShareTimeline({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
-                            link: api_uri + "/wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
+                            link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Timeline")
                         });
@@ -106,7 +109,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         wx.onMenuShareQQ({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
-                            link: api_uri + "/wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
+                            link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "QQ")
                         });
@@ -114,7 +117,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                         wx.onMenuShareWeibo({
                             title: '直融号',
                             desc: '打造企业最低融资成本',
-                            link: api_uri + "/wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
+                            link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: $rootScope.shareSuccess($rootScope.shareReturn.sn, $rootScope.shareReturn.token, "Weibo")
                         });
