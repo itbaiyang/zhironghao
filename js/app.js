@@ -40,7 +40,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             }).success(function(d){
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: true,
+                        debug: false,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
@@ -60,6 +60,14 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             }).error(function(data){
                 // TODO 请求用户信息异常
             });
+        }
+        ;
+        if ($routeParams.share && $routeParams.shareId) {
+            $rootScope.share = {
+                "shareName": $routeParams.share,
+                "shareId": $routeParams.shareId,
+            };
+            $rootScope.putSessionObject("share", $rootScope.share)
         }
         $rootScope.getUrl = function (url) {
             if ($rootScope.login_user) {
@@ -219,29 +227,16 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 }).success(function (d) {
                     console.log(d);
                 });
-
-
             };
             $rootScope.removeSessionObject("showID");
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1 || present_route == "/article/showActivity") {//列表
                 wx.ready(function () {
+
                     $rootScope.getUrl($location.absUrl());
                 });
 
-            }
-            // else if(present_route.indexOf("/article/show/")>-1){//详情
-            //     wx.ready(function () {
-            //         $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
-            //     });
-            //
-            // }else if(present_route == "/article/showActivity"){//活动详情
-            //     wx.ready(function () {
-            //         $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
-            //     });
-            //
-            // }
-            else {//其他 无需分享页面
+            } else {//其他 无需分享页面
                 function onBridgeReady(){
                     wx.hideOptionMenu();
                 }

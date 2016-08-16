@@ -152,6 +152,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
         });
     };
     $scope.submit = function () {
+        var share_msg = $rootScope.getSessionObject("share");
         var m_params = {
             userId: $rootScope.login_user.userId,
             token: $rootScope.login_user.token,
@@ -159,7 +160,9 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             linkman: $scope.company.name,
             mobile: $scope.company.mobile,
             fee: $scope.company.fee,
-            productId: $routeParams.id
+            productId: $routeParams.id,
+            share: share_msg.shareName,
+            shareId: share_msg.shareId
         };
         console.log(m_params.companyName + "baiyang");
         if (typeof(m_params.companyName) == "undefined" || m_params.companyName == '') {
