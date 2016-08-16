@@ -62,6 +62,8 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             });
         }
         ;
+        console.log($routeParams.share);
+        console.log($routeParams.shareId);
         if ($routeParams.share && $routeParams.shareId) {
             $rootScope.share = {
                 "shareName": $routeParams.share,
