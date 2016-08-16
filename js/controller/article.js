@@ -2,21 +2,6 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
-
-    // $scope.init = function () {//微信分享
-    //     $scope.shareData = {
-    //         title: '直融号',
-    //         desc: '打造企业最低融资成本',
-    //         link: "http://app.supeiyunjing.com/#/article/list",
-    //         imgUrl: "http://app.supeiyunjing.com/img/share.png"
-    //     };
-    //     wx.ready(function () {
-    //         $rootScope.getUrl("http://app.supeiyunjing.com/#/article/list");
-    //     });
-    // };
-    //
-    // $scope.init();
-
     var result_list = [];
 
     $scope.list = function (pageNo, pageSize) {//产品列表
@@ -100,19 +85,6 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
                 if ($scope.article_detail.loanlife) {
                     desc += "贷款期限:" + $scope.article_detail.loanlife + "年";
                 }
-                // $scope.shareData = {
-                //     title: $scope.article_detail.name,
-                //     desc: desc,
-                //     link: "http://app.supeiyunjing.com/#/article/show/" + $routeParams.id,
-                //     imgUrl: "http://app.supeiyunjing.com/img/share.png"
-                // };
-                // wx.ready(function () {
-                //     wx.onMenuShareAppMessage($scope.shareData);
-                //     wx.onMenuShareTimeline($scope.shareData);
-                //     wx.onMenuShareQQ($scope.shareData);
-                //     wx.onMenuShareWeibo($scope.shareData);
-                // });
-
             } else {
                 console.log(d);
             }
@@ -133,19 +105,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.id = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
-    // $scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
-    // $scope.shareData = {
-    //     title: '直融号',
-    //     desc: '八月雪中送炭，千亿资金等你来拿',
-    //     link: "http://app.supeiyunjing.com/#/article/show/" + $scope.id,
-    //     imgUrl: "http://app.supeiyunjing.com/img/share.png"
-    // };
-    // wx.ready(function () {
-    //     wx.onMenuShareAppMessage($scope.shareData);
-    //     wx.onMenuShareTimeline($scope.shareData);
-    //     wx.onMenuShareQQ($scope.shareData);
-    //     wx.onMenuShareWeibo($scope.shareData);
-    // });
+    // $scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活
     $scope.apply = function () {
         $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty($scope.id)) {
