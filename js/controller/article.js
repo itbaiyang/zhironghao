@@ -164,7 +164,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             share: share_msg.shareName,
             shareId: share_msg.shareId
         };
-        console.log(m_params.companyName + "baiyang");
+        console.log(m_params + "baiyang");
         if (typeof(m_params.companyName) == "undefined" || m_params.companyName == '') {
             $scope.company.errorMsg = "公司名称不能为空";
             $timeout(function () {
