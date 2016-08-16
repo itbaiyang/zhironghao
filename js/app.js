@@ -16,8 +16,8 @@ var myApp = angular.module('myApp', [
 });
 
 
-myApp.run(['$location', '$rootScope', '$http', '$routeParams',
-    function ($location, $rootScope, $http, $routeParams) {
+  myApp.run(['$location', '$rootScope', '$http', '$routeParams', '$stateParams',
+      function ($location, $rootScope, $http, $routeParams, $stateParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
@@ -61,17 +61,7 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
                 // TODO 请求用户信息异常
             });
         }
-        ;
-        console.log($routeParams.share);
-        console.log($routeParams.shareId);
-        if ($routeParams.share && $routeParams.shareId) {
-            $rootScope.share = {
-                "shareName": $routeParams.share,
-                "shareId": $routeParams.shareId,
-            };
-            console.log($rootScope.share);
-            $rootScope.putSessionObject("share", $rootScope.share)
-        }
+
         $rootScope.getUrl = function (url) {
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
@@ -234,6 +224,19 @@ myApp.run(['$location', '$rootScope', '$http', '$routeParams',
             $rootScope.removeSessionObject("showID");
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1 || present_route == "/article/showActivity") {//列表
+                // $location.search()['share'];
+                console.log($stateParams.share);
+                console.log($stateParams.shareId);
+                
+                if ($stateParams.share && $stateParams.shareId) {
+                    $rootScope.share = {
+                        "shareName": $stateParams.share,
+                        "shareId": $stateParams.shareId,
+                    };
+                    console.log($rootScope.share);
+                    $rootScope.putSessionObject("share", $rootScope.share)
+                }
+
                 wx.ready(function () {
 
                     $rootScope.getUrl($location.absUrl());
