@@ -63,18 +63,6 @@ var myApp = angular.module('myApp', [
         }
 
 
-
-          var shareName = $location.search()['share'];
-          console.log($rootScope.share);
-          if (shareName) {
-              var shareId = $location.search()['shareId'];
-              var share = {
-                  "shareName": shareName,
-                  "shareId": shareId,
-              };
-              $rootScope.putSessionObject("share", share);
-          }
-
         $rootScope.getUrl = function (url) {
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
@@ -238,10 +226,24 @@ var myApp = angular.module('myApp', [
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1
                 || present_route == "/article/showActivity") {//列表
+
+                var shareName = $location.search()['share'];
+                console.log($rootScope.share);
+                if (shareName) {
+                    var shareId = $location.search()['shareId'];
+                    var share = {
+                        "shareName": shareName,
+                        "shareId": shareId,
+                    };
+                    $rootScope.putSessionObject("share", share);
+                }
                 wx.ready(function () {
 
                     $rootScope.getUrl($location.absUrl());
                 });
+
+
+
 
             } else {//其他 无需分享页面
                 function onBridgeReady(){
