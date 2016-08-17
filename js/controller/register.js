@@ -121,12 +121,14 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 });
 
 registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $location,$routeParams,$timeout) {
-
+	var share_msg = $rootScope.getSessionObject("share");
 	$scope.registerUser = {
 		"mobile":$routeParams.mobile,
 		"password":"",
 		"validatePwd":"",
-		"token":$routeParams.token
+		"token": $routeParams.token,
+		"share": share_msg.shareName,
+		"shareId": share_msg.shareId
 	};
 
 	$scope.changeErrorMsg = function(msg){
