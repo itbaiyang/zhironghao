@@ -228,7 +228,7 @@ var myApp = angular.module('myApp', [
                 || present_route == "/article/showActivity") {//列表
 
                 var shareName = $location.search()['share'];
-                console.log($rootScope.share);
+                console.log(shareName);
                 if (shareName) {
                     var shareId = $location.search()['shareId'];
                     var share = {
