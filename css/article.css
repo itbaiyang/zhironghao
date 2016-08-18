@@ -148,8 +148,8 @@ hr {
     height: 10px;
     line-height: 10px;
     font-size: 10px;
-    padding: 2px 2px;
-    vertical-align: middle;
+    padding: 2px 2px 0;
+    vertical-align: top;
     /*border-radius: 2px;*/
 }
 
