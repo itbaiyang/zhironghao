@@ -149,6 +149,7 @@ hr {
     line-height: 10px;
     font-size: 10px;
     padding: 2px 2px;
+    vertical-align: middle;
     /*border-radius: 2px;*/
 }
 
