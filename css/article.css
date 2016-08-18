@@ -145,10 +145,10 @@ hr {
 }
 .productP3 span {
     display: inline-block;
-    height: 12px;
-    line-height: 12px;
+    height: 14px;
+    line-height: 10px;
     font-size: 10px;
-    padding: 1px 2px;
+    padding: 2px 2px;
     /*border-radius: 2px;*/
 }
 
