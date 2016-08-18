@@ -139,16 +139,16 @@ hr {
 }
 
 .productP3 {
-    margin-top: -1px;
+    margin-top: -2px;
     boder: none;
     display: inline-block;
 }
 .productP3 span {
     display: inline-block;
-    height: 12px;
-    line-height: 12px;
+    height: 14px;
+    line-height: 14px;
     font-size: 10px;
-    padding: 0 1px;
+    padding: 0 2px;
     /*border-radius: 2px;*/
 }
 
