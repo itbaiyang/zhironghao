@@ -147,14 +147,27 @@ hr {
     margin-top: -1px;
     boder: none;
     display: inline-block;
+    position: absolute;
+    left: 0;
+}
+
+.productP5 {
+    margin-top: -1px;
+    boder: none;
+    display: inline-block;
+    position: absolute;
+    right: 15px;
+    color: #acacba;
+    font-size: 10px;
 }
 
 .productP3 > p {
+    vertical-align: top;
     display: inline-block;
-    height: 14px;
+    height: 12px;
     line-height: 12px;
     font-size: 10px;
-    padding: 1px 2px;
+    padding: 2px 2px;
     /*border-radius: 2px;*/
 }
 
