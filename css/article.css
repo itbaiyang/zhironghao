@@ -149,7 +149,7 @@ hr {
     display: inline-block;
 }
 
-.productP3 p {
+.productP3 > p {
     display: inline-block;
     height: 14px;
     line-height: 12px;
