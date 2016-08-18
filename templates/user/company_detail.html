@@ -8,21 +8,20 @@
         <span>{{company.name}}</span>
     </p>
     <div class="productCenter clear">
-        <p class="productP2 fl">
+        <p class="productP2">
             <span>{{company.loanvalue}}</span>
             <span ng-show="company.loanvalue && company.loanlife">/</span>
             <span>{{company.loanlife}}</span>
         </p>
-        <p class="productP4 fr">利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
+        <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
     </div>
     <div class="productCenter">
-        <p class="productP3 fl">
-            <span ng-show="company.tags[0]" class="productSpan1">{{company.tags[0]}}</span>
-            <span ng-show="company.tags[1]" class="productSpan2">{{company.tags[1]}}</span>
+        <div class="productP3">
+            <p ng-show="company.tags[0]" class="productSpan1">{{company.tags[0]}}</p>
+            <p ng-show="company.tags[1]" class="productSpan2">{{company.tags[1]}}</p>
             <!--<span ng-show="company.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
-        </p>
-        <p class="productP3 fr" style="margin-right: 15px;margin-top: -1px"><span style="color: #acacba">{{company.rateRemark}}</span>
-        </p>
+        </div>
+        <p class="productP5">{{company.rateRemark}}</p>
     </div>
 </div>
 <img ng-show="company.name =='八月活动'"  src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
