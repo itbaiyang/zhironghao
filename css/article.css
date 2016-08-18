@@ -166,7 +166,7 @@ hr {
     vertical-align: top;
     display: inline-block;
     height: 12px;
-    line-height: 12px;
+    /*line-height: 12px;*/
     font-size: 10px;
     padding: 1px 2px;
     /*border-radius: 2px;*/
