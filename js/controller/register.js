@@ -36,7 +36,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 			 $scope.send_sms = true;
 			 $scope.sms_second = 60;
 		}
-	}
+	};
 
 	$scope.send_code = function(){
 		if($rootScope.isNullOrEmpty($scope.registerUser.mobile)){
@@ -136,7 +136,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		"share": share_msg.shareName,
 		"shareId": share_msg.shareId
 	};
-	alert($scope.registerUser);
+	// alert($scope.registerUser);
 
 	$scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;

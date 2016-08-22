@@ -4,7 +4,8 @@
 //api_uri = "http://172.16.97.95:8080/api/";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-root_uri = "http://app.supeiyunjing.com/#";
+// root_uri = "http://app.supeiyunjing.com/#";
+root_uri = "http://test.zhironghao.com/#";
 
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
@@ -64,6 +65,7 @@ var myApp = angular.module('myApp', [
 
 
         $rootScope.getUrl = function (url) {
+           var url_new = url.getRequestURI();
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
@@ -71,7 +73,7 @@ var myApp = angular.module('myApp', [
                 $rootScope.shareId = $routeParams.shareId;
             }
             var m_params = {
-                url: url,
+                url: root_uri+url_new,
                 userId: $rootScope.userId,
                 from: 0,
                 shareId: $rootScope.shareId,
