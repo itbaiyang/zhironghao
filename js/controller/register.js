@@ -122,6 +122,12 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 
 registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $location,$routeParams,$timeout) {
 	var share_msg = $rootScope.getSessionObject("share");
+	if(!share_msg){
+		share_msg ={
+			shareName: null,
+			shareId:null
+		}
+	}
 	$scope.registerUser = {
 		"mobile":$routeParams.mobile,
 		"password":"",
@@ -130,6 +136,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		"share": share_msg.shareName,
 		"shareId": share_msg.shareId
 	};
+	alert($scope.registerUser);
 
 	$scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;
