@@ -153,6 +153,12 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
     };
     $scope.submit = function () {
         var share_msg = $rootScope.getSessionObject("share");
+        if(!share_msg){
+            share_msg ={
+                shareName: null,
+                shareId:null
+            }
+        }
         var m_params = {
             userId: $rootScope.login_user.userId,
             token: $rootScope.login_user.token,
