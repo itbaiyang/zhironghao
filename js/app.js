@@ -74,7 +74,10 @@ var myApp = angular.module('myApp', [
                     if (d.returnCode == 0) {
                         $rootScope.shareBankname = d.result.bankname + '-';
                         $rootScope.shareProductName = d.result.name;
-                        $rootScope.desc = '额度：'+d.result.loanvalue +'/n期限：'+d.result.loanlife+'/n利息：'+d.result.rate;
+                        $rootScope.desc = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate;
+                        $rootScope.desc1 = '额度：'+d.result.loanvalue +'/n期限：'+d.result.loanlife+'/n利息：'+d.result.rate;
+                        console.log($rootScope.desc);
+                        console.log($rootScope.desc1);
                     } else {
                         console.log(d);
                     }
