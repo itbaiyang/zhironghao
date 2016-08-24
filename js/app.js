@@ -67,6 +67,9 @@ var myApp = angular.module('myApp', [
         $rootScope.getUrl = function (url,id) {
             if(id){
                 $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName
+            }else if(url.indexOf("showActivity")){
+                $rootScope.title ='直融号8月活动';
+                $rootScope.desc = '千亿资金等你来拿'
             }else{
                 $rootScope.title ='直融号';
                 $rootScope.desc = '打造企业最低融资成本'
