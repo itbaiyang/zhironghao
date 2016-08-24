@@ -61,7 +61,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
         }).success(function (d) {
             $rootScope.shareBankname = d.result.bankname + '-';
             $rootScope.shareProductName = d.result.name;
-            $rootScope.desc = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate;
+            $rootScope.desc = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate+'%';
             console.log($rootScope.desc);
             console.log(d);
             if (d.returnCode == 0) {
