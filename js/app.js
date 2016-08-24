@@ -66,24 +66,9 @@ var myApp = angular.module('myApp', [
 
         $rootScope.getUrl = function (url,id) {
             if(id){
-                $http({
-                    url: api_uri + "financialProduct/detail/" + id,
-                    method: "GET",
-                }).success(function (d) {
-                    console.log(d);
-                    if (d.returnCode == 0) {
-                        $rootScope.shareBankname = d.result.bankname + '-';
-                        $rootScope.shareProductName = d.result.name;
-                        $rootScope.desc = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate;
-                        console.log($rootScope.desc);
-                    } else {
-                        console.log(d);
-                    }
-                }).error(function (d) {
-                });
+                $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName
             }else{
-                $rootScope.shareBankname ='';
-                $rootScope.shareProductName ='直融号';
+                $rootScope.title ='直融号';
                 $rootScope.desc = '打造企业最低融资成本'
             }
             var strs= []; //定义一数组 
@@ -119,7 +104,7 @@ var myApp = angular.module('myApp', [
                         $rootScope.shareReturn.token = data.result.token;
                         console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
-                            title: $rootScope.shareBankname + $rootScope.shareProductName,
+                            title: $rootScope.title,
                             desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
@@ -140,7 +125,7 @@ var myApp = angular.module('myApp', [
                         });
 
                         wx.onMenuShareTimeline({
-                            title: $rootScope.shareBankname + $rootScope.shareProductName,
+                            title: $rootScope.title,
                             desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
