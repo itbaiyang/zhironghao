@@ -66,13 +66,14 @@ var myApp = angular.module('myApp', [
 
         $rootScope.getUrl = function (url,id) {
             if(id){
-                $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName
+                $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName;
+                $rootScope.desc = $rootScope.desc_detail;
             }else if(url.indexOf("showActivity")){
                 $rootScope.title ='直融号8月活动';
-                $rootScope.desc = '千亿资金等你来拿'
+                $rootScope.desc = '千亿资金等你来拿';
             }else{
                 $rootScope.title ='直融号';
-                $rootScope.desc = '打造企业最低融资成本'
+                $rootScope.desc = '打造企业最低融资成本';
             }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
