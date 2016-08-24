@@ -65,6 +65,18 @@ var myApp = angular.module('myApp', [
 
 
         $rootScope.getUrl = function (url) {
+            $http({
+                url: api_uri + "financialProduct/detail/" + $routeParams.id,
+                method: "GET",
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+
+                } else {
+                    console.log(d);
+                }
+            }).error(function (d) {
+            });
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
             console.log(strs);
@@ -183,7 +195,6 @@ var myApp = angular.module('myApp', [
                     }
                     else {
                         console.log("分享失败");
-                        
                     }
                 },
                 dataType: 'json',
@@ -243,10 +254,8 @@ var myApp = angular.module('myApp', [
                 }
                 wx.ready(function () {
                     $rootScope.getUrl($location.absUrl());
+                    console.log($routeParams.id,'xiwanga');
                 });
-
-
-
 
             } else {//其他 无需分享页面
                 function onBridgeReady(){

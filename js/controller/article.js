@@ -16,16 +16,8 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
         }).success(function (d) {
             console.log(d);
             if (d.returnCode == 0) {
-                //result_list = result_list.concat(d.result.datas);
-                //$scope.result_list = result_list;
                 $scope.result_list = d.result.datas;
-                //$scope.nextPage = d.result.nextPage;
-                //$scope.pageNo = d.result.pageNo;
                 $scope.totalCount = d.result.totalCount;
-                //$scope.totalPage = d.result.totalPage;
-                //if($scope.totalCount >10){
-                // $scope.list(1,$scope.totalCount);
-                //}
             }
             else {
                 console.log(d.result);
@@ -66,7 +58,6 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
         $http({
             url: api_uri + "financialProduct/detail/" + $routeParams.id,
             method: "GET",
-            //params: $rootScope.login_user
         }).success(function (d) {
             console.log(d);
             if (d.returnCode == 0) {
