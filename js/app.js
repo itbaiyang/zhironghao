@@ -146,8 +146,8 @@ var myApp = angular.module('myApp', [
                         });
 
                         wx.onMenuShareQQ({
-                            title: '直融号',
-                            desc: '打造企业最低融资成本',
+                            title: $rootScope.title,
+                            desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: function () {
@@ -167,8 +167,8 @@ var myApp = angular.module('myApp', [
                         });
 
                         wx.onMenuShareWeibo({
-                            title: '直融号',
-                            desc: '打造企业最低融资成本',
+                            title: $rootScope.title,
+                            desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: function () {
