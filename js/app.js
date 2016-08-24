@@ -75,9 +75,7 @@ var myApp = angular.module('myApp', [
                         $rootScope.shareBankname = d.result.bankname + '-';
                         $rootScope.shareProductName = d.result.name;
                         $rootScope.desc = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate;
-                        $rootScope.desc1 = '额度：'+d.result.loanvalue +'/n期限：'+d.result.loanlife+'/n利息：'+d.result.rate;
                         console.log($rootScope.desc);
-                        console.log($rootScope.desc1);
                     } else {
                         console.log(d);
                     }
@@ -86,6 +84,7 @@ var myApp = angular.module('myApp', [
             }else{
                 $rootScope.shareBankname ='';
                 $rootScope.shareProductName ='直融号';
+                $rootScope.desc = '打造企业最低融资成本'
             }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
@@ -141,8 +140,8 @@ var myApp = angular.module('myApp', [
                         });
 
                         wx.onMenuShareTimeline({
-                            title: '直融号',
-                            desc: '打造企业最低融资成本',
+                            title: $rootScope.shareBankname + $rootScope.shareProductName,
+                            desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: function () {
