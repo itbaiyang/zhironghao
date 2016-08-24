@@ -64,19 +64,23 @@ var myApp = angular.module('myApp', [
         }
 
 
-        $rootScope.getUrl = function (url) {
-            $http({
-                url: api_uri + "financialProduct/detail/" + $routeParams.id,
-                method: "GET",
-            }).success(function (d) {
-                console.log(d);
-                if (d.returnCode == 0) {
-
-                } else {
+        $rootScope.getUrl = function (url,id) {
+            if(id){
+                $http({
+                    url: api_uri + "financialProduct/detail/" + id,
+                    method: "GET",
+                }).success(function (d) {
                     console.log(d);
-                }
-            }).error(function (d) {
-            });
+                    if (d.returnCode == 0) {
+                        
+                    } else {
+                        console.log(d);
+                    }
+                }).error(function (d) {
+                });
+            }else{
+                
+            }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
             console.log(strs);
@@ -253,7 +257,7 @@ var myApp = angular.module('myApp', [
                     $rootScope.putSessionObject("share", share);
                 }
                 wx.ready(function () {
-                    $rootScope.getUrl($location.absUrl());
+                    $rootScope.getUrl($location.absUrl(),$routeParams.id);
                     console.log($routeParams.id,'xiwanga');
                 });
 
