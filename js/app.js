@@ -65,7 +65,9 @@ var myApp = angular.module('myApp', [
 
 
         $rootScope.getUrl = function (url) {
-           var url_new = url.getRequestURI();
+           // var url_new = url.getRequestURI();
+            console.log(url);
+            console.log(url.getRequestURI());
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
@@ -240,7 +242,6 @@ var myApp = angular.module('myApp', [
                     $rootScope.putSessionObject("share", share);
                 }
                 wx.ready(function () {
-
                     $rootScope.getUrl($location.absUrl());
                 });
 
