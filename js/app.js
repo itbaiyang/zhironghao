@@ -65,9 +65,9 @@ var myApp = angular.module('myApp', [
 
 
         $rootScope.getUrl = function (url) {
-           // var url_new = url.getRequestURI();
-            console.log(url);
-            console.log(url.getRequestURI());
+            var strs= []; //定义一数组 
+            strs=url.split("?"); //字符分割
+            console.log(strs);
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
@@ -75,7 +75,7 @@ var myApp = angular.module('myApp', [
                 $rootScope.shareId = $routeParams.shareId;
             }
             var m_params = {
-                url: root_uri+url_new,
+                url: strs[0],
                 userId: $rootScope.userId,
                 from: 0,
                 shareId: $rootScope.shareId,
