@@ -72,14 +72,17 @@ var myApp = angular.module('myApp', [
                 }).success(function (d) {
                     console.log(d);
                     if (d.returnCode == 0) {
-                        
+                        $rootScope.shareBankname = d.result.bankname + '-';
+                        $rootScope.shareProductName = d.result.name;
+                        $rootScope.desc = '额度：'+d.result.loanvalue +'期限：'+d.result.loanlife+'利息：'+d.result.rate;
                     } else {
                         console.log(d);
                     }
                 }).error(function (d) {
                 });
             }else{
-                
+                $rootScope.shareBankname ='';
+                $rootScope.shareProductName ='直融号';
             }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
@@ -114,8 +117,8 @@ var myApp = angular.module('myApp', [
                         $rootScope.shareReturn.token = data.result.token;
                         console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
-                            title: '直融号',
-                            desc: '打造企业最低融资成本',
+                            title: $rootScope.shareBankname + $rootScope.shareProductName,
+                            desc: $rootScope.desc,
                             link: api_uri + "wxShare/show?sn=" + $rootScope.shareReturn.sn + "&token=" + $rootScope.shareReturn.token,
                             imgUrl: "http://app.supeiyunjing.com/img/share.png",
                             success: function () {
