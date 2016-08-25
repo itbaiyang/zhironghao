@@ -110,7 +110,7 @@
         <span class="userSetIcon"></span>
         <span class="userSetContent1">{{company.mobile}}</span>
     </div>
-    <div class="userSetOut" ng-show="company.status == 1" ng-click="alertCancel()">取消申请</div>
+    <div class="userSetOut" ng-show="company.status == 1 &&company.op ==true" ng-click="alertCancel()">取消申请</div>
     <div class="coverAlert"></div>
     <div class="cancelAlert">
         <p class="alertText" style="color: black">温馨提示</p>
