@@ -468,7 +468,16 @@
     font-size: 16px;
     text-align: center;
 }
-
+.detailBtnGrew {
+    width: 103px;
+    height: 60px;
+    display: inline-block;
+    background: #e0e0e0;
+    color: #acacb8;
+    line-height: 60px;
+    font-size: 16px;
+    text-align: center;
+}
 .detailTextProgress {
     width: 56px;
     height: 60px;
