@@ -2,7 +2,6 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
-    var result_list = [];
 
     $scope.list = function (pageNo, pageSize) {//产品列表
         var m_params = {
@@ -22,38 +21,32 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             else {
                 console.log(d.result);
             }
-
         }).error(function (d) {
             console.log("login error");
             $location.path("/error");
         })
     };
-    $scope.list(1, 100);
-
+    $scope.list(1, 100); //TODO:预设100个，没做分页设计，
 
     $scope.result_list = {
         result: {},
         returnCode: 0
     };
-
-    $scope.article_show = function (id) {
+    $scope.article_show = function (id) { //跳转到详情页面
         id.good = true;
         if (!$rootScope.isNullOrEmpty(id.id)) {
-
-            //$rootScope.putSessionObject("showID",id.id);
             $location.path("/article/show/" + id.id);
             id.good = false;
-            //console.log(id.id);
         }
     };
-    $scope.detailActivity = function () {
+    $scope.detailActivity = function () { //跳转到活动详情
         $location.path("/article/showActivity")
     }
 });
 
 articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
 
-    $scope.init = function () {
+    $scope.init = function () { //详细产品数据
         $scope.bt_show = 0;
         $http({
             url: api_uri + "financialProduct/detail/" + $routeParams.id,
@@ -87,8 +80,6 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
             console.log("login error");
             //$location.path("/error");
         });
-
-
     };
     $scope.init();
     $scope.apply = function (id) {
@@ -120,7 +111,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             console.log(d);
             if (d.returnCode == 0) {
                 $scope.company = d.result;
-                $scope.init_role();
+                // $scope.init_role();
             } else {
                 console.log(d);
             }
@@ -129,23 +120,23 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
         });
     };
     $scope.init();
-    $scope.init_role = function () {
-        $scope.bt_show = 0;
-        $http({
-            url: api_uri + "user/role",
-            method: "GET",
-            params: $rootScope.login_user
-        }).success(function (d) {
-            console.log(d);
-            if (d.returnCode == 0) {
-                $scope.role = d.result;
-                console.log($scope.role, "baiyang");
-            } else {
-                console.log(d);
-            }
-        }).error(function (d) {
-        });
-    };
+    // $scope.init_role = function () {
+    //     $scope.bt_show = 0;
+    //     $http({
+    //         url: api_uri + "user/role",
+    //         method: "GET",
+    //         params: $rootScope.login_user
+    //     }).success(function (d) {
+    //         console.log(d);
+    //         if (d.returnCode == 0) {
+    //             $scope.role = d.result;
+    //             console.log($scope.role, "baiyang");
+    //         } else {
+    //             console.log(d);
+    //         }
+    //     }).error(function (d) {
+    //     });
+    // };
     $scope.submit = function () {
         var share_msg = $rootScope.getSessionObject("share");
         if(!share_msg){
@@ -160,7 +151,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             companyName: $scope.company.companyName,
             linkman: $scope.company.name,
             mobile: $scope.company.mobile,
-            fee: $scope.company.fee,
+            // fee: $scope.company.fee,
             productId: $routeParams.id,
             share: share_msg.shareName,
             shareId: share_msg.shareId

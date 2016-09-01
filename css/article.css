@@ -565,3 +565,7 @@ hr {
     color: #ffffff;
     text-decoration: none;
 }
+.showArticle{
+    height: 100%;
+    background: #ffffff;
+}
