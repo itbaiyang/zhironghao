@@ -17,9 +17,9 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	
 	$scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;
-		$timeout(function() {  
-	              $scope.changeErrorMsg(""); 
-	        }, 5000);
+		// $timeout(function() {  
+		//          $scope.changeErrorMsg(""); 
+		//    }, 5000);
 	};
 
 	//发送短信 倒计时

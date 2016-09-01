@@ -23,10 +23,10 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
     };
     $scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;
-		$timeout(function() {  
-            //$scope.changeErrorMsg("");
-            $scope.error_msg = "";
-	        }, 5000);
+		// $timeout(function() {
+         //    //$scope.changeErrorMsg("");
+         //    $scope.error_msg = "";
+	     //    }, 5000);
 	};
 
     $scope.textChange =function(e){
