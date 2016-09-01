@@ -75,8 +75,8 @@
                 <div class="progressChild" style="width:{{company.jindu}}%;"></div>
             </div>
         </div>
-        <div class="detailBtn" ng-show="company.isOp" ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}</div>
-        <div class="detailBtn" ng-hide="company.isOp">{{progressText}}</div>
+        <div class="detailBtn" ng-hide="company.isOp" ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}</div>
+        <div class="detailBtn" ng-show="company.isOp">{{progressText}}</div>
     </div>
 
     <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
