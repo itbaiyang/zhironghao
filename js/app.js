@@ -8,7 +8,6 @@
     // $rootScope.activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-
 var myApp = angular.module('myApp', [
     'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
 ], function ($httpProvider) {
