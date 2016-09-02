@@ -91,9 +91,10 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.apply = function () {
+        // activityID = "e15813cb5bfd4290a5c2582cbdd164a4";
         $rootScope.present_route = $location.$$path;
-        if (!$rootScope.isNullOrEmpty($rootScope.activityID)) {
-            $location.path("/article/apply/" + $rootScope.activityID);
+        if (!$rootScope.isNullOrEmpty(activityID)) {
+            $location.path("/article/apply/" + activityID);
         }
     };
 });
