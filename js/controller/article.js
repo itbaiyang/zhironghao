@@ -13,16 +13,16 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             method: "GET",
             params: m_params
         }).success(function (d) {
-            console.log(d);
+            // console.log(d);
             if (d.returnCode == 0) {
                 $scope.result_list = d.result.datas;
                 $scope.totalCount = d.result.totalCount;
             }
             else {
-                console.log(d.result);
+                // console.log(d.result);
             }
         }).error(function (d) {
-            console.log("login error");
+            // console.log("login error");
             $location.path("/error");
         })
     };
@@ -55,8 +55,8 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
             $rootScope.shareBankname = d.result.bankname + '-';
             $rootScope.shareProductName = d.result.name;
             $rootScope.desc_detail = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate+'%';
-            console.log($rootScope.desc);
-            console.log(d);
+            // console.log($rootScope.desc);
+            // console.log(d);
             if (d.returnCode == 0) {
                 $scope.article_detail = d.result;
                 $scope.feature_list = d.result.feature;
@@ -74,10 +74,10 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
                     desc += "贷款期限:" + $scope.article_detail.loanlife + "年";
                 }
             } else {
-                console.log(d);
+                // console.log(d);
             }
         }).error(function (d) {
-            console.log("login error");
+            // console.log("login error");
             //$location.path("/error");
         });
     };
@@ -107,15 +107,15 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             method: "GET",
             params: $rootScope.login_user
         }).success(function (d) {
-            console.log(d);
+            // console.log(d);
             if (d.returnCode == 0) {
                 $scope.company = d.result;
                 // $scope.init_role();
             } else {
-                console.log(d);
+                // console.log(d);
             }
         }).error(function (d) {
-            console.log(d);
+            // console.log(d);
         });
     };
     $scope.init();
@@ -138,7 +138,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
             share: share_msg.shareName,
             shareId: share_msg.shareId
         };
-        console.log(m_params, "baiyang");
+        // console.log(m_params, "baiyang");
         if (typeof(m_params.companyName) == "undefined" || m_params.companyName == '') {
             $scope.company.errorMsg = "公司名称不能为空";
             $timeout(function () {
@@ -161,7 +161,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
                 data: m_params,
                 traditional: true,
                 success: function (data, textStatus, jqXHR) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.returnCode == 0) {
                         //$scope.get_telesales_detail();
                         $(".alertApply").css("display", "block");

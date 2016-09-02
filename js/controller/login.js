@@ -59,7 +59,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 }
 
             }).error(function (d) {
-                console.log("login error");
+                // console.log("login error");
             })
         }
     };
@@ -73,7 +73,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             params: m_params           
         }).success(function (d) {
             if (d.returnCode == 0) {
-                console.log(d);
+                // console.log(d);
                 $rootScope.login_user = {
             		"userId":d.result.split("_")[0],
             		"token":d.result.split("_")[1]

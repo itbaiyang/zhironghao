@@ -48,7 +48,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	            method: "GET",
 	            params: {"mobile":$scope.registerUser.mobile}
 	        }).success(function (d) {
-				console.log(d);
+				// console.log(d);
 	            if (d.returnCode == 0) {
 	                $scope.enableMobile = true;
 	                $scope.times();
@@ -61,7 +61,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 			            	"timestamp":moment().format('X')
 			            }
 			        }).success(function (d) {
-						console.log(d);
+						// console.log(d);
 			            if (d.returnCode == 0) {
 			                $scope.changeErrorMsg("短信验证码已经发送到你的手机");
 			            }
@@ -70,7 +70,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 			            }
 
 			        }).error(function (d) {
-			            console.log("login error");
+			            // console.log("login error");
 			        })
 	            }else if(d.returnCode == 1001){
 					$scope.enableMobile =false;
@@ -83,7 +83,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 				}
 
 	        }).error(function (d) {
-	            console.log("login error");
+	            // console.log("login error");
 	        })
 		}
 	}
@@ -104,7 +104,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	            method: "POST",
 	            params: $scope.registerUser
 	        }).success(function (d) {
-				console.log(d);
+				// console.log(d);
 	            if (d.returnCode == 0) {
 	                $location.path("/register/step2/"+$scope.registerUser.mobile+"/"+d.result);
 	            }
@@ -113,7 +113,7 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 					//$location.path("/register/step2/"+$scope.registerUser.mobile+"/"+d.result);
 	            }
 	        }).error(function (d) {
-	            console.log("login error");
+	            // console.log("login error");
 	        })
 		}
 	};
@@ -145,7 +145,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 	        }, 5000);
 	};
 	$scope.ngBlur = function(){
-		console.log("ng-blur")
+		// console.log("ng-blur")
 		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
 		if(reg_str.test($scope.registerUser.password)){
 		}else{
@@ -193,7 +193,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			            	"password":$scope.registerUser.password
 			            }
 			        }).success(function (d) {
-						console.log(d);
+						// console.log(d);
 			            if (d.returnCode == 0) {
 							$rootScope.login_user = {
 			            		"userId":d.result.split("_")[0],
@@ -204,17 +204,17 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			            }
 			            else {
 			            	$scope.changeErrorMsg(d.result);
-			                console.log(d);
+			                // console.log(d);
 			            }
 			        }).error(function (d) {
-			            console.log("login error");
+			            // console.log("login error");
 			        })
 	            }
 	            else {
-	                console.log(d);
+	                // console.log(d);
 	            }
 	        }).error(function (d) {
-	            console.log("login error");
+	            // console.log("login error");
 	        })
 		}else{
 			if($scope.registerUser.password!=$scope.registerUser.validatePwd){
@@ -283,7 +283,7 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 			            	"timestamp":moment().format('X')
 			            }
 			        }).success(function (d) {
-						console.log(d);
+						// console.log(d);
 			            if (d.returnCode == 0) {
 			            	$("#code").focus();
 		                    $scope.changeErrorMsg("短信验证码已经发送到你的手机");
@@ -292,20 +292,20 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 			                $scope.changeErrorMsg(d.result);
 			            }
 			        }).error(function (d) {
-			            console.log("login error");
+			            // console.log("login error");
 			        })
 	            }else if(d.returnCode == 2102){
-					console.log(d);
+					// console.log(d);
 	            	$scope.enableMobile =false;
 	            	$scope.changeErrorMsg("手机号码错误");
 	            }else if(d.returnCode == 0){
-					console.log(d);
+					// console.log(d);
 					$scope.enableMobile =false;
 					$scope.changeErrorMsg("手机号码未注册");
 				}
 
 	        }).error(function (d) {
-	            console.log("login error");
+	            // console.log("login error");
 	        })
 		}
 	};
@@ -333,7 +333,7 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 	            	$scope.changeErrorMsg(d.result);
 	            }
 	        }).error(function (d) {
-	            console.log("login error");
+	            // console.log("login error");
 	        })
 		}
 	};
@@ -396,17 +396,17 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 						$location.path("/article/list");
 		            }
 		            else {
-		                console.log(d);
+		                // console.log(d);
 		            }
 		        }).error(function (d) {
-		            console.log("login error");
+		            // console.log("login error");
 		        })
             }
             else {
-                console.log(d);
+                // console.log(d);
             }
         }).error(function (d) {
-            console.log("login error");
+            // console.log("login error");
         })
 	};
 	

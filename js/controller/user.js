@@ -13,7 +13,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				method: "GET",
 				params: $rootScope.login_user
 			}).success(function (d) {
-				console.log(d);
+				// console.log(d);
 				if (d.returnCode == 0) {
 					$scope.nickname = d.result.nickname;
 					$scope.batting = d.result.batting;
@@ -22,20 +22,20 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.headImg = d.result.headImg;
 					$scope.msgCount = d.result.msgCount;
 				} else {
-					console.log(d);
+					// console.log(d);
 					$rootScope.removeObject("login_user");
 					$location.path("/login");
 				}
 				$scope.init_role();
 			}).error(function (d) {
-				console.log(d);
+				// console.log(d);
 				$rootScope.removeObject("login_user");
 				$location.path("/login");
 			});
 			//$scope.init_role();
 			$scope.list(1, $scope.totalCount);
 			$scope.myList(1, $scope.myTotalCount);
-			console.log("debug");
+			// console.log("debug");
 		}
 	};
 	$scope.message = false;
@@ -47,12 +47,12 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			method: "GET",
 			params: $rootScope.login_user
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				$scope.role = d.result;
-				console.log($scope.role, "baiyang");
+				// console.log($scope.role, "baiyang");
 			} else {
-				console.log(d);
+				// console.log(d);
 			}
 		}).error(function (d) {
 		});
@@ -73,7 +73,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_list = false;
@@ -124,7 +124,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			}
 
 		}).error(function (d) {
-			console.log("login error");
+			// console.log("login error");
 			//$location.path("/error");
 		})
 	};
@@ -148,7 +148,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_myList = false;
@@ -214,7 +214,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			}
 
 		}).error(function (d) {
-			console.log("login error");
+			// console.log("login error");
 			//$location.path("/error");
 		})
 	};
@@ -284,14 +284,14 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		console.log(params);
+		// console.log(params);
 		$.ajax({
 			type: 'POST',
 			url: api_uri + "applyBankDeal/refer",
 			data: params,
 			traditional: true,
 			success: function (data, textStatus, jqXHR) {
-				console.log(data);
+				// console.log(data);
 				if (data.returnCode == 0) {
 					$scope.alert = false;
 					$(".alertCenterSubmit").css("display", "block", "top", $(document).scrollTop());
@@ -328,7 +328,7 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_list = false;
@@ -345,7 +345,7 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			}
 
 		}).error(function (d) {
-			console.log("login error");
+			// console.log("login error");
 			//$location.path("/error");
 		})
 	};
@@ -361,7 +361,7 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				$scope.my_apply(url, 0);
 			}
@@ -369,7 +369,7 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			}
 
 		}).error(function (d) {
-			console.log("login error");
+			// console.log("login error");
 			//$location.path("/error");
 		})
 	};
@@ -390,15 +390,15 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				method: "GET",
 				params: $rootScope.login_user
 			}).success(function (d) {
-				console.log(d);
+				// console.log(d);
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
-					console.log(d.result);
+					// console.log(d.result);
 				}else {
-					console.log(d);
+					// console.log(d);
 				}
 			}).error(function (d) {
-				console.log("login error");
+				// console.log("login error");
 				$location.path("/error");
 			});
 		} else {
@@ -410,7 +410,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				//console.log(d);
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
-					console.log(d.result);
+					// console.log(d.result);
 					if ($scope.company.status == 1) {
 						$scope.company.jindu = "10";
 						$scope.company.triangle = "8";
@@ -446,14 +446,13 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 						$scope.company.progressText = "申请已经取消";
 					}
 				} else {
-					console.log(d);
+					// console.log(d);
 				}
 			}).error(function (d) {
-				console.log("login error");
+				// console.log("login error");
 				$location.path("/error");
 			});
-		}
-		;
+		};
 		$http({
 			url: api_uri + "inforTemplate/showBase/" + $routeParams.id,
 			method: "GET",
@@ -470,10 +469,10 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 					// data.sortsNum = -1;
 					// data.sortsNum ++;
 				});
-				console.log($scope.img_list);
-				console.log(d.result);
+				// console.log($scope.img_list);
+				// console.log(d.result);
 			} else {
-				console.log(d);
+				// console.log(d);
 			}
 		}).error(function (d) {
 			//console.log("login error");
@@ -491,7 +490,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$(".cancelAlert").css("display","none");
 	};
 	$scope.previewImages = function(img,imgList){
-		console.log(img,imgList);
+		// console.log(img,imgList);
 		wx.previewImage({
 			current: img,
 			urls: imgList
@@ -523,14 +522,14 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			console.log(d);
+			// console.log(d);
 			if (d.returnCode == 0) {
 				$location.path("/user/center");
 			}else {
-				console.log(d);
+				// console.log(d);
 			}
 		}).error(function (d) {
-			console.log("login error");
+			// console.log("login error");
 			$location.path("/error");
 		});
 	};
@@ -573,14 +572,14 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		console.log(params);
+		// console.log(params);
 		$.ajax({
 			type: 'POST',
 			url: api_uri + "applyBankDeal/refer",
 			data: params,
 			traditional: true,
 			success: function (data, textStatus, jqXHR) {
-				console.log(data);
+				// console.log(data);
 				if (data.returnCode == 0) {
 					$scope.alert = false;
 					//$scope.show();
@@ -588,7 +587,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 
 				}
 				else {
-					console.log(data);
+					// console.log(data);
 				}
 			},
 			dataType: 'json',
@@ -605,14 +604,14 @@ userCtrl.controller('SettingCtrl', //用户设置
 		        method: "GET",
 		        params: $rootScope.login_user
 		    }).success(function (d) {
-		    	console.log(d);
+		    	// console.log(d);
 		        if (d.returnCode == 0) {
 		            $scope.user = d.result;		          
 		        }else {
-		            console.log(d);
+		            // console.log(d);
 		        }
 		    }).error(function (d) {
-		        console.log(d);
+		        // console.log(d);
 		    });        	
         	
 			$http({
@@ -620,7 +619,7 @@ userCtrl.controller('SettingCtrl', //用户设置
 		        method: "GET",
 		        params: $rootScope.login_user
 		    }).success(function (d) {
-		        console.log(d);
+		        // console.log(d);
 		        if (d.returnCode == 0) {
 		            $scope.qiniu_token = d.result.uptoken;
 		            var uploader = Qiniu.uploader({
@@ -668,13 +667,13 @@ userCtrl.controller('SettingCtrl', //用户设置
 								        if (data.returnCode == 0) {
 								            
 								        } else {
-								            console.log(data);
+								            // console.log(data);
 								        }
 								    },
 								"json");
 		                    },
 		                    'Error': function (up, err, errTip) {
-		                        console.log(err);
+		                        // console.log(err);
 		                        $rootScope.alert("营业执照上传失败！");
 		                    },
 		                    'UploadComplete': function () {
@@ -688,11 +687,11 @@ userCtrl.controller('SettingCtrl', //用户设置
 		                }
 		            });
 		        } else {
-		            console.log(d);
+		            // console.log(d);
 		        }
 		
 		    }).error(function (d) {
-		        console.log(d);
+		        // console.log(d);
 		    });
 	       
         };
@@ -716,9 +715,9 @@ userCtrl.controller('SettingCtrl', //用户设置
 	            method: "GET",
 	            params: $rootScope.login_user
 	        }).success(function (d) {
-	        	console.log(d);
+	        	// console.log(d);
 	        }).error(function (d) {
-	            console.log(d);
+	            // console.log(d);
 	        });
 	         $rootScope.removeObject("login_user", $rootScope.login_user);
 	         $rootScope.login_user = {};
@@ -746,7 +745,7 @@ userCtrl.controller('UserUpdateCtrl',
         	params.key = $scope.update_user.key;
         	params.value = $scope.update_user.value;
         	//params.position = $scope.update_user.position;
-        	console.log(params);
+        	// console.log(params);
         	var keys = ["name","position"];
         	if($.inArray(params.key, keys)>=0){
         		$.post(api_uri + "user/update", params,
@@ -754,7 +753,7 @@ userCtrl.controller('UserUpdateCtrl',
 			        if (data.returnCode == 0) {
 			            
 			        } else {
-			            console.log(data);
+			            // console.log(data);
 			        }
 		  	    },
 			   "json");

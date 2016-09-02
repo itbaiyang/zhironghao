@@ -55,7 +55,7 @@ var myApp = angular.module('myApp', [
 
                     });
                     wx.error(function(res){
-                        console.log(res);
+                        // console.log(res);
                     });
                 }
 
@@ -78,7 +78,7 @@ var myApp = angular.module('myApp', [
             }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
-            console.log(strs);
+            // console.log(strs);
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
@@ -91,23 +91,23 @@ var myApp = angular.module('myApp', [
                 from: 0,
                 shareId: $rootScope.shareId,
             };
-            console.log(m_params);
+            // console.log(m_params);
             $.ajax({
                 type: 'POST',
                 url: api_uri + "wxShare/share",
                 data: m_params,
                 traditional: true,
                 success: function (data, textStatus, jqXHR) {
-                    console.log(data);
+                    // console.log(data);
                     if (data.returnCode == 0) {
                         // alert(data);
                         $rootScope.shareReturn = data.result;
                         $rootScope.shareReturn.sn = data.result.sn;
-                        console.log($rootScope.shareReturn);
-                        console.log(data.result.token);
+                        // console.log($rootScope.shareReturn);
+                        // console.log(data.result.token);
                         // $rootScope.shareReturn.token = encodeURIComponent(data.result.token);
                         $rootScope.shareReturn.token = data.result.token;
-                        console.log($rootScope.shareReturn.token);
+                        // console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
                             title: $rootScope.title,
                             desc: $rootScope.desc,
@@ -124,7 +124,7 @@ var myApp = angular.module('myApp', [
                                     method: "GET",
                                     params: params
                                 }).success(function (d) {
-                                    console.log(d);
+                                    // console.log(d);
                                 });
                             }
                         });
@@ -145,7 +145,7 @@ var myApp = angular.module('myApp', [
                                     method: "GET",
                                     params: params
                                 }).success(function (d) {
-                                    console.log(d);
+                                    // console.log(d);
                                 });
                             }
                         });
@@ -166,7 +166,7 @@ var myApp = angular.module('myApp', [
                                     method: "GET",
                                     params: params
                                 }).success(function (d) {
-                                    console.log(d);
+                                    // console.log(d);
                                 });
                             }
                         });
@@ -187,13 +187,13 @@ var myApp = angular.module('myApp', [
                                     method: "GET",
                                     params: params
                                 }).success(function (d) {
-                                    console.log(d);
+                                    // console.log(d);
                                 });
                             }
                         });
                     }
                     else {
-                        console.log("分享失败");
+                        // console.log("分享失败");
                     }
                 },
                 dataType: 'json',
@@ -211,7 +211,7 @@ var myApp = angular.module('myApp', [
                 method: "GET",
                 params: params
             }).success(function (d) {
-                console.log(d);
+                // console.log(d);
             });
             // console.log("sn:" + sn + ", token = " + token + " ,to:" + to);
         };
@@ -233,7 +233,7 @@ var myApp = angular.module('myApp', [
                     method: "GET",
                     params: m_params
                 }).success(function (d) {
-                    console.log(d);
+                    // console.log(d);
                 });
             };
             $rootScope.removeSessionObject("showID");
@@ -242,7 +242,7 @@ var myApp = angular.module('myApp', [
                 || present_route == "/article/showActivity") {//列表
 
                 var shareName = $location.search()['share'];
-                console.log(shareName);
+                // console.log(shareName);
                 if (shareName) {
                     var shareId = $location.search()['shareId'];
                     var share = {
@@ -253,7 +253,7 @@ var myApp = angular.module('myApp', [
                 }
                 wx.ready(function () {
                     $rootScope.getUrl($location.absUrl(),$routeParams.id);
-                    console.log($routeParams.id,'xiwanga');
+                    // console.log($routeParams.id,'xiwanga');
                 });
 
             } else {//其他 无需分享页面
@@ -282,22 +282,22 @@ var myApp = angular.module('myApp', [
             $rootScope.check_user();
             if (!$rootScope.login_user) {
                 if (no_check_route.indexOf(present_route) > -1) {
-                    console.log(present_route);
+                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show") > -1) {//详情
-                    console.log(present_route);
+                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1) {//详情
-                    console.log(present_route);
+                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1) {//详情
-                    console.log(present_route);
+                    // console.log(present_route);
                 } else {
-                    console.log($rootScope.login_user);
+                    // console.log($rootScope.login_user);
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
-                    console.log(present_route);
+                    // console.log(present_route);
                     $location.path("/login");
                 }
             } else {
-                console.log(present_route);
+                // console.log(present_route);
                 if (present_route == "/login") {
                     //$location.path("/user/center");
                     //function onBridgeReady() {
@@ -428,13 +428,13 @@ var myApp = angular.module('myApp', [
                     params: $rootScope.login_user
                 }).success(function (d) {
                     if (d.returnCode == 0) {
-                        console.log("login success");
+                        // console.log("login success");
                         return true;
                     } else {
                         //$rootScope.login_user = {};
                         $rootScope.removeObject("login_user");
                         $rootScope.present_route = $location.$$path;
-                        console.log($rootScope.present_route,'nihao');
+                        // console.log($rootScope.present_route,'nihao');
                         if (no_check_route.indexOf($rootScope.present_route) <= -1
                             && $rootScope.present_route.indexOf("article/show")<= -1
                             && $rootScope.present_route.indexOf("register/step2") <= -1
