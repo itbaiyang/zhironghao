@@ -30,7 +30,7 @@
             <div class="companyName">{{resultObj.companyName}} <span class="companySetting2"></span></div>
             <div class="financialLeft fl">
                 <p class="progressTittle" ng-hide="resultObj.status == -1">
-                    {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
+                    {{resultObj.progressText}} <span ng-show="resultObj.isOp">—>{{resultObj.statusNextText}}</span> <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress1">
                     <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>

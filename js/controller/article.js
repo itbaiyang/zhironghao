@@ -90,12 +90,10 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
     };
 });
 articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-    $scope.id = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
-    // $scope.id = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活
     $scope.apply = function () {
         $rootScope.present_route = $location.$$path;
-        if (!$rootScope.isNullOrEmpty($scope.id)) {
-            $location.path("/article/apply/" + $scope.id);
+        if (!$rootScope.isNullOrEmpty($rootScope.activityID)) {
+            $location.path("/article/apply/" + $rootScope.activityID);
         }
     };
 });
@@ -120,23 +118,6 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
         });
     };
     $scope.init();
-    // $scope.init_role = function () {
-    //     $scope.bt_show = 0;
-    //     $http({
-    //         url: api_uri + "user/role",
-    //         method: "GET",
-    //         params: $rootScope.login_user
-    //     }).success(function (d) {
-    //         console.log(d);
-    //         if (d.returnCode == 0) {
-    //             $scope.role = d.result;
-    //             console.log($scope.role, "baiyang");
-    //         } else {
-    //             console.log(d);
-    //         }
-    //     }).error(function (d) {
-    //     });
-    // };
     $scope.submit = function () {
         var share_msg = $rootScope.getSessionObject("share");
         if(!share_msg){

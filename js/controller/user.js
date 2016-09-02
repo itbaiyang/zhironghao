@@ -83,15 +83,13 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.totalCount = d.result.totalCount;
 					angular.forEach($scope.result_list, function (data) {
 						if ($scope.type == 0) {
-							/*data.jindu = "0";
-							 data.jindushow = "未发布";
-							 data.jinduShowM = "0";*/
+							
 						} else if ($scope.type == 1) {
 							if (data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
-								data.progressText = "审核中";
+								data.progressText = "申请中";
 								$scope.message = true;
 							} else if (data.status == 2) {
 								data.jindu = "50";
@@ -165,15 +163,14 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.myTotalCount = d.result.totalCount;
 					angular.forEach($scope.my_list, function (data) {
 						if ($scope.type == 0) {
-							/*data.jindu = "0";
-							 data.jindushow = "未发布";
-							 data.jinduShowM = "0";*/
+							
 						} else if ($scope.type == 1) {
 							if (data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
-								data.progressText = "审核中";
+								data.progressText = "申请中";
+								data.statusNextText = "约见中";
 								data.progressNext = "审核中";
 								data.progressTextNext = "开始约见";
 								$scope.message = true;
@@ -182,6 +179,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "44";
 								data.textPosition = "36";
 								data.progressText = "约见中";
+								data.statusNextText = "跟进中";
 								data.progressNext = "审核中";
 								data.progressTextNext = "继续跟进";
 								$scope.message = true;
@@ -190,6 +188,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 								data.triangle = "66";
 								data.textPosition = "58";
 								data.progressText = "跟进中";
+								data.statusNextText = "成功融资";
 								data.progressNext = "审核中";
 								data.progressTextNext = "完成贷款";
 								$scope.message = true;
