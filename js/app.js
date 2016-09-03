@@ -78,7 +78,7 @@ var myApp = angular.module('myApp', [
             }
             var strs= []; //定义一数组 
             strs=url.split("?"); //字符分割
-            // console.log(strs);
+            console.log(strs);
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
             }
@@ -98,7 +98,7 @@ var myApp = angular.module('myApp', [
                 data: m_params,
                 traditional: true,
                 success: function (data, textStatus, jqXHR) {
-                    // console.log(data);
+                    console.log(data);
                     if (data.returnCode == 0) {
                         // alert(data);
                         $rootScope.shareReturn = data.result;
@@ -242,7 +242,7 @@ var myApp = angular.module('myApp', [
                 || present_route == "/article/showActivity") {//列表
 
                 var shareName = $location.search()['share'];
-                // console.log(shareName);
+                console.log(shareName);
                 if (shareName) {
                     var shareId = $location.search()['shareId'];
                     var share = {
@@ -251,9 +251,10 @@ var myApp = angular.module('myApp', [
                     };
                     $rootScope.putSessionObject("share", share);
                 }
+                console.log(share);
                 wx.ready(function () {
                     $rootScope.getUrl($location.absUrl(),$routeParams.id);
-                    // console.log($routeParams.id,'xiwanga');
+                    console.log($routeParams.id, 'xiwanga');
                 });
 
             } else {//其他 无需分享页面
