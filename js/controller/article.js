@@ -94,10 +94,10 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
     $scope.init();
     $scope.apply = function () {
         $rootScope.present_route = $location.$$path;
-        if (!$rootScope.isNullOrEmpty(id)) {
+        if (!$rootScope.isNullOrEmpty($scope.id)) {
             $location.path("/article/apply/" + $scope.id + $scope.type);
-            console.log(id);
-            console.log(type);
+            // console.log(id);
+            // console.log(type);
         }
     };
 });
