@@ -674,7 +674,7 @@ userCtrl.controller('SettingCtrl', //用户设置
 		                    },
 		                    'Error': function (up, err, errTip) {
 		                        // console.log(err);
-		                        $rootScope.alert("营业执照上传失败！");
+		                        $rootScope.alert("头像上传失败！");
 		                    },
 		                    'UploadComplete': function () {
 		                        //队列文件处理完毕后,处理相关的事情

@@ -3,7 +3,7 @@
         <p class="applyHeaderP1">温馨提示：</p>
         <p class="applyHeaderP2">个人中心填写的信息自动录入</p>
     </div>
-    <div class="applyContent">
+    <div class="applyContent" ng-show="type == 0 || type == 1">
         <span class="applyContentSpan" ng-class="{'fontColor':company.companyName != null && company.companyName != ''}">公司名称</span>
         <input type="text" placeholder="请输入公司名称" ng-model="company.companyName"/>
     </div>
@@ -11,13 +11,33 @@
         <span class="applyContentSpan" ng-class="{'fontColor':company.name != null &&company.name != ''}">联系人</span>
         <input type="text" placeholder="请输入联系人姓名" ng-model="company.name"/>
     </div>
-    <div class="applyContent ">
+    <div class="applyContent">
         <span class="applyContentSpan"  ng-class="{'fontColor':company.mobile != null &&company.mobile != ''}">联系电话</span>
         <input type="text" placeholder="请输入联系电话" ng-model="company.mobile"/>
     </div>
-    <!--<div class="applyContent" ng-show="role == 'clerk'">-->
-        <!--<span class="applyContentSpan" ng-class="{'fontColor':company.fee != null &&company.fee != ''}">服务费</span>-->
-        <!--<input type="text" placeholder="期望帮你代收的费用（例：1%）" ng-model="company.fee"/>-->
+    <!--<div class="applyContent" style=" height: 104px;" ng-show="type == 3">-->
+        <!--<p class="applyContentP fontColor">身份证</p>-->
+        <!--<div class="img-list fl" ng-repeat="imgList in img_list_id track by $index">-->
+            <!--<img ng-src="{{imgList}}" alt="" style="border: 0">-->
+            <!--<div class="redPoint" ng-click="removeImgList(img_list_id,$index)">-->
+                <!--<div class="redPointInner"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div id="containerID" class="img-list">-->
+            <!--<img id="personID" src="img/icon/upload1.png" class="loadAdd fl">-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="applyContent" style=" height: 104px;" ng-show="type == 3">-->
+        <!--<p class="applyContentP fontColor">房产证</p>-->
+        <!--<div class="img-list fl" ng-repeat="house in img_list_card track by $index">-->
+            <!--<img ng-src="{{house}}" alt="" style="border: 0">-->
+            <!--<div class="redPoint" ng-click="removeImgList(img_list_card,$index)">-->
+                <!--<div class="redPointInner"></div>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div id="containerCard" class="img-list">-->
+            <!--<img id="personCard" src="img/icon/upload1.png" class="loadAdd fl">-->
+        <!--</div>-->
     <!--</div>-->
     <div class="alertApply">
         <div class="alertImg"></div>
