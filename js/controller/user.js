@@ -85,7 +85,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						if ($scope.type == 0) {
 							
 						} else if ($scope.type == 1) {
-							if (data.status == 1) {
+							if (data.status == 1 && data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";

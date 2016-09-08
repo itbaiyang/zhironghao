@@ -13,7 +13,7 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             method: "GET",
             params: m_params
         }).success(function (d) {
-            // console.log(d);
+            console.log(d);
             if (d.returnCode == 0) {
                 $scope.result_list = d.result.datas;
                 $scope.totalCount = d.result.totalCount;
@@ -56,6 +56,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
             url: api_uri + "financialProduct/detail/" + $routeParams.id,
             method: "GET",
         }).success(function (d) {
+            console.log(d);
             $rootScope.shareBankname = d.result.bankname + '-';
             $rootScope.shareProductName = d.result.name;
             $rootScope.desc_detail = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate+'%';
