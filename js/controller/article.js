@@ -95,7 +95,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
     $scope.apply = function (id,type) {
         $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty(id)) {
-            $location.path("/article/apply/" + id + type);
+            $location.path("/article/apply/" + $scope.id + $scope.type);
             console.log(id);
             console.log(type);
         }
