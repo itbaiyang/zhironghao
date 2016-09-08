@@ -72,7 +72,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
                 $scope.apply_List = d.result.conditions;
                 $scope.id = d.result.id;
                 $scope.type = d.result.type;
-
+                console.log($scope.type);
                 var desc = "";
                 if ($scope.article_detail.ratecap && $scope.article_detail.ratefloor) {
                     desc += "利息率:" + $scope.article_detail.ratecap + "%~" + $scope.article_detail.ratefloor + "%\r\n";
@@ -95,7 +95,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
     $scope.apply = function (id,type) {
         $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty(id)) {
-            $location.path("/article/apply/" + id +type);
+            $location.path("/article/apply/" + id + type);
             console.log(id);
             console.log(type);
         }
