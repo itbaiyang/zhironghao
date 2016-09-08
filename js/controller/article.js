@@ -17,6 +17,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
             if (d.returnCode == 0) {
                 $scope.result_list = d.result.datas;
                 $scope.totalCount = d.result.totalCount;
+                wx.ready(function () {
+                    $rootScope.getUrl($location.absUrl(),$routeParams.id);
+                    console.log($routeParams.id, 'xiwanga');
+                });
             }
             else {
                 // console.log(d.result);
@@ -55,8 +59,12 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
             $rootScope.shareBankname = d.result.bankname + '-';
             $rootScope.shareProductName = d.result.name;
             $rootScope.desc_detail = '额度：'+d.result.loanvalue +'  期限：'+d.result.loanlife+'  利息：'+d.result.rate+'%';
-            // console.log($rootScope.desc);
-            // console.log(d);
+            console.log($rootScope.desc);
+            console.log(d);
+            wx.ready(function () {
+                $rootScope.getUrl($location.absUrl(),$routeParams.id);
+                console.log($routeParams.id, 'xiwanga');
+            });
             if (d.returnCode == 0) {
                 $scope.article_detail = d.result;
                 $scope.feature_list = d.result.feature;
@@ -97,6 +105,9 @@ articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $root
             $location.path("/article/apply/" + activityID);
         }
     };
+    wx.ready(function () {
+        $rootScope.getUrl($location.absUrl(),$routeParams.id);
+    });
 });
 
 articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $location, $timeout, $routeParams) {

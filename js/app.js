@@ -1,11 +1,11 @@
-    // api_uri = "http://123.206.84.74/api/";
-    // root_uri = "http://test.zhironghao.com/#";
-    // activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
+    api_uri = "http://123.206.84.74/api/";
+    root_uri = "http://test.zhironghao.com/#";
+    activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
     //api_uri = "http://172.17.2.13:8080/api/";
     //api_uri = "http://172.16.97.95:8080/api/";
-    api_uri = "http://api.supeiyunjing.com/";
-    root_uri = "http://app.supeiyunjing.com/#";
-    activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
+    // api_uri = "http://api.supeiyunjing.com/";
+    // root_uri = "http://app.supeiyunjing.com/#";
+    // activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 var myApp = angular.module('myApp', [
@@ -69,7 +69,7 @@ var myApp = angular.module('myApp', [
             if(id){
                 $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName;
                 $rootScope.desc = $rootScope.desc_detail;
-            }else if(url.indexOf("showActivity")){
+            }else if(url.indexOf("showActivity") > -1){
                 $rootScope.title ='直融号8月活动';
                 $rootScope.desc = '千亿资金等你来拿';
             }else{
@@ -252,10 +252,6 @@ var myApp = angular.module('myApp', [
                     $rootScope.putSessionObject("share", share);
                 }
                 console.log(share);
-                wx.ready(function () {
-                    $rootScope.getUrl($location.absUrl(),$routeParams.id);
-                    console.log($routeParams.id, 'xiwanga');
-                });
 
             } else {//其他 无需分享页面
                 function onBridgeReady(){
