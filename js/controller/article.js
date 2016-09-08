@@ -92,7 +92,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
         });
     };
     $scope.init();
-    $scope.apply = function (id,type) {
+    $scope.apply = function () {
         $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty(id)) {
             $location.path("/article/apply/" + $scope.id + $scope.type);
@@ -115,6 +115,9 @@ articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $root
 });
 
 articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $location, $timeout, $routeParams) {
+    
+    console.log($routeParams.id);
+    console.log($routeParams.type);
     $scope.init = function () {
         //获取用户信息
         $http({
