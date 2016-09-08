@@ -91,10 +91,11 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
         });
     };
     $scope.init();
-    $scope.apply = function (id) {
+    $scope.apply = function (id,type) {
         $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty(id)) {
-            $location.path("/article/apply/" + id);
+            $location.path("/article/apply/" + id +type);
+            console.log(id);
         }
     };
 });
