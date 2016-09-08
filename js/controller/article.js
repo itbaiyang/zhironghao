@@ -71,6 +71,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
                 $scope.feature_list = d.result.feature;
                 $scope.apply_List = d.result.conditions;
                 $scope.id = d.result.id;
+                $scope.type = d.result.type;
 
                 var desc = "";
                 if ($scope.article_detail.ratecap && $scope.article_detail.ratefloor) {
