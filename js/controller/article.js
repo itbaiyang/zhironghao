@@ -96,6 +96,7 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
         if (!$rootScope.isNullOrEmpty(id)) {
             $location.path("/article/apply/" + id +type);
             console.log(id);
+            console.log(type);
         }
     };
 });
