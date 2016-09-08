@@ -1,7 +1,7 @@
 
 var articleCtrl = angular.module('articleCtrl', []);
 
-articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location) {
+articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location,$routeParams) {
 
     $scope.list = function (pageNo, pageSize) {//产品列表
         var m_params = {
