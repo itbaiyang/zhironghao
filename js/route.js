@@ -41,7 +41,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: templates_root + 'article/show.html',
             controller: 'ArticleShowCtrl'
         })
-       .when('/article/apply/:id', {//申请
+       .when('/article/apply/:id:type', {//申请
             templateUrl: templates_root + 'article/apply.html',
             controller: 'applyCtrl'
         })
