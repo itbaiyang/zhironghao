@@ -299,6 +299,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						$(".alertCenterSubmit").css("display", "none");
 						//$location.path("/user/center");
 					}, 2000);
+					$scope.list(1, 100);
+					$scope.myList(1, 100);
 					$scope.$apply();
 
 				}

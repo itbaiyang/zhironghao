@@ -41,7 +41,7 @@
             <div class="financial3" ng-show="resultObj.status == 4">
                 <p class="progressTittle" ng-hide="resultObj.status == -1">
                     {{resultObj.progressText}} <span ng-show="resultObj.isOp">—>{{resultObj.statusNextText}}</span>
-                    <span class="fr" ng-show="resultObj.days && resultObj.status == 4">预计{{resultObj.days}}天</span>
+                    <span class="fr" ng-show="resultObj.days && resultObj.status != 4">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress1">
                     <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
@@ -73,7 +73,7 @@
             <div class="financial3">
                 <p class="progressTittle" style="color: #ffffff"
                    ng-hide="resultObj.status == -1">
-                    {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days || resultObj.status != 4">预计{{resultObj.days}}天</span>
+                    {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days && resultObj.status != 4">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress">
                     <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
