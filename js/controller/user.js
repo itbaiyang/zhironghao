@@ -13,7 +13,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				method: "GET",
 				params: $rootScope.login_user
 			}).success(function (d) {
-				// console.log(d);
+				console.log(d);
 				if (d.returnCode == 0) {
 					$scope.nickname = d.result.nickname;
 					$scope.batting = d.result.batting;
@@ -73,7 +73,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			// console.log(d);
+			console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_list = false;
@@ -85,7 +85,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						if ($scope.type == 0) {
 							
 						} else if ($scope.type == 1) {
-							if (data.status == 1 && data.status == 1) {
+							if (data.status == 0 || data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
@@ -148,7 +148,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			// console.log(d);
+			console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_myList = false;
@@ -165,7 +165,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						if ($scope.type == 0) {
 							
 						} else if ($scope.type == 1) {
-							if (data.status == 1) {
+							if (data.status == 0 || data.status == 1) {
 								data.jindu = "10";
 								data.triangle = "8";
 								data.textPosition = "2";
