@@ -362,7 +362,8 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
                     data: m_params1,
                     traditional: true,
                     success: function (data, textStatus, jqXHR) {
-                        console.log(data);
+                        console.log(data, 'success');
+
                         if (data.returnCode == 0) {
                             $(".alertApply").css("display", "block");
                             $timeout(function () {
@@ -385,7 +386,7 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
                         }
                     },
                     error: function (data, textStatus, jqXHR) {
-                        console.log(data);
+                        console.log(data, 'error');
                     },
                     dataType: 'json',
                 });
