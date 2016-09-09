@@ -100,6 +100,7 @@ hr {
     width: 41px;
     height: 41px;
     background: url("../img/person.png");
+    background-size: 100%;
 }
 .productLeft {
     margin: 18px 0 0 15px;
