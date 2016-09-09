@@ -344,12 +344,12 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
                 });
             }
         } else if($scope.type == 2){
-            if (typeof(m_params.linkman) == "undefined" || m_params.linkman == '') {
+            if (typeof(m_params1.linkman) == "undefined" || m_params1.linkman == '') {
                 $scope.company.errorMsg = "联系人不能为空";
                 $timeout(function () {
                     $scope.company.errorMsg = "";
                 }, 2000);
-            } else if (typeof(m_params.mobile) == "undefined" || m_params.mobile == '') {
+            } else if (typeof(m_params1.mobile) == "undefined" || m_params1.mobile == '') {
                 $scope.company.errorMsg = "联系电话不能为空";
                 $timeout(function () {
                     $scope.company.errorMsg = "";
