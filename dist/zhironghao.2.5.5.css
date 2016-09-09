@@ -41,19 +41,15 @@ hr {
     border: 0.5px solid #f0f0f0;
     margin-top: 16px;
 }
-
 ::-webkit-input-placeholder { /* WebKit browsers */
     color: #9292a5;
 }
-
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
     color: #9292a5;
 }
-
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
     color: #9292a5;
 }
-
 :-ms-input-placeholder { /* Internet Explorer 10+ */
     color: #9292a5;
 }
@@ -76,7 +72,6 @@ hr {
 .fr {
     float: right;
 }
-
 /*清除背景颜色*/
 #clearBackground {
     background: #ffffff;
@@ -85,7 +80,6 @@ hr {
 .clearBackground {
     background: #ffffff;
 }
-
 /*全局样式结束*/
 .productList {
     box-sizing: border-box;
@@ -205,7 +199,6 @@ hr {
     line-height: 24px;
     text-align: right;
 }
-
 /*show页面*/
 /*.showArticle{*/
 /*background: #ffffff;*/
@@ -343,7 +336,6 @@ hr {
     padding-bottom: 5px;
     font-size: 14px;
 }
-
 .singleButtonFixed {
     width: 60%;
     height: 45px;
@@ -363,14 +355,12 @@ hr {
     border: none;
     opacity: 0.95;
 }
-
 /*apply.html*/
 .applyHeader {
     width: 100%;
     height: 93px;
     background: url('../img/zrh.png') no-repeat -33px -199px;
 }
-
 .applyHeaderP1 {
     font-size: 14px;
     color: #ffffff;
@@ -384,7 +374,6 @@ hr {
     color: #ffffff;
     padding-left: 5%;
 }
-
 .applyContent {
     background: #fff;
     width: 100%;
@@ -395,7 +384,6 @@ hr {
     border-bottom: 1px solid #e0e0e0;
     box-sizing: border-box;
 }
-
 .img-list {
     position: relative;
     display: inline-block;
@@ -458,7 +446,6 @@ hr {
     font-size: 16px;
     line-height: 28px;
 }
-
 .singleButton1 {
     width: 60%;
     height: 45px;
@@ -547,7 +534,6 @@ hr {
     color: #ffffff;
     text-align: center;
 }
-
 .alertText1 {
     font-weight: 400;
     font-size: 14px;
@@ -555,7 +541,6 @@ hr {
     color: #ffffff;
     text-align: center;
 }
-
 .alertText2 {
     font-weight: 400;
     font-size: 14px;
@@ -644,7 +629,6 @@ hr {
     cursor: pointer;
     color: #4c4c4c;
 }
-
 /*登录样式结束*/
 /*register1样式开始*/
 .regForm1 {
@@ -1009,7 +993,6 @@ hr {
     cursor: pointer;
     border: none;
 }
-
 .progress1 {
     width: 100%;
     height: 6px;
@@ -1085,7 +1068,6 @@ hr {
     border-radius: 5px;
     background: #ffffff;
 }
-
 /*设置页面样式开始*/
 .userSet {
     height: 45px;
@@ -1185,7 +1167,6 @@ hr {
     text-align: center;
     border-right: 1px solid #c3c2c7;
 }
-
 .coverAlert {
     display: none;
     width: 100%;
@@ -1253,7 +1234,6 @@ hr {
     font-size: 16px;
     text-align: center;
 }
-
 .detailBtnGrew {
     width: 103px;
     height: 60px;
@@ -1264,7 +1244,6 @@ hr {
     font-size: 16px;
     text-align: center;
 }
-
 .detailTextProgress {
     width: 56px;
     height: 60px;
@@ -1282,7 +1261,6 @@ hr {
     padding: 25px 15px;
     box-sizing: border-box;
 }
-
 /*设置页面样式结束*/
 
 /*message*/

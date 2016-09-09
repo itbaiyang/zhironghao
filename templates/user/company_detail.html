@@ -98,7 +98,7 @@
 
 
 <div ng-hide="choiceStyle == 0">
-    <div class="userSet" style="border-top: 1px solid #e6e6e6;">
+    <div class="userSet" ng-show="company.companyName" style="border-top: 1px solid #e6e6e6;">
         <span class="userSetSpan">公司名称</span>
         <span class="userSetIcon"></span>
         <span class="userSetContent1">{{company.companyName}}</span>
