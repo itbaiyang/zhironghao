@@ -11,18 +11,18 @@
     </div>
     <div class="centerMessageNo fr" ng-show="role.indexOf('clerk')>-1&&msgCount ==0" ng-click="userMessage()"></div>
 </div>
-<div ng-show="role.indexOf('clerk')>-1">
-    <div class="financing" ng-hide="message">
-        <div class="financingTitle">融资情况</div>
-        <div class="financingContent">
-            <div class="financingContent1">
-                <div class="financialPic"></div>
-                <div class="financialText">
-                    您暂时没有申请融资，快到金融产品中看看
-                </div>
+<div class="financing" ng-hide="message">
+    <div class="financingTitle">融资情况</div>
+    <div class="financingContent">
+        <div class="financingContent1">
+            <div class="financialPic"></div>
+            <div class="financialText">
+                您暂时没有申请融资，快到金融产品中看看
             </div>
         </div>
     </div>
+</div>
+<div ng-show="role.indexOf('clerk')>-1">
     <div ng-infinite-scroll options="options" ng-show="message_myList" items="items">
         <p class="userCenterP">我的任务</p>
         <div class="financing1" style="background:#ffffff" ng-repeat="resultObj in my_list"
