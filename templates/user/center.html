@@ -72,7 +72,7 @@
             </div>
             <div class="financial3">
                 <p class="progressTittle" style="color: #ffffff"
-                   ng-hide="resultObj.status == -1  || resultObj.status == 4">
+                   ng-hide="resultObj.status == -1 || resultObj.status == 4">
                     {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress">
@@ -92,7 +92,7 @@
         <div class="companyName">{{resultObj.companyName || resultObj.userName}} <span class="companySetting1"></span>
         </div>
         <div class="financial3">
-            <p class="progressTittle" style="font-size: 14px" ng-hide="resultObj.status == 0 || resultObj.status == 4">
+            <p class="progressTittle" style="font-size: 14px" ng-hide="resultObj.status == -1 || resultObj.status == 4">
                 {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span></p>
             <div class="progress">
                 <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>

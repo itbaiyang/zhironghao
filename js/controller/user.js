@@ -33,8 +33,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				$location.path("/login");
 			});
 			//$scope.init_role();
-			$scope.list(1, $scope.totalCount);
-			$scope.myList(1, $scope.myTotalCount);
+			$scope.list(1, 100);
+			$scope.myList(1, 100);
 			// console.log("debug");
 		}
 	};
@@ -437,7 +437,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 						$scope.company.triangle = "86";
 						$scope.company.textPosition = "76";
 						$scope.company.progressText = "成功融资";
-						$scope.progressTextNext = "贷款结束";
+						$scope.progressTextNext = "成功融资";
 						$scope.message = true;
 					} else if ($scope.company.status == -1) {
 						$scope.company.jindu = "0";
@@ -507,7 +507,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			// console.log(d);
+			console.log(d);
 			if (d.returnCode == 0) {
 				$location.path("/user/center");
 			}else {

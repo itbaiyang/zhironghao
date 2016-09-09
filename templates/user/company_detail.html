@@ -76,8 +76,10 @@
                 <div class="progressChild" style="width:{{company.jindu}}%;"></div>
             </div>
         </div>
-        <div class="detailBtn" ng-hide="company.isOp" ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}</div>
-        <div class="detailBtnGrew" ng-show="company.isOp">{{company.progressText}}</div>
+        <div class="detailBtn" ng-hide="company.isOp == true"
+             ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}
+        </div>
+        <div class="detailBtnGrew" ng-show="company.isOp == true">{{company.progressText}}</div>
     </div>
 
     <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
@@ -114,7 +116,10 @@
         <span class="userSetIcon"></span>
         <span class="userSetContent1">{{company.mobile}}</span>
     </div>
-    <div class="userSetOut" ng-show="company.status == 1 &&company.op ==true" ng-click="alertCancel()">取消申请</div>
+    <div class="userSetOut"
+         ng-show="(company.status == 1 && company.op ==true) ||(company.status == 0 && company.op ==true)"
+         ng-click="alertCancel()">取消申请
+    </div>
     <div class="coverAlert"></div>
     <div class="cancelAlert">
         <p class="alertText" style="color: black">温馨提示</p>
