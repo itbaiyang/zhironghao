@@ -90,8 +90,17 @@ hr {
     border: 1px solid #f3f3f3;
     border-top: none;
      background-color: #ffffff;
+    position: relative;
  }
 
+.img-person {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 41px;
+    height: 41px;
+    background: url("../img/person.png");
+}
 .productLeft {
     margin: 18px 0 0 15px;
     width: 58px;

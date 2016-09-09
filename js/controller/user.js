@@ -390,7 +390,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				method: "GET",
 				params: $rootScope.login_user
 			}).success(function (d) {
-				// console.log(d);
+				console.log(d);
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
 					// console.log(d.result);
@@ -407,7 +407,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				method: "GET",
 				params: $rootScope.login_user
 			}).success(function (d) {
-				//console.log(d);
+				console.log(d);
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
 					// console.log(d.result);
@@ -496,21 +496,6 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			urls: imgList
 		});
 	};
-	// $(document).on('click', '#previewImage img',function(event) {
-	// 	var imgArray = [];
-	// 	var curImageSrc = $(this).attr('src');
-	// 	if (curImageSrc ) {
-	// 		$('#previewImage img').each(function(index, el) {
-	// 			var itemSrc = $(this).attr('src');
-	// 			imgArray.push(itemSrc);
-	// 		});
-	// 		wx.previewImage({
-	// 			current: curImageSrc,
-	// 			urls: imgArray
-	// 		});
-	// 	}
-	// });
-
 	$scope.cancel =function(){
 		var m_params = {
 			userId: $rootScope.login_user.userId,

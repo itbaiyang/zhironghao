@@ -29,15 +29,25 @@
              ng-hide="resultObj.status == -1" ng-click="my_apply(resultObj.id,0)">
             <div class="companyName">{{resultObj.companyName || resultObj.userName}} <span
                     class="companySetting2"></span></div>
-            <div class="financialLeft fl">
+            <div class="financialLeft fl" ng-hide="resultObj.status == 4">
                 <p class="progressTittle" ng-hide="resultObj.status == -1">
-                    {{resultObj.progressText}} <span ng-show="resultObj.isOp">—>{{resultObj.statusNextText}}</span> <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
+                    {{resultObj.progressText}} <span ng-show="resultObj.isOp">—>{{resultObj.statusNextText}}</span>
+                    <span class="fr" ng-show="resultObj.days && resultObj.status == 4">预计{{resultObj.days}}天</span>
+                </p>
+                <div class="progress1">
+                    <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
+            </div>
+            </div>
+            <div class="financial3" ng-show="resultObj.status == 4">
+                <p class="progressTittle" ng-hide="resultObj.status == -1">
+                    {{resultObj.progressText}} <span ng-show="resultObj.isOp">—>{{resultObj.statusNextText}}</span>
+                    <span class="fr" ng-show="resultObj.days && resultObj.status == 4">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress1">
                     <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
                 </div>
             </div>
-            <div class="fr" ng-hide="resultObj.isOp ||resultObj.status ==4 " ng-click="change($event)">
+            <div class="fr" ng-hide="resultObj.isOp == true || resultObj.status == 4 " ng-click="change($event)">
                 <button class="singleButtonMin fr" ng-hide=" days <0"
                         ng-click="alert_come(resultObj.status,resultObj.id,resultObj.days)">
                     {{resultObj.progressTextNext}}
@@ -46,7 +56,7 @@
                         ng-click="alert_come1(resultObj.status,resultObj.id,resultObj.days)">逾期原因
                 </button>
             </div>
-            <div class="fr" ng-show="resultObj.isOp ||resultObj.status ==4 " ng-click="change($event)">
+            <div class="fr" ng-hide="resultObj.isOp == false || resultObj.status == 4 " ng-click="change($event)">
                 <button class="singleButtonMinGrew fr">{{resultObj.progressNext}}
                 </button>
             </div>
@@ -61,7 +71,8 @@
                     class="companySetting"></span>
             </div>
             <div class="financial3">
-                <p class="progressTittle" style="color: #ffffff" ng-hide="resultObj.status == -1">
+                <p class="progressTittle" style="color: #ffffff"
+                   ng-hide="resultObj.status == -1  || resultObj.status == 4">
                     {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span>
                 </p>
                 <div class="progress">
@@ -81,7 +92,7 @@
         <div class="companyName">{{resultObj.companyName || resultObj.userName}} <span class="companySetting1"></span>
         </div>
         <div class="financial3">
-            <p class="progressTittle" style="font-size: 14px" ng-hide="resultObj.status == 0">
+            <p class="progressTittle" style="font-size: 14px" ng-hide="resultObj.status == 0 || resultObj.status == 4">
                 {{resultObj.progressText}} <span class="fr" ng-show="resultObj.days">预计{{resultObj.days}}天</span></p>
             <div class="progress">
                 <div class="progressChild" style="width:{{resultObj.jindu}}%;"></div>
