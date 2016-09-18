@@ -28,7 +28,7 @@ var myApp = angular.module('myApp', [
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-          $rootScope.wx_client = false;
+          // $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
