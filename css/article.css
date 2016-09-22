@@ -505,7 +505,7 @@ hr {
     display: none;
     width: 50%;
     height: 130px;
-    position: absolute;
+    position: fixed;
     top: 180px;
     left: 25%;
     background: linear-gradient(45deg, #6B72DB, #766DC4);

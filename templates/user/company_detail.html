@@ -1,4 +1,3 @@
-<!--<div ng-hide="company.name =='八月活动'" class="productList" style="border: 1px solid #f3f3f3;">-->
 <div ng-hide="company.name =='八月活动'" class="productList" style="border: 1px solid #f3f3f3;">
     <div class="productLeft fl">
         <img ng-src="{{company.icon}}" alt="">
@@ -76,29 +75,26 @@
                 <div class="progressChild" style="width:{{company.jindu}}%;"></div>
             </div>
         </div>
-        <div class="detailBtn" ng-show="company.isOp == false && company.status != 4"
+        <div class="detailBtn" ng-show="company.isOp == false && company.status != 7"
              ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}
         </div>
-        <div class="detailBtnGrew" ng-show="company.isOp == true || company.status == 4">{{company.progressText}}</div>
+        <div class="detailBtnGrew" ng-show="company.isOp == true || company.status == 7">{{company.progressText}}</div>
     </div>
-
     <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
         <div class="alertContent" ng-click="change($event)">
             <div class="userSet">
-                <span>{{alertText}}</span>
-                <input type="number" style="text-align: right;margin-right: 10px" ng-model="dateTime">天
+                <span class="font-size-14">{{alertText}}</span>
+                <div class="fr font-size-14">
+                    <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTime">天
+                </div>
             </div>
-            <div class="applyContent" style="height: 196px; margin-bottom: 15px">
-                <p class="applyContentP" ng-class="{'fontColor':alertText1 != null &&alertText1 != ''}">
-                    {{alertText1}}</p>
-            <textarea style="width: 100%; line-height: 20px; resize:none" type="text" rows="8"
-                      placeholder="{{alertText2}}" ng-model="reason"></textarea>
+            <div class="applyContent alert-content">
+                <textarea type="text" rows="8" placeholder="{{alertText2}}" ng-model="reason"></textarea>
             </div>
             <button class="singleButton1" ng-click="sure()">确定</button>
         </div>
     </div>
 </div>
-
 
 <div ng-hide="choiceStyle == 0">
     <div class="userSet" ng-show="company.companyName" style="border-top: 1px solid #e6e6e6;">

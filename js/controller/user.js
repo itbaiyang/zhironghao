@@ -2,7 +2,9 @@
 var userCtrl = angular.module('userCtrl', []);
 /*个人中心*/
 userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeout, $location) {
-	var result_list =[];
+	$scope.message = false;//是否有数据，初始化为否
+
+	/*初始化个人信息*/
     $scope.init = function () {
 		//获取个人信息 以及各种列表数量
 		if ($rootScope.login_user.userId == null || $rootScope.login_user.userId == "") {
@@ -38,10 +40,10 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			// console.log("debug");
 		}
 	};
-	$scope.message = false;
 
+	/*验证用户身份*/
 	$scope.init_role = function () {
-		$scope.bt_show = 0;
+		// $scope.bt_show = 0;
 		$http({
 			url: api_uri + "user/role",
 			method: "GET",
@@ -50,14 +52,14 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			// console.log(d);
 			if (d.returnCode == 0) {
 				$scope.role = d.result;
-				// console.log($scope.role, "baiyang");
 			} else {
-				// console.log(d);
+
 			}
 		}).error(function (d) {
 		});
 	};
 
+	/*获取个人申请列表*/
 	$scope.list = function (pageNo,pageSize) {
 		if(!$scope.type){
 			$scope.type = "1";
@@ -87,32 +89,34 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						} else if ($scope.type == 1) {
 							if (data.status == 0 || data.status == 1) {
 								data.jindu = "10";
-								data.triangle = "8";
-								data.textPosition = "2";
-								data.progressText = "申请中";
+								data.progressText = "准备中";
 								$scope.message = true;
 							} else if (data.status == 2) {
-								data.jindu = "50";
-								data.triangle = "44";
-								data.textPosition = "36";
-								data.progressText = "约见中";
+								data.jindu = "25";
+								data.progressText = "下户";
 								$scope.message = true;
 							} else if (data.status == 3) {
-								data.jindu = "75";
-								data.triangle = "66";
-								data.textPosition = "58";
-								data.progressText = "跟进中";
+								data.jindu = "40";
+								data.progressText = "审批中";
 								$scope.message = true;
 							} else if (data.status == 4) {
+								data.jindu = "55";
+								data.progressText = "审批通过";
+								$scope.message = true;
+							} else if (data.status == 5) {
+								data.jindu = "70";
+								data.progressText = "开户";
+								$scope.message = true;
+							} else if (data.status == 6) {
+								data.jindu = "85";
+								data.progressText = "放款";
+								$scope.message = true;
+							} else if (data.status == 7) {
 								data.jindu = "100";
-								data.triangle = "86";
-								data.textPosition = "76";
-								data.progressText = "成功融资";
+								data.progressText = "完成融资";
 								$scope.message = true;
 							} else if (data.status == -1) {
 								data.jindu = "0";
-								data.triangle = "20";
-								data.textPosition = "5";
 								data.progressText = "申请已经取消";
 							}
 						}
@@ -128,11 +132,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			//$location.path("/error");
 		})
 	};
-	$scope.result_list = {
-		result: {},
-		returnCode: 0
-	};
 
+	/*获取任务列表*/
 	$scope.myList = function (pageNo, pageSize) {
 		if (!$scope.type) {
 			$scope.type = "1";
@@ -167,37 +168,52 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 						} else if ($scope.type == 1) {
 							if (data.status == 0 || data.status == 1) {
 								data.jindu = "10";
-								data.triangle = "8";
-								data.textPosition = "2";
-								data.progressText = "申请中";
-								data.statusNextText = "约见中";
+								data.progressText = "准备中";
+								data.statusNextText = "下户";
 								data.progressNext = "审核中";
-								data.progressTextNext = "开始约见";
+								data.progressTextNext = "开始下户";
 								$scope.message = true;
 							} else if (data.status == 2) {
-								data.jindu = "50";
-								data.triangle = "44";
-								data.textPosition = "36";
-								data.progressText = "约见中";
-								data.statusNextText = "跟进中";
+								data.jindu = "25";
+								data.progressText = "下户";
+								data.statusNextText = "审批中";
 								data.progressNext = "审核中";
-								data.progressTextNext = "继续跟进";
+								data.progressTextNext = "开始审批";
 								$scope.message = true;
 							} else if (data.status == 3) {
-								data.jindu = "75";
-								data.triangle = "66";
-								data.textPosition = "58";
-								data.progressText = "跟进中";
-								data.statusNextText = "成功融资";
+								data.jindu = "40";
+								data.progressText = "审批中";
+								data.statusNextText = "审批通过";
 								data.progressNext = "审核中";
-								data.progressTextNext = "完成贷款";
+								data.progressTextNext = "审核通过";
 								$scope.message = true;
 							} else if (data.status == 4) {
+								data.jindu = "55";
+								data.progressText = "审批通过";
+								data.statusNextText = "开户";
+								data.progressNext = "审核中";
+								data.progressTextNext = "马上开户";
+								$scope.message = true;
+							} else if (data.status == 5) {
+								data.jindu = "70";
+								data.progressText = "开户";
+								data.statusNextText = "放款";
+								data.progressNext = "审核中";
+								data.progressTextNext = "开始放款";
+								$scope.message = true;
+							} else if (data.status == 6) {
+								data.jindu = "85";
+								data.progressText = "放款";
+								data.statusNextText = "完成融资";
+								data.progressNext = "审核中";
+								data.progressTextNext = "成功融资";
+								$scope.message = true;
+							} else if (data.status == 7) {
 								data.jindu = "100";
-								data.triangle = "86";
-								data.textPosition = "76";
-								data.progressText = "成功融资";
-								data.progressNext = "已经完成";
+								data.progressText = "完成融资";
+								data.statusNextText = "完成融资";
+								data.progressNext = "审核中";
+								data.progressTextNext = "完成融资";
 								$scope.message = true;
 							} else if (data.status == -1) {
 								data.jindu = "0";
@@ -210,46 +226,40 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				}
 			}
 			else {
-				//console.log(d);
 			}
 
 		}).error(function (d) {
-			// console.log("login error");
-			//$location.path("/error");
 		})
 	};
-	$scope.result_list = {
-		result: {},
-		returnCode: 0
-	};
 
+	/*弹出框*/
 	$scope.alert = false;
+
+	/*普通*/
 	$scope.alert_come = function (status, id, days) {
 		$scope.dateTime = days;
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		//$(".alert").css("margin-top", $(document).scrollTop());
 		$scope.alertText = "预计时间";
-		$scope.alertText1 = "备注内容";
-		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
+		$scope.alertText2 = "如需备注请在次进行描述";
 	};
+
+	/*逾期后*/
 	$scope.alert_come1 = function (status, id, days) {
 		$scope.dateTime = days;
 		$scope.alert = true;
 		$scope.applyId = id;
 		$scope.status = status;
-		//$(".alert").css("margin-top", $(document).scrollTop());
-
 		$scope.alertText = "延长时间";
-		$scope.alertText1 = "说明原因";
-		$scope.alertText2 = "企业方征信问题没有及时提交，请尽快提交到位";
+		$scope.alertText2 = "请说明原因（必填）";
 	};
-	$scope.expectDateBank = "";
+	// $scope.expectDateBank = "";
 
 	$scope.init();
 
-	$scope.userDetail = function(){
+	/*跳转页面*/
+	$scope.userSetting = function () {
 		$location.path("/user/setting/");
 	};
 
@@ -275,6 +285,8 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			$event.stopPropagation();
 		}
 	};
+
+	/*客户经理提交状态*/
 	$scope.sure = function () {
 		var params = {
 			"userId": $rootScope.login_user.userId,
@@ -284,7 +296,6 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		// console.log(params);
 		$.ajax({
 			type: 'POST',
 			url: api_uri + "applyBankDeal/refer",
@@ -294,11 +305,11 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 				// console.log(data);
 				if (data.returnCode == 0) {
 					$scope.alert = false;
-					$(".alertCenterSubmit").css("display", "block", "top", $(document).scrollTop());
+					$(".alertCenterSubmit").css("display", "block");
 					$timeout(function () {
 						$(".alertCenterSubmit").css("display", "none");
-						//$location.path("/user/center");
 					}, 2000);
+					// alert("成功提交");
 					$scope.list(1, 100);
 					$scope.myList(1, 100);
 					$scope.$apply();
@@ -311,10 +322,11 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			dataType: 'json',
 		});
 	};
-
 });
 
 userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout, $location) {
+
+	/*消息列表*/
 	$scope.list = function (pageNo, pageSize) {
 		if (!$scope.type) {
 			$scope.type = "1";
@@ -330,16 +342,13 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			method: "GET",
 			params: m_params
 		}).success(function (d) {
-			// console.log(d);
+			console.log(d);
 			if (d.returnCode == 0) {
 				if (d.result.totalCount == 0) {
 					$scope.message_list = false;
 				} else {
 					$scope.message_list = d.result.datas;
 					$scope.totalCount = d.result.totalCount;
-					//angular.forEach($scope.result_list, function (data) {
-					//
-					//});
 				}
 			}
 			else {
@@ -352,6 +361,8 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 		})
 	};
 	$scope.list(1, 20);
+
+	/*标记已读信息*/
 	$scope.read_message = function (id, url) {
 		var m_params = {
 			userId: $rootScope.login_user.userId,
@@ -371,10 +382,10 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 			}
 
 		}).error(function (d) {
-			// console.log("login error");
-			//$location.path("/error");
 		})
 	};
+
+	/*跳转页面*/
 	$scope.my_apply = function (urlDetail, defineId) {
 		if (!$rootScope.isNullOrEmpty(urlDetail)) {
 			$location.path(urlDetail + "/" + defineId);
@@ -383,9 +394,12 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 });
 
 userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-	$scope.choiceStyle = $routeParams.defineId;
+
+	$scope.choiceStyle = $routeParams.defineId; //区分任务还是申请的参数
+
+	/*获取详情信息*/
 	$scope.init = function () {
-		$scope.bt_show = 0;
+		// $scope.bt_show = 0;
 		if ($routeParams.defineId == 1) {
 			$http({
 				url: api_uri + "loanApplication/detail/" + $routeParams.id,
@@ -412,43 +426,61 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				console.log(d);
 				if (d.returnCode == 0) {
 					$scope.company = d.result;
-					// console.log(d.result);
-					if ($scope.company.status == 1) {
+					if ($scope.company.status == 0 || $scope.company.status == 1) {
 						$scope.company.jindu = "10";
-						$scope.company.triangle = "8";
-						$scope.company.textPosition = "2";
-						$scope.company.progressText = "审核中";
-						$scope.progressTextNext = "开始约见";
-						$scope.message = true;
+						$scope.company.progressText = "准备中";
+						$scope.company.statusNextText = "下户";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "开始下户";
+						$scope.company.message = true;
 					} else if ($scope.company.status == 2) {
 						$scope.company.jindu = "50";
-						$scope.company.triangle = "44";
-						$scope.company.textPosition = "36";
-						$scope.company.progressText = "约见中";
-						$scope.progressTextNext = "继续跟进";
-						$scope.message = true;
+						$scope.company.progressText = "下户";
+						$scope.company.statusNextText = "审批中";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "开始审批";
+						$scope.company.message = true;
 					} else if ($scope.company.status == 3) {
 						$scope.company.jindu = "75";
-						$scope.company.triangle = "66";
-						$scope.company.textPosition = "58";
-						$scope.company.progressText = "跟进中";
-						$scope.progressTextNext = "完成贷款";
-						$scope.message = true;
+						$scope.company.progressText = "审批中";
+						$scope.company.statusNextText = "审批通过";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "审核通过";
+						$scope.company.message = true;
 					} else if ($scope.company.status == 4) {
 						$scope.company.jindu = "100";
-						$scope.company.triangle = "86";
-						$scope.company.textPosition = "76";
-						$scope.company.progressText = "成功融资";
-						$scope.progressTextNext = "成功融资";
+						$scope.company.progressText = "审批通过";
+						$scope.company.statusNextText = "开户";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "马上开户";
+						$scope.company.message = true;
+					} else if ($scope.company.status == 5) {
+						$scope.company.jindu = "100";
+						$scope.company.progressText = "开户";
+						$scope.company.statusNextText = "放款";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "开始放款";
 						$scope.message = true;
+					} else if ($scope.company.status == 6) {
+						$scope.company.jindu = "100";
+						$scope.company.progressText = "放款";
+						$scope.company.statusNextText = "完成融资";
+						$scope.company.progressNext = "审核中";
+						$scope.progressTextNext = "成功融资";
+						$scope.company.message = true;
+					} else if ($scope.company.status == 7) {
+						$scope.company.jindu = "100";
+						$scope.company.progressText = "放款";
+						$scope.company.statusNextText = "完成融资";
+						$scope.company.progressNext = "完成融资";
+						$scope.progressTextNext = "成功融资";
+						$scope.company.message = true;
 					} else if ($scope.company.status == -1) {
 						$scope.company.jindu = "0";
 						$scope.company.triangle = "20";
 						$scope.company.textPosition = "5";
-						$scope.company.progressText = "申请已经取消";
+						$scope.progressText = "申请已经取消";
 					}
-				} else {
-					// console.log(d);
 				}
 			}).error(function (d) {
 				// console.log("login error");
@@ -465,32 +497,26 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 				$scope.company_basic = d.result;
 				$scope.template_list = d.result.templateList;
 				angular.forEach($scope.company_basic.templateList, function (data) {
-					// if (data.templateType == 3 && data.title == "财务报表") {
-					// 	$scope.img_list = data.imgList;
-					// }
-					// data.sortsNum = -1;
-					// data.sortsNum ++;
 				});
-				// console.log($scope.img_list);
-				// console.log(d.result);
 			} else {
-				// console.log(d);
 			}
 		}).error(function (d) {
-			//console.log("login error");
-			//$location.path("/error");
 		});
 	};
 	$scope.init();
 
+	/*取消申请按钮*/
 	$scope.alertCancel = function(){
 		$(".coverAlert").css("display","block");
 		$(".cancelAlert").css("display","block");
 	};
+	/*关闭弹出框*/
 	$scope.alertExit = function(){
 		$(".coverAlert").css("display","none");
 		$(".cancelAlert").css("display","none");
 	};
+
+	/*查看照片列表*/
 	$scope.previewImages = function(img,imgList){
 		// console.log(img,imgList);
 		wx.previewImage({
@@ -498,6 +524,8 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			urls: imgList
 		});
 	};
+
+	/*取消申请接口*/
 	$scope.cancel =function(){
 		var m_params = {
 			userId: $rootScope.login_user.userId,
@@ -511,6 +539,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		}).success(function (d) {
 			console.log(d);
 			if (d.returnCode == 0) {
+				alert("取消成功");
 				$location.path("/user/center");
 			}else {
 				// console.log(d);
@@ -520,7 +549,11 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			$location.path("/error");
 		});
 	};
+
+	/*客户经理进度跟进弹出框*/
 	$scope.alert = false;
+
+	/*普通弹出框显示*/
 	$scope.alert_come = function (status, id, days) {
 		$scope.dateTime = days;
 		$scope.alert = true;
@@ -528,9 +561,10 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$scope.status = status;
 		$(".alert").css("top", $(document).scrollTop());
 		$scope.alertText = "预计时间";
-		$scope.alertText1 = "备注内容";
-		$scope.alertText2 = "企业方需要补充一张个人征信表和法人的身份证证件";
+		$scope.alertText2 = "如需备注请在次进行描述";
 	};
+
+	/*逾期后的弹出框*/
 	$scope.alert_come1 = function (status, id, days) {
 		$scope.dateTime = days;
 		$scope.alert = true;
@@ -539,17 +573,19 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		$(".alert").css("top", $(document).scrollTop());
 
 		$scope.alertText = "延长时间";
-		$scope.alertText1 = "说明原因";
-		$scope.alertText2 = "企业方征信问题没有及时提交，请尽快提交到位";
+		$scope.alertText2 = "请说明原因（必填）";
 	};
-	$scope.expectDateBank = "";
+	// $scope.expectDateBank = "";
 
+	/*关闭弹出框*/
 	$scope.closeAlert = function (name, $event) {
 		$scope.alert = false;
 		if ($scope.stopPropagation) {
 			$event.stopPropagation();
 		}
 	};
+
+	/*客户经理提交状态*/
 	$scope.sure = function () {
 		var params = {
 			"userId": $rootScope.login_user.userId,
@@ -559,31 +595,33 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		// console.log(params);
-		$.ajax({
-			type: 'POST',
-			url: api_uri + "applyBankDeal/refer",
-			data: params,
-			traditional: true,
-			success: function (data, textStatus, jqXHR) {
-				// console.log(data);
-				if (data.returnCode == 0) {
-					$scope.alert = false;
-					//$scope.show();
-					//$scope.$apply();
+		if (!params.expectDateBank) {
+			alert("请输入预计时间");
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: api_uri + "applyBankDeal/refer",
+				data: params,
+				traditional: true,
+				success: function (data, textStatus, jqXHR) {
+					if (data.returnCode == 0) {
+						$scope.alert = false;
+					}
+					else {
+						console.log(data);
+					}
+				},
+				dataType: 'json',
+			});
+		}
 
-				}
-				else {
-					// console.log(data);
-				}
-			},
-			dataType: 'json',
-		});
 	};
 });
 
 userCtrl.controller('SettingCtrl', //用户设置
     ['$scope','$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
+
+		/*初始化信息*/
         $scope.init = function () {
             //获取用户信息
             $http({
@@ -683,11 +721,13 @@ userCtrl.controller('SettingCtrl', //用户设置
 	       
         };
         $scope.init();
+
+		/*跳转页面*/
         $scope.reset = function(){
             $location.path("/register/reset1");
         };
 
-
+		/*更新信息*/
         $scope.update = function(key,value){
 			if (!$rootScope.isNullOrEmpty(key)) {
         		if($rootScope.isNullOrEmpty(value)) value = "";
@@ -696,6 +736,7 @@ userCtrl.controller('SettingCtrl', //用户设置
         	}
         };
 
+		/*退出登录*/
         $scope.logout =  function(){
             $http({
 	            url: api_uri + "auth/logout",
@@ -731,8 +772,6 @@ userCtrl.controller('UserUpdateCtrl',
         	var params = $rootScope.login_user;
         	params.key = $scope.update_user.key;
         	params.value = $scope.update_user.value;
-        	//params.position = $scope.update_user.position;
-        	// console.log(params);
         	var keys = ["name","position"];
         	if($.inArray(params.key, keys)>=0){
         		$.post(api_uri + "user/update", params,
@@ -740,7 +779,7 @@ userCtrl.controller('UserUpdateCtrl',
 			        if (data.returnCode == 0) {
 			            
 			        } else {
-			            // console.log(data);
+						console.log(data);
 			        }
 		  	    },
 			   "json");

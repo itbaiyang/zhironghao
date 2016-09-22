@@ -151,7 +151,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		}else{
 			$scope.error_msg = "密码必须是6-12位字母+数字"
 		}
-	}
+	};
 	$scope.textChange =function(e){
 		//console.log("bianhuale")
 		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
@@ -173,7 +173,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			$scope.success_msg = "";
 			$scope.error_msg = "两次输入的密码不一致"
 		}
-	}
+	};
 	$scope.user_register = function(){
 		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
 		if($scope.registerUser.password==$scope.registerUser.validatePwd &&reg_str.test($scope.registerUser.password)){
@@ -358,7 +358,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 			$scope.success_msg = "";
 			$scope.error_msg = "密码必须是6-12位字母+数字"
 		}
-	}
+	};
 	$scope.textChange2 =function(e){
 		//console.log("bianhuale")
 		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
@@ -369,7 +369,7 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 			$scope.success_msg = "";
 			$scope.error_msg = "两次输入的密码不一致"
 		}
-	}
+	};
 	$scope.user_reset = function(){
 		$http({
             url: api_uri+"reg/reset",
