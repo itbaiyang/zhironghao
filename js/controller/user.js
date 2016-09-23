@@ -287,7 +287,7 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 	};
 
 	/*客户经理提交状态*/
-	$scope.sure = function () {
+	$scope.submit_status = function () {
 		var params = {
 			"userId": $rootScope.login_user.userId,
 			"token": $rootScope.login_user.token,
@@ -296,31 +296,35 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		$.ajax({
-			type: 'POST',
-			url: api_uri + "applyBankDeal/refer",
-			data: params,
-			traditional: true,
-			success: function (data, textStatus, jqXHR) {
-				// console.log(data);
-				if (data.returnCode == 0) {
-					$scope.alert = false;
-					$(".alertCenterSubmit").css("display", "block");
-					$timeout(function () {
-						$(".alertCenterSubmit").css("display", "none");
-					}, 2000);
-					// alert("成功提交");
-					$scope.list(1, 100);
-					$scope.myList(1, 100);
-					$scope.$apply();
+		if (params.expectDateBank == "") {
+			alert("请输入预计时间");
+		} else {
+			$.ajax({
+				type: 'POST',
+				url: api_uri + "applyBankDeal/refer",
+				data: params,
+				traditional: true,
+				success: function (data, textStatus, jqXHR) {
+					// console.log(data);
+					if (data.returnCode == 0) {
+						$scope.alert = false;
+						$(".alertCenterSubmit").css("display", "block");
+						$timeout(function () {
+							$(".alertCenterSubmit").css("display", "none");
+						}, 2000);
+						// alert("成功提交");
+						$scope.list(1, 100);
+						$scope.myList(1, 100);
+						$scope.$apply();
 
-				}
-				else {
-					console.log(data);
-				}
-			},
-			dataType: 'json',
-		});
+					}
+					else {
+						console.log(data);
+					}
+				},
+				dataType: 'json',
+			});
+		}
 	};
 });
 
@@ -586,7 +590,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 	};
 
 	/*客户经理提交状态*/
-	$scope.sure = function () {
+	$scope.submit_status = function () {
 		var params = {
 			"userId": $rootScope.login_user.userId,
 			"token": $rootScope.login_user.token,
