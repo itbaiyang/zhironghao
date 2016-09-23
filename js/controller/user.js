@@ -3,7 +3,7 @@ var userCtrl = angular.module('userCtrl', []);
 /*个人中心*/
 userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeout, $location) {
 	$scope.message = false;//是否有数据，初始化为否
-
+	$scope.msg_red_see = false;
 	/*初始化个人信息*/
     $scope.init = function () {
 		//获取个人信息 以及各种列表数量
@@ -291,13 +291,17 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 		var params = {
 			"userId": $rootScope.login_user.userId,
 			"token": $rootScope.login_user.token,
-			"expectDateBank": $scope.dateTime,
+			"expectDateBank": $scope.dateTimePro,
 			"reason": $scope.reason,
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
-		if (params.expectDateBank == "") {
-			alert("请输入预计时间");
+		if (!params.expectDateBank) {
+			$scope.msg_red = "请输入预计时间";
+			$scope.msg_red_see = true;
+			$timeout(function () {
+				$scope.msg_red_see = false;
+			}, 3000);
 		} else {
 			$.ajax({
 				type: 'POST',
@@ -397,8 +401,8 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 	};
 });
 
-userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-
+userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams, $timeout) {
+	$scope.msg_red_see = false;
 	$scope.choiceStyle = $routeParams.defineId; //区分任务还是申请的参数
 
 	/*获取详情信息*/
@@ -594,13 +598,17 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 		var params = {
 			"userId": $rootScope.login_user.userId,
 			"token": $rootScope.login_user.token,
-			"expectDateBank": $scope.dateTime,
+			"expectDateBank": $scope.dateTimePro,
 			"reason": $scope.reason,
 			"applyId": $scope.applyId,
 			"status": $scope.status,
 		};
 		if (!params.expectDateBank) {
-			alert("请输入预计时间");
+			$scope.msg_red = "请输入预计时间";
+			$scope.msg_red_see = true;
+			$timeout(function () {
+				$scope.msg_red_see = false;
+			}, 3000);
 		} else {
 			$.ajax({
 				type: 'POST',

@@ -104,8 +104,9 @@
     <div class="alertContent" ng-click="change($event)">
         <div class="userSet" style="border-radius: 2px">
             <span class="font-size-14">{{alertText}}</span>
+            <span class="font-size-14 meg-red" ng-show="msg_red_see">{{msg_red}}</span>
             <div class="fr font-size-14">
-                <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTime">天
+                <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTimePro">天
             </div>
         </div>
         <div class="applyContent alert-content">

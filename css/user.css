@@ -535,7 +535,12 @@
     font-size: 14px;
 }
 
+.meg-red {
+    color: #F97383;
+}
+
 .alert-input {
+    width: 100px;
     text-align: right;
     margin-right: 10px;
     font-size: 14px;
