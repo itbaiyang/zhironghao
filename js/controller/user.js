@@ -404,7 +404,7 @@ userCtrl.controller('MessageCtrl', function ($http, $scope, $rootScope, $timeout
 userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $location, $routeParams, $timeout) {
 	$scope.msg_red_see = false;
 	$scope.choiceStyle = $routeParams.defineId; //区分任务还是申请的参数
-
+	$scope.showImg == false;
 	/*获取详情信息*/
 	$scope.init = function () {
 		// $scope.bt_show = 0;
@@ -500,12 +500,17 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 			method: "GET",
 			params: $rootScope.login_user
 		}).success(function (d) {
-			//console.log(d);
+			console.log(d);
 			if (d.returnCode == 0) {
-				$scope.company_basic = d.result;
 				$scope.template_list = d.result.templateList;
-				angular.forEach($scope.company_basic.templateList, function (data) {
-				});
+				if ($scope.template_list.length > 0) {
+					$scope.showImg == true;
+				} else {
+					$scope.showImg == false;
+				}
+				$scope.company_basic = d.result;
+				// angular.forEach($scope.company_basic.templateList, function (data) {
+				// });
 			} else {
 			}
 		}).error(function (d) {
