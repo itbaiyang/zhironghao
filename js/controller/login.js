@@ -83,9 +83,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
 
 
                 var redirect_uri = "";
-                if (!$scope.userName) {
-                    redirect_uri = "/user/add_name";
-                } else if (!present_route) {
+                if (!present_route) {
                     redirect_uri = "/user/center";
                 } else if (present_route.indexOf("/article/apply/") > -1) {
                     redirect_uri = present_route;
@@ -100,9 +98,8 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                 } else {
                     $location.path(redirect_uri);
                 }
-                $location.path("/user/setting");
+                // $location.path("/user/setting");
             }else {
-
             	var msg = $scope.error_code_msg[d.returnCode];
             	if(!msg){
             		msg = "登录失败";
