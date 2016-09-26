@@ -93,12 +93,12 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
                     redirect_uri = "/user/center";
                     $rootScope.removeSessionObject("present_route");
                 }
-                // $location.path(redirect_uri);
-                if ($rootScope.wx_client) {
-                    window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri + redirect_uri);
-                } else {
-                    $location.path(redirect_uri);
-                }
+                $location.path(redirect_uri);
+                // if ($rootScope.wx_client) {
+                //     window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri + redirect_uri);
+                // } else {
+                //     $location.path(redirect_uri);
+                // }
                 $location.path("/user/setting");
             }else {
 
