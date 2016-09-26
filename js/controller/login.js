@@ -51,7 +51,7 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             }).success(function (d) {
                 if (d.returnCode == 1001) {
                     $scope.enableMobile = true;
-                    //$scope.success_msg = "手机号输入正确";
+                    $scope.success_msg = "手机号输入正确";
                 }
                 else {
                     $scope.enableMobile =false;

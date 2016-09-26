@@ -15,8 +15,6 @@ var myApp = angular.module('myApp', [
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 });
-
-
   myApp.run(['$location', '$rootScope', '$http', '$routeParams',
       function ($location, $rootScope, $http, $routeParams) {
 
