@@ -748,12 +748,8 @@ userCtrl.controller('SettingCtrl', //用户设置
         };
 
 		/*更新信息*/
-        $scope.update = function(key,value){
-			if (!$rootScope.isNullOrEmpty(key)) {
-        		if($rootScope.isNullOrEmpty(value)) value = "";
-        	   $rootScope.putObject("user_update",key+"="+value);
-        	   $location.path("/user/update");
-        	}
+		$scope.update = function (key) {
+			$location.path("/user/update/" + key);
         };
 
 		/*退出登录*/
@@ -773,42 +769,38 @@ userCtrl.controller('SettingCtrl', //用户设置
         };
 }]);
 
-userCtrl.controller('UserUpdateCtrl',
-    ['$scope','$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
-        
-        $scope.init = function(){
-        	var user_update = $rootScope.getObject("user_update");
-	        if(user_update && user_update.indexOf("=")){
-	        	$rootScope.removeObject("user_update");
-	        	$scope.update_user = {};
-	        	$scope.update_user.key = user_update.split("=")[0];
-	        	$scope.update_user.value = user_update.split("=")[1];
-	        }
-        };
-       
-        $scope.init();
-        
-        $scope.sure = function(){
-        	var params = $rootScope.login_user;
-        	params.key = $scope.update_user.key;
-        	params.value = $scope.update_user.value;
-        	var keys = ["name","position"];
-        	if($.inArray(params.key, keys)>=0){
-				$.post(
-					api_uri + "user/update",
-					params,
-			    function (data) {
-			        if (data.returnCode == 0) {
-			            
-			        } else {
+userCtrl.controller('UserUpdateCtrl', function ($scope, $rootScope, $location, $routeParams) {
+	$scope.typeKey = $routeParams.id;
+	console.log($routeParams.id);
+	$scope.sure = function () {
+		var params = {
+			"userId": $rootScope.login_user.userId,
+			"token": $rootScope.login_user.token,
+			"j": JSON.stringify({
+				"name": $scope.userName,
+				"position": $scope.position,
+			})
+		};
+		console.log(params);
+		$.ajax({
+			type: 'POST',
+			url: api_uri + "user/updateNew",
+			data: params,
+			traditional: true,
+			success: function (data, textStatus, jqXHR) {
+				console.log(data);
+				if (data.returnCode == 0) {
+					$location.path("/user/setting");
+				}
+				else {
 						console.log(data);
-			        }
-		  	    },
-			   "json");
-        	}
-        	$location.path("/user/setting");
-        };
-}]);
+				}
+			},
+			dataType: 'json',
+		});
+		$location.path("/user/setting");
+	};
+});
 
 userCtrl.controller('AddMessageCtrl',
 	['$scope', '$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
@@ -816,12 +808,14 @@ userCtrl.controller('AddMessageCtrl',
 			var params = {
 				"userId": $rootScope.login_user.userId,
 				"token": $rootScope.login_user.token,
-				"name": $scope.dateTimePro,
-				"position": $scope.dateTimePro,
+				"j": JSON.stringify({
+					"name": $scope.userName,
+					"position": $scope.position,
+				})
 			};
 			$.ajax({
 				type: 'POST',
-				url: api_uri + "user/update",
+				url: api_uri + "user/updateNew",
 				data: params,
 				traditional: true,
 				success: function (data, textStatus, jqXHR) {

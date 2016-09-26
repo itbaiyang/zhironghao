@@ -65,7 +65,7 @@ myApp.config(function ($routeProvider) {
             templateUrl: templates_root + 'user/add_name.html',
             controller: 'AddMessageCtrl'
         })
-        .when('/user/update', {//用户更改参数
+        .when('/user/update/:id', {//用户更改参数
             templateUrl: templates_root + 'user/update.html',
             controller: 'UserUpdateCtrl'
         })

@@ -1,14 +1,14 @@
-<div class="regForm1"  ng-switch="update_user.key">
-	<div ng-switch-when="name">
+<div class="regForm1">
+	<div ng-show="typeKey == 'name'">
 		<input type="text" placeholder="输入姓名" class="phoneCode"
-			   maxlength="12"  ng-model="update_user.value">
+			   maxlength="12" ng-model="userName">
 		<p style="height: 28px"></p>
-		<input type='button' class="regRelease" value="确定"ng-click="sure()"/>
+		<input type='button' class="regRelease" value="确定" ng-click="sure()"/>
 	</div>
-	<div ng-switch-when="position">
+	<div ng-show="typeKey =='position'">
 		<input type="text" placeholder="输入职位" class="phoneCode"
-			   maxlength="12"  ng-model="update_user.value">
+			   maxlength="12" ng-model="position">
 		<p style="height: 28px"></p>
-		<input type='button' class="regRelease" value="确定"ng-click="sure()"/>
+		<input type='button' class="regRelease" value="确定" ng-click="sure()"/>
 	</div>
 </div>

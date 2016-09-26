@@ -1,4 +1,5 @@
 api_uri = "http://123.206.84.74/api/";
+// api_uri = "http://172.16.97.229:8080/api/";
 root_uri = "http://test.zhironghao.com/#";
 activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
 //api_uri = "http://172.17.2.13:8080/api/";
@@ -25,7 +26,7 @@ var myApp = angular.module('myApp', [
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-          // $rootScope.wx_client = false;
+          $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
