@@ -23,6 +23,9 @@ userCtrl.controller('UserCenterCtrl', function ($http, $scope, $rootScope,$timeo
 					$scope.position = d.result.position;
 					$scope.headImg = d.result.headImg;
 					$scope.msgCount = d.result.msgCount;
+					if (!$scope.nickname) {
+						$location.path("/user/add_name");
+					}
 				} else {
 					// console.log(d);
 					$rootScope.removeObject("login_user");
@@ -791,7 +794,9 @@ userCtrl.controller('UserUpdateCtrl',
         	params.value = $scope.update_user.value;
         	var keys = ["name","position"];
         	if($.inArray(params.key, keys)>=0){
-        		$.post(api_uri + "user/update", params,
+				$.post(
+					api_uri + "user/update",
+					params,
 			    function (data) {
 			        if (data.returnCode == 0) {
 			            
@@ -804,3 +809,30 @@ userCtrl.controller('UserUpdateCtrl',
         	$location.path("/user/setting");
         };
 }]);
+
+userCtrl.controller('AddMessageCtrl',
+	['$scope', '$rootScope', '$location', '$http', function ($scope, $rootScope, $location, $http) {
+		$scope.sure = function () {
+			var params = {
+				"userId": $rootScope.login_user.userId,
+				"token": $rootScope.login_user.token,
+				"name": $scope.dateTimePro,
+				"position": $scope.dateTimePro,
+			};
+			$.ajax({
+				type: 'POST',
+				url: api_uri + "user/update",
+				data: params,
+				traditional: true,
+				success: function (data, textStatus, jqXHR) {
+					if (data.returnCode == 0) {
+					}
+					else {
+						console.log(data);
+					}
+				},
+				dataType: 'json',
+			});
+			$location.path("/user/setting");
+		};
+	}]);

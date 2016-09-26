@@ -1,11 +1,11 @@
-// api_uri = "http://123.206.84.74/api/";
-// root_uri = "http://test.zhironghao.com/#";
-// activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
+api_uri = "http://123.206.84.74/api/";
+root_uri = "http://test.zhironghao.com/#";
+activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
 //api_uri = "http://172.17.2.13:8080/api/";
 //api_uri = "http://172.16.97.95:8080/api/";
-api_uri = "http://api.supeiyunjing.com/";
-root_uri = "http://app.supeiyunjing.com/#";
-activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
+// api_uri = "http://api.supeiyunjing.com/";
+// root_uri = "http://app.supeiyunjing.com/#";
+// activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 var myApp = angular.module('myApp', [
@@ -370,21 +370,6 @@ var myApp = angular.module('myApp', [
 			   return str.join("&").toString();
 		 };
 
-        /*$rootScope.close_alert = function () {
-            $rootScope.alert_show = null;
-        };
-        $rootScope.alert = function (data) {
-            $rootScope.alert_show = true;
-            if (data) {
-                $rootScope.alert_str = data;
-                setTimeout(function () {
-                    $rootScope.alert_show = null;
-                    $rootScope.$apply();
-                }, 3000);
-            } else {
-                $rootScope.alert_str = "未知错误";
-            }
-        };*/
         $rootScope.touchStart = function(){
             //console.log("big");
             $(".singleButtonFixed").addClass("singleButton2");

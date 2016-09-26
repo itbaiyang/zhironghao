@@ -83,8 +83,9 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
 
 
                 var redirect_uri = "";
-
-                if (present_route == null || present_route == "" || !present_route) {
+                if (!$scope.userName) {
+                    redirect_uri = "/user/add_name";
+                } else if (!present_route) {
                     redirect_uri = "/user/center";
                 } else if (present_route.indexOf("/article/apply/") > -1) {
                     redirect_uri = present_route;
