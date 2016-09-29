@@ -445,35 +445,35 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 						$scope.progressTextNext = "开始下户";
 						$scope.company.message = true;
 					} else if ($scope.company.status == 2) {
-						$scope.company.jindu = "50";
+						$scope.company.jindu = "25";
 						$scope.company.progressText = "下户";
 						$scope.company.statusNextText = "审批中";
 						$scope.company.progressNext = "审核中";
 						$scope.progressTextNext = "开始审批";
 						$scope.company.message = true;
 					} else if ($scope.company.status == 3) {
-						$scope.company.jindu = "75";
+						$scope.company.jindu = "40";
 						$scope.company.progressText = "审批中";
 						$scope.company.statusNextText = "审批通过";
 						$scope.company.progressNext = "审核中";
 						$scope.progressTextNext = "审核通过";
 						$scope.company.message = true;
 					} else if ($scope.company.status == 4) {
-						$scope.company.jindu = "100";
+						$scope.company.jindu = "55";
 						$scope.company.progressText = "审批通过";
 						$scope.company.statusNextText = "开户";
 						$scope.company.progressNext = "审核中";
 						$scope.progressTextNext = "马上开户";
 						$scope.company.message = true;
 					} else if ($scope.company.status == 5) {
-						$scope.company.jindu = "100";
+						$scope.company.jindu = "70";
 						$scope.company.progressText = "开户";
 						$scope.company.statusNextText = "放款";
 						$scope.company.progressNext = "审核中";
 						$scope.progressTextNext = "开始放款";
 						$scope.message = true;
 					} else if ($scope.company.status == 6) {
-						$scope.company.jindu = "100";
+						$scope.company.jindu = "85";
 						$scope.company.progressText = "放款";
 						$scope.company.statusNextText = "完成融资";
 						$scope.company.progressNext = "审核中";
@@ -481,10 +481,7 @@ userCtrl.controller('CompanyDetailCtrl', function ($http, $scope, $rootScope, $l
 						$scope.company.message = true;
 					} else if ($scope.company.status == 7) {
 						$scope.company.jindu = "100";
-						$scope.company.progressText = "放款";
-						$scope.company.statusNextText = "完成融资";
-						$scope.company.progressNext = "完成融资";
-						$scope.progressTextNext = "成功融资";
+						$scope.company.progressText = "完成融资";
 						$scope.company.message = true;
 					} else if ($scope.company.status == -1) {
 						$scope.company.jindu = "0";
