@@ -57,7 +57,7 @@
         <p class="detailTitle">联系电话</p>
         <p class="detailContent">{{company_basic.baseInfo.registerMobile}}</p>
     </div>
-    <div class="applyDetail" ng-show="showImg" ng-repeat="template in template_list">
+    <div class="applyDetail" ng-show="showImg == true" ng-repeat="template in template_list">
         <p class="detailTitle">{{template.title}}</p>
         <div id="previewImage">
             <img class="applyDetailImg" ng-click="previewImages(list,template.imgList)" ng-src="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">

@@ -110,10 +110,8 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 	            }
 	            else {
 	            	$scope.changeErrorMsg(d.result);
-					//$location.path("/register/step2/"+$scope.registerUser.mobile+"/"+d.result);
 	            }
 	        }).error(function (d) {
-	            // console.log("login error");
 	        })
 		}
 	};
@@ -136,7 +134,6 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		"share": share_msg.shareName,
 		"shareId": share_msg.shareId
 	};
-	// alert($scope.registerUser);
 
 	$scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;
@@ -144,29 +141,8 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 	              $scope.changeErrorMsg("");
 	        }, 5000);
 	};
-	$scope.ngBlur = function(){
-		// console.log("ng-blur")
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if(reg_str.test($scope.registerUser.password)){
-		}else{
-			$scope.error_msg = "密码必须是6-12位字母+数字"
-		}
-	};
-	$scope.textChange =function(e){
-		//console.log("bianhuale")
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if(reg_str.test($scope.registerUser.password)){
-			$scope.success_msg = "密码格式正确";
-			$scope.error_msg = ""
-		}else{
-			$scope.success_msg = "";
-			$scope.error_msg = "密码必须是6-12位字母+数字"
-		}
-	}
-	$scope.textChange2 =function(e){
-		//console.log("bianhuale")
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if($scope.registerUser.password==$scope.registerUser.validatePwd &&reg_str.test($scope.registerUser.password)){
+	$scope.textChange = function () {
+		if ($scope.registerUser.password == $scope.registerUser.validatePwd) {
 			$scope.success_msg = "点击注册按钮，注册用户";
 			$scope.error_msg = ""
 		}else{
@@ -175,8 +151,8 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		}
 	};
 	$scope.user_register = function(){
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if($scope.registerUser.password==$scope.registerUser.validatePwd &&reg_str.test($scope.registerUser.password)){
+		// var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
+		if ($scope.registerUser.password == $scope.registerUser.validatePwd) {
 			$http({
 	            url: api_uri+"reg/regist",
 	            method: "POST",
@@ -198,7 +174,7 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 							$rootScope.login_user = {
 			            		"userId":d.result.split("_")[0],
 			            		"token":d.result.split("_")[1]
-			            	}
+							};
 							$rootScope.putObject("login_user", $rootScope.login_user);
 			            	$location.path("/article/list");
 			            }
@@ -209,19 +185,12 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 			        }).error(function (d) {
 			            // console.log("login error");
 			        })
-	            }
-	            else {
-	                // console.log(d);
+				} else {
 	            }
 	        }).error(function (d) {
-	            // console.log("login error");
 	        })
 		}else{
-			if($scope.registerUser.password!=$scope.registerUser.validatePwd){
 				$scope.changeErrorMsg("两次密码输入的不一致");
-			}else if(!reg_str.test($scope.registerUser.password)){
-				$scope.changeErrorMsg("密码强度不够,必须包含数字和字母");
-			}
 		}
 	};
 
@@ -348,21 +317,9 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 		"validatePwd":"",
 		"token":$routeParams.token
 	};
-	$scope.textChange =function(e){
-		//console.log("bianhuale")
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if(reg_str.test($scope.resetUser.password)){
-			$scope.success_msg = "密码格式正确";
-			$scope.error_msg = ""
-		}else{
-			$scope.success_msg = "";
-			$scope.error_msg = "密码必须是6-12位字母+数字"
-		}
-	};
-	$scope.textChange2 =function(e){
-		//console.log("bianhuale")
-		var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
-		if($scope.resetUser.password==$scope.resetUser.validatePwd &&reg_str.test($scope.resetUser.password)){
+
+	$scope.textChange2 = function () {
+		if ($scope.resetUser.password == $scope.resetUser.validatePwd) {
 			$scope.success_msg = "点击重置按钮，重置密码";
 			$scope.error_msg = ""
 		}else{
@@ -396,17 +353,14 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
 						$location.path("/article/list");
 		            }
 		            else {
-		                // console.log(d);
 		            }
-		        }).error(function (d) {
-		            // console.log("login error");
+				}).error(function (d) {
+					;
 		        })
             }
             else {
-                // console.log(d);
             }
         }).error(function (d) {
-            // console.log("login error");
         })
 	};
 	

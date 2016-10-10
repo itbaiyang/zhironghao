@@ -73,14 +73,12 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
             params: m_params           
         }).success(function (d) {
             if (d.returnCode == 0) {
-                // console.log(d);
                 $rootScope.login_user = {
             		"userId":d.result.split("_")[0],
             		"token":d.result.split("_")[1]
                 };
                 $rootScope.putObject("login_user", $rootScope.login_user);
                 var present_route = $rootScope.getSessionObject("present_route");
-
 
                 var redirect_uri = "";
                 if (!present_route) {
