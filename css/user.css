@@ -220,12 +220,24 @@
     text-align: center;
     color: #fff;
     line-height: 30px;
-    /*letter-spacing: 2px;*/
-    /*box-shadow: 0 4px 4px #ccc;*/
     cursor: pointer;
     border: none;
 }
 
+.singleButtonMinWrite {
+    height: 28px;
+    font-size: 14px;
+    background: #ffffff;
+    margin-right: 15px;
+    margin-top: 18px;
+    padding: 0 14px;
+    border-radius: 16px;
+    text-align: center;
+    color: #acacb8;
+    line-height: 28px;
+    cursor: pointer;
+    border: 1px solid #e6e6e6;
+}
 .singleButtonMinGrew {
     width: 76px;
     height: 30px;
@@ -256,7 +268,8 @@
     height: 100%;
     text-align: center;
     color: #FFF;
-    font-size: 13px;}
+    font-size: 13px;
+}
 
 .progressChild{
     width:90%;
@@ -282,6 +295,15 @@
     line-height: 34px;
     font-size:14px;
     color:#f97383;
+}
+
+.receive-message {
+    display: inline-block;
+    padding: 15px 0 15px 15px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #acacb8;
 }
 .progressTittle1{
     position: relative;

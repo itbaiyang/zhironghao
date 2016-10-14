@@ -64,7 +64,7 @@
         </div>
         <div class="detailContent">{{template.content}}</div>
     </div>
-    <div style="width: 100%;height: 60px"></div>
+    <div style="width: 100%;height: 60px" ng-show="company.receive == true">
     <div class="ringUp fl">
         <div class="detailTextProgress fl">贷款进度</div>
         <div class="progressDetail fl">
@@ -93,6 +93,7 @@
             </div>
             <button class="singleButton1" ng-click="submit_status()">确定</button>
         </div>
+    </div>
     </div>
 </div>
 
