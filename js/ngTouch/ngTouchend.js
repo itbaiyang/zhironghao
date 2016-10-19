@@ -1,6 +1,4 @@
-"use strict";
-
-angular.module("ngTouchend", []).directive("ngTouchend", function () {
+app.directive("ngTouchend", function () {
   return {
     controller: function ($scope, $element, $attrs) {
       $element.bind('touchend', onTouchEnd);

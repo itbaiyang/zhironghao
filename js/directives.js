@@ -1,9 +1,6 @@
 myApp.directive('datepicker', function() {
-    // console.log("123123123");
     return function () {
-//        alert($(window).height());
         var ibc = $(window).height() - 253;
-//        alert(ibc);
         $(".displayFrame").css("height", ibc + "px");
     };
     var content = document.getElementById("content");

@@ -1,9 +1,6 @@
-/**
- * Created by jiangzhuang on 5/5/16.
- */
-
 //路由设定
-myApp.config(function ($routeProvider) {
+app.config(
+    ['$routeProvider', function ($routeProvider) {
     $routeProvider
         //登录
         .when('/login', {
@@ -74,4 +71,4 @@ myApp.config(function ($routeProvider) {
             //controller: 'UserUpdateCtrl'
         })
         .otherwise({redirectTo: '/login'})
-});
+    }]);

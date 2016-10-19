@@ -1,7 +1,7 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
-articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-
+articleCtrl.controller('ArticleListCtrl',
+    ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.list = function (pageNo, pageSize) {//产品列表
         var m_params = {
             pageNo: pageNo,
@@ -45,10 +45,10 @@ articleCtrl.controller('ArticleListCtrl', function ($http, $scope, $rootScope, $
     $scope.detailActivity = function () { //跳转到活动详情
         $location.path("/article/showActivity")
     }
-});
+    }]);
 
-articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
-
+articleCtrl.controller('ArticleShowCtrl',
+    ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.init = function () { //详细产品数据
         $scope.bt_show = 0;
         $http({
@@ -99,8 +99,9 @@ articleCtrl.controller('ArticleShowCtrl', function ($http, $scope, $rootScope, $
             // console.log(type);
         }
     };
-});
-articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $rootScope, $location, $routeParams) {
+    }]);
+articleCtrl.controller('ArticleShowActivityCtrl',
+    ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.apply = function (type) {
         // activityID = "e15813cb5bfd4290a5c2582cbdd164a4";
         $rootScope.present_route = $location.$$path;
@@ -111,9 +112,10 @@ articleCtrl.controller('ArticleShowActivityCtrl', function ($http, $scope, $root
     wx.ready(function () {
         $rootScope.getUrl($location.absUrl(), $routeParams.id);
     });
-});
+    }]);
 
-articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $location, $timeout, $routeParams) {
+articleCtrl.controller('applyCtrl',
+    ['$http', '$scope', '$rootScope', '$location', '$timeout', '$routeParams', function ($http, $scope, $rootScope, $location, $timeout, $routeParams) {
     console.log($routeParams.id);
     console.log($routeParams.type);
     $scope.type = $routeParams.type;
@@ -396,4 +398,4 @@ articleCtrl.controller('applyCtrl', function ($http, $scope, $rootScope, $locati
     $scope.removeImgList = function (id,index) {
         id.splice(index, 1);
     };
-});
+    }]);

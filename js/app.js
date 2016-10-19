@@ -9,14 +9,14 @@ activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
 // activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
-var myApp = angular.module('myApp', [
-    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl','userCtrl','ngTouchstart','ngTouchmove','ngTouchend'
-], function ($httpProvider) {
+var app = angular.module('app', [
+    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl', 'userCtrl'
+], ['$httpProvider', function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
-});
-  myApp.run(['$location', '$rootScope', '$http', '$routeParams',
+}]);
+app.run(['$location', '$rootScope', '$http', '$routeParams',
       function ($location, $rootScope, $http, $routeParams) {
 
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
@@ -62,8 +62,7 @@ var myApp = angular.module('myApp', [
             });
         }
 
-
-        $rootScope.getUrl = function (url,id) {
+          $rootScope.getUrl = function (url,id) {
             if(id){
                 $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName;
                 $rootScope.desc = $rootScope.desc_detail;

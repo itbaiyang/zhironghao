@@ -1,7 +1,8 @@
 
 var loginCtrl = angular.module('loginCtrl', []);
 
-loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location,$timeout) {
+loginCtrl.controller('LoginCtrl',
+    ['$http', '$scope', '$rootScope', '$location', function ($http, $scope, $rootScope, $location) {
     $scope.$root.title = "登陆";
 	$scope.loginUser = {
         "mobile": "",
@@ -119,4 +120,4 @@ loginCtrl.controller('LoginCtrl', function ($http, $scope, $rootScope, $location
     $scope.reset = function(){
     	$location.path("/register/reset1");
     };
-});
+    }]);

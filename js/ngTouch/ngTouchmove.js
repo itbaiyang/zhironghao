@@ -1,6 +1,4 @@
-"use strict";
-
-angular.module("ngTouchmove", []).directive("ngTouchmove", function () {
+app.directive("ngTouchmove", function () {
   return {
     controller: function ($scope, $element, $attrs) {
       $element.bind('touchstart', onTouchStart);

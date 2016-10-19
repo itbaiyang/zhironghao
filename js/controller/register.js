@@ -1,7 +1,8 @@
 
 var registerCtrl = angular.module('registerCtrl', []);
 
-registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $location,$timeout) {
+registerCtrl.controller('RegStep1Ctrl',
+	['$http', '$scope', '$rootScope', '$location', '$timeout', function ($http, $scope, $rootScope, $location, $timeout) {
 	$scope.registerUser = {
 		"mobile":"",
 		"code":""
@@ -116,9 +117,10 @@ registerCtrl.controller('RegStep1Ctrl', function ($http, $scope, $rootScope, $lo
 		}
 	};
 
-});
+	}]);
 
-registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $location,$routeParams,$timeout) {
+registerCtrl.controller('RegStep2Ctrl',
+	['$http', '$scope', '$rootScope', '$location', '$routeParams', '$timeout', function ($http, $scope, $rootScope, $location, $routeParams, $timeout) {
 	var share_msg = $rootScope.getSessionObject("share");
 	if(!share_msg){
 		share_msg ={
@@ -194,9 +196,10 @@ registerCtrl.controller('RegStep2Ctrl', function ($http, $scope, $rootScope, $lo
 		}
 	};
 
-});
+	}]);
 
-registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $location,$timeout) {
+registerCtrl.controller('ResetStep1Ctrl',
+	['$http', '$scope', '$rootScope', '$location', '$timeout', function ($http, $scope, $rootScope, $location, $timeout) {
 	$scope.resetUser = {
 		"mobile":"",
 		"code":""
@@ -307,10 +310,10 @@ registerCtrl.controller('ResetStep1Ctrl', function ($http, $scope, $rootScope, $
 		}
 	};
 
-});
+	}]);
 
-registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $location,$routeParams) {
-
+registerCtrl.controller('ResetStep2Ctrl',
+	['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
 	$scope.resetUser = {
 		"mobile":$routeParams.mobile,
 		"password":"",
@@ -363,6 +366,6 @@ registerCtrl.controller('ResetStep2Ctrl', function ($http, $scope, $rootScope, $
         }).error(function (d) {
         })
 	};
-	
-});
+
+	}]);
 
