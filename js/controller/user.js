@@ -1,42 +1,48 @@
-var userCtrl = angular.module('userCtrl', []);
+var userCtrl = angular.module('userCtrl', ['mobiscroll-select']);
 /*个人中心*/
 userCtrl.controller('UserCenterCtrl',
-    ['$http', '$scope', '$rootScope', '$timeout', '$location', function ($http, $scope, $rootScope, $timeout, $location) {
+    ['$http', '$scope', '$rootScope', '$timeout', '$location', '$interval', function ($http, $scope, $rootScope, $timeout, $location, $interval) {
         $scope.message = false;//是否有数据，初始化为否
         $scope.msg_red_see = false;
+        $scope.settings = {
+            theme: 'ios',
+            mode: 'scroller',
+            display: 'inline',
+            lang: ''
+        };
         /*初始化个人信息*/
         $scope.init = function () {
             //获取个人信息 以及各种列表数量
             if ($rootScope.login_user.userId == null || $rootScope.login_user.userId == "") {
                 $location.path("/login");
             } else {
-                $http({
-                    url: api_uri + "user/center",
-                    method: "GET",
-                    params: $rootScope.login_user
-                }).success(function (d) {
-                    console.log(d);
-                    if (d.returnCode == 0) {
-                        $scope.nickname = d.result.nickname;
-                        $scope.batting = d.result.batting;
-                        $scope.value = d.result.value;
-                        $scope.position = d.result.position;
-                        $scope.headImg = d.result.headImg;
-                        $scope.msgCount = d.result.msgCount;
-                        if (!$scope.nickname) {
-                            $location.path("/user/add_name");
-                        }
-                    } else {
-                        // console.log(d);
-                        $rootScope.removeObject("login_user");
-                        $location.path("/login");
+            $http({
+                url: api_uri + "user/center",
+                method: "GET",
+                params: $rootScope.login_user
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+                    $scope.nickname = d.result.nickname;
+                    $scope.batting = d.result.batting;
+                    $scope.value = d.result.value;
+                    $scope.position = d.result.position;
+                    $scope.headImg = d.result.headImg;
+                    $scope.msgCount = d.result.msgCount;
+                    if (!$scope.nickname) {
+                        $location.path("/user/add_name");
                     }
-                    $scope.init_role();
-                }).error(function (d) {
+                } else {
                     // console.log(d);
                     $rootScope.removeObject("login_user");
                     $location.path("/login");
-                });
+                }
+                $scope.init_role();
+            }).error(function (d) {
+                // console.log(d);
+                $rootScope.removeObject("login_user");
+                $location.path("/login");
+            });
                 //$scope.init_role();
                 $scope.list(1, 100);
                 $scope.myList(1, 100);
@@ -56,7 +62,7 @@ userCtrl.controller('UserCenterCtrl',
                     $scope.role = d.result;
                 } else {
 
-                }
+            }
             }).error(function (d) {
             });
         };
@@ -120,10 +126,10 @@ userCtrl.controller('UserCenterCtrl',
                                 } else if (data.status == -1) {
                                     data.jindu = "0";
                                     data.progressText = "申请已经取消";
-                                }
+                            }
                             }
                         });
-                    }
+                }
                 }
                 else {
                     //console.log(d);
@@ -157,7 +163,7 @@ userCtrl.controller('UserCenterCtrl',
                         $scope.message_myList = false;
                         if ($scope.message_myList == false && $scope.message_list == false) {
                             $scope.message = false;
-                        } else {
+                    } else {
                             $scope.message = true;
                         }
                     } else {
@@ -222,10 +228,10 @@ userCtrl.controller('UserCenterCtrl',
                                     data.triangle = "20";
                                     data.textPosition = "5";
                                     data.progressText = "申请已经取消";
-                                }
+                            }
                             }
                         });
-                    }
+                }
                 }
                 else {
                 }
@@ -239,12 +245,12 @@ userCtrl.controller('UserCenterCtrl',
 
         /*普通*/
         $scope.alert_come = function (status, id, days) {
-            $scope.dateTime = days;
             $scope.alert = true;
             $scope.applyId = id;
             $scope.status = status;
-            $scope.alertText = "预计时间";
-            $scope.alertText2 = "如需备注请在次进行描述";
+            $scope.days = days;
+            console.log(status, id, days);
+            $('.scroll-div-cover input').focus();
         };
 
         /*逾期后*/
@@ -299,7 +305,7 @@ userCtrl.controller('UserCenterCtrl',
                 "userId": $rootScope.login_user.userId,
                 "token": $rootScope.login_user.token,
                 "applyId": id
-            };
+        };
             $.ajax({
                 type: 'POST',
                 url: api_uri + "applyBankDeal/receive",
@@ -325,7 +331,7 @@ userCtrl.controller('UserCenterCtrl',
                 "userId": $rootScope.login_user.userId,
                 "token": $rootScope.login_user.token,
                 "applyId": id
-            };
+        };
             console.log(params);
             $.ajax({
                 type: 'POST',
@@ -371,7 +377,7 @@ userCtrl.controller('UserCenterCtrl',
                         $scope.$apply();
                     }
                     else {
-                        console.log(data);
+                    console.log(data);
                     }
                 },
                 error: function (data, textStatus, jqXHR) {
@@ -385,11 +391,11 @@ userCtrl.controller('UserCenterCtrl',
             var params = {
                 "userId": $rootScope.login_user.userId,
                 "token": $rootScope.login_user.token,
-                "expectDateBank": $scope.dateTimePro,
+                "expectDateBank": $scope.mySelect,
                 "reason": $scope.reason,
                 "applyId": $scope.applyId,
                 "status": $scope.status,
-            };
+        };
             if (!params.expectDateBank) {
                 $scope.msg_red = "请输入预计时间";
                 $scope.msg_red_see = true;
@@ -397,36 +403,35 @@ userCtrl.controller('UserCenterCtrl',
                     $scope.msg_red_see = false;
                 }, 3000);
             } else {
-                $.ajax({
-                    type: 'POST',
-                    url: api_uri + "applyBankDeal/refer",
-                    data: params,
-                    traditional: true,
-                    success: function (data, textStatus, jqXHR) {
-                        // console.log(data);
-                        if (data.returnCode == 0) {
-                            $scope.alert = false;
-                            $(".alertCenterSubmit").css("display", "block");
-                            $timeout(function () {
-                                $(".alertCenterSubmit").css("display", "none");
-                            }, 2000);
-                            // alert("成功提交");
-                            $scope.list(1, 100);
-                            $scope.myList(1, 100);
-                            $scope.$apply();
+            $.ajax({
+                type: 'POST',
+                url: api_uri + "applyBankDeal/refer",
+                data: params,
+                traditional: true,
+                success: function (data, textStatus, jqXHR) {
+                    // console.log(data);
+                    if (data.returnCode == 0) {
+                        $scope.alert = false;
+                        $(".alertCenterSubmit").css("display", "block");
+                        $timeout(function () {
+                            $(".alertCenterSubmit").css("display", "none");
+                        }, 2000);
+                        // alert("成功提交");
+                        $scope.list(1, 100);
+                        $scope.myList(1, 100);
+                        $scope.$apply();
 
-                        }
-                        else {
-                            console.log(data);
-                        }
-                    },
-                    dataType: 'json',
-                });
+                    }
+                    else {
+                        console.log(data);
+                    }
+                },
+                dataType: 'json',
+            });
             }
         };
 
     }]);
-
 userCtrl.controller('MessageCtrl',
     ['$http', '$scope', '$rootScope', '$timeout', '$location', function ($http, $scope, $rootScope, $timeout, $location) {
 
@@ -440,7 +445,7 @@ userCtrl.controller('MessageCtrl',
                 token: $rootScope.login_user.token,
                 pageNo: pageNo,
                 pageSize: pageSize
-            };
+        };
             $http({
                 url: api_uri + "zrh/message/listc",
                 method: "GET",
@@ -453,7 +458,7 @@ userCtrl.controller('MessageCtrl',
                     } else {
                         $scope.message_list = d.result.datas;
                         $scope.totalCount = d.result.totalCount;
-                    }
+                }
                 }
                 else {
                     //console.log(d);
@@ -472,7 +477,7 @@ userCtrl.controller('MessageCtrl',
                 userId: $rootScope.login_user.userId,
                 token: $rootScope.login_user.token,
                 id: id
-            };
+        };
             $http({
                 url: api_uri + "zrh/message/detailc",
                 method: "GET",
@@ -505,86 +510,86 @@ userCtrl.controller('CompanyDetailCtrl',
         /*获取详情信息*/
         $scope.init = function () {
             if ($routeParams.defineId == 1) {
-                $http({
-                    url: api_uri + "loanApplication/detail/" + $routeParams.id,
-                    method: "GET",
-                    params: $rootScope.login_user
-                }).success(function (d) {
+            $http({
+                url: api_uri + "loanApplication/detail/" + $routeParams.id,
+                method: "GET",
+                params: $rootScope.login_user
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+                    $scope.company = d.result;
+                    // console.log(d.result);
+                } else {
                     console.log(d);
-                    if (d.returnCode == 0) {
-                        $scope.company = d.result;
-                        // console.log(d.result);
-                    } else {
-                        console.log(d);
-                    }
-                }).error(function (d) {
-                    // console.log("login error");
-                    $location.path("/error");
-                });
+                }
+            }).error(function (d) {
+                // console.log("login error");
+                $location.path("/error");
+            });
             } else {
-                $http({
-                    url: api_uri + "loanApplication/myDetail/" + $routeParams.id,
-                    method: "GET",
-                    params: $rootScope.login_user
-                }).success(function (d) {
-                    console.log(d);
-                    if (d.returnCode == 0) {
-                        $scope.company = d.result;
-                        if ($scope.company.status == 0 || $scope.company.status == 1) {
-                            $scope.company.jindu = "10";
-                            $scope.company.progressText = "准备中";
-                            $scope.company.statusNextText = "下户";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "开始下户";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == 2) {
-                            $scope.company.jindu = "25";
-                            $scope.company.progressText = "下户";
-                            $scope.company.statusNextText = "审批中";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "开始审批";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == 3) {
-                            $scope.company.jindu = "40";
-                            $scope.company.progressText = "审批中";
-                            $scope.company.statusNextText = "审批通过";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "审核通过";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == 4) {
-                            $scope.company.jindu = "55";
-                            $scope.company.progressText = "审批通过";
-                            $scope.company.statusNextText = "开户";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "马上开户";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == 5) {
-                            $scope.company.jindu = "70";
-                            $scope.company.progressText = "开户";
-                            $scope.company.statusNextText = "放款";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "开始放款";
-                            $scope.message = true;
-                        } else if ($scope.company.status == 6) {
-                            $scope.company.jindu = "85";
-                            $scope.company.progressText = "放款";
-                            $scope.company.statusNextText = "完成融资";
-                            $scope.company.progressNext = "审核中";
-                            $scope.progressTextNext = "成功融资";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == 7) {
-                            $scope.company.jindu = "100";
-                            $scope.company.progressText = "完成融资";
-                            $scope.company.message = true;
-                        } else if ($scope.company.status == -1) {
-                            $scope.company.jindu = "0";
-                            $scope.company.triangle = "20";
-                            $scope.company.textPosition = "5";
-                            $scope.progressText = "申请已经取消";
-                        }
+            $http({
+                url: api_uri + "loanApplication/myDetail/" + $routeParams.id,
+                method: "GET",
+                params: $rootScope.login_user
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+                    $scope.company = d.result;
+                    if ($scope.company.status == 0 || $scope.company.status == 1) {
+                        $scope.company.jindu = "10";
+                        $scope.company.progressText = "准备中";
+                        $scope.company.statusNextText = "下户";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "开始下户";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == 2) {
+                        $scope.company.jindu = "25";
+                        $scope.company.progressText = "下户";
+                        $scope.company.statusNextText = "审批中";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "开始审批";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == 3) {
+                        $scope.company.jindu = "40";
+                        $scope.company.progressText = "审批中";
+                        $scope.company.statusNextText = "审批通过";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "审核通过";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == 4) {
+                        $scope.company.jindu = "55";
+                        $scope.company.progressText = "审批通过";
+                        $scope.company.statusNextText = "开户";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "马上开户";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == 5) {
+                        $scope.company.jindu = "70";
+                        $scope.company.progressText = "开户";
+                        $scope.company.statusNextText = "放款";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "开始放款";
+                        $scope.message = true;
+                    } else if ($scope.company.status == 6) {
+                        $scope.company.jindu = "85";
+                        $scope.company.progressText = "放款";
+                        $scope.company.statusNextText = "完成融资";
+                        $scope.company.progressNext = "审核中";
+                        $scope.progressTextNext = "成功融资";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == 7) {
+                        $scope.company.jindu = "100";
+                        $scope.company.progressText = "完成融资";
+                        $scope.company.message = true;
+                    } else if ($scope.company.status == -1) {
+                        $scope.company.jindu = "0";
+                        $scope.company.triangle = "20";
+                        $scope.company.textPosition = "5";
+                        $scope.progressText = "申请已经取消";
                     }
-                }).error(function (d) {
-                });
+                }
+            }).error(function (d) {
+            });
             }
             $http({
                 url: api_uri + "inforTemplate/showBase/" + $routeParams.id,
@@ -635,7 +640,7 @@ userCtrl.controller('CompanyDetailCtrl',
                 userId: $rootScope.login_user.userId,
                 token: $rootScope.login_user.token,
                 status: 0
-            };
+        };
             $http({
                 url: api_uri + "loanApplication/cancel/" + $routeParams.id,
                 method: "GET",
@@ -645,9 +650,9 @@ userCtrl.controller('CompanyDetailCtrl',
                 if (d.returnCode == 0) {
                     alert("取消成功");
                     $location.path("/user/center");
-                } else {
+            } else {
                     // console.log(d);
-                }
+            }
             }).error(function (d) {
                 // console.log("login error");
                 $location.path("/error");
@@ -702,7 +707,7 @@ userCtrl.controller('CompanyDetailCtrl',
                 "reason": $scope.reason,
                 "applyId": $scope.applyId,
                 "status": $scope.status,
-            };
+        };
             if (!params.expectDateBank) {
                 $scope.msg_red = "请输入预计时间";
                 $scope.msg_red_see = true;
@@ -873,7 +878,7 @@ userCtrl.controller('UserUpdateCtrl',
                     "name": $scope.userName,
                     "position": $scope.position,
                 })
-            };
+        };
             console.log(params);
             $.ajax({
                 type: 'POST',

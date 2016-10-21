@@ -203,7 +203,7 @@
 
 .financialLeft {
     /*width: 58%;*/
-    width: calc(100% - 132px);
+    width: calc(100% - 135px);
     height: 58px;
     padding: 4px 15px;
 }
@@ -222,6 +222,45 @@
     line-height: 30px;
     cursor: pointer;
     border: none;
+}
+
+.scroll-div {
+    position: relative;
+    height: 30px;
+    font-size: 14px;
+    background: linear-gradient(45deg, #6B72DB, #766DC4);
+    background: -webkit-linear-gradient(45deg, #6B72DB, #766DC4);
+    margin-right: 15px;
+    margin-top: 18px;
+    padding: 0 15px;
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    line-height: 30px;
+    cursor: pointer;
+    border: none;
+}
+
+.scroll-div-cover {
+    position: absolute;
+    display: inline-block;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: -1;
+}
+
+.scroll-div-cover input {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0);
+    text-align: center;
+    color: #4c4c4c;
 }
 
 .singleButtonMinWrite {
@@ -325,8 +364,31 @@
     border-radius: 2px;
 }
 
+.alert-common {
+    position: fixed;
+    bottom: 190px;
+    left: 0;
+    width: 100%;
+    background: #ffffff;
+}
+
+.alert-btn-container {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 20px;
+    text-align: right;
+    padding: 0 15px;
+}
+
+.alert-btn-container button {
+    padding: 5px 10px;
+    background: #f7f7f7;
+}
 .alertContent {
-    height: 200px;
+    padding-bottom: 15px;
     position: relative;
     top: 50%;
     left: 50%;
@@ -578,4 +640,30 @@
     line-height: 20px;
     font-size: 14px;
     resize: none;
+}
+
+.select-scroll {
+    background-color: rgba(0 0 0 0);
+}
+
+.dw-inline .dw {
+    position: static;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+}
+
+.dw-inline {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.dw-i {
+    text-align: center
+}
+
+.mbsc-ios .dwo {
+    background: rgba(0, 0, 0, 0)
 }
