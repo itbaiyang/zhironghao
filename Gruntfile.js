@@ -38,7 +38,10 @@ module.exports = function(grunt) {
             },
             css: {
                 src: [
-                    ['css/*.css'],
+                    [
+                        'css/scroll/mobiscroll.custom-2.16.1.min.css',
+                        'css/*.css'
+                    ],
                 ],
                 dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.css'
             }

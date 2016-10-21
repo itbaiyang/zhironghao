@@ -242,21 +242,20 @@ userCtrl.controller('UserCenterCtrl',
 
         /*弹出框*/
         $scope.alert = false;
+        $scope.alert_over = false;
 
         /*普通*/
-        $scope.alert_come = function (status, id, days) {
+        $scope.alert_common = function (status, id) {
             $scope.alert = true;
             $scope.applyId = id;
             $scope.status = status;
-            $scope.days = days;
-            console.log(status, id, days);
-            $('.scroll-div-cover input').focus();
+            console.log(status, id);
         };
 
         /*逾期后*/
-        $scope.alert_come1 = function (status, id, days) {
+        $scope.alert_overdue = function (status, id, days) {
             $scope.dateTime = days;
-            $scope.alert = true;
+            $scope.alert_over = true;
             $scope.applyId = id;
             $scope.status = status;
             $scope.alertText = "延长时间";
@@ -391,11 +390,12 @@ userCtrl.controller('UserCenterCtrl',
             var params = {
                 "userId": $rootScope.login_user.userId,
                 "token": $rootScope.login_user.token,
-                "expectDateBank": $scope.mySelect,
+                "expectDateBank": $scope.days,
                 "reason": $scope.reason,
                 "applyId": $scope.applyId,
                 "status": $scope.status,
         };
+            console.log(params);
             if (!params.expectDateBank) {
                 $scope.msg_red = "请输入预计时间";
                 $scope.msg_red_see = true;
@@ -507,6 +507,12 @@ userCtrl.controller('CompanyDetailCtrl',
         $scope.msg_red_see = false;
         $scope.choiceStyle = $routeParams.defineId; //区分任务还是申请的参数
         $scope.showImg = false;
+        $scope.settings = {
+            theme: 'ios',
+            mode: 'scroller',
+            display: 'inline',
+            lang: ''
+        };
         /*获取详情信息*/
         $scope.init = function () {
             if ($routeParams.defineId == 1) {
@@ -663,7 +669,7 @@ userCtrl.controller('CompanyDetailCtrl',
         $scope.alert = false;
 
         /*普通弹出框显示*/
-        $scope.alert_come = function (status, id, days) {
+        $scope.alert_common = function (status, id, days) {
             $scope.dateTime = days;
             $scope.alert = true;
             $scope.applyId = id;

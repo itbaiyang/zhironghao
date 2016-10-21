@@ -51,11 +51,11 @@
             <div class="fr" ng-hide="resultObj.receive == false">
                 <div ng-hide=" resultObj.isOp == true || resultObj.status == 7 " ng-click="change($event)">
                     <div class="scroll-div fr" ng-hide=" resultObj.days < 0"
-                         ng-click="alert_come(resultObj.status,resultObj.id,resultObj.days)">
+                         ng-click="alert_common(resultObj.status,resultObj.id)">
                         {{resultObj.progressTextNext}}
                     </div>
                     <button class="singleButtonMin fr" ng-show=" resultObj.days < 0"
-                            ng-click="alert_come1(resultObj.status,resultObj.id,resultObj.days)">逾期原因
+                            ng-click="alert_overdue(resultObj.status,resultObj.id,resultObj.days)">逾期原因
                     </button>
                 </div>
                 <div ng-hide="resultObj.isOp == false || resultObj.status == 7" ng-click="change($event)">
@@ -113,7 +113,7 @@
 <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
     <div class="alert-common" ng-click="change($event)">
         <div class="scroll-div-cover">
-            <select ng-model="mySelect" class="select-scroll" mobiscroll-select="settings">
+            <select ng-model="days" class="select-scroll" mobiscroll-select="settings">
                 <option value="0">请选择预计天数</option>
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -131,26 +131,16 @@
         </div>
     </div>
 </div>
-<div class="alert" ng-show="alert123 == true" ng-click="closeAlert('father',$event)">
+<div class="alert" ng-show="alert_over == true" ng-click="closeAlert('father',$event)">
     <div class="alertContent" ng-click="change($event)">
-        <div class="userSet" style="border-radius: 2px">
-            <div class="scroll-div-cover">
-                <select ng-model="mySelect" class="select-scroll" mobiscroll-select="settings">
-                    <option value="0">请选择预计天数</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
+        <div class="userSet">
+            <span class="font-size-14">{{alertText}}</span>
+            <span class="font-size-14 meg-red" ng-show="msg_red_see">{{msg_red}}</span>
+            <div class="fr font-size-14">
+                <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTimePro">天
             </div>
-
         </div>
-        <div class="applyContent alert-content" ng-show="days < 0">
+        <div class="applyContent alert-content">
             <textarea type="text" rows="3" placeholder="{{alertText2}}" ng-model="reason"></textarea>
         </div>
         <button class="singleButton1" ng-click="submit_status()">确定</button>

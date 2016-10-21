@@ -23,7 +23,7 @@
     </div>
     <div class="img-person" ng-show="company.type == 2"></div>
 </div>
-<img ng-show="company.name =='八月活动'"  src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
+<img ng-show="company.name =='八月活动'" src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
 <div ng-show="choiceStyle == 0">
     <div class="applyDetail" ng-show="company_basic.baseInfo.company_name">
         <p class="detailTitle">企业名称</p>
@@ -60,40 +60,65 @@
     <div class="applyDetail" ng-show="showImg == true" ng-repeat="template in template_list">
         <p class="detailTitle">{{template.title}}</p>
         <div id="previewImage">
-            <img class="applyDetailImg" ng-click="previewImages(list,template.imgList)" ng-src="{{list}}" ng-show="template.templateType == 3"  ng-repeat="list in template.imgList track by $index">
+            <img class="applyDetailImg" ng-click="previewImages(list,template.imgList)" ng-src="{{list}}"
+                 ng-show="template.templateType == 3" ng-repeat="list in template.imgList track by $index">
         </div>
         <div class="detailContent">{{template.content}}</div>
     </div>
     <div style="width: 100%;height: 60px" ng-show="company.receive == true">
-    <div class="ringUp fl">
-        <div class="detailTextProgress fl">贷款进度</div>
-        <div class="progressDetail fl">
-            <div class="progress1">
-                <div class="progressChild" style="width:{{company.jindu}}%;"></div>
-            </div>
-        </div>
-        <div class="detailBtn" ng-show="company.isOp == false && company.status != 7"
-             ng-click="alert_come(company.status,company.id,company.days)">{{progressTextNext}}
-        </div>
-        <div class="detailBtnGrew" ng-show="company.isOp == true || company.status == 7">{{company.progressNext ||
-            company.progressText}}
-        </div>
-    </div>
-    <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
-        <div class="alertContent" ng-click="change($event)">
-            <div class="userSet">
-                <span class="font-size-14">{{alertText}}</span>
-                <span class="font-size-14 meg-red" ng-show="msg_red_see">{{msg_red}}</span>
-                <div class="fr font-size-14">
-                    <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTimePro">天
+        <div class="ringUp fl">
+            <div class="detailTextProgress fl">贷款进度</div>
+            <div class="progressDetail fl">
+                <div class="progress1">
+                    <div class="progressChild" style="width:{{company.jindu}}%;"></div>
                 </div>
             </div>
-            <div class="applyContent alert-content">
-                <textarea type="text" rows="3" placeholder="{{alertText2}}" ng-model="reason"></textarea>
+            <div class="detailBtn" ng-hide="company.isOp == true || company.status == 7 || company.days < 0"
+                 ng-click="alert_common(company.status,company.id)">{{progressTextNext}}
             </div>
-            <button class="singleButton1" ng-click="submit_status()">确定</button>
+            <div class="detailBtn" ng-show="company.isOp == false && company.status != 7 &&company.days < 0"
+                 ng-click="alert_overdue(company.status,company.id,company.days)">{{progressTextNext}}
+            </div>
+            <div class="detailBtnGrew" ng-show="company.isOp == true || company.status == 7">{{company.progressNext ||
+                company.progressText}}
+            </div>
         </div>
-    </div>
+        <div class="alert" ng-show="alert == true" ng-click="closeAlert('father',$event)">
+            <div class="alert-common" ng-click="change($event)">
+                <div class="scroll-div-cover">
+                    <select ng-model="days" class="select-scroll" mobiscroll-select="settings">
+                        <option value="0">请选择预计天数</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div class="alert-btn-container">
+                    <button class="fr" ng-click="submit_status()">确定</button>
+                </div>
+            </div>
+        </div>
+        <div class="alert" ng-show="alert_over == true" ng-click="closeAlert('father',$event)">
+            <div class="alertContent" ng-click="change($event)">
+                <div class="userSet">
+                    <span class="font-size-14">{{alertText}}</span>
+                    <span class="font-size-14 meg-red" ng-show="msg_red_see">{{msg_red}}</span>
+                    <div class="fr font-size-14">
+                        <input class="alert-input" type="number" placeholder="请输入天数" ng-model="dateTimePro">天
+                    </div>
+                </div>
+                <div class="applyContent alert-content">
+                    <textarea type="text" rows="3" placeholder="{{alertText2}}" ng-model="reason"></textarea>
+                </div>
+                <button class="singleButton1" ng-click="submit_status()">确定</button>
+            </div>
+        </div>
     </div>
 </div>
 
