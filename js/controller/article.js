@@ -92,11 +92,9 @@ articleCtrl.controller('ArticleShowCtrl',
     };
     $scope.init();
     $scope.apply = function () {
-        $rootScope.present_route = $location.$$path;
+        // $rootScope.present_route = $location.$$path;
         if (!$rootScope.isNullOrEmpty($scope.id)) {
             $location.path("/article/apply/" + $scope.id + $scope.type);
-            // console.log(id);
-            // console.log(type);
         }
     };
     }]);

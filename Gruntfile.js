@@ -30,8 +30,8 @@ module.exports = function(grunt) {
                 src: [
                     'js/controller/*.js',
                     'js/app.js',
-                    'js/ngTouch/*.js',
                     'js/animation.js',
+                    'js/ngTouch/*.js',
                     'js/route.js'
                 ],
                 dest: 'dist/<%= pkg.name %>.js'
@@ -54,7 +54,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                // mangle: false, //不混淆变量名
+                mangle: false, //不混淆变量名
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("dd-mm-yyyy") %> */\n'
             },
             dist: {

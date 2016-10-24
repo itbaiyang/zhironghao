@@ -674,7 +674,7 @@ userCtrl.controller('CompanyDetailCtrl',
             $scope.alert = true;
             $scope.applyId = id;
             $scope.status = status;
-            $(".alert").css("top", $(document).scrollTop());
+            // $(".alert").css("top", $(document).scrollTop());
             $scope.alertText = "预计时间";
             $scope.alertText2 = "如需备注请在次进行描述";
         };
@@ -685,7 +685,7 @@ userCtrl.controller('CompanyDetailCtrl',
             alert("asdfa");
         };
         /*逾期后的弹出框*/
-        $scope.alert_come1 = function (status, id, days) {
+        $scope.alert_overdue = function (status, id, days) {
             $scope.dateTime = days;
             $scope.alert = true;
             $scope.applyId = id;
@@ -894,7 +894,7 @@ userCtrl.controller('UserUpdateCtrl',
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
                     if (data.returnCode == 0) {
-                        $location.path("/user/setting");
+                        $location.path("/user/center");
                     }
                     else {
                         console.log(data);
