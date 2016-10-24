@@ -210,77 +210,6 @@ hr {
     line-height: 24px;
     text-align: right;
 }
-/*show页面*/
-/*.showArticle{*/
-/*background: #ffffff;*/
-/*height: 100%;*/
-/*background: #ffffff;*/
-/*}*/
-/*.articleDetail{*/
-/*width: 100%;*/
-/*!*height: 136px;*!*/
-/*background:linear-gradient(45deg,#6B72DB,#766DC4);*/
-/*background:-webkit-linear-gradient(45deg,#6B72DB,#766DC4);*/
-/*}*/
-/*.articleDetailTittle {*/
-/*font-size: 18px;*/
-/*height: 56px;*/
-/*line-height: 56px;*/
-/*padding-left: 15px;*/
-/*!*border-top: 1px solid #e0e0e0;*!*/
-/*border-bottom: 1px solid #6769C5;*/
-/*color: #ffffff;*/
-/*}*/
-/*.articleDetailTittle1 {*/
-/*font-size: 14px;*/
-/*height: 56px;*/
-/*line-height: 56px;*/
-/*padding-left: 15px;*/
-/*color: #ffffff;*/
-/*}*/
-/*.articleDetailTittle1>img {*/
-/*width: 20px;*/
-/*height: 20px;*/
-/*border-radius: 20px;*/
-/*vertical-align: top;*/
-/*margin-top: 16px;*/
-/*color: #ffffff;*/
-/*}*/
-/*.articleContents {*/
-/*font-size: 14px;*/
-/*margin-top: 5px;*/
-/*width: 100%;*/
-/*height: 40px;*/
-/*padding-bottom: 10px;*/
-/*}*/
-
-/*.articleContent {*/
-/*width: 33%;*/
-/*height: 26px;*/
-/*font-size: 14px;*/
-/*color: #ffffff;*/
-/*text-align: center;*/
-/*float: left;*/
-/*}*/
-
-/*.articleContent p {*/
-/*font-size: 20px;*/
-/*color: #ffffff;*/
-/*margin-top: -12px;*/
-/*!*line-height: 20px;*!*/
-/*line-height: 28px;*/
-/*}*/
-
-/*.articleContent span {*/
-
-/*font-size: 14px;*/
-/*color: #ffffff;*/
-/*display: inline-block;*/
-/*}*/
-/*.borderLine2{*/
-/*border-left:1px solid #ffffff;*/
-/*border-right:1px solid #ffffff;*/
-/*}*/
 .detailDescribe{
     display: block;
     height: 18px;
@@ -387,7 +316,7 @@ hr {
     padding-top: 10px;
     padding-left: 15px;
     position: relative;
-    border-bottom: 1px solid #e0e0e0;
+    /*border-bottom: 1px solid #e0e0e0;*/
     box-sizing: border-box;
 }
 .img-list {

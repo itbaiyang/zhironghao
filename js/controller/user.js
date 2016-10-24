@@ -89,6 +89,7 @@ userCtrl.controller('UserCenterCtrl',
                         $scope.message_list = false;
                     } else {
                         $scope.message_list = true;
+                        console.log($scope.message_list);
                         $scope.result_list = d.result.datas;
                         $scope.totalCount = d.result.totalCount;
                         angular.forEach($scope.result_list, function (data) {
@@ -168,6 +169,7 @@ userCtrl.controller('UserCenterCtrl',
                         }
                     } else {
                         $scope.message_myList = true;
+                        console.log($scope.message_myList);
                         $scope.my_list = d.result.datas;
                         $scope.myTotalCount = d.result.totalCount;
                         angular.forEach($scope.my_list, function (data) {
@@ -362,6 +364,7 @@ userCtrl.controller('UserCenterCtrl',
                 "applyId": $scope.applyId,
                 "reason": $scope.reason
             };
+            console.log(params);
             $.ajax({
                 type: 'POST',
                 url: api_uri + "applyBankDeal/stop",

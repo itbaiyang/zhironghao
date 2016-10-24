@@ -1,3 +1,12 @@
+.user-center-list {
+    height: 100%;
+    background: #D3D5EA;
+}
+
+.user-center-work {
+    height: 100%;
+    background: #EAEFF3;
+}
 .userHeader{
     width:100%;
     height:122px;
@@ -106,7 +115,7 @@
     height: 113px;
     margin-left: 15px;
     border-radius: 5px;
-    box-shadow: 0px 1px 7px 0px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.1);
     margin-bottom: 10px;
 
 }
@@ -117,7 +126,7 @@
     font-size: 16px;
     color: #4c4c4c;
     padding:0 15px 0 15px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: .5px solid #e0e0e0;
 }
 .companySetting{
     display: inline-block;
@@ -396,7 +405,6 @@
     left: 50%;
     width: 90%;
     margin: -100px 0 0 -45%;
-    border-radius: 5px;
     background: #ffffff;
 }
 /*设置页面样式开始*/
@@ -671,4 +679,8 @@
 }
 .mbsc-ios .dwo {
     background: rgba(0, 0, 0, 0)
+}
+
+.dwc {
+    width: calc(100% - 30px);
 }
