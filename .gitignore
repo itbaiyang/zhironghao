@@ -43,7 +43,7 @@ Temporary Items
 .apdisk
 
 # Created by .ignore support plugin (hsz.mobi)
-.idea
-.gitignore
-.node_modules
+.idea/*
+.node_modules/*
 .bower_components/*
+.gitignore
