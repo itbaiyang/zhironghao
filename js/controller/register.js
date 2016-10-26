@@ -84,7 +84,6 @@ registerCtrl.controller('RegStep1Ctrl',
 				}
 
 	        }).error(function (d) {
-	            // console.log("login error");
 	        })
 		}
 	}
@@ -153,7 +152,6 @@ registerCtrl.controller('RegStep2Ctrl',
 		}
 	};
 	$scope.user_register = function(){
-		// var reg_str = /^(?![\d]+$)(?![a-zA-Z]+$)(?![^\da-zA-Z]+$).{6,12}$/;
 		if ($scope.registerUser.password == $scope.registerUser.validatePwd) {
 			$http({
 	            url: api_uri+"reg/regist",
@@ -178,11 +176,10 @@ registerCtrl.controller('RegStep2Ctrl',
 			            		"token":d.result.split("_")[1]
 							};
 							$rootScope.putObject("login_user", $rootScope.login_user);
-			            	$location.path("/article/list");
+							$location.path("/user/center");
 			            }
 			            else {
 			            	$scope.changeErrorMsg(d.result);
-			                // console.log(d);
 			            }
 			        }).error(function (d) {
 			            // console.log("login error");
@@ -289,8 +286,6 @@ registerCtrl.controller('ResetStep1Ctrl',
 			$scope.isVerify= false;
 		}
 	};
-
-
 	$scope.validateCode = function(){
 		if($scope.isVerify){
 			$http({
@@ -353,12 +348,11 @@ registerCtrl.controller('ResetStep2Ctrl',
 		            		"token":d.result.split("_")[1]
 		            	}
 						$rootScope.putObject("login_user", $rootScope.login_user);
-						$location.path("/article/list");
+						$location.path("/user/center");
 		            }
 		            else {
 		            }
 				}).error(function (d) {
-					;
 		        })
             }
             else {

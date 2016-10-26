@@ -270,28 +270,19 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
         // 页面跳转前
 
         $rootScope.$on('$routeChangeStart', function (event, current, previous) {
-            //$rootScope.showID = $rootScope.getSessionObject("showID");
             var present_route = $location.$$path; //获取当前路由
-            //console.log(present_route);
             $rootScope.check_user();
             if (!$rootScope.login_user) {
                 if (no_check_route.indexOf(present_route) > -1) {
-                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("/article/show") > -1) {//详情
-                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/step2") > -1) {//详情
-                    // console.log(present_route);
                 } else if (no_check_route.indexOf(present_route) <= -1 && present_route.indexOf("register/reset2") > -1) {//详情
-                    // console.log(present_route);
                 } else {
-                    // console.log($rootScope.login_user);
                     $rootScope.removeObject("login_user");
                     $rootScope.putSessionObject("present_route", present_route);
-                    // console.log(present_route);
                     $location.path("/login");
                 }
             } else {
-                // console.log(present_route);
                 if (present_route == "/login") {
                 }
             }
@@ -321,23 +312,13 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.change = function ($event) {
             $event.stopPropagation();
         };
-        /*$rootScope.getAccountInfoKeyValue = function (key) {
-            if ($rootScope.account_info != {}) {
-                $rootScope.account_info = $rootScope.getSessionObject('account_info');
-            }
-            if ($rootScope.account_info) {
-                return $rootScope.account_info[key];
-            } else {
-                return null;
-            }
-        };*/
         $rootScope.isNullOrEmpty = function(strVal) {
             if ($.trim(strVal) == '' || strVal == null || strVal == undefined) {
                 return true;
             } else {
                 return false;
             }
-        }
+        };
         //加密 3des
         $rootScope.encryptByDES = function (message) {
             var keyHex = CryptoJS.enc.Utf8.parse(deskey);
@@ -346,12 +327,10 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                 padding: CryptoJS.pad.Pkcs7
             });
             return encrypted.toString();
-        }
+        };
         //解密 
         $rootScope.decryptByDES = function (ciphertext) {
             var keyHex = CryptoJS.enc.Utf8.parse(deskey);
-
-            // direct decrypt ciphertext  
             var decrypted = CryptoJS.DES.decrypt({
                 ciphertext: CryptoJS.enc.Base64.parse(ciphertext)
             }, keyHex, {
@@ -371,7 +350,6 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
 		 };
 
         $rootScope.touchStart = function(){
-            //console.log("big");
             $(".singleButtonFixed").addClass("singleButton2");
             $(".singleButton1").addClass("singleButton2");
         };
@@ -395,10 +373,8 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                         // console.log("login success");
                         return true;
                     } else {
-                        //$rootScope.login_user = {};
                         $rootScope.removeObject("login_user");
                         $rootScope.present_route = $location.$$path;
-                        // console.log($rootScope.present_route,'nihao');
                         if (no_check_route.indexOf($rootScope.present_route) <= -1
                             && $rootScope.present_route.indexOf("article/show")<= -1
                             && $rootScope.present_route.indexOf("register/step2") <= -1

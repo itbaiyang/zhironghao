@@ -24,10 +24,6 @@ loginCtrl.controller('LoginCtrl',
     };
     $scope.changeErrorMsg = function(msg){
 		$scope.error_msg = msg;
-		// $timeout(function() {
-         //    //$scope.changeErrorMsg("");
-         //    $scope.error_msg = "";
-	     //    }, 5000);
 	};
 
     $scope.textChange =function(e){
@@ -42,7 +38,6 @@ loginCtrl.controller('LoginCtrl',
     $scope.ngBlur = function(){
         if($rootScope.isNullOrEmpty($scope.loginUser.mobile)){
             $scope.changeErrorMsg("手机号码不能为空");
-            //$scope.error_msg = "手机号码不能为空"
             $("#mobile").focus();
         }else{
             $http({
@@ -91,20 +86,17 @@ loginCtrl.controller('LoginCtrl',
                     redirect_uri = "/user/center";
                     $rootScope.removeSessionObject("present_route");
                 }
-                // $location.path(redirect_uri);
                 if ($rootScope.wx_client) {
                     window.location.href = api_uri + "wx/toOAuth?url=" + encodeURIComponent(root_uri + redirect_uri);
                 } else {
                     $location.path(redirect_uri);
                 }
-                // $location.path("/user/setting");
             }else {
             	var msg = $scope.error_code_msg[d.returnCode];
             	if(!msg){
             		msg = "登录失败";
             	}
                 $scope.error_msg = msg;
-            	//$scope.changeErrorMsg(msg);
             }
 
         }).error(function (d) {

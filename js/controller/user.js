@@ -927,6 +927,7 @@ userCtrl.controller('AddMessageCtrl',
                 traditional: true,
                 success: function (data, textStatus, jqXHR) {
                     if (data.returnCode == 0) {
+                        $location.path("/user/center");
                     }
                     else {
                         console.log(data);
@@ -934,6 +935,5 @@ userCtrl.controller('AddMessageCtrl',
                 },
                 dataType: 'json',
             });
-            $location.path("/user/setting");
         };
     }]);
