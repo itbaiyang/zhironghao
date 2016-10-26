@@ -391,6 +391,7 @@
     text-align: right;
     padding: 0 15px;
     background: #f7f7f7;
+    z-index: 1000;
 }
 
 .alert-btn-container button {
