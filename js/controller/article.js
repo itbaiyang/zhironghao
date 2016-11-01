@@ -317,9 +317,8 @@ articleCtrl.controller('applyCtrl',
                     data: m_params,
                     traditional: true,
                     success: function (data, textStatus, jqXHR) {
-                        // console.log(data);
+                        console.log(data);
                         if (data.returnCode == 0) {
-                            //$scope.get_telesales_detail();
                             $(".alertApply").css("display", "block");
                             $timeout(function () {
                                 $(".alertApply").css("display", "none");
