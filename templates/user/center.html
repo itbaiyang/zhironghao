@@ -30,9 +30,10 @@
             <div class="financing1" style="background:#ffffff" ng-repeat="resultObj in my_list"
                  ng-hide="resultObj.status == -1 || resultObj.isStop == true" ng-click="my_apply(resultObj.id,0)">
                 <div class="companyName">
-                    <span style="display:inline-block; width: calc(100% - 50px); overflow: hidden"
-                          title="{{resultObj.companyName || resultObj.userName}}">
-                        {{resultObj.companyName || resultObj.userName}}</span>
+                    <div style="display:inline-block; width: calc(100% - 50px); overflow: hidden"
+                         title="{{resultObj.companyName || resultObj.userName}}">
+                        <span>{{resultObj.companyName || resultObj.userName}}</span>
+                    </div>
                     <span class="companySetting2"></span>
                 </div>
                 <div class="financialLeft fl" ng-show="resultObj.status != 7 && resultObj.receive ==true">
@@ -83,10 +84,10 @@
                  ng-hide="resultObj.status == -1"
                  ng-click="my_work(resultObj.id,1)">
                 <div class="companyName" style="color: #ffffff">
-                    <span style="display:inline-block; width: calc(100% - 50px); overflow: hidden"
-                          title="{{resultObj.companyName || resultObj.userName}}">
-                        {{resultObj.companyName || resultObj.userName}}
-                    </span>
+                    <div style="display:inline-block; width: calc(100% - 50px); overflow: hidden"
+                         title="{{resultObj.companyName || resultObj.userName}}">
+                        <span>{{resultObj.companyName || resultObj.userName}}</span>
+                    </div>
                     <span class="companySetting"></span>
                 </div>
                 <div class="financial3">
@@ -108,10 +109,10 @@
              ng-hide="resultObj.status == 0"
              ng-click="my_work(resultObj.id,1)">
             <div class="companyName">
-                <span style="display:inline-block; width: calc(100% - 50px);overflow: hidden"
-                      title="{{resultObj.companyName || resultObj.userName}}">
-                    {{resultObj.companyName || resultObj.userName}}
-                </span>
+                <div style="display:inline-block; width: calc(100% - 50px); overflow: hidden"
+                     title="{{resultObj.companyName || resultObj.userName}}">
+                    <span>{{resultObj.companyName || resultObj.userName}}</span>
+                </div>
                 <span class="companySetting1"></span>
             </div>
             <div class="financial3">
