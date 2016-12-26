@@ -1,0 +1,152 @@
+/*scb-1*/
+.scb-bg {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding-top: 40%;
+    background: url("../img/h5/scb/bg.png");
+    background-size: cover;
+}
+
+.scb-logo-contain {
+    width: 100%;
+    height: 85px;
+    padding-bottom: 22px;
+}
+
+.scb-logo {
+    width: 199px;
+    height: 85px;
+    margin: 0 auto;
+    background: url("../img/h5/scb/scb.png");
+    background-size: contain;
+}
+
+.scb-title {
+    width: 100%;
+    height: 76px;
+    background: url("../img/h5/scb/one_px.png");
+    background-size: contain;
+    line-height: 76px;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.scb-summary {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.scb-summary span {
+    padding: 0 5px;
+}
+
+.scb-arrow {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: url("../img/h5/scb/arrow.png");
+    background-size: contain;
+    vertical-align: top;
+    margin-top: 11px;
+}
+
+.scb-link {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.scb-line {
+    width: 100%;
+    height: 6px;
+    background: url("../img/h5/scb/one_px.png");
+    background-size: contain;
+}
+
+/*scb-2*/
+.scb-bg-white {
+    height: 100%;
+    background: #fff;
+    overflow: auto;
+}
+
+.scb-logo-right {
+    box-sizing: border-box;
+    width: 100%;
+    height: 75px;
+    padding: 21px 20px 16px 0;
+    text-align: right;
+}
+
+.scb-logo-right img {
+    width: 90px;
+    height: 38px;
+}
+
+.scb-img {
+    width: 100%;
+    height: 46%;
+}
+
+.scb-img-a2 {
+    background: url("../img/h5/scb/a2.png");
+    background-size: cover;
+}
+
+.scb-img-a3 {
+    background: url("../img/h5/scb/a3.png");
+    background-size: cover;
+}
+
+.scb-img-footer {
+    width: 100%;
+    height: 16px;
+    background: url("../img/h5/scb/one_px.png");
+    background-size: contain;
+}
+
+.scb-ul {
+    padding: 8px 1px 58px 20px;
+}
+
+.scb-ul-title {
+    box-sizing: border-box;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    font-size: 24px;
+    color: #0072aa;
+}
+
+.scb-ul li {
+    list-style: none;
+    width: 100%;
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    color: #666666;
+    background: url("../img/h5/scb/bd.png") 0 8px no-repeat;
+    background-size: 10px;
+    text-indent: 20px;
+}
+
+.scb-footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding: 5px 44px;
+    background: url("../img/h5/scb/one_px.png");
+    background-size: contain;
+}
+
+.text-right {
+    text-align: right;
+}

@@ -1,4 +1,5 @@
-api_uri = "http://123.206.84.74/api/";
+// api_uri = "http://test.zhironghao.com/api/";
+api_uri = "https://ssl.zhironghao.com/api/";
 root_uri = "http://test.zhironghao.com/#";
 // activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
 //api_uri = "http://172.17.2.13:8080/api/";
@@ -10,34 +11,52 @@ root_uri = "http://test.zhironghao.com/#";
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 var app = angular.module('app', [
-    'ng', 'ngRoute', 'ngAnimate', 'loginCtrl', 'registerCtrl', 'articleCtrl', 'userCtrl'
+    'ng', 'ngRoute', 'ngAnimate', 'ionic', 'loginCtrl', 'registerCtrl', 'articleCtrl', 'userCtrl'
 ], ['$httpProvider', function ($httpProvider) {
     // Use x-www-form-urlencoded Content-Type
     $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
     $httpProvider.defaults.headers.put['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
 }]);
-app.run(['$location', '$rootScope', '$http', '$routeParams',
-      function ($location, $rootScope, $http, $routeParams) {
-
+app.run(['$location', '$rootScope', '$http', '$routeParams', '$ionicPlatform',
+    function ($location, $rootScope, $http, $routeParams, $ionicPlatform) {
+        $ionicPlatform.ready(function () {
+            // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+            // for form inputs)
+            if (window.cordova && window.cordova.plugins.Keyboard) {
+                cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            }
+            if (window.StatusBar) {
+                StatusBar.styleDefault();
+            }
+        });
         $rootScope.qiniu_bucket_domain = "o793l6o3p.bkt.clouddn.com";
 
-        var no_check_route = ["/article/list", "/login", "/register/step1", "/register/step2", "/register/reset1", "/register/reset2"];
+        var no_check_route = [
+            "/article/list",
+            "/article/show",
+            "/article/scb",
+            "/login",
+            "/register/step1",
+            "/register/step2",
+            "/register/reset1",
+            "/register/reset2"
+        ];
 
         // 浏览器鉴别
         var ua = navigator.userAgent.toLowerCase();
         $rootScope.wx_client = ua.indexOf('micromessenger') != -1;
-          // $rootScope.wx_client = false;
+        // $rootScope.wx_client = false;
         // var isAndroid = ua.indexOf('android') != -1;
         $rootScope.isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
         // 微信初始化
-        if($rootScope.wx_client){
+        if ($rootScope.wx_client) {
             $http({
                 url: api_uri + "wx/share",
                 method: "GET",
-                 params: {
-                     "url":$location.absUrl()
-                 }
-            }).success(function(d){
+                params: {
+                    "url": $location.absUrl()
+                }
+            }).success(function (d) {
                 if (d.returnCode == 0) {
                     wx.config({
                         debug: false,
@@ -45,36 +64,36 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
                         signature: d.result.signature,
-                        jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
+                        jsApiList: ["checkJsApi", "onMenuShareTimeline", "onMenuShareAppMessage", "onMenuShareQQ", "onMenuShareWeibo", "hideMenuItems", "showMenuItems", "hideAllNonBaseMenuItem", "showAllNonBaseMenuItem", "translateVoice"],
 
                     });
 
-                    wx.ready(function(){
+                    wx.ready(function () {
 
                     });
-                    wx.error(function(res){
+                    wx.error(function (res) {
                         // console.log(res);
                     });
                 }
 
-            }).error(function(data){
+            }).error(function (data) {
                 // TODO 请求用户信息异常
             });
         }
 
-          $rootScope.getUrl = function (url,id) {
-            if(id){
-                $rootScope.title = $rootScope.shareBankname+$rootScope.shareProductName;
+        $rootScope.getUrl = function (url, id) {
+            if (id) {
+                $rootScope.title = $rootScope.shareBankname + $rootScope.shareProductName;
                 $rootScope.desc = $rootScope.desc_detail;
-            }else if(url.indexOf("showActivity") > -1){
-                $rootScope.title ='直融号8月活动';
+            } else if (url.indexOf("showActivity") > -1) {
+                $rootScope.title = '直融号8月活动';
                 $rootScope.desc = '千亿资金等你来拿';
-            }else{
-                $rootScope.title ='直融号';
+            } else {
+                $rootScope.title = '直融号';
                 $rootScope.desc = '打造企业最低融资成本';
             }
             var strs = []; //定义一数组
-            strs=url.split("?"); //字符分割
+            strs = url.split("?"); //字符分割
             console.log(strs);
             if ($rootScope.login_user) {
                 $rootScope.userId = $rootScope.login_user.userId;
@@ -232,7 +251,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                 }).success(function (d) {
                     // console.log(d);
                 });
-            };
+            }
             $rootScope.removeSessionObject("showID");
 
             if (present_route == "/article/list" || present_route.indexOf("/article/show/") > -1
@@ -244,24 +263,25 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                     var shareId = $location.search()['shareId'];
                     var share = {
                         "shareName": shareName,
-                        "shareId": shareId,
+                        "shareId": shareId
                     };
                     $rootScope.putSessionObject("share", share);
                 }
                 console.log(share);
 
             } else {//其他 无需分享页面
-                function onBridgeReady(){
+                function onBridgeReady() {
                     wx.hideOptionMenu();
                 }
-                if (typeof WeixinJSBridge == "undefined"){
-                    if( document.addEventListener ){
+
+                if (typeof WeixinJSBridge == "undefined") {
+                    if (document.addEventListener) {
                         document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-                    }else if (document.attachEvent){
+                    } else if (document.attachEvent) {
                         document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
                         document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
                     }
-                }else{
+                } else {
                     onBridgeReady();
                 }
             }
@@ -289,7 +309,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
         });
 
         /*********************************** 全局方法区 e***************************************/
-            // 对象存储
+        // 对象存储
         $rootScope.putObject = function (key, value) {
             localStorage.setItem(key, angular.toJson(value));
         };
@@ -312,7 +332,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
         $rootScope.change = function ($event) {
             $event.stopPropagation();
         };
-        $rootScope.isNullOrEmpty = function(strVal) {
+        $rootScope.isNullOrEmpty = function (strVal) {
             if ($.trim(strVal) == '' || strVal == null || strVal == undefined) {
                 return true;
             } else {
@@ -340,20 +360,20 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
 
             return decrypted.toString(CryptoJS.enc.Utf8);
         };
-        
-        $rootScope.transFn = function(obj) {
-		       var str = [];
-			   for(var p in obj){
-			       str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-			   }
-			   return str.join("&").toString();
-		 };
 
-        $rootScope.touchStart = function(){
+        $rootScope.transFn = function (obj) {
+            var str = [];
+            for (var p in obj) {
+                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+            }
+            return str.join("&").toString();
+        };
+
+        $rootScope.touchStart = function () {
             $(".singleButtonFixed").addClass("singleButton2");
             $(".singleButton1").addClass("singleButton2");
         };
-        $rootScope.touchEnd = function(){
+        $rootScope.touchEnd = function () {
             $(".singleButtonFixed").removeClass("singleButton2");
             $(".singleButton1").removeClass("singleButton2");
         };
@@ -363,7 +383,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                 $rootScope.removeObject("login_user");
                 $rootScope.present_route = $location.$$path;
                 return false;
-            }else{
+            } else {
                 $http({
                     url: api_uri + "auth/validateAuth",
                     method: "POST",
@@ -376,7 +396,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                         $rootScope.removeObject("login_user");
                         $rootScope.present_route = $location.$$path;
                         if (no_check_route.indexOf($rootScope.present_route) <= -1
-                            && $rootScope.present_route.indexOf("article/show")<= -1
+                            && $rootScope.present_route.indexOf("article/show") <= -1
                             && $rootScope.present_route.indexOf("register/step2") <= -1
                             && $rootScope.present_route.indexOf("register/reset2") <= -1) {
                             $rootScope.putSessionObject("present_route", $rootScope.present_route);

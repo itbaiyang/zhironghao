@@ -98,6 +98,38 @@ articleCtrl.controller('ArticleShowCtrl',
         }
     };
     }]);
+
+articleCtrl.controller('ArticleShowScbCtrl',
+    ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
+        $scope.show = 3;
+        $scope.applyCompany = function () {
+            $location.path("/article/apply/f36131316d4847e09fb9eb4ab5a6c66c0");
+        };
+        $scope.applyPerson = function () {
+            $location.path("/article/apply/");
+        };
+
+        $scope.onSwipeRight = function () {
+            console.log("onDragRight");
+            if ($scope.show > 1) {
+                $scope.show--;
+            } else {
+                console.log("小了")
+            }
+            console.log($scope.show);
+        };
+
+        $scope.onSwipeLeft = function () {
+            if ($scope.show < 3) {
+                $scope.show++;
+            } else {
+                console.log("大了")
+            }
+        }
+    }]);
+
+
+
 articleCtrl.controller('ArticleShowActivityCtrl',
     ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.apply = function (type) {
