@@ -43,7 +43,7 @@ articleCtrl.controller('ArticleListCtrl',
         }
     };
     $scope.detailActivity = function () { //跳转到活动详情
-        $location.path("/article/showActivity")
+        $location.path("/article/scb")
     }
     }]);
 
@@ -101,7 +101,7 @@ articleCtrl.controller('ArticleShowCtrl',
 
 articleCtrl.controller('ArticleShowScbCtrl',
     ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
-        $scope.show = 3;
+        $scope.show = 1;
         $scope.applyCompany = function () {
             $location.path("/article/apply/f36131316d4847e09fb9eb4ab5a6c66c0");
         };
@@ -110,13 +110,11 @@ articleCtrl.controller('ArticleShowScbCtrl',
         };
 
         $scope.onSwipeRight = function () {
-            console.log("onDragRight");
             if ($scope.show > 1) {
                 $scope.show--;
             } else {
                 console.log("小了")
             }
-            console.log($scope.show);
         };
 
         $scope.onSwipeLeft = function () {
