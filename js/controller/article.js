@@ -1,7 +1,8 @@
 var articleCtrl = angular.module('articleCtrl', []);
 
 articleCtrl.controller('ArticleListCtrl',
-    ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
+    ['$http', '$scope', '$rootScope', '$location', '$routeParams',
+        function ($http, $scope, $rootScope, $location, $routeParams) {
     $scope.list = function (pageNo, pageSize) {//产品列表
         var m_params = {
             pageNo: pageNo,
@@ -101,29 +102,16 @@ articleCtrl.controller('ArticleShowCtrl',
 
 articleCtrl.controller('ArticleShowScbCtrl',
     ['$http', '$scope', '$rootScope', '$location', '$routeParams', function ($http, $scope, $rootScope, $location, $routeParams) {
-        $scope.show = 1;
+        $scope.show = 0;
+        $scope.translateFromClick = function () {
+            $scope.show = 1;
+        };
         $scope.applyCompany = function () {
             $location.path("/article/apply/f36131316d4847e09fb9eb4ab5a6c66c0");
         };
         $scope.applyPerson = function () {
-            $location.path("/article/apply/");
+            $location.path("/article/apply/9c5e51f10f71481eadb052d5e3950e4b2");
         };
-
-        $scope.onSwipeRight = function () {
-            if ($scope.show > 1) {
-                $scope.show--;
-            } else {
-                console.log("小了")
-            }
-        };
-
-        $scope.onSwipeLeft = function () {
-            if ($scope.show < 3) {
-                $scope.show++;
-            } else {
-                console.log("大了")
-            }
-        }
     }]);
 
 

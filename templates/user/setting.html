@@ -1,7 +1,7 @@
-<div style="padding-top: 38px">
-    <div class="userSet clear" style="border-top: 1px solid #e0e0e0" id="upload_container">
+<div style="margin-top: 38px">
+    <div class="userSet clear" style="position: static" id="upload_container">
         <span>头像</span>
-        <span class="userSetIcon">></span>
+        <span class="userSetIcon fr"> ></span>
         <span class="userSetContent"></span>
         <span class="userSetImg">
             <img id="pickfiles" src="{{user.headImg || 'img/icon/recommendl.png'}}">
@@ -9,23 +9,23 @@
     </div>
     <div class="userSet" ng-click="update('name')">
         <span>姓名</span>
-        <span class="userSetIcon">></span>
-        <span class="userSetContent">{{user.name || '未完善'}}</span>
+        <span class="userSetIcon fr"> ></span>
+        <span class="userSetContent">{{user.name}}</span>
     </div>
     <div class="userSet" ng-click="update('position')">
         <span>职位</span>
-        <span class="userSetIcon"> ></span>
+        <span class="userSetIcon fr"> ></span>
         <span class="userSetContent">{{user.position}}</span>
     </div>
     <div class="userSet">
         <span>手机号</span>
-        <span class="userSetIcon"></span>
+        <span class="userSetIcon fr"></span>
         <span class="userSetContent" style="margin-right: 0">{{user.mobile}}</span>
     </div>
 
     <div class="userSet">
         <span>修改密码</span>
-        <span class="userSetIcon"> ></span>
+        <span class="userSetIcon fr"> ></span>
         <span class="userSetContent" ng-click="reset()">*********</span>
     </div>
     <div class="userSetOut" ng-click="logout()">退出登录</div>

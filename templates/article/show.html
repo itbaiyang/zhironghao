@@ -3,27 +3,29 @@
         <div class="productLeft fl">
             <img ng-src="{{article_detail.icon}}" alt="">
         </div>
-        <p class="productP1">
-            <span>{{article_detail.bankname}}</span>-
-            <span>{{article_detail.name}}</span>
-        </p>
-        <div class="productCenter">
-            <p class="productP2">
-                <span>{{article_detail.loanvalue}}</span>
-                <span ng-show="article_detail.loanvalue && article_detail.loanlife">/</span>
-                <span>{{article_detail.loanlife}}</span>
+        <div class="productRight fl">
+            <p class="productP1">
+                <span>{{article_detail.bankname}}</span>-
+                <span>{{article_detail.name}}</span>
             </p>
-            <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
-        </div>
-        <div class="productCenter">
-            <div class="productP3">
-                <p ng-show="article_detail.tags[0]" class="productSpan1">{{article_detail.tags[0]}}</p>
-                <p ng-show="article_detail.tags[1]" class="productSpan2">{{article_detail.tags[1]}}</p>
-                <!--<span ng-show="article_detail.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
+            <div class="productCenter">
+                <p class="productP2">
+                    <span>{{article_detail.loanvalue}}</span>
+                    <span ng-show="article_detail.loanvalue && article_detail.loanlife">/</span>
+                    <span>{{article_detail.loanlife}}</span>
+                </p>
+                <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{article_detail.rate}}</span>%</p>
             </div>
-            <p class="productP5">{{article_detail.rateRemark}}</p>
+            <div class="productCenter">
+                <div class="productP3">
+                    <p ng-show="article_detail.tags[0]" class="productSpan1">{{article_detail.tags[0]}}</p>
+                    <p ng-show="article_detail.tags[1]" class="productSpan2">{{article_detail.tags[1]}}</p>
+                    <!--<span ng-show="article_detail.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
+                </div>
+                <p class="productP5">{{article_detail.rateRemark}}</p>
+            </div>
+            <div class="img-person" ng-show="type == 2"></div>
         </div>
-        <div class="img-person" ng-show="type == 2"></div>
     </div>
     <div class="productDefinitions" ng-hide="article_detail.summary == null || article_detail.summary == ''">
         {{article_detail.summary}}
