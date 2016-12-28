@@ -4,6 +4,7 @@ go_apply = "http://test.zhironghao.com/#/article/apply/";
 
 var carousel = new Carousel("#carousel")
 carousel.init()
+
 function changePage() {
     carousel.showPane(1)
 }

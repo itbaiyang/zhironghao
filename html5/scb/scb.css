@@ -1,6 +1,10 @@
-*{
-    padding: 0;
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    list-style: none;
+    font-family: OneNikeCurrency, 'TradeGothicW01-BoldCn20 675334', Helvetica, Arial, 'Heiti SC', 'ST Heiti', 华文黑体, 'Microsoft YaHei', 雅黑体, SimHei, 黑体, sans-serif;
 }
 html, body{
     width: 100%;
@@ -82,93 +86,93 @@ html, body{
 }
 
 .from-left {
-    animation: fromLeft .5s;
-    -moz-animation: fromLeft .5s; /* Firefox */
-    -webkit-animation: fromLeft .5s; /* Safari and Chrome */
-    -o-animation: fromLeft .5s; /* Opera */
+    animation: fromLeft 1s;
+    -moz-animation: fromLeft 1s; /* Firefox */
+    -webkit-animation: fromLeft 1s; /* Safari and Chrome */
+    -o-animation: fromLeft 1s; /* Opera */
 }
 @keyframes fromLeft {
     from {
-        margin-left: -100%
+        transform:translate(-100%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-moz-keyframes fromLeft /* Firefox */
 {
     from {
-        margin-left: -100%
+        transform:translate(-100%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-webkit-keyframes fromLeft /* Safari and Chrome */
 {
     from {
-        margin-left: -100%
+        transform:translate(-100%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-o-keyframes fromLeft /* Opera */
 {
     from {
-        margin-left: -100%
+        transform:translate(-100%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 .from-right {
-    animation: fromRight .5s;
-    -moz-animation: fromRight .5s; /* Firefox */
-    -webkit-animation: fromRight .5s; /* Safari and Chrome */
-    -o-animation: fromRight .5s; /* Opera */
+    animation: fromRight 1s;
+    -moz-animation: fromRight 1s; /* Firefox */
+    -webkit-animation: fromRight 1s; /* Safari and Chrome */
+    -o-animation: fromRight 1s; /* Opera */
 }
 
 @keyframes fromRight {
     from {
-        margin-left: 100%
+        transform:translate(105%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-moz-keyframes fromRight /* Firefox */
 {
     from {
-        margin-left: 100%
+        transform:translate(105%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-webkit-keyframes fromRight /* Safari and Chrome */
 {
     from {
-        margin-left: 100%
+        transform:translate(105%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
 @-o-keyframes fromRight /* Opera */
 {
     from {
-        margin-left: 100%
+        transform:translate(105%,0);
     }
     to {
-        margin-left: 0
+        transform:translate(0,0);
     }
 }
 
