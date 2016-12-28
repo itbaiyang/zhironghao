@@ -82,10 +82,10 @@ html, body{
 }
 
 .from-left {
-    animation: fromLeft 1s;
-    -moz-animation: fromLeft 1s; /* Firefox */
-    -webkit-animation: fromLeft 1s; /* Safari and Chrome */
-    -o-animation: fromLeft 1s; /* Opera */
+    animation: fromLeft .5s;
+    -moz-animation: fromLeft .5s; /* Firefox */
+    -webkit-animation: fromLeft .5s; /* Safari and Chrome */
+    -o-animation: fromLeft .5s; /* Opera */
 }
 @keyframes fromLeft {
     from {
@@ -127,10 +127,10 @@ html, body{
 }
 
 .from-right {
-    animation: fromRight 1s;
-    -moz-animation: fromRight 1s; /* Firefox */
-    -webkit-animation: fromRight 1s; /* Safari and Chrome */
-    -o-animation: fromRight 1s; /* Opera */
+    animation: fromRight .5s;
+    -moz-animation: fromRight .5s; /* Firefox */
+    -webkit-animation: fromRight .5s; /* Safari and Chrome */
+    -o-animation: fromRight .5s; /* Opera */
 }
 
 @keyframes fromRight {
