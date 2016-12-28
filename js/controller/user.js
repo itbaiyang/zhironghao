@@ -655,7 +655,7 @@ userCtrl.controller('CompanyDetailCtrl',
                 method: "GET",
                 params: m_params
             }).success(function (d) {
-                console.log(d);
+                // console.log(d);
                 if (d.returnCode == 0) {
                     alert("取消成功");
                     $location.path("/user/center");
@@ -684,7 +684,6 @@ userCtrl.controller('CompanyDetailCtrl',
 
         /*中止项目弹窗*/
         $scope.alert_stop = function () {
-            console.log('ddd');
             alert("asdfa");
         };
         /*逾期后的弹出框*/
@@ -878,7 +877,6 @@ userCtrl.controller('SettingCtrl', //用户设置
 userCtrl.controller('UserUpdateCtrl',
     ['$scope', '$rootScope', '$location', '$routeParams', function ($scope, $rootScope, $location, $routeParams) {
         $scope.typeKey = $routeParams.id;
-        console.log($routeParams.id);
         $scope.sure = function () {
             var params = {
                 "userId": $rootScope.login_user.userId,
@@ -888,14 +886,12 @@ userCtrl.controller('UserUpdateCtrl',
                     "position": $scope.position,
                 })
         };
-            console.log(params);
             $.ajax({
                 type: 'POST',
                 url: api_uri + "user/updateNew",
                 data: params,
                 traditional: true,
                 success: function (data, textStatus, jqXHR) {
-                    console.log(data);
                     if (data.returnCode == 0) {
                         $location.path("/user/center");
                     }

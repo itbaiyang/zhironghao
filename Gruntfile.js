@@ -9,8 +9,9 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'js/vendor/jquery.min.js',
-                    'js/vendor/angular.min.js',
-                    'js/vendor/angular-animate.min.js',
+                    'js/vendor/ionic.bundle.min.js',
+                    // 'js/vendor/angular.min.js',
+                    // 'js/vendor/angular-animate.min.js',
                     'js/vendor/angular-route.min.js',
                     'js/vendor/mobiscroll.custom-2.16.1.min.js',
                     'js/qiniu/ajaxfileupload.js',
@@ -19,7 +20,7 @@ module.exports = function(grunt) {
                     'js/qiniu/plupload.full.min.js',
                     'js/security/core.js',
                     'js/security/tripledes3.js',
-                    'js/security/mode-ecb.js',
+                    'js/security/mode-ecb.js'
                 ],
                 dest: 'dist/base_<%= pkg.name %>.js'
             },
@@ -40,8 +41,9 @@ module.exports = function(grunt) {
                 src: [
                     [
                         'css/scroll/mobiscroll.custom-2.16.1.min.css',
+                        'css/scroll/ionic.css',
                         'css/*.css'
-                    ],
+                    ]
                 ],
                 dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.css'
             }

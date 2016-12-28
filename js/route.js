@@ -34,6 +34,10 @@ app.config(
             templateUrl: templates_root + 'article/showActivity.html',
             controller: 'ArticleShowActivityCtrl'
         })
+        .when('/article/scb', {//详情
+            templateUrl: templates_root + 'h5/scb.html',
+            controller: 'ArticleShowScbCtrl'
+        })
         .when('/article/show/:id', {//详情
             templateUrl: templates_root + 'article/show.html',
             controller: 'ArticleShowCtrl'
