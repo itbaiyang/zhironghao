@@ -24,7 +24,7 @@
         </div>
     </div>
     <div ng-show="role.indexOf('clerk')>-1">
-        <div ng-infinite-scroll options="options" style="background: #EAEFF3;padding-bottom: 1px"
+        <div ng-infinite-scroll options="options" class="bg-apply-work"
              ng-show="message_myList" items="items">
             <p class="userCenterP">我的任务</p>
             <div class="financing1" style="background:#ffffff" ng-repeat="resultObj in my_list"
@@ -75,7 +75,7 @@
                 </div>
             </div>
         </div>
-        <div ng-infinite-scroll options="options" ng-show="message_list" items="items">
+        <div ng-infinite-scroll options="options" ng-show="message_list" items="items"  class="bg-apply-my">
             <p class="userCenterP">我的申请</p>
             <div class="financing1" style=" background: #736fcd; color: #ffffff" ng-repeat="resultObj in result_list"
                  ng-hide="resultObj.status == -1"

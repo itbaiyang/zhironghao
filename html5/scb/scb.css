@@ -1,0 +1,401 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#carousel, #carousel>ul, #carousel>ul>li  {
+    height: 100%;
+    position: relative;
+}
+#carousel {
+    background: silver;
+    overflow: hidden;
+    width:100%;
+    /* backface-visibility 的意思是在对元素进行变换时，如果元素的“正面”看不到了（比如使用 rotate 时），那么就隐藏整个元素
+       这在处理flip这样的翻转特效时有用。 */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0,0,0) scale3d(1,1,1);
+    -webkit-transform: translate3d(0,0,0) scale3d(1,1,1);
+    /* preserve-3d 指定元素的子元素应该在3D空间中进行定位 */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* 增加一个额外的动画样式，在切换版面时使用
+   使用CSS动画能在移动设备中获得比较好的性能 */
+#carousel>ul.animate {
+    transition: all .3s;
+}
+
+#carousel>ul {
+    transform: translate3d(0%,0,0) scale3d(1,1,1);
+    -webkit-transform: translate3d(0%,0,0) scale3d(1,1,1);
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+#carousel>ul {
+    -webkit-box-shadow: 0 0 20px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 0 20px rgba(0,0,0,.2);
+    box-shadow: 0 0 20px rgba(0,0,0,.2);
+    position: relative;
+}
+#carousel>ul>li {
+    float: left;
+    overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translate3d(0,0,0);
+    transform: translate3d(0,0,0);
+}
+
+/*scb-1*/
+.scb-bg {
+    width: 100%;
+    height: 100%;
+    padding-top: 40%;
+    background: url("./img/bg.png");
+    background-size: cover;
+}
+
+.scb-logo-contain {
+    width: 100%;
+    height: 85px;
+    margin-bottom: 22px;
+}
+
+.scb-logo {
+    width: 199px;
+    height: 85px;
+    margin: 0 auto;
+    background: url("./img/scb.png");
+    background-size: contain;
+}
+
+.from-left {
+    animation: fromLeft 1s;
+    -moz-animation: fromLeft 1s; /* Firefox */
+    -webkit-animation: fromLeft 1s; /* Safari and Chrome */
+    -o-animation: fromLeft 1s; /* Opera */
+}
+@keyframes fromLeft {
+    from {
+        margin-left: -100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-moz-keyframes fromLeft /* Firefox */
+{
+    from {
+        margin-left: -100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-webkit-keyframes fromLeft /* Safari and Chrome */
+{
+    from {
+        margin-left: -100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-o-keyframes fromLeft /* Opera */
+{
+    from {
+        margin-left: -100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+.from-right {
+    animation: fromRight 1s;
+    -moz-animation: fromRight 1s; /* Firefox */
+    -webkit-animation: fromRight 1s; /* Safari and Chrome */
+    -o-animation: fromRight 1s; /* Opera */
+}
+
+@keyframes fromRight {
+    from {
+        margin-left: 100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-moz-keyframes fromRight /* Firefox */
+{
+    from {
+        margin-left: 100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-webkit-keyframes fromRight /* Safari and Chrome */
+{
+    from {
+        margin-left: 100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+@-o-keyframes fromRight /* Opera */
+{
+    from {
+        margin-left: 100%
+    }
+    to {
+        margin-left: 0
+    }
+}
+
+.from-light {
+    animation: fromLight 1s infinite;
+    -moz-animation: fromLight 1s infinite; /* Firefox */
+    -webkit-animation: fromLight 1s infinite; /* Safari and Chrome */
+    -o-animation: fromLight 1s infinite; /* Opera */
+}
+
+@keyframes fromLight {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@-moz-keyframes fromLight /* Firefox */
+{
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@-webkit-keyframes fromLight /* Safari 和 Chrome */
+{
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+@-o-keyframes fromLight /* Opera */
+{
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+
+.from-dark {
+    animation: fromDark 1s infinite;
+    -moz-animation: fromDark 1s infinite; /* Firefox */
+    -webkit-animation: fromDark 1s infinite; /* Safari and Chrome */
+    -o-animation: fromDark 1s infinite; /* Opera */
+}
+
+@keyframes fromDark {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes fromDark /* Firefox */
+{
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fromDark /* Safari 和 Chrome */
+{
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@-o-keyframes fromDark /* Opera */
+{
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+.scb-title {
+    width: 100%;
+    height: 76px;
+    background: url("./img/one_px.png");
+    background-size: contain;
+    line-height: 76px;
+    font-size: 28px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.scb-summary {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+.scb-summary span {
+    padding: 0 5px;
+}
+
+.scb-arrow {
+    /*display: inline-block;*/
+    width: 8px;
+    height: 16px;
+    background: url("./img/arrow.png");
+    background-size: cover;
+    vertical-align: top;
+    margin-top: 11px;
+}
+
+.scb-link {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.scb-line {
+    width: 100%;
+    height: 6px;
+    background: url("./img/one_px.png");
+    background-size: contain;
+}
+.scb-bg-white {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    /*overflow: auto;*/
+}
+
+.scb-logo-right {
+    box-sizing: border-box;
+    width: 100%;
+    height: 75px;
+    padding: 21px 20px 16px 0;
+    text-align: right;
+}
+
+.scb-logo-right img {
+    width: 90px;
+    height: 38px;
+}
+
+.scb-img {
+    width: 100%;
+    height: 46%;
+}
+
+.scb-img-a2 {
+    background: url("./img/a2.png");
+    background-size: cover;
+}
+
+.scb-img-a3 {
+    background: url("./img/a3.png");
+    background-size: cover;
+}
+
+.scb-img-footer {
+    width: 100%;
+    height: 8px;
+    background: url("./img/one_px.png");
+    background-size: contain;
+}
+.scb-list {
+    height: calc(60% - 180px);
+    overflow: auto;
+}
+.scb-ul {
+    box-sizing: border-box;
+    padding: 8px 1px 8px 20px;
+    height: 100%;
+    overflow: auto;
+}
+
+.scb-ul-title {
+    box-sizing: border-box;
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    font-size: 24px;
+    color: #0072aa;
+    text-align: left;
+    font-weight: bolder;
+}
+
+.scb-ul li {
+    list-style: none;
+    width: 100%;
+    height: 27px;
+    line-height: 27px;
+    font-size: 14px;
+    color: #666666;
+    background: url("./img/bd.png") 0 8px no-repeat;
+    background-size: 10px;
+    text-indent: 20px;
+    text-align: left;
+}
+
+.scb-footer {
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding: 5px 44px;
+    background: url("./img/one_px.png");
+    background-size: contain;
+}
+
+.text-right {
+    text-align: right;
+}

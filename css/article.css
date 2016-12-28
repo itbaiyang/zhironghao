@@ -2,9 +2,9 @@
 * {
     margin: 0;
     padding: 0;
-    /*box-sizing: border-box;*/
+    box-sizing: border-box;
     border: none;
-    /*list-style: none;*/
+    list-style: none;
     font-family: OneNikeCurrency, 'TradeGothicW01-BoldCn20 675334', Helvetica, Arial, 'Heiti SC', 'ST Heiti', 华文黑体, 'Microsoft YaHei', 雅黑体, SimHei, 黑体, sans-serif;
 }
 
@@ -36,7 +36,9 @@ input, button, select, textarea {
     outline: none;
     -webkit-appearance: none;
 }
-
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+}
 hr {
     border: 0.5px solid #f0f0f0;
     margin-top: 16px;
@@ -116,11 +118,12 @@ hr {
 .productLeft img {
     width: 100%;
     height: 100%;
-    /*vertical-align: middle;*/
 }
-
+.productRight {
+    width: calc(100% - 73px);
+}
 .productCenter {
-    margin-left: 86px;
+    margin-left: 15px;
     height: 20px;
     padding: 1px 0 0 0;
     position: relative;
@@ -137,13 +140,12 @@ hr {
 }
 
 .productP1 {
-    margin-left: 86px;
-    padding-top: 18px;
+    margin-left: 15px;
+    margin-top: 18px;
     height: 19px;
     line-height: 19px;
     font-size: 16px;
     color: #4c4c4c;
-    /*font-weight: 500;*/
 }
 
 .productP2 {
@@ -156,15 +158,13 @@ hr {
 }
 
 .productP3 {
-    margin-top: -1px;
-    boder: none;
+    border: none;
     display: inline-block;
     position: absolute;
     left: 0;
 }
 
 .productP5 {
-    /*margin-top: -1px;*/
     margin-right: 15px;
     boder: none;
     display: inline-block;
@@ -177,11 +177,10 @@ hr {
 .productP3 > p {
     vertical-align: top;
     display: inline-block;
-    height: 12px;
-    /*line-height: 12px;*/
+    height: 16px;
+    line-height: 12px;
     font-size: 10px;
     padding: 1px 2px;
-    /*border-radius: 2px;*/
 }
 
 .productSpan1 {
@@ -198,18 +197,6 @@ hr {
     color: #3D974C;
 }
 
-.productRight {
-    /*width: calc(55% - 102px);*/
-    /*height: 95px;*/
-    /*padding: 0 15px 0 0;*/
-}
-
-.productRight p {
-    font-size: 10px;
-    height: 24px;
-    line-height: 24px;
-    text-align: right;
-}
 .detailDescribe{
     display: block;
     height: 18px;

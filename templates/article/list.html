@@ -1,29 +1,32 @@
 <div class="articleList">
-    <!--<img src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">-->
+    <img src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
     <div class="productList" ng-repeat="resultObj in result_list" ng-click="article_show(resultObj,resultObj.id)">
         <div class="productLeft fl">
             <img ng-src="{{resultObj.icon}}" alt="">
         </div>
-        <p class="productP1">
-            <span>{{resultObj.bankname}}</span>-
-            <span>{{resultObj.name}}</span>
-        </p>
-        <div class="productCenter clear">
-            <p class="productP2">
-                <span>{{resultObj.loanvalue}}</span>
-                <span ng-show="resultObj.loanvalue && resultObj.loanlife">/</span>
-                <span>{{resultObj.loanlife}}</span>
+        <div class="productRight fl">
+            <p class="productP1">
+                <span>{{resultObj.bankname}}</span>-
+                <span>{{resultObj.name}}</span>
             </p>
-            <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
-        </div>
-        <div class="productCenter clear">
-            <div class="productP3">
-            <p ng-show="resultObj.tags[0]" class="productSpan1">{{resultObj.tags[0]}}</p>
-            <p ng-show="resultObj.tags[1]" class="productSpan2">{{resultObj.tags[1]}}</p>
-                <!--<span ng-show="resultObj.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
+            <div class="productCenter clear">
+                <p class="productP2">
+                    <span>{{resultObj.loanvalue}}</span>
+                    <span ng-show="resultObj.loanvalue && resultObj.loanlife">/</span>
+                    <span>{{resultObj.loanlife}}</span>
+                </p>
+                <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{resultObj.rate}}</span>%</p>
             </div>
-            <p class="productP5">{{resultObj.rateRemark}}</p>
+            <div class="productCenter clear">
+                <div class="productP3">
+                    <p ng-show="resultObj.tags[0]" class="productSpan1">{{resultObj.tags[0]}}</p>
+                    <p ng-show="resultObj.tags[1]" class="productSpan2">{{resultObj.tags[1]}}</p>
+                    <!--<span ng-show="resultObj.tags[2]" class="productSpan3">{{resultObj.tags[2]}}</span>-->
+                </div>
+                <p class="productP5">{{resultObj.rateRemark}}</p>
+            </div>
+            <div class="img-person" ng-show="resultObj.type == 2"></div>
         </div>
-        <div class="img-person" ng-show="resultObj.type == 2"></div>
+
     </div>
 </div>

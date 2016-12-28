@@ -119,13 +119,22 @@
     margin-bottom: 10px;
 
 }
+.bg-apply-work {
+    background: #EAEFF3;
+    padding-bottom: 1px;
+}
+
+.bg-apply-my {
+    background: #d3d5ea;
+    padding-bottom: 1px;
+}
 .companyName{
     width: calc(100% - 30px);
     height: 45px;
     line-height: 45px;
     font-size: 16px;
     color: #4c4c4c;
-    padding:0 15px 0 15px;
+    margin:0 15px 0 15px;
     border-bottom: .5px solid #e0e0e0;
 }
 
@@ -215,14 +224,13 @@
 .financial3 {
     width: calc(100% - 30px);
     height: 58px;
-    padding: 4px 15px;
+    margin: 4px 15px;
 }
 
 .financialLeft {
-    /*width: 58%;*/
     width: calc(100% - 135px);
     height: 58px;
-    padding: 4px 15px;
+    margin: 4px 15px;
 }
 
 .singleButtonMin {

@@ -1,12 +1,12 @@
-api_uri = "http://123.206.84.74/api/";
+api_uri = "https://ssl.zhironghao.com/api/";
 root_uri = "http://test.zhironghao.com/#";
-// activityID = "e15813cb5bfd4290a5c2582cbdd164a4";//测试活动
-//api_uri = "http://172.17.2.13:8080/api/";
-//api_uri = "http://172.16.97.95:8080/api/";
-// api_uri = "http://172.16.97.229:8080/api/";
+// h5_uri = "http://172.17.3.158:8000/html5/scb";
+h5_uri = "http://test.zhironghao.com/html5/scb";
+
 // api_uri = "http://api.supeiyunjing.com/";
 // root_uri = "http://app.supeiyunjing.com/#";
-// activityID = "71a28b4d3c60481ebfb6270eb27fde2c";//正式活动
+// h5_uri = "http://app.supeiyunjing.com/html5/scb";
+
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
 var app = angular.module('app', [
@@ -97,14 +97,9 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                 success: function (data, textStatus, jqXHR) {
                     console.log(data);
                     if (data.returnCode == 0) {
-                        // alert(data);
                         $rootScope.shareReturn = data.result;
                         $rootScope.shareReturn.sn = data.result.sn;
-                        // console.log($rootScope.shareReturn);
-                        // console.log(data.result.token);
-                        // $rootScope.shareReturn.token = encodeURIComponent(data.result.token);
                         $rootScope.shareReturn.token = data.result.token;
-                        // console.log($rootScope.shareReturn.token);
                         wx.onMenuShareAppMessage({
                             title: $rootScope.title,
                             desc: $rootScope.desc,
@@ -239,7 +234,6 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                 || present_route == "/article/showActivity") {//列表
 
                 var shareName = $location.search()['share'];
-                console.log(shareName);
                 if (shareName) {
                     var shareId = $location.search()['shareId'];
                     var share = {
@@ -248,8 +242,6 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                     };
                     $rootScope.putSessionObject("share", share);
                 }
-                console.log(share);
-
             } else {//其他 无需分享页面
                 function onBridgeReady(){
                     wx.hideOptionMenu();
@@ -370,7 +362,6 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                     params: $rootScope.login_user
                 }).success(function (d) {
                     if (d.returnCode == 0) {
-                        // console.log("login success");
                         return true;
                     } else {
                         $rootScope.removeObject("login_user");
@@ -388,10 +379,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
                     }
 
                 }).error(function (d) {
-                    //$rootScope.removeObject("login_user");
-                    //$rootScope.present_route = $location.$$path;
-                    //$rootScope.putSessionObject("present_route", $rootScope.present_route);
-                    //$location.path("/login");
+
                     return false;
                 });
             }

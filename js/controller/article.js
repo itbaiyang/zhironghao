@@ -18,7 +18,6 @@ articleCtrl.controller('ArticleListCtrl',
                 $scope.totalCount = d.result.totalCount;
                 wx.ready(function () {
                     $rootScope.getUrl($location.absUrl(), $routeParams.id);
-                    console.log($routeParams.id, 'xiwanga');
                 });
             }
             else {
@@ -43,7 +42,7 @@ articleCtrl.controller('ArticleListCtrl',
         }
     };
     $scope.detailActivity = function () { //跳转到活动详情
-        $location.path("/article/showActivity")
+        window.location.href = h5_uri
     }
     }]);
 
@@ -63,7 +62,6 @@ articleCtrl.controller('ArticleShowCtrl',
             console.log(d);
             wx.ready(function () {
                 $rootScope.getUrl($location.absUrl(), $routeParams.id);
-                console.log($routeParams.id, 'xiwanga');
             });
             if (d.returnCode == 0) {
                 $scope.article_detail = d.result;
@@ -83,11 +81,8 @@ articleCtrl.controller('ArticleShowCtrl',
                     desc += "贷款期限:" + $scope.article_detail.loanlife + "年";
                 }
             } else {
-                // console.log(d);
             }
         }).error(function (d) {
-            // console.log("login error");
-            //$location.path("/error");
         });
     };
     $scope.init();

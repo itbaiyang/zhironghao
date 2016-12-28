@@ -2,26 +2,28 @@
     <div class="productLeft fl">
         <img ng-src="{{company.icon}}" alt="">
     </div>
-    <p class="productP1">
-        <span>{{company.bankname}}</span>-
-        <span>{{company.name}}</span>
-    </p>
-    <div class="productCenter clear">
-        <p class="productP2">
-            <span>{{company.loanvalue}}</span>
-            <span ng-show="company.loanvalue && company.loanlife">/</span>
-            <span>{{company.loanlife}}</span>
+    <div class="productRight fl">
+        <p class="productP1">
+            <span>{{company.bankname}}</span>-
+            <span>{{company.name}}</span>
         </p>
-        <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
-    </div>
-    <div class="productCenter">
-        <div class="productP3">
-            <p ng-show="company.tags[0]" class="productSpan1">{{company.tags[0]}}</p>
-            <p ng-show="company.tags[1]" class="productSpan2">{{company.tags[1]}}</p>
+        <div class="productCenter clear">
+            <p class="productP2">
+                <span>{{company.loanvalue}}</span>
+                <span ng-show="company.loanvalue && company.loanlife">/</span>
+                <span>{{company.loanlife}}</span>
+            </p>
+            <p class="productP4">利息 <span style="color: #fa697a;font-size: 18px">{{company.rate}}</span>%</p>
         </div>
-        <p class="productP5">{{company.rateRemark}}</p>
+        <div class="productCenter">
+            <div class="productP3">
+                <p ng-show="company.tags[0]" class="productSpan1">{{company.tags[0]}}</p>
+                <p ng-show="company.tags[1]" class="productSpan2">{{company.tags[1]}}</p>
+            </div>
+            <p class="productP5">{{company.rateRemark}}</p>
+        </div>
+        <div class="img-person" ng-show="company.type == 2"></div>
     </div>
-    <div class="img-person" ng-show="company.type == 2"></div>
 </div>
 <img ng-show="company.name =='八月活动'" src="img/banner.jpg" class="bannerGroup" ng-click="detailActivity()">
 <div ng-show="choiceStyle == 0">
