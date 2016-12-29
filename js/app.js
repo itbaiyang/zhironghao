@@ -320,7 +320,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
             });
             return encrypted.toString();
         };
-        //解密 
+        //解密
         $rootScope.decryptByDES = function (ciphertext) {
             var keyHex = CryptoJS.enc.Utf8.parse(deskey);
             var decrypted = CryptoJS.DES.decrypt({
@@ -332,7 +332,7 @@ app.run(['$location', '$rootScope', '$http', '$routeParams',
 
             return decrypted.toString(CryptoJS.enc.Utf8);
         };
-        
+
         $rootScope.transFn = function(obj) {
 		       var str = [];
 			   for(var p in obj){
