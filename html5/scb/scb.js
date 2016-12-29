@@ -2,9 +2,12 @@
 go_apply = "http://test.zhironghao.com/#/article/apply/";
 var carousel = new Carousel("#carousel");
 carousel.init();
-
-function changePage() {
+console.log(carousel.count2, carousel.count3)
+function nextPage() {
     carousel.next()
+}
+function prevPage() {
+    carousel.prev()
 }
 function goApply(url) {
     window.location.href = go_apply + url
@@ -24,7 +27,9 @@ $.fn.fakeLoader = function(callback) {
 };
 function load()
 {
-    $(".right-img").addClass('scb-title from-right');
-    $(".left-img").addClass('scb-logo-contain from-left');
-    $(".left-img-2").addClass('scb-summary from-left');
+    setTimeout(function(){
+        $(".right-img").addClass('scb-title from-right');
+        $(".left-img").addClass('scb-logo-contain from-left');
+        $(".left-img-2").addClass('scb-summary from-left');
+    }, 500);
 }

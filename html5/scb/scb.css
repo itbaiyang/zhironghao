@@ -14,8 +14,8 @@ html, body{
     position: fixed;
     width: 100%;
     height: 100%;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     background-color: rgb(46, 204, 113);
     z-index: 999;
 }
@@ -158,10 +158,10 @@ html, body{
 }
 
 .from-left {
-    animation: fromLeft 1s;
-    -moz-animation: fromLeft 1s; /* Firefox */
-    -webkit-animation: fromLeft 1s; /* Safari and Chrome */
-    -o-animation: fromLeft 1s; /* Opera */
+    animation: fromLeft .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-animation: fromLeft .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Firefox */
+    -webkit-animation: fromLeft .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Safari and Chrome */
+    -o-animation: fromLeft .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Opera */
 }
 @keyframes fromLeft {
     from {
@@ -203,10 +203,10 @@ html, body{
 }
 
 .from-right {
-    animation: fromRight 1s;
-    -moz-animation: fromRight 1s; /* Firefox */
-    -webkit-animation: fromRight 1s; /* Safari and Chrome */
-    -o-animation: fromRight 1s; /* Opera */
+    animation: fromRight .8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    -moz-animation: fromRight .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Firefox */
+    -webkit-animation: fromRight .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Safari and Chrome */
+    -o-animation: fromRight .8s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Opera */
 }
 
 @keyframes fromRight {
@@ -339,6 +339,7 @@ html, body{
         opacity: 1
     }
 }
+
 .scb-title {
     opacity: 1;
     width: 100%;
@@ -433,6 +434,7 @@ html, body{
     overflow: auto;
 }
 .scb-ul {
+    /*opacity: 0;*/
     box-sizing: border-box;
     padding: 8px 1px 8px 20px;
     height: 100%;
@@ -461,6 +463,7 @@ html, body{
     background-size: 10px;
     text-indent: 20px;
     text-align: left;
+    transform:translate(100%,0);
 }
 
 .scb-footer {
@@ -476,4 +479,156 @@ html, body{
 
 .text-right {
     text-align: right;
+}
+.li-left {
+    /*opacity: 1;*/
+}
+.li-left li:nth-child(2)
+{
+    animation: listLeft .5s linear forwards;
+    -moz-animation: listLeft .5s linear forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+.li-left li:nth-child(3)
+{
+    animation: listLeft .5s linear .2s forwards;
+    -moz-animation: listLeft .5s linear .2s forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear .2s forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear .2s forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+.li-left li:nth-child(4)
+{
+    animation: listLeft .5s linear .4s forwards;
+    -moz-animation: listLeft .5s linear .4s forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear .4s forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear .4s forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+.li-left li:nth-child(5)
+{
+    animation: listLeft .5s linear .6s forwards;
+    -moz-animation: listLeft .5s linear .6s forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear .6s forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear .6s forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+.li-left li:nth-child(6)
+{
+    animation: listLeft .5s linear .8s forwards;
+    -moz-animation: listLeft .5s linear .8s forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear .8s forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear .8s forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+.li-left li:nth-child(7)
+{
+    animation: listLeft .5s linear 1s forwards;
+    -moz-animation: listLeft .5s linear 1s forwards; /* Firefox */
+    -webkit-animation: listLeft .5s linear 1s forwards; /* Safari and Chrome */
+    -o-animation: listLeft .5s linear 1s forwards; /* Opera */
+    /*transform:translate(0,0);*/
+}
+@keyframes listLeft {
+    from {
+        transform:translate(100%,0);
+    }
+    to {
+        transform:translate(0,0);
+    }
+}
+
+@-moz-keyframes listLeft /* Firefox */
+{
+    from {
+        transform:translate(100%,0);
+    }
+    to {
+        transform:translate(0,0);
+    }
+}
+
+@-webkit-keyframes listLeft /* Safari 和 Chrome */
+{
+    from {
+        transform:translate(100%,0);
+    }
+    to {
+        transform:translate(0,0);
+    }
+}
+
+@-o-keyframes listLeft /* Opera */
+{
+    from {
+        transform:translate(100%,0);
+    }
+    to {
+        transform:translate(0,0);
+    }
+}
+
+.scb-arrow-right{
+    position: absolute;
+    z-index: 20;
+    top: calc(53px + 20%);
+    right: 20px;
+    background: url(./img/next.png);
+    border-radius: 22px;
+    width: 45px;
+    height: 45px;
+}
+.scb-arrow-left{
+    position: absolute;
+    z-index: 20;
+    top: calc(53px + 20%);
+    left: 20px;
+    background: url(./img/next.png);
+    transform:rotateY(180deg);
+    -webkit-transform:rotateY(180deg); /* Safari and Chrome */
+    -moz-transform:rotateY(180deg); /* Firefox */
+    border-radius: 22px;
+    width: 45px;
+    height: 45px;
+}
+
+.light-dark {
+    animation: lightDark 7s infinite;
+    -moz-animation: lightDark 7s infinite; /* Firefox */
+    -webkit-animation: lightDark 7s infinite; /* Safari and Chrome */
+    -o-animation: lightDark 7s infinite; /* Opera */
+}
+
+@keyframes lightDark {
+    0%   {opacity: 0.2}
+    25%  {opacity: 0.5}
+    50%  {opacity: 0.2}
+    75%  {opacity: 0.5}
+    100% {opacity: 0.2}
+}
+
+@-moz-keyframes lightDark {
+    0%   {opacity: 0.2}
+    25%  {opacity: 0.5}
+    50%  {opacity: 0.2}
+    75%  {opacity: 0.5}
+    100% {opacity: 0.2}
+}
+
+@-webkit-keyframes lightDark {
+    0%   {opacity: 0.2}
+    25%  {opacity: 0.5}
+    50%  {opacity: 0.2}
+    75%  {opacity: 0.5}
+    100% {opacity: 0.2}
+}
+
+@-o-keyframes lightDark {
+    0%   {opacity: 0.2}
+    25%  {opacity: 0.5}
+    50%  {opacity: 0.2}
+    75%  {opacity: 0.5}
+    100% {opacity: 0.2}
 }

@@ -10,7 +10,7 @@
     <!--<script src="./kj/hammer.js"></script>-->
     <!--<script src="./kj/jquery.hammer.js"></script>-->
     <!--<script src="./kj/carousel.js"></script>-->
-    <script src="./kj/js_h5.min.js"></script>
+    <script src="../../dist/js_h5.min.js"></script>
     <!--<script src="./kj/fakeLoader.js"></script>-->
 
 </head>
@@ -30,7 +30,7 @@
                     <span>放款快</span>
                 </div>
                 <div class="scb-link">
-                    <div class="scb-summary" onclick="changePage()">
+                    <div class="scb-summary" onclick="nextPage()">
                         <span>马上开车</span>
                         <span class="scb-arrow from-light"></span>
                         <span class="scb-arrow"></span>
@@ -42,18 +42,19 @@
         </li>
         <li class="pane2">
             <div class="scb-bg-white">
+                <div class="scb-arrow-right light-dark" onclick="nextPage()"></div>
                 <div class="scb-logo-right">
                     <img src="./img/scb.png">
                 </div>
                 <div class="scb-img-a2 scb-img"></div>
                 <div class="scb-img-footer"></div>
                 <div class="scb-list">
-                    <ul class="scb-ul">
+                    <ul class="scb-ul scb-list-t1">
                         <p class="scb-ul-title">企业流动资金贷</p>
-                        <li>无需财产担保，纯信用；</li>
-                        <li>手续简单，审批速度，放款及时；</li>
-                        <li>1-3年灵活选择贷款期限；</li>
-                        <li>10-150万年灵活选择贷款期限。</li>
+                        <li class="scb-ul-li">无需财产担保，纯信用；</li>
+                        <li class="scb-ul-li">手续简单，审批速度，放款及时；</li>
+                        <li class="scb-ul-li">1-3年灵活选择贷款期限；</li>
+                        <li class="scb-ul-li">10-150万年灵活选择贷款期限。</li>
                     </ul>
                 </div>
                 <div class="scb-footer">
@@ -67,21 +68,22 @@
             </div>
         </li>
         <li class="pane3">
-            <div class="scb-bg-white box">
+            <div class="scb-bg-white">
+                <div class="scb-arrow-left light-dark" onclick="prevPage()"></div>
                 <div class="scb-logo-right">
                     <img src="./img/scb.png">
                 </div>
                 <div class="scb-img scb-img-a3"></div>
                 <div class="scb-img-footer"></div>
                 <div class="scb-list">
-                    <ul class="scb-ul">
+                    <ul class="scb-ul scb-list-t2">
                         <p class="scb-ul-title">个人信用贷</p>
-                        <li>有超过3个月4600以上打卡工资流水即可做；</li>
-                        <li>无需交社保公积金，只需工资交税即可；</li>
-                        <li>户口不收限制，福建人可做；</li>
-                        <li>征信宽松；</li>
-                        <li>私密性强，只打客户本人核实信息；</li>
-                        <li>灵活的贷款期限（1=5年），可提前还款。</li>
+                        <li class="scb-ul-li">有超过3个月4600以上打卡工资流水即可做；</li>
+                        <li class="scb-ul-li">无需交社保公积金，只需工资交税即可；</li>
+                        <li class="scb-ul-li">户口不收限制，福建人可做；</li>
+                        <li class="scb-ul-li">征信宽松；</li>
+                        <li class="scb-ul-li">私密性强，只打客户本人核实信息；</li>
+                        <li class="scb-ul-li">灵活的贷款期限（1=5年），可提前还款。</li>
                     </ul>
                 </div>
                 <div class="scb-footer">
