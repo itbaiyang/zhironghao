@@ -1,7 +1,7 @@
 // go_apply = "http://172.17.3.158:8000/#/article/show/";
 go_apply = "http://test.zhironghao.com/#/article/show/";
 
-// h5_uri = "http://172.17.3.158:8000/html5/scb";
+// h5_uri = "http://172.17.3.158:8000/html5/scb/";
 h5_uri = "http://test.zhironghao.com/html5/scb/";
 var carousel = new Carousel("#carousel");
 carousel.init();
@@ -31,7 +31,7 @@ $(document).ready(function(){
                 var d = eval(data);
                 if (d.returnCode == 0) {
                     wx.config({
-                        debug: true,
+                        debug: false,
                         appId: d.result.appid,
                         timestamp: d.result.timestamp,
                         nonceStr: d.result.noncestr,
@@ -40,16 +40,16 @@ $(document).ready(function(){
                     });
 
                     wx.ready(function(){
-                        wx.onMenuShareAppMessage({
-                            title: 'ssssss',
-                            desc: 'ssb',
-                            // link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                        var shearConfig = {
+                            title: '信用贷款特快列车',
+                            desc: '申请快、审批快、放款快',
                             link: h5_uri,
-                            imgUrl: 'http://app.supeiyunjing.com/img/share.png',
-                            success: function () {
-                                alert("gun");
-                            }
-                        });
+                            imgUrl: './img/wxscb.png'
+                        };
+                        wx.onMenuShareAppMessage(shearConfig);
+                        wx.onMenuShareTimeline(shearConfig);
+                        wx.onMenuShareQQ(shearConfig);
+                        wx.onMenuShareWeibo(shearConfig);
                     });
                     wx.error(function(res){
                         // console.log(res);
