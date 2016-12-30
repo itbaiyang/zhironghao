@@ -94,8 +94,8 @@ function share() {
                 var token = data.result.token;
                 wx.onMenuShareAppMessage({
                     title: "ssssss",
-                    desc: 'ssb',
-                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    desc: "ssb",
+                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
                     imgUrl: "http://app.supeiyunjing.com/img/share.png",
                     success: function () {
                         alert("gun");
@@ -105,21 +105,21 @@ function share() {
                 wx.onMenuShareTimeline({
                     title: 'sb',
                     desc: 'ssb',
-                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
                     imgUrl: ''
                 });
 
                 wx.onMenuShareQQ({
                     title: 'sb',
                     desc: 'ssb',
-                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
                     imgUrl: ""
                 });
 
                 wx.onMenuShareWeibo({
                     title: 'sb',
                     desc: 'ssb',
-                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
                     imgUrl: ""
                 });
             }
