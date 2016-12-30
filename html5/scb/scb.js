@@ -44,7 +44,7 @@ $(document).ready(function(){
                             title: '信用贷款特快列车',
                             desc: '申请快、审批快、放款快',
                             link: h5_uri,
-                            imgUrl: 'zhironghao/html5/scb/img/wxscb.png'
+                            imgUrl: h5_uri + 'img/wxscb.png'
                         };
                         wx.onMenuShareAppMessage(shearConfig);
                         wx.onMenuShareTimeline(shearConfig);
