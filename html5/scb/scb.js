@@ -95,7 +95,8 @@ function share() {
                 wx.onMenuShareAppMessage({
                     title: "ssssss",
                     desc: "ssb",
-                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    // link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    link: h5_uri,
                     imgUrl: "http://app.supeiyunjing.com/img/share.png",
                     success: function () {
                         alert("gun");
