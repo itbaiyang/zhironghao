@@ -27,8 +27,8 @@ $(document).ready(function(){
             data: {
                 "url":h5_uri
             },
-            success: function(d){
-                console.log(d)
+            success: function(d, textStatus, jqXHR){
+                console.log(d);
                 if (d.returnCode == 0) {
                     wx.config({
                         debug: false,
@@ -40,20 +40,27 @@ $(document).ready(function(){
 
                     });
 
-
-
                     wx.ready(function(){
-
+                        wx.onMenuShareAppMessage({
+                            title: 'ssssss',
+                            desc: 'ssb',
+                            // link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                            link: h5_uri,
+                            imgUrl: 'http://app.supeiyunjing.com/img/share.png',
+                            success: function () {
+                                alert("gun");
+                            }
+                        });
                     });
                     wx.error(function(res){
                         // console.log(res);
                     });
                 }
 
-            }
+            },
+            dataType: 'json'
         });
     };
-    share();
 
     $(".fakeloader").fakeLoader(load);
 });
@@ -75,59 +82,3 @@ function load()
         $(".left-img-2").addClass('scb-summary from-left');
     }, 500);
 }
-function share() {
-
-    var m_params = {
-        url: h5_uri,
-        from: 0
-    };
-    $.ajax({
-        type: 'POST',
-        url: "https://ssl.zhironghao.com/api/wxShare/share",
-        data: m_params,
-        traditional: true,
-        success: function (data, textStatus, jqXHR) {
-            console.log(data);
-            if (data.returnCode == 0) {
-                console.log("share config success ");
-                var sn = data.result.sn;
-                var token = data.result.token;
-                wx.onMenuShareAppMessage({
-                    title: "ssssss",
-                    desc: "ssb",
-                    // link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
-                    link: h5_uri,
-                    imgUrl: "http://app.supeiyunjing.com/img/share.png",
-                    success: function () {
-                        alert("gun");
-                    }
-                });
-
-                wx.onMenuShareTimeline({
-                    title: 'sb',
-                    desc: 'ssb',
-                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
-                    imgUrl: ''
-                });
-
-                wx.onMenuShareQQ({
-                    title: 'sb',
-                    desc: 'ssb',
-                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
-                    imgUrl: ""
-                });
-
-                wx.onMenuShareWeibo({
-                    title: 'sb',
-                    desc: 'ssb',
-                    link: "http://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
-                    imgUrl: ""
-                });
-            }
-            else {
-                // console.log("分享失败");
-            }
-        },
-        dataType: 'json'
-    });
-};
