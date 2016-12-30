@@ -85,7 +85,7 @@ var share = function () {
         data: m_params,
         traditional: true,
         success: function (data, textStatus, jqXHR) {
-            // console.log(data);
+            console.log(data);
             if (data.returnCode == 0) {
                 console.log("share config success ");
                 var sn = data.result.sn;
