@@ -1,5 +1,5 @@
-// go_apply = "http://172.17.3.158:8000/#/article/apply/";
-go_apply = "http://test.zhironghao.com/#/article/apply/";
+// go_apply = "http://172.17.3.158:8000/#/article/show/";
+go_apply = "http://test.zhironghao.com/#/article/show/";
 var carousel = new Carousel("#carousel");
 carousel.init();
 console.log(carousel.count2, carousel.count3)
