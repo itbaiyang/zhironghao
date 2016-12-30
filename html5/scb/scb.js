@@ -1,5 +1,8 @@
 // go_apply = "http://172.17.3.158:8000/#/article/show/";
 go_apply = "http://test.zhironghao.com/#/article/show/";
+
+// h5_uri = "http://172.17.3.158:8000/html5/scb";
+h5_uri = "http://test.zhironghao.com/html5/scb";
 var carousel = new Carousel("#carousel");
 carousel.init();
 console.log(carousel.count2, carousel.count3)
@@ -13,6 +16,43 @@ function goApply(url) {
     window.location.href = go_apply + url
 }
 $(document).ready(function(){
+    var ua = navigator.userAgent.toLowerCase();
+    var wx_client = ua.indexOf('micromessenger') != -1;
+    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+    // 微信初始化
+    if(wx_client){
+        $.ajax({
+            url: "https://ssl.zhironghao.com/api/wx/share",
+            type: "GET",
+            data: {
+                "url":h5_uri
+            },
+            success: function(d){
+                console.log(d)
+                if (d.returnCode == 0) {
+                    wx.config({
+                        debug: false,
+                        appId: d.result.appid,
+                        timestamp: d.result.timestamp,
+                        nonceStr: d.result.noncestr,
+                        signature: d.result.signature,
+                        jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
+
+                    });
+
+                    wx.ready(function(){
+                        share();
+                    });
+                    wx.error(function(res){
+                        // console.log(res);
+                    });
+                }
+
+            }
+        });
+    }
+
+
     $(".fakeloader").fakeLoader(load);
 });
 $.fn.fakeLoader = function(callback) {
@@ -33,3 +73,58 @@ function load()
         $(".left-img-2").addClass('scb-summary from-left');
     }, 500);
 }
+var share = function () {
+
+    var m_params = {
+        url: h5_uri,
+        from: 0
+    };
+    $.ajax({
+        type: 'POST',
+        url: "https://ssl.zhironghao.com/api/wxShare/share",
+        data: m_params,
+        traditional: true,
+        success: function (data, textStatus, jqXHR) {
+            // console.log(data);
+            if (data.returnCode == 0) {
+                console.log("share config success ");
+                var sn = data.result.sn;
+                var token = data.result.token;
+                wx.onMenuShareAppMessage({
+                    title: "ssssss",
+                    desc: 'ssb',
+                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    imgUrl: "http://app.supeiyunjing.com/img/share.png",
+                    success: function () {
+                        alert("gun");
+                    }
+                });
+
+                wx.onMenuShareTimeline({
+                    title: 'sb',
+                    desc: 'ssb',
+                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    imgUrl: ''
+                });
+
+                wx.onMenuShareQQ({
+                    title: 'sb',
+                    desc: 'ssb',
+                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    imgUrl: ""
+                });
+
+                wx.onMenuShareWeibo({
+                    title: 'sb',
+                    desc: 'ssb',
+                    link: "https://ssl.zhironghao.com/api/wxShare/show?sn=" + sn + "&token=" + token,
+                    imgUrl: ""
+                });
+            }
+            else {
+                // console.log("分享失败");
+            }
+        },
+        dataType: 'json'
+    });
+};
