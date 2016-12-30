@@ -20,7 +20,7 @@ $(document).ready(function(){
     var wx_client = ua.indexOf('micromessenger') != -1;
 
     // 微信初始化
-    // if(wx_client){
+    if(wx_client){
         $.ajax({
             url: "https://ssl.zhironghao.com/api/wx/share",
             type: "GET",
@@ -40,8 +40,10 @@ $(document).ready(function(){
 
                     });
 
+
+
                     wx.ready(function(){
-                        share();
+
                     });
                     wx.error(function(res){
                         // console.log(res);
@@ -50,8 +52,8 @@ $(document).ready(function(){
 
             }
         });
-    // }
-
+    };
+    share();
 
     $(".fakeloader").fakeLoader(load);
 });
@@ -73,7 +75,7 @@ function load()
         $(".left-img-2").addClass('scb-summary from-left');
     }, 500);
 }
-var share = function () {
+function share() {
 
     var m_params = {
         url: h5_uri,
