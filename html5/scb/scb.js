@@ -27,8 +27,8 @@ $(document).ready(function(){
             data: {
                 "url":h5_uri
             },
-            success: function(d, textStatus, jqXHR){
-                console.log(d);
+            success: function(data, textStatus, jqXHR){
+                var d = eval(data);
                 if (d.returnCode == 0) {
                     wx.config({
                         debug: false,
