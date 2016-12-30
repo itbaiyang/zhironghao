@@ -533,4 +533,5 @@ hr {
 .showArticle{
     height: 100%;
     background: #ffffff;
+    overflow: auto;
 }
