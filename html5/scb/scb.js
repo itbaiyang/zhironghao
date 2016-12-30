@@ -32,10 +32,10 @@ $(document).ready(function(){
                 if (d.returnCode == 0) {
                     wx.config({
                         debug: false,
-                        appId: d.result.appid,
-                        timestamp: d.result.timestamp,
-                        nonceStr: d.result.noncestr,
-                        signature: d.result.signature,
+                        appId: "wx605507267852f897",
+                        timestamp: "1483090709",
+                        nonceStr: "da991b262e5440c68fe14109cb97358b",
+                        signature: "40c2a411e5e161277e19fd947ff8964d5c0c0229",
                         jsApiList: ["checkJsApi","onMenuShareTimeline","onMenuShareAppMessage","onMenuShareQQ","onMenuShareWeibo","hideMenuItems","showMenuItems","hideAllNonBaseMenuItem","showAllNonBaseMenuItem","translateVoice"],
 
                     });
