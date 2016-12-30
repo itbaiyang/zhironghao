@@ -18,9 +18,9 @@ function goApply(url) {
 $(document).ready(function(){
     var ua = navigator.userAgent.toLowerCase();
     var wx_client = ua.indexOf('micromessenger') != -1;
-    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+
     // 微信初始化
-    if(wx_client){
+    // if(wx_client){
         $.ajax({
             url: "https://ssl.zhironghao.com/api/wx/share",
             type: "GET",
@@ -50,7 +50,7 @@ $(document).ready(function(){
 
             }
         });
-    }
+    // }
 
 
     $(".fakeloader").fakeLoader(load);
