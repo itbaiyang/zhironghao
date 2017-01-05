@@ -53,7 +53,6 @@ module.exports = function(grunt) {
                 src: [
                     [
                         'css/scroll/mobiscroll.custom-2.16.1.min.css',
-                        'css/scroll/ionic.css',
                         'css/*.css'
                     ]
                 ],
