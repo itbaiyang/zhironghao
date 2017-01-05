@@ -6,7 +6,7 @@ go_apply = "http://app.supeiyunjing.com/#/article/show/";
 // h5_uri = "http://test.zhironghao.com/html5/scb/";
 h5_uri = "http://app.supeiyunjing.com/html5/scb/";
 
-// api_url = "https://ssl.zhironghao.com/";
+// api_url = "https://ssl.zhironghao.com/api/";
 api_url = "http://api.supeiyunjing.com/";
 var carousel = new Carousel("#carousel");
 carousel.init();
@@ -27,7 +27,7 @@ $(document).ready(function(){
     // 微信初始化
     if(wx_client){
         $.ajax({
-            url: api_url + "api/wx/share",
+            url: api_url + "wx/share",
             type: "GET",
             data: {
                 "url":h5_uri
