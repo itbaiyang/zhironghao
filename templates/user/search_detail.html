@@ -1,224 +1,225 @@
-<div class="applyDetail">
-    <p class="detailTitle">企业名称</p>
-    <p class="detailContent">{{ companyName }}</p>
-</div>
+<div style="height:100%; overflow: auto">
+    <div class="applyDetail">
+        <p class="detailTitle">企业名称</p>
+        <p class="detailContent">{{ companyName }}</p>
+    </div>
 
-<!--工商信息-->
-<div class="applyDetail" ng-show="gongshangInfo.registerNum">
-    <p class="detailTitle">注册号/统一社会信用代码</p>
-    <p class="detailContent">{{ gongshangInfo.registerNum }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.type">
-    <p class="detailTitle">公司类型</p>
-    <p class="detailContent">{{ gongshangInfo.type }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.address">
-    <p class="detailTitle">地址</p>
-    <p class="detailContent">{{ gongshangInfo.address }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.faren">
-    <p class="detailTitle">法人</p>
-    <p class="detailContent">{{ gongshangInfo.faren }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.createTime">
-    <p class="detailTitle">成立日期</p>
-    <p class="detailContent">{{ gongshangInfo.createTime }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.yyqxZi">
-    <p class="detailTitle">营业期限自</p>
-    <p class="detailContent">{{ gongshangInfo.yyqxZi }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.yyqxZhi">
-    <p class="detailTitle">营业期限至</p>
-    <p class="detailContent">{{ gongshangInfo.yyqxZhi }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.jyfw">
-    <p class="detailTitle">经营范围</p>
-    <p class="detailContent">{{ gongshangInfo.jyfw }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.djjg">
-    <p class="detailTitle">登记机关</p>
-    <p class="detailContent">{{ gongshangInfo.djjg }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.hzrq">
-    <p class="detailTitle">核准日期</p>
-    <p class="detailContent">{{ gongshangInfo.hzrq }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.status">
-    <p class="detailTitle">登记状态</p>
-    <p class="detailContent">{{ gongshangInfo.status }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.zczj">
-    <p class="detailTitle">注册资金</p>
-    <p class="detailContent">{{ gongshangInfo.zczj }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.tzrName">
-    <p class="detailTitle">投资人姓名</p>
-    <p class="detailContent">{{ gongshangInfo.tzrName }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.dxTime">
-    <p class="detailTitle">吊销日期</p>
-    <p class="detailContent">{{ gongshangInfo.dxTime }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.fzr">
-    <p class="detailTitle">负责人</p>
-    <p class="detailContent">{{ gongshangInfo.fzr }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.fzTime">
-    <p class="detailTitle">发照日期</p>
-    <p class="detailContent">{{ gongshangInfo.fzTime }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.bjgslrq">
-    <p class="detailTitle">本机构设立日期</p>
-    <p class="detailContent">{{ gongshangInfo.bjgslrq }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.zxswhhr">
-    <p class="detailTitle">执行事务合伙人</p>
-    <p class="detailContent">{{ gongshangInfo.zxswhhr }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.zxswhhrWpdb">
-    <p class="detailTitle">执行事务合伙人(委派代表)</p>
-    <p class="detailContent">{{ gongshangInfo.zxswhhrWpdb }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.sxdbrxx">
-    <p class="detailTitle">首席代表人姓名</p>
-    <p class="detailContent">{{ gongshangInfo.sxdbrxx }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.gd">
-    <p class="detailTitle">股东</p>
-    <p class="detailContent">{{ gongshangInfo.gd }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.zcxs">
-    <p class="detailTitle">组成形式</p>
-    <p class="detailContent">{{ gongshangInfo.zcxs }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.jjxz">
-    <p class="detailTitle">经济性质</p>
-    <p class="detailContent">{{ gongshangInfo.jjxz }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.zzqxz">
-    <p class="detailTitle">驻在期限自</p>
-    <p class="detailContent">{{ gongshangInfo.zzqxz }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.pcqyMc">
-    <p class="detailTitle">派出企业名称</p>
-    <p class="detailContent">{{ gongshangInfo.pcqyMc }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.pcqyZcd">
-    <p class="detailTitle">派出企业注册地</p>
-    <p class="detailContent">{{ gongshangInfo.pcqyZcd }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.gj">
-    <p class="detailTitle">国籍</p>
-    <p class="detailContent">{{ gongshangInfo.gj }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.lsqy">
-    <p class="detailTitle">隶属企业</p>
-    <p class="detailContent">{{ gongshangInfo.lsqy }}</p>
-</div>
-<div class="applyDetail" ng-show="gongshangInfo.jyfwxxbz">
-    <p class="detailTitle">经营范围项下标注</p>
-    <p class="detailContent">{{ gongshangInfo.jyfwxxbz }}</p>
-</div>
+    <!--工商信息-->
+    <div class="applyDetail" ng-show="gongshangInfo.registerNum">
+        <p class="detailTitle">注册号/统一社会信用代码</p>
+        <p class="detailContent">{{ gongshangInfo.registerNum }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.type">
+        <p class="detailTitle">公司类型</p>
+        <p class="detailContent">{{ gongshangInfo.type }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.address">
+        <p class="detailTitle">地址</p>
+        <p class="detailContent">{{ gongshangInfo.address }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.faren">
+        <p class="detailTitle">法人</p>
+        <p class="detailContent">{{ gongshangInfo.faren }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.createTime">
+        <p class="detailTitle">成立日期</p>
+        <p class="detailContent">{{ gongshangInfo.createTime }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.yyqxZi">
+        <p class="detailTitle">营业期限自</p>
+        <p class="detailContent">{{ gongshangInfo.yyqxZi }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.yyqxZhi">
+        <p class="detailTitle">营业期限至</p>
+        <p class="detailContent">{{ gongshangInfo.yyqxZhi }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.jyfw">
+        <p class="detailTitle">经营范围</p>
+        <p class="detailContent">{{ gongshangInfo.jyfw }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.djjg">
+        <p class="detailTitle">登记机关</p>
+        <p class="detailContent">{{ gongshangInfo.djjg }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.hzrq">
+        <p class="detailTitle">核准日期</p>
+        <p class="detailContent">{{ gongshangInfo.hzrq }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.status">
+        <p class="detailTitle">登记状态</p>
+        <p class="detailContent">{{ gongshangInfo.status }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.zczj">
+        <p class="detailTitle">注册资金</p>
+        <p class="detailContent">{{ gongshangInfo.zczj }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.tzrName">
+        <p class="detailTitle">投资人姓名</p>
+        <p class="detailContent">{{ gongshangInfo.tzrName }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.dxTime">
+        <p class="detailTitle">吊销日期</p>
+        <p class="detailContent">{{ gongshangInfo.dxTime }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.fzr">
+        <p class="detailTitle">负责人</p>
+        <p class="detailContent">{{ gongshangInfo.fzr }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.fzTime">
+        <p class="detailTitle">发照日期</p>
+        <p class="detailContent">{{ gongshangInfo.fzTime }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.bjgslrq">
+        <p class="detailTitle">本机构设立日期</p>
+        <p class="detailContent">{{ gongshangInfo.bjgslrq }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.zxswhhr">
+        <p class="detailTitle">执行事务合伙人</p>
+        <p class="detailContent">{{ gongshangInfo.zxswhhr }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.zxswhhrWpdb">
+        <p class="detailTitle">执行事务合伙人(委派代表)</p>
+        <p class="detailContent">{{ gongshangInfo.zxswhhrWpdb }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.sxdbrxx">
+        <p class="detailTitle">首席代表人姓名</p>
+        <p class="detailContent">{{ gongshangInfo.sxdbrxx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.gd">
+        <p class="detailTitle">股东</p>
+        <p class="detailContent">{{ gongshangInfo.gd }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.zcxs">
+        <p class="detailTitle">组成形式</p>
+        <p class="detailContent">{{ gongshangInfo.zcxs }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.jjxz">
+        <p class="detailTitle">经济性质</p>
+        <p class="detailContent">{{ gongshangInfo.jjxz }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.zzqxz">
+        <p class="detailTitle">驻在期限自</p>
+        <p class="detailContent">{{ gongshangInfo.zzqxz }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.pcqyMc">
+        <p class="detailTitle">派出企业名称</p>
+        <p class="detailContent">{{ gongshangInfo.pcqyMc }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.pcqyZcd">
+        <p class="detailTitle">派出企业注册地</p>
+        <p class="detailContent">{{ gongshangInfo.pcqyZcd }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.gj">
+        <p class="detailTitle">国籍</p>
+        <p class="detailContent">{{ gongshangInfo.gj }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.lsqy">
+        <p class="detailTitle">隶属企业</p>
+        <p class="detailContent">{{ gongshangInfo.lsqy }}</p>
+    </div>
+    <div class="applyDetail" ng-show="gongshangInfo.jyfwxxbz">
+        <p class="detailTitle">经营范围项下标注</p>
+        <p class="detailContent">{{ gongshangInfo.jyfwxxbz }}</p>
+    </div>
 
-<!--税务信息-->
-<div class="applyDetail" ng-show="shuiwuInfo.swdjzh">
-    <p class="detailTitle">税务登记证号</p>
-    <p class="detailContent">{{ shuiwuInfo.swdjzh }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.swdjlx">
-    <p class="detailTitle">税务登记类型</p>
-    <p class="detailContent">{{ shuiwuInfo.swdjlx }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.djsllx">
-    <p class="detailTitle">登记受理类型</p>
-    <p class="detailContent">{{ shuiwuInfo.djsllx }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.jydz">
-    <p class="detailTitle">经营地址</p>
-    <p class="detailContent">{{ shuiwuInfo.jydz }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.scjx">
-    <p class="detailTitle">所处街乡</p>
-    <p class="detailContent">{{ shuiwuInfo.scjx }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.gdsgghbs">
-    <p class="detailTitle">国地税共管户标识</p>
-    <p class="detailContent">{{ shuiwuInfo.gdsgghbs }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.lsgx">
-    <p class="detailTitle">隶属关系</p>
-    <p class="detailContent">{{ shuiwuInfo.lsgx }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.gjbzhy">
-    <p class="detailTitle">国家标准行业</p>
-    <p class="detailContent">{{ shuiwuInfo.gjbzhy }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.swdjrq">
-    <p class="detailTitle">税务登记日期</p>
-    <p class="detailContent">{{ shuiwuInfo.swdjrq }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.zgswjg">
-    <p class="detailTitle">主管税务机关</p>
-    <p class="detailContent">{{ shuiwuInfo.zgswjg }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.nsrStatus">
-    <p class="detailTitle">纳税人状态</p>
-    <p class="detailContent">{{ shuiwuInfo.nsrStatus }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.nsrName">
-    <p class="detailTitle">纳税人名称</p>
-    <p class="detailContent">{{ shuiwuInfo.nsrName }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.yb">
-    <p class="detailTitle">经营地址邮编</p>
-    <p class="detailContent">{{ shuiwuInfo.yb }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.jydzPhone">
-    <p class="detailTitle">经营地址联系电话</p>
-    <p class="detailContent">{{ shuiwuInfo.jydzPhone }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.zch">
-    <p class="detailTitle">注册号</p>
-    <p class="detailContent">{{ shuiwuInfo.zch }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.zzjgdm">
-    <p class="detailTitle">住址机构代码</p>
-    <p class="detailContent">{{ shuiwuInfo.zzjgdm }}</p>
-</div>
+    <!--税务信息-->
+    <div class="applyDetail" ng-show="shuiwuInfo.swdjzh">
+        <p class="detailTitle">税务登记证号</p>
+        <p class="detailContent">{{ shuiwuInfo.swdjzh }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.swdjlx">
+        <p class="detailTitle">税务登记类型</p>
+        <p class="detailContent">{{ shuiwuInfo.swdjlx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.djsllx">
+        <p class="detailTitle">登记受理类型</p>
+        <p class="detailContent">{{ shuiwuInfo.djsllx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.jydz">
+        <p class="detailTitle">经营地址</p>
+        <p class="detailContent">{{ shuiwuInfo.jydz }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.scjx">
+        <p class="detailTitle">所处街乡</p>
+        <p class="detailContent">{{ shuiwuInfo.scjx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.gdsgghbs">
+        <p class="detailTitle">国地税共管户标识</p>
+        <p class="detailContent">{{ shuiwuInfo.gdsgghbs }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.lsgx">
+        <p class="detailTitle">隶属关系</p>
+        <p class="detailContent">{{ shuiwuInfo.lsgx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.gjbzhy">
+        <p class="detailTitle">国家标准行业</p>
+        <p class="detailContent">{{ shuiwuInfo.gjbzhy }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.swdjrq">
+        <p class="detailTitle">税务登记日期</p>
+        <p class="detailContent">{{ shuiwuInfo.swdjrq }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.zgswjg">
+        <p class="detailTitle">主管税务机关</p>
+        <p class="detailContent">{{ shuiwuInfo.zgswjg }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.nsrStatus">
+        <p class="detailTitle">纳税人状态</p>
+        <p class="detailContent">{{ shuiwuInfo.nsrStatus }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.nsrName">
+        <p class="detailTitle">纳税人名称</p>
+        <p class="detailContent">{{ shuiwuInfo.nsrName }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.yb">
+        <p class="detailTitle">经营地址邮编</p>
+        <p class="detailContent">{{ shuiwuInfo.yb }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.jydzPhone">
+        <p class="detailTitle">经营地址联系电话</p>
+        <p class="detailContent">{{ shuiwuInfo.jydzPhone }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.zch">
+        <p class="detailTitle">注册号</p>
+        <p class="detailContent">{{ shuiwuInfo.zch }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.zzjgdm">
+        <p class="detailTitle">住址机构代码</p>
+        <p class="detailContent">{{ shuiwuInfo.zzjgdm }}</p>
+    </div>
 
-<div class="applyDetail" ng-show="shuiwuInfo.djzclx">
-    <p class="detailTitle">登记注册类型</p>
-    <p class="detailContent">{{ shuiwuInfo.djzclx }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.qyzywz">
-    <p class="detailTitle">企业主页网址</p>
-    <p class="detailContent">{{ shuiwuInfo.qyzywz }}</p>
-</div>
-<div class="applyDetail" ng-show="shuiwuInfo.faren">
-    <p class="detailTitle">法人名称</p>
-    <p class="detailContent">{{ shuiwuInfo.faren }}</p>
-</div>
+    <div class="applyDetail" ng-show="shuiwuInfo.djzclx">
+        <p class="detailTitle">登记注册类型</p>
+        <p class="detailContent">{{ shuiwuInfo.djzclx }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.qyzywz">
+        <p class="detailTitle">企业主页网址</p>
+        <p class="detailContent">{{ shuiwuInfo.qyzywz }}</p>
+    </div>
+    <div class="applyDetail" ng-show="shuiwuInfo.faren">
+        <p class="detailTitle">法人名称</p>
+        <p class="detailContent">{{ shuiwuInfo.faren }}</p>
+    </div>
 
-<!--资本信息-->
-<div class="applyDetail" ng-show="zibenInfo.zczb">
-    <p class="detailTitle">注册资本</p>
-    <p class="detailContent">{{ zibenInfo.zczb }}</p>
+    <!--资本信息-->
+    <div class="applyDetail" ng-show="zibenInfo.zczb">
+        <p class="detailTitle">注册资本</p>
+        <p class="detailContent">{{ zibenInfo.zczb }}</p>
+    </div>
+    <div class="applyDetail" ng-show="zibenInfo.sszb">
+        <p class="detailTitle">实收资本</p>
+        <p class="detailContent">{{ zibenInfo.sszb }}</p>
+    </div>
+    <div class="applyDetail" ng-show="zibenInfo.zjczje">
+        <p class="detailTitle">实缴出资金额</p>
+        <p class="detailContent">{{ zibenInfo.zjczje }}</p>
+    </div>
+    <div class="applyDetail" ng-show="zibenInfo.zzsjczsj">
+        <p class="detailTitle">最终实缴出资时间</p>
+        <p class="detailContent">{{ zibenInfo.zzsjczsj }}</p>
+    </div>
+    <div class="applyDetail" ng-show="zibenInfo.zczb">
+        <p class="detailTitle">最终认缴出资时间</p>
+        <p class="detailContent">{{ zibenInfo.zczb }}</p>
+    </div>
 </div>
-<div class="applyDetail" ng-show="zibenInfo.sszb">
-    <p class="detailTitle">实收资本</p>
-    <p class="detailContent">{{ zibenInfo.sszb }}</p>
-</div>
-<div class="applyDetail" ng-show="zibenInfo.zjczje">
-    <p class="detailTitle">实缴出资金额</p>
-    <p class="detailContent">{{ zibenInfo.zjczje }}</p>
-</div>
-<div class="applyDetail" ng-show="zibenInfo.zzsjczsj">
-    <p class="detailTitle">最终实缴出资时间</p>
-    <p class="detailContent">{{ zibenInfo.zzsjczsj }}</p>
-</div>
-<div class="applyDetail" ng-show="zibenInfo.zczb">
-    <p class="detailTitle">最终认缴出资时间</p>
-    <p class="detailContent">{{ zibenInfo.zczb }}</p>
-</div>
-
