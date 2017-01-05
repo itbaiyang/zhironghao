@@ -21,7 +21,6 @@ userCtrl.controller('UserCenterCtrl',
                 method: "GET",
                 params: $rootScope.login_user
             }).success(function (d) {
-                console.log(d);
                 if (d.returnCode == 0) {
                     $scope.nickname = d.result.nickname;
                     $scope.batting = d.result.batting;
@@ -59,6 +58,7 @@ userCtrl.controller('UserCenterCtrl',
                 params: $rootScope.login_user
             }).success(function (d) {
                 if (d.returnCode == 0) {
+                    console.log(d)
                     $scope.role = d.result;
                 } else {
 
@@ -83,13 +83,11 @@ userCtrl.controller('UserCenterCtrl',
                 method: "GET",
                 params: m_params
             }).success(function (d) {
-                console.log(d);
                 if (d.returnCode == 0) {
                     if (d.result.totalCount == 0) {
                         $scope.message_list = false;
                     } else {
                         $scope.message_list = true;
-                        console.log($scope.message_list);
                         $scope.result_list = d.result.datas;
                         $scope.totalCount = d.result.totalCount;
                         angular.forEach($scope.result_list, function (data) {
@@ -158,7 +156,6 @@ userCtrl.controller('UserCenterCtrl',
                 method: "GET",
                 params: m_params
             }).success(function (d) {
-                console.log(d);
                 if (d.returnCode == 0) {
                     if (d.result.totalCount == 0) {
                         $scope.message_myList = false;
@@ -169,7 +166,6 @@ userCtrl.controller('UserCenterCtrl',
                         }
                     } else {
                         $scope.message_myList = true;
-                        console.log($scope.message_myList);
                         $scope.my_list = d.result.datas;
                         $scope.myTotalCount = d.result.totalCount;
                         angular.forEach($scope.my_list, function (data) {
@@ -434,6 +430,75 @@ userCtrl.controller('UserCenterCtrl',
             }
         };
 
+        $scope.searchCompany = function () {
+            $location.path("/user/search");
+        }
+
+    }]);
+userCtrl.controller('SearchCtrl',
+    ['$scope', '$http', '$rootScope', '$location', function ($scope, $http, $rootScope, $location) {
+        $scope.search_text = '';
+        $scope.search = function () {
+            var m_params = {
+                "userId": $rootScope.login_user.userId,
+                "token": $rootScope.login_user.token,
+                "pageNo": 1,
+                "pageSize": 20,
+                "wd": $scope.search_text
+            }
+            console.log(m_params)
+            $http({
+                url: api_uri + "company/query/pageCompanyName2",
+                method: "GET",
+                params: m_params
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+                    $scope.result_list = d.result.datas;
+                }
+                else {
+
+                }
+            }).error(function (d) {
+            })
+        }
+
+        $scope.searchDetail = function (id) {
+            console.log(id)
+            $location.path("/user/search/detail/" + id);
+        }
+    }]);
+userCtrl.controller('SearchDetailCtrl',
+    ['$scope', '$http', '$rootScope', '$routeParams', '$location', function ($scope, $http, $rootScope, $routeParams, $location) {
+        $scope.detail = function () {
+            var m_params = {
+                "userId": $rootScope.login_user.userId,
+                "token": $rootScope.login_user.token,
+                "companyId": $routeParams.id
+            };
+            $http({
+                url: api_uri + "company/query/byCompanyId2",
+                method: "GET",
+                params: m_params
+            }).success(function (d) {
+                console.log(d);
+                if (d.returnCode == 0) {
+                    $scope.companyName = d.result.companyName;
+                    $scope.gongshangInfo = d.result.gongshangInfo; //工商信息
+                    $scope.shuiwuInfo = d.result.shuiwuInfo; //税务信息
+                    $scope.zibenInfo = d.result.zibenInfo; //资本信息
+                    $scope.zhuyaorenyuanInfo = d.result.zhuyaorenyuanInfo; //主要人员
+                    $scope.touzirenInfo = d.result.touzirenInfo; //投资人
+                    $scope.zaitouziInfo = d.result.zaitouziInfo; //再投资
+                }
+                else {
+
+                }
+            }).error(function (d) {
+                console.log(d);
+            })
+        };
+        $scope.detail();
     }]);
 userCtrl.controller('MessageCtrl',
     ['$http', '$scope', '$rootScope', '$timeout', '$location', function ($http, $scope, $rootScope, $timeout, $location) {

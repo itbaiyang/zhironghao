@@ -8,9 +8,11 @@
         </div>
         <div class="personMessage fr" ng-click="userSetting()">编辑个人信息</div>
         <div class="centerMessage fr" ng-show="role.indexOf('clerk')>-1&&msgCount" ng-click="userMessage()"><img
-                src="img/icon/BELL.png">{{msgCount}}
+                src="img/icon/bell_fff.png">{{msgCount}}
         </div>
         <div class="centerMessageNo fr" ng-show="role.indexOf('clerk')>-1&&msgCount ==0" ng-click="userMessage()"></div>
+        <div class="center-search fr" ng-click="searchCompany()">
+        </div>
     </div>
     <div class="financing" ng-hide="message">
         <div class="financingTitle">融资情况</div>

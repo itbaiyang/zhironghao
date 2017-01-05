@@ -5,7 +5,8 @@
     box-sizing: border-box;
     border: none;
     list-style: none;
-    font-family: OneNikeCurrency, 'TradeGothicW01-BoldCn20 675334', Helvetica, Arial, 'Heiti SC', 'ST Heiti', 华文黑体, 'Microsoft YaHei', 雅黑体, SimHei, 黑体, sans-serif;
+    font-family: OneNikeCurrency, 'TradeGothicW01-BoldCn20 675334', Helvetica, Arial, 'Heiti SC', 'ST Heiti', 华文黑体,
+    'Microsoft YaHei', 雅黑体, SimHei, 黑体, sans-serif;
 }
 
 html, body {

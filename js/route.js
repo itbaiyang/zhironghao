@@ -50,6 +50,14 @@ app.config(
             templateUrl: templates_root + 'user/center.html',
             controller: 'UserCenterCtrl'
         })
+        .when('/user/search', {//设置
+            templateUrl: templates_root + 'user/search.html',
+            controller: 'SearchCtrl'
+        })
+        .when('/user/search/detail/:id', {//设置
+            templateUrl: templates_root + 'user/search_detail.html',
+            controller: 'SearchDetailCtrl'
+        })
         .when('/user/message', {//消息
             templateUrl: templates_root + 'user/message.html',
             controller: 'MessageCtrl'

@@ -4,7 +4,7 @@ go_apply = "http://app.supeiyunjing.com/#/article/show/";
 
 // h5_uri = "http://172.17.3.158:8000/html5/scb/";
 // h5_uri = "http://test.zhironghao.com/html5/scb/";
-h5_uri = "http://app.supeiyunjing.com/html5/scb";
+h5_uri = "http://app.supeiyunjing.com/html5/scb/";
 
 // api_url = "https://ssl.zhironghao.com/";
 api_url = "http://api.supeiyunjing.com/";

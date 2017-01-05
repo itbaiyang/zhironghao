@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="search-box">
+    <div class="search-inner clear">
+        <div class="search-head fl">
+            <img src="img/icon/bell.png">
+            <input type="text" ng-model="search_text" placeholder="请输入公司名称">
+        </div>
+        <div class="search-btn fr" ng-hide="search_text">取消</div>
+        <div class="search-btn fr" ng-show="search_text" ng-click="search(search_text)">确定</div>
+    </div>
+    <ul class="search-list">
+        <li ng-repeat="item in result_list" ng-click="searchDetail(item.companyId)">{{item.companyName}}</li>
+    </ul>
+</div>

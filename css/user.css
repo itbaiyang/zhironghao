@@ -44,7 +44,6 @@
 .userPost{
     width:100%;
     font-size: 14px;
-    /*line-height: 32px;*/
     color:#acacb8;
     padding-left: 20px;
 }
@@ -83,10 +82,20 @@
     background: #f97383;
 }
 
+.center-search {
+    width: 28px;
+    height: 28px;
+    margin-top: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    background: url("../img/icon/search.png") no-repeat 6px;
+    background-size: 16px;
+}
+
 .centerMessage img{
     vertical-align: middle;
     margin-right: 5px;
-    width: 15px;
+    width: 16px;
     height: 16px;
 }
 
@@ -97,8 +106,8 @@
     margin: 10px;
     border: 1px solid #e2e2e2;
     border-radius: 15px;
-    background: url("../img/icon/BELLnone.png") no-repeat 6px 6px;
-    background-size: 15px 16px;
+    background: url("../img/icon/bell.png") no-repeat 6px;
+    background-size: 16px;
 }
 .financing{
     width: 100%;
@@ -700,4 +709,61 @@
 
 .dwc {
     width: calc(100% - 30px);
+}
+
+/*search*/
+.search-box {
+    background: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0;
+}
+
+.search-inner {
+    width: 100%;
+    padding: 0 15px;
+}
+
+.search-head {
+    width: calc(100% - 45px);
+    height: 30px;
+    border-radius: 15px;
+    background: #eaeff3;
+}
+
+.search-head img {
+    width: 14px;
+    height: 14px;
+    margin: 8px 0 8px 8px;
+}
+
+.search-head input {
+    vertical-align: top;
+    width: 200px;
+    height: 30px;
+    line-height: 28px;
+    background: none;
+    color: #4c4c4c;
+}
+
+.search-btn {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #9293a7;
+}
+
+.search-list {
+    margin-top: 12px;
+    height: calc(100% - 32px);
+    overflow: auto;
+}
+
+.search-list li {
+    width: 100%;
+    padding: 0 15px;
+    line-height: 44px;
+    height: 45px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #4c4c4c;
 }
