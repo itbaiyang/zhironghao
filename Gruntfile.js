@@ -9,9 +9,8 @@ module.exports = function(grunt) {
                 },
                 src: [
                     'js/vendor/jquery.min.js',
-                    'js/vendor/ionic.bundle.min.js',
-                    // 'js/vendor/angular.min.js',
-                    // 'js/vendor/angular-animate.min.js',
+                    'js/vendor/angular.min.js',
+                    'js/vendor/angular-animate.min.js',
                     'js/vendor/angular-route.min.js',
                     'js/vendor/mobiscroll.custom-2.16.1.min.js',
                     'js/qiniu/ajaxfileupload.js',
