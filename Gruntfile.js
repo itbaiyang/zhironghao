@@ -23,18 +23,18 @@ module.exports = function(grunt) {
                 ],
                 dest: 'dist/base_<%= pkg.name %>.js'
             },
-            js_h5: {
-                options: {
-                    separator: ';'
-                },
-                src: [
-                    'html5/scb/kj/jquery.min.js',
-                    'html5/scb/kj/hammer.js',
-                    'html5/scb/kj/jquery.hammer.js',
-                    'html5/scb/kj/carousel.js'
-                ],
-                dest: 'dist/js_h5.js'
-            },
+            // js_h5: {
+            //     options: {
+            //         separator: ';'
+            //     },
+            //     src: [
+            //         'html5/scb/kj/jquery.min.js',
+            //         'html5/scb/kj/hammer.js',
+            //         'html5/scb/kj/jquery.hammer.js',
+            //         'html5/scb/kj/carousel.js'
+            //     ],
+            //     dest: 'dist/js_h5.js'
+            // },
             js: {
                 options: {
                     separator: ';'
