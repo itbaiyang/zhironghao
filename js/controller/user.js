@@ -438,7 +438,9 @@ userCtrl.controller('UserCenterCtrl',
 userCtrl.controller('SearchCtrl',
     ['$scope', '$http', '$rootScope', '$location', function ($scope, $http, $rootScope, $location) {
         $scope.search_text = '';
+        $scope.search_loading = false;
         $scope.search = function () {
+            $scope.search_loading = true;
             var m_params = {
                 "userId": $rootScope.login_user.userId,
                 "token": $rootScope.login_user.token,
