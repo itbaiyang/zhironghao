@@ -10,9 +10,7 @@
         <div class="search-btn fr" ng-hide="search_text">取消</div>
         <div class="search-btn fr" ng-show="search_text" ng-click="search(search_text)">确定</div>
     </div>
-    <div class="search-list"
-         style="color: #4c4c4c; padding: 20px 15px">
-        <!--加载中。。。-->
+    <div class="search-list" ng-hide="result_list || search_loading == false">
         <div class="fakeloader">
             <div class="float-left spinner7">
                 <div class="circ1"></div>

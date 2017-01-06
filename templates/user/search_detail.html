@@ -1,5 +1,15 @@
-<div style="height:100%; overflow: auto">
-    <div class="applyDetail">
+<div class="search-loading" ng-hide="search_detail == true">
+    <div class="fakeloader">
+        <div class="float-left spinner7">
+            <div class="circ1"></div>
+            <div class="circ2"></div>
+            <div class="circ3"></div>
+            <div class="circ4"></div>
+        </div>
+    </div>
+</div>
+<div style="height:100%; overflow: auto" ng-show="search_detail == true">
+    <div class="applyDetail" ng-show="companyName">
         <p class="detailTitle">企业名称</p>
         <p class="detailContent">{{ companyName }}</p>
     </div>

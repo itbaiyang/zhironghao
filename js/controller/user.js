@@ -475,6 +475,7 @@ userCtrl.controller('SearchCtrl',
     }]);
 userCtrl.controller('SearchDetailCtrl',
     ['$scope', '$http', '$rootScope', '$routeParams', '$location', function ($scope, $http, $rootScope, $routeParams, $location) {
+        $scope.search_detail = false;
         $scope.detail = function () {
             var m_params = {
                 "userId": $rootScope.login_user.userId,
@@ -486,6 +487,7 @@ userCtrl.controller('SearchDetailCtrl',
                 method: "GET",
                 params: m_params
             }).success(function (d) {
+                $scope.search_detail = true;
                 console.log(d);
                 if (d.returnCode == 0) {
                     $scope.companyName = d.result.companyName;
