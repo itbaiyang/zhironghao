@@ -447,8 +447,8 @@ userCtrl.controller('SearchCtrl',
                 "pageNo": 1,
                 "pageSize": 20,
                 "wd": $scope.search_text
-            }
-            console.log(m_params)
+            };
+            console.log(m_params);
             $http({
                 url: api_uri + "company/query/pageCompanyName2",
                 method: "GET",
@@ -463,10 +463,10 @@ userCtrl.controller('SearchCtrl',
                 }
             }).error(function (d) {
             })
-        }
+        };
 
         $scope.searchDetail = function (id) {
-            console.log(id)
+            console.log(id);
             $location.path("/user/search/detail/" + id);
         }
     }]);

@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                     'html5/scb/kj/jquery.min.js',
                     'html5/scb/kj/hammer.js',
                     'html5/scb/kj/jquery.hammer.js',
-                    'html5/scb/kj/carousel.js',
+                    'html5/scb/kj/carousel.js'
                 ],
                 dest: 'dist/js_h5.js'
             },
