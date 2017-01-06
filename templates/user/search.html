@@ -2,7 +2,9 @@
     <div class="search-inner clear">
         <div class="search-head fl">
             <img src="img/icon/search.png">
-            <input type="text" ng-model="search_text" placeholder="请输入公司名称">
+            <form style="display: inline-block;vertical-align: top" ng-submit="search(search_text)">
+                <input type="text" ng-model="search_text" placeholder="请输入公司名称">
+            </form>
         </div>
         <div class="search-btn fr" ng-hide="search_text">取消</div>
         <div class="search-btn fr" ng-show="search_text" ng-click="search(search_text)">确定</div>
