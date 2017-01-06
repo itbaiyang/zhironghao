@@ -11,7 +11,7 @@
                 src="img/icon/bell_fff.png">{{msgCount}}
         </div>
         <div class="centerMessageNo fr" ng-show="role.indexOf('clerk')>-1&&msgCount ==0" ng-click="userMessage()"></div>
-        <div class="center-search fr" ng-click="searchCompany()">
+        <div class="center-search fr" ng-show="role.indexOf('clerk')>-1" ng-click="searchCompany()">
         </div>
     </div>
     <div class="financing" ng-hide="message">

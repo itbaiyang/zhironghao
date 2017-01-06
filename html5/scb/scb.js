@@ -1,13 +1,13 @@
 // go_apply = "http://172.17.3.158:8000/#/article/show/";
-go_apply = "http://test.zhironghao.com/#/article/show/";
-// go_apply = "http://app.supeiyunjing.com/#/article/show/";
+// go_apply = "http://test.zhironghao.com/#/article/show/";
+go_apply = "http://app.supeiyunjing.com/#/article/show/";
 
 // h5_uri = "http://172.17.3.158:8000/html5/scb/";
-h5_uri = "http://test.zhironghao.com/html5/scb/";
-// h5_uri = "http://app.supeiyunjing.com/html5/scb/";
+// h5_uri = "http://test.zhironghao.com/html5/scb/";
+h5_uri = "http://app.supeiyunjing.com/html5/scb/";
 
-api_url = "https://ssl.zhironghao.com/api/";
-// api_url = "http://api.supeiyunjing.com/";
+// api_url = "https://ssl.zhironghao.com/api/";
+api_url = "http://api.supeiyunjing.com/";
 var carousel = new Carousel("#carousel");
 carousel.init();
 console.log(carousel.count2, carousel.count3)
