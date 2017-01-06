@@ -439,8 +439,9 @@ userCtrl.controller('SearchCtrl',
     ['$scope', '$http', '$rootScope', '$timeout', '$location', function ($scope, $http, $rootScope, $timeout, $location) {
         $scope.search_text = '';
         $scope.search_loading = false;
+        var input = document.getElementById("your-input-id");
+        input.trigger("click").focus();
         $scope.search = function () {
-            var input = document.getElementById("your-input-id");
             input.blur();
             $timeout(function () {
                 $scope.search_loading = true;
