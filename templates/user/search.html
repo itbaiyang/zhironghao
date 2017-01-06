@@ -3,15 +3,24 @@
         <div class="search-head fl">
             <img src="img/icon/search.png">
             <form style="display: inline-block;vertical-align: top" ng-submit="search(search_text)">
-                <input type="text" ng-model="search_text" placeholder="请输入公司名称">
+                <input type="text" id="your-input-id" ng-model="search_text" autofocus="autofocus"
+                       placeholder="请输入公司名称">
             </form>
         </div>
         <div class="search-btn fr" ng-hide="search_text">取消</div>
         <div class="search-btn fr" ng-show="search_text" ng-click="search(search_text)">确定</div>
     </div>
-    <div class="search-list" ng-hide="result_list || search_loading == false"
+    <div class="search-list"
          style="color: #4c4c4c; padding: 20px 15px">
-        加载中。。。
+        <!--加载中。。。-->
+        <div class="fakeloader">
+            <div class="float-left spinner7">
+                <div class="circ1"></div>
+                <div class="circ2"></div>
+                <div class="circ3"></div>
+                <div class="circ4"></div>
+            </div>
+        </div>
     </div>
     <ul class="search-list" ng-show="result_list">
         <li ng-repeat="item in result_list" ng-click="searchDetail(item.companyId)">{{item.companyName}}</li>

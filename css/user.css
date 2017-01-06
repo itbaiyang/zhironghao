@@ -777,3 +777,131 @@
 .search-list li:active {
     background: #f3f3f3;
 }
+
+.fakeloader {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    top: 30%;
+    left: 0;
+    z-index: 999;
+}
+
+.float-left {
+    position: absolute;
+    left: calc(50% - 45px);
+    top: calc(50% - 15px);
+}
+
+.spinner7 {
+    width: 90px;
+    height: 30px;
+    text-align: center;
+}
+
+.spinner7 > div {
+    background-color: #7069CF;
+    height: 15px;
+    width: 15px;
+    margin-left: 3px;
+    border-radius: 50%;
+    display: inline-block;
+
+    -webkit-animation: stretchdelay 0.7s infinite ease-in-out;
+    animation: stretchdelay 0.7s infinite ease-in-out;
+}
+
+.spinner7 .circ2 {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+.spinner7 .circ3 {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.spinner7 .circ4 {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+
+.spinner7 .circ5 {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+
+@-webkit-keyframes stretchdelay {
+    0%, 40%, 100% {
+        -webkit-transform: translateY(-10px)
+    }
+    20% {
+        -webkit-transform: translateY(-20px)
+    }
+}
+
+@keyframes stretchdelay {
+    0%, 40%, 100% {
+        transform: translateY(-10px);
+        -webkit-transform: translateY(-10px);
+    }
+    20% {
+        transform: translateY(-20px);
+        -webkit-transform: translateY(-20px);
+    }
+}
+
+/*loading*/
+#carousel, #carousel > ul, #carousel > ul > li {
+    height: 100%;
+    position: relative;
+}
+
+#carousel {
+    background: silver;
+    overflow: hidden;
+    width: 100%;
+    /* backface-visibility 的意思是在对元素进行变换时，如果元素的“正面”看不到了（比如使用 rotate 时），那么就隐藏整个元素
+       这在处理flip这样的翻转特效时有用。 */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    -webkit-transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+    /* preserve-3d 指定元素的子元素应该在3D空间中进行定位 */
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+/* 增加一个额外的动画样式，在切换版面时使用
+   使用CSS动画能在移动设备中获得比较好的性能 */
+#carousel > ul.animate {
+    transition: all .3s;
+}
+
+#carousel > ul {
+    transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
+    -webkit-transform: translate3d(0%, 0, 0) scale3d(1, 1, 1);
+    overflow: hidden;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+}
+
+#carousel > ul {
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    position: relative;
+}
+
+#carousel > ul > li {
+    float: left;
+    overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}

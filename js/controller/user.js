@@ -440,6 +440,8 @@ userCtrl.controller('SearchCtrl',
         $scope.search_text = '';
         $scope.search_loading = false;
         $scope.search = function () {
+            var input = document.getElementById("your-input-id");
+            input.blur();
             $scope.search_loading = true;
             var m_params = {
                 "userId": $rootScope.login_user.userId,
@@ -457,6 +459,7 @@ userCtrl.controller('SearchCtrl',
                 console.log(d);
                 if (d.returnCode == 0) {
                     $scope.result_list = d.result.datas;
+                    $scope.search_loading = false;
                 }
                 else {
 

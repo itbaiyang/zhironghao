@@ -1,11 +1,11 @@
-// api_uri = "https://ssl.zhironghao.com/api/";
-// root_uri = "http://test.zhironghao.com/#";
+api_uri = "https://ssl.zhironghao.com/api/";
+root_uri = "http://test.zhironghao.com/#";
 // h5_uri = "http://172.17.3.158:8000/html5/scb";
-// h5_uri = "http://test.zhironghao.com/html5/scb";
+h5_uri = "http://test.zhironghao.com/html5/scb";
 
-api_uri = "http://api.supeiyunjing.com/";
-root_uri = "http://app.supeiyunjing.com/#";
-h5_uri = "http://app.supeiyunjing.com/html5/scb";
+// api_uri = "http://api.supeiyunjing.com/";
+// root_uri = "http://app.supeiyunjing.com/#";
+// h5_uri = "http://app.supeiyunjing.com/html5/scb";
 
 templates_root = "templates/";
 deskey = "abc123.*abc123.*abc123.*abc123.*";
