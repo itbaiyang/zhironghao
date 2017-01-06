@@ -440,7 +440,6 @@ userCtrl.controller('SearchCtrl',
         $scope.search_text = '';
         $scope.search_loading = false;
         var input = document.getElementById("your-input-id");
-        input.focus();
         $scope.search = function () {
             input.blur();
             $timeout(function () {
