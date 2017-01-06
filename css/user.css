@@ -761,6 +761,9 @@
 
 .search-list li {
     width: 100%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: inherit;
     padding: 0 15px;
     line-height: 44px;
     height: 45px;
