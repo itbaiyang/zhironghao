@@ -9,7 +9,7 @@
         <div class="search-btn fr" ng-hide="search_text">取消</div>
         <div class="search-btn fr" ng-show="search_text" ng-click="search(search_text)">确定</div>
     </div>
-    <div class="search-list" ng-hide="result_list && search_loading == true">
+    <div class="search-list" ng-hide="result_list || search_loading == false">
         加载中。。。
     </div>
     <ul class="search-list" ng-show="result_list">
