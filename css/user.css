@@ -773,3 +773,7 @@
     color: #4c4c4c;
     font-size: 14px;
 }
+
+.search-list li:active {
+    background: #f3f3f3;
+}
